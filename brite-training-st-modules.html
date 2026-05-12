@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ST Training — Module Outline</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+    background: #f5f5f7;
+    color: #1a1a2e;
+    line-height: 1.5;
+    padding: 32px;
+  }
+  header {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    padding-bottom: 24px;
+    border-bottom: 3px solid #e07832;
+  }
+  h1 { font-size: 30px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #6b7280; font-size: 14px; }
+  .back-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #e07832;
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .summary-bar {
+    background: white;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .summary-stat { font-size: 13px; }
+  .summary-stat .label { color: #6b7280; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+  .summary-stat .value { font-weight: 700; color: #1a1a2e; font-size: 18px; }
+
+  .phase-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .phase-header {
+    padding: 18px 24px;
+    background: linear-gradient(90deg, #fef0e5 0%, #fff 70%);
+    border-left: 6px solid #e07832;
+  }
+  .phase-name { font-size: 20px; font-weight: 700; }
+  .phase-meta { font-size: 13px; color: #6b7280; margin-top: 4px; }
+  .phase-body { padding: 20px 24px; }
+
+  .category {
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #ececec;
+  }
+  .category:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .category-title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #e07832;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .category-count { font-size: 11px; color: #6b7280; font-weight: 500; }
+  .module-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 6px 16px;
+  }
+  .module {
+    display: flex;
+    align-items: baseline;
+    font-size: 13px;
+    padding: 4px 0;
+  }
+  .module-num {
+    display: inline-block;
+    min-width: 30px;
+    color: #9ca3af;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .module-title { color: #1a1a2e; }
+  .module-duration {
+    color: #6b7280;
+    font-size: 11px;
+    margin-left: 6px;
+  }
+
+  .station {
+    padding: 6px 0;
+    font-size: 13px;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .station-num {
+    color: #e07832;
+    font-weight: 700;
+    min-width: 28px;
+  }
+  .station-title { flex: 1; }
+
+  .note-block {
+    background: #fffbeb;
+    border-left: 3px solid #fbbf24;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #78350f;
+    margin-top: 10px;
+  }
+
+  .gate-block {
+    background: #fef2f2;
+    border-left: 3px solid #dc2626;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #7f1d1d;
+    margin-top: 10px;
+  }
+  .gate-block.warn { background: #fffbeb; border-left-color: #fbbf24; color: #78350f; }
+  .gate-block.pass { background: #ecfdf5; border-left-color: #10b981; color: #065f46; }
+
+  .activity-list { font-size: 13px; }
+  .activity-list li { margin: 4px 0 4px 20px; }
+
+  .pending-block {
+    background: #eef2ff;
+    border-left: 3px solid #6366f1;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #3730a3;
+    margin-top: 10px;
+  }
+
+  .print-btn {
+    position: fixed; top: 20px; right: 20px;
+    padding: 10px 18px; background: #e07832; color: white;
+    border: none; border-radius: 6px; cursor: pointer;
+    font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  @media print {
+    .print-btn { display: none; }
+    body { background: white; padding: 16px; }
+    .phase-section { page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Print / PDF</button>
+
+<header>
+  <h1>Senior Field Technician / Crew Leader — Module Outline</h1>
+  <div class="sub">Full module + assessment inventory across all 4 phases · ST-specific content only · 38 modules + 5 cert stations <em style="color:#9ca3af;">(pre-restructure baseline — consolidations pending)</em> · Internal promo: ~4 weeks · External hire: ~6–7 weeks (incl. JT pipeline)</div>
+  <a class="back-link" href="brite-training-verticals-review.html">← Back to Position Verticals Review</a>
+</header>
+
+<div class="container">
+
+  <div class="summary-bar">
+    <div class="summary-stat"><div class="label">Phase 1</div><div class="value">38 modules</div><div>Remote · self-paced · leadership + wiring + customer comm</div></div>
+    <div class="summary-stat"><div class="label">Phase 2</div><div class="value">34 + 5 stations</div><div>Classroom · 3 days · review &amp; practice + safety + physical certs</div></div>
+    <div class="summary-stat"><div class="label">Phase 3</div><div class="value">5–7 days</div><div>Mentored crew leading · AM observed</div></div>
+    <div class="summary-stat"><div class="label">Phase 4</div><div class="value">1 week</div><div>Independent crew leading · formal sign-off</div></div>
+    <div class="summary-stat"><div class="label">Strike Recert</div><div class="value">1 quiz</div><div>Mid-season break · before Jan 2</div></div>
+  </div>
+
+  <div class="pending-block">
+    <strong>Restructure status:</strong> ST is the second role to apply the JT-prototype pattern (lossless consolidation + at-home overview → classroom detail with learning-confirmation quizzes). This file shows the <em>current pre-restructure state</em>. Consolidations will be applied sub-section by sub-section in collaborative review. Updated counts will flow back to the verticals-review page when complete.
+  </div>
+
+  <!-- PHASE 1 -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 1 — Pre-Training (At Home)</div>
+      <div class="phase-meta">~4 weeks (promo) · Mid-July → Mid-August · Remote, self-paced · AM tracks progress</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">JT Knowledge Recertification <span class="category-count">1 module · hard gate</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title"><strong>JT Knowledge Recertification Quiz</strong> — full JT training content: safety, install techniques, products, procedures. <em>100% required, 3 attempts</em>. Failure → must re-graduate JT track. External hires: may be waived at TM discretion.</span><span class="module-duration">60m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Onboarding & Pay Setup <span class="category-count">4 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">2</span><span class="module-title">Employee Onboarding Paperwork</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">3</span><span class="module-title">Online Paperwork & Onboarding</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title">Deputy for Hourly Employees</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title">Software for Success</span><span class="module-duration">10m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">App Suite & Systems Briefing <span class="category-count">7 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">6</span><span class="module-title">BriteNow Field App</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">7</span><span class="module-title">Crew App: Beginning the Day</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">8</span><span class="module-title">Crew App: On Jobsites</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">9</span><span class="module-title">Crew App: Tips</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">10</span><span class="module-title">Monday.com</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">11</span><span class="module-title">Emburse</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">12</span><span class="module-title">GPS Trackit</span><span class="module-duration">10m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">ST Daily Workflow <span class="category-count">1 module</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">13</span><span class="module-title"><strong>ST Daily Workflow</strong> — full day from morning meeting through geo-tracked clock-out. Cold-knowledge before Day 1 on-site.</span><span class="module-duration">20m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Crew Leadership & Operations <span class="category-count">6 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">14</span><span class="module-title">Field Technician Role Overview</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">15</span><span class="module-title">Job Lifecycle Overview</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">16</span><span class="module-title">Scheduling</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">17</span><span class="module-title">Installation Overview</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">18</span><span class="module-title">Job Closeout</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">19</span><span class="module-title">Quality Control Overview</span><span class="module-duration">15m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Wiring — Routing Judgment <span class="category-count">5 modules · core technical differentiator</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">20</span><span class="module-title">Wiring Practices Overview</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">21</span><span class="module-title">Amperage</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">22</span><span class="module-title">Overload</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">23</span><span class="module-title">GFI Outlets</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">24</span><span class="module-title">Wiring Examples</span><span class="module-duration">20m</span></div>
+        </div>
+        <div class="note-block">
+          <strong>Review vs. new learning:</strong> Internal promotions saw this content as JTs. Purpose here is to shift from <em>understanding wiring</em> to <em>making routing decisions on-site</em>. Tested in Phase 2 — not just on concepts, but on choosing the best route for a given property.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Management Protocol & Customer Communication <span class="category-count">2 briefs</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">25</span><span class="module-title"><strong>ST Management Protocol</strong> — corrections, handle vs. escalate, the Hard No List. <em>Hard gate: scenario-based Management Assessment with TM/AM.</em></span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">26</span><span class="module-title"><strong>ST Customer Communication</strong> — 5 scenarios: arrival door knock, change order, partial completion, escalated customer, Google review ask.</span><span class="module-duration">25m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Company Operating System <span class="category-count">4 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">27</span><span class="module-title">BOS — Brite Nites Operating System</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">28</span><span class="module-title">Intro to EOS</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">29</span><span class="module-title">EOS to BOS</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">30</span><span class="module-title">Understanding Your To-do's</span><span class="module-duration">10m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Strike Season Preparation <span class="category-count">8 modules · core ST responsibility</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">31</span><span class="module-title">Ramp-Down</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">32</span><span class="module-title">Strike Takedown Overview</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">33</span><span class="module-title">Roofline Takedown</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">34</span><span class="module-title">Tree Takedown</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">35</span><span class="module-title">Alternative Lighting Takedown</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">36</span><span class="module-title">Using the App (Takedown)</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">37</span><span class="module-title">Rolling & Boxing Materials</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">38</span><span class="module-title">Inventory List</span><span class="module-duration">10m</span></div>
+        </div>
+        <div class="note-block">
+          <strong>Strike is required for STs</strong>, unlike JTs (where strike modules are optional). Pre-reading ensures STs can lead crews through takedown and produce the documentation that feeds the downstream audit.
+        </div>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 1 Gate:</strong> JT Recert Quiz passed (100%, 3 attempts) · all 38 modules complete · Management Assessment passed (scenario-based with TM/AM) · AM confirms to TM · TM schedules first on-site day. <em>External hires also need full JT Phase 1 (71 modules) prior.</em>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 2 -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 2 — On-Site Training & Certification</div>
+      <div class="phase-meta">3 days · Warehouse / training area · AM-led (group or individual) · Day 1–2 classroom + practice · Day 3 physical certifications</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">Day 1 — Leadership, Communication & Wiring <span class="category-count">9 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title">Daily workflow walkthrough (live)</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title">Documentation standards — hands-on (photos, videos, footage, FSM)</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">3</span><span class="module-title">Crew App: Beginning the Day (hands-on)</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title">Crew App: On Jobsites (hands-on)</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title">BriteNow Field App (hands-on)</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">6</span><span class="module-title">Production reports & forms review</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">7</span><span class="module-title">Customer communication role-play (5 scenarios, AM plays client)</span><span class="module-duration">45m</span></div>
+          <div class="module"><span class="module-num">8</span><span class="module-title">Management best practices discussion</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">9</span><span class="module-title"><strong>Wiring routing workshop</strong> — real property scenarios; identify <em>discrete</em> + <em>efficient</em> routes</span><span class="module-duration">45m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 2 — Safety Classroom + Wiring Routing Assessment <span class="category-count">25 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">10</span><span class="module-title"><strong>Wiring Routing Assessment</strong> — harder than JT version. <em>Discrete + efficient</em> standard. Written scenarios with property diagrams.</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">11</span><span class="module-title">Ladder Safety Overview</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">12</span><span class="module-title">How to Properly Use a Ladder</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">13</span><span class="module-title">Extension Ladder (32')</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">14</span><span class="module-title">A-Frame Ladder (12')</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">15</span><span class="module-title">Orchard Ladder</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">16</span><span class="module-title">Little Giants / Quality Pros</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">17</span><span class="module-title">Truck & Ladder Protocol</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">18</span><span class="module-title">Lift Safety Overview</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">19</span><span class="module-title">Types of Lifts</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">20</span><span class="module-title">Pre-Use Inspection</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">21</span><span class="module-title">Safe Operating Procedures</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">22</span><span class="module-title">Stabilization & Positioning</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">23</span><span class="module-title">Working at Heights Safely</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">24</span><span class="module-title">Fall Protection Requirements</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">25</span><span class="module-title">PPE (Lifts)</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">26</span><span class="module-title">Hazard Awareness</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">27</span><span class="module-title">Emergency Procedures</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">28</span><span class="module-title">After the Fall</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">29</span><span class="module-title">Operator Responsibilities</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">30</span><span class="module-title">Final Reminders</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">31</span><span class="module-title">Harness Safety</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">32</span><span class="module-title">Auto Risk Management Overview</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">33</span><span class="module-title">Defensive Driving</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">34</span><span class="module-title">Incident Reporting</span><span class="module-duration">10m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 3 — Physical Certifications <span class="category-count">5 stations · compliance critical</span></div>
+        <div class="station"><span class="station-num">1</span><span class="station-title">30' Extension Ladder — Setup, climb, work at height, descend safely (AM observation)</span></div>
+        <div class="station"><span class="station-num">2</span><span class="station-title">A-Frame Ladder (12') — Setup, inspection, safe use (AM observation)</span></div>
+        <div class="station"><span class="station-num">3</span><span class="station-title">Roof Access — Ladder-to-roof transition, working on a roof, harness use, safe descent (AM observation)</span></div>
+        <div class="station"><span class="station-num">4</span><span class="station-title">MEWP Written Knowledge Test — Annual recertification (TM / certified trainer)</span></div>
+        <div class="station"><span class="station-num">5</span><span class="station-title">MEWP Practical Operation Test — Pre-use inspection, safe operation, emergency procedures (TM / certified trainer)</span></div>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 2 Gate:</strong> Wiring Routing Assessment passed · all 3 days attended · ladder/roof/MEWP stations signed off · MEWP recert documented · AM confirms readiness for mentored crew leading. One MEWP retest allowed.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 3 -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 3 — Mentored Crew Leading</div>
+      <div class="phase-meta">5–7 days · Real job sites · ST leads · AM observes (rides along first week, then steps back)</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">What's Being Evaluated <span class="category-count">8 competencies</span></div>
+        <ul class="activity-list">
+          <li><strong>Independence</strong> — runs the job without needing AM direction</li>
+          <li><strong>Crew direction</strong> — assigns work clearly; JTs know what to do</li>
+          <li><strong>Customer engagement</strong> — door knock, scope review, professional communication</li>
+          <li><strong>Ethical management</strong> — corrections respectful; no Hard No List violations</li>
+          <li><strong>Documentation quality</strong> — photos, videos, service reports complete &amp; accurate</li>
+          <li><strong>Safety enforcement</strong> — maintains standards under production pressure</li>
+          <li><strong>Wiring decisions</strong> — discrete + efficient routing on real properties</li>
+          <li><strong>Daily cadence</strong> — morning meeting, inventory, first job by 9, geo clock-out</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Activities</div>
+        <ul class="activity-list">
+          <li>Lead full install jobs from arrival to sign-off with a real crew (1–2 JTs)</li>
+          <li>Handle all customer engagement — door knocks, scope reviews, change orders, escalations</li>
+          <li>Direct JTs through installation tasks — assign work, correct technique, maintain pace</li>
+          <li>Complete all documentation to standard on every job</li>
+          <li>Make wiring routing decisions on real properties</li>
+          <li>Attend morning meetings with AM/TM — report on crew performance, raise concerns</li>
+          <li>Begin coaching JTs (preparation for ST's core multiplier function in JT Phase 4)</li>
+        </ul>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 3 Gate (Crew Leading Evaluation):</strong> Min 5 jobs led · crew direction confirmed · customer engagement independent · management aligned with protocol · documentation passes spot-check (≥3 jobs) · wiring routing discrete &amp; efficient · daily workflow consistent · AM confirms readiness for independent leadership. <em>Up to 5 extra mentored days if not passing; 10 total → TM review.</em>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 4 -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 4 — Cleared: Independent Crew Leader</div>
+      <div class="phase-meta">1 week · Job sites · No AM ride-along · AM available via phone + morning meetings · Formal sign-off at end</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">What's Being Evaluated <span class="category-count">5 criteria</span></div>
+        <ul class="activity-list">
+          <li><strong>Independent leadership</strong> — runs full daily workflow without AM direction</li>
+          <li><strong>Consistent documentation</strong> — every job: photos, video, counts, FSM</li>
+          <li><strong>Crew productivity</strong> — sustainable pace; no corner-cutting, no dragging</li>
+          <li><strong>JT development</strong> — JTs are improving, not just executing</li>
+          <li><strong>Problem resolution</strong> — handles weather/equipment/scope per handle/escalate framework</li>
+        </ul>
+      </div>
+
+      <div class="gate-block pass">
+        <strong>Phase 4 Gate — Formal Sign-Off:</strong> Full week independent · documentation consistent · no safety incidents · JTs confirm clear direction · AM signs off → <strong>ST cleared as independent crew leader</strong>. Active through end of season including strike (Jan+). Eligible for production-based bonus tracking.
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIKE RECERT -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Strike Season Recertification</div>
+      <div class="phase-meta">Mid-season break (~Dec 12 – Jan 2) · Required before Jan 2 strike start</div>
+    </div>
+    <div class="phase-body">
+      <div class="category">
+        <div class="category-title">Strike Recertification Quiz <span class="category-count">1 quiz · hard gate</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title"><strong>Strike Recertification Quiz</strong> — covers takedown procedures, documentation, counting protocols, warehouse return process. <em>3 attempts at 100%.</em> Failure → must complete full Strike Takedown training before returning.</span><span class="module-duration">~30m</span></div>
+        </div>
+      </div>
+      <div class="note-block">
+        Strike leadership is a <strong>core</strong> ST responsibility (not optional like JT). The pre-reading in Phase 1 + this recert ensure STs can lead crews through takedown and produce the documentation that feeds the downstream audit (warehouse → QP → management reporting).
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

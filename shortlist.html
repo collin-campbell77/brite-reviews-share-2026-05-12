@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Brite LMS · Approved Feature Shortlist · 2026-05-07</title>
+<style>
+  :root {
+    --bg: #0b0d10; --bg-2: #11151a; --bg-3: #161b22;
+    --fg: #e6edf3; --fg-muted: #9aa4af; --fg-dim: #6b7480;
+    --line: #20262d; --line-2: #2a313a;
+    --accent: #ffce47; --accent-2: #4cc2ff;
+    --green: #4dd07a; --orange: #ff9c4a; --red: #ff6168; --purple: #b88aff;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #ffffff; --bg-2: #fafbfc; --bg-3: #f4f6f9;
+      --fg: #1a1f24; --fg-muted: #5a6470; --fg-dim: #8a929b;
+      --line: #e3e7ec; --line-2: #d0d6de;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font: 14.5px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif; color: var(--fg); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  code, pre, .mono { font-family: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--bg-3); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; font-size: 12px; line-height: 1.55; overflow-x: auto; }
+  code { background: var(--bg-3); padding: 1px 5px; border-radius: 3px; font-size: 12.5px; }
+  pre code { background: transparent; padding: 0; }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 32px 24px 80px; }
+  header.hero { border-bottom: 1px solid var(--line); padding-bottom: 28px; margin-bottom: 28px; }
+  .eyebrow { font-family: "SF Mono", monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-dim); }
+  h1 { font-size: 30px; font-weight: 600; letter-spacing: -0.01em; margin: 6px 0 10px; }
+  .lede { color: var(--fg-muted); max-width: 78ch; font-size: 15.5px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-size: 12.5px; color: var(--fg-dim); }
+  .meta-row .k { color: var(--fg-muted); }
+  .meta-row a { color: var(--fg-muted); }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 18px 0 28px; }
+  .stat { background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+  .stat .num { font-family: "SF Mono", monospace; font-size: 22px; font-weight: 600; color: var(--green); }
+  .stat .lbl { font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-dim); margin-top: 4px; }
+  .feature { background: var(--bg-2); border: 1px solid var(--line); border-radius: 14px; padding: 24px 28px; margin: 28px 0; scroll-margin-top: 24px; }
+  .feature .num { font-family: "SF Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+  .feature h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.005em; margin: 0 0 6px; color: var(--fg); }
+  .feature .platforms { font-family: "SF Mono", monospace; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 14px; }
+  .feature .badges { display: flex; gap: 6px; flex-wrap: wrap; margin: 12px 0 18px; }
+  .feature .badge { font-family: "SF Mono", monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: var(--bg-3); color: var(--fg-muted); border: 1px solid var(--line); }
+  .feature .badge.approved { color: var(--green); border-color: rgba(77,208,122,0.4); }
+  .feature .badge.tier1 { color: var(--green); }
+  .feature .badge.s { color: var(--green); }
+  .feature .badge.m { color: var(--accent); }
+  .feature .badge.l { color: var(--red); }
+  .feature h3 { font-family: "SF Mono", monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 22px 0 10px; }
+  .feature h3:first-of-type { margin-top: 6px; }
+  .feature h4 { font-size: 13.5px; font-weight: 600; margin: 16px 0 8px; }
+  .feature p { margin: 0 0 12px; color: var(--fg); }
+  .feature ul, .feature ol { margin: 0 0 12px; padding-left: 22px; color: var(--fg); }
+  .feature ul li, .feature ol li { margin-bottom: 6px; }
+  .callout { background: var(--bg-3); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 16px; margin: 12px 0; color: var(--fg); font-size: 13.5px; line-height: 1.6; }
+  .callout.green { border-left-color: var(--green); }
+  .callout .label { display: block; font-family: "SF Mono", monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; font-weight: 600; }
+  .callout.green .label { color: var(--green); }
+  table.plan { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 8px 0 12px; background: var(--bg-3); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  table.plan th, table.plan td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.plan th { font-family: "SF Mono", monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); font-weight: 600; background: var(--bg-2); }
+  table.plan tr:last-child td { border-bottom: 0; }
+  table.plan td.step { font-family: "SF Mono", monospace; color: var(--accent); width: 50px; }
+  table.plan td.effort { font-family: "SF Mono", monospace; color: var(--fg-muted); width: 110px; white-space: nowrap; }
+  .touches { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 12px; }
+  .touches code { background: var(--bg-3); border: 1px solid var(--line); padding: 3px 8px; border-radius: 4px; font-size: 11.5px; }
+  .toc { background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; margin: 18px 0 28px; }
+  .toc h3 { font-family: "SF Mono", monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-muted); margin: 0 0 10px; font-weight: 600; }
+  .toc ol { margin: 0; padding-left: 22px; }
+  .toc ol li { margin: 5px 0; color: var(--fg); }
+  .toc ol li a { color: var(--fg); }
+  .toc ol li a:hover { color: var(--accent); }
+  .toc ol li .meta { font-family: "SF Mono", monospace; font-size: 11px; color: var(--fg-dim); margin-left: 8px; }
+  footer.foot { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--fg-dim); font-size: 12.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Brite LMS · Approved Feature Shortlist</div>
+    <h1>Features Collin approved from the competitive review</h1>
+    <p class="lede">
+      Curated subset of the 50-feature competitive review — only items explicitly endorsed for Brite Academy. Each entry captures the integration plan, code touch-points, Brite-specific tweaks, and the Linear issue carrying the work.
+    </p>
+    <div class="meta-row">
+      <span><span class="k">Started:</span> 2026-05-07</span>
+      <span><span class="k">Last updated:</span> 2026-05-10 (rebuilt after working-tree loss)</span>
+      <span><span class="k">Linear project:</span> <a href="https://linear.app/brite-nites/project/brite-lms-c6a5f04a123d">Brite LMS</a></span>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="num">11</div><div class="lbl">Approved (active)</div></div>
+    <div class="stat"><div class="num">~9 wk</div><div class="lbl">Total effort est.</div></div>
+    <div class="stat"><div class="num">4</div><div class="lbl">Backlog (Linear)</div></div>
+    <div class="stat"><div class="num">7</div><div class="lbl">Discarded</div></div>
+  </div>
+
+  <div class="toc">
+    <h3>Approved features — all in Linear</h3>
+    <ol>
+      <li><a href="#cmdk-brite-ai">F01 Cmd+K command palette → upgrade Brite AI engine</a> <span class="meta">→ <a href="https://linear.app/brite-nites/issue/BC-7010">BC-7010</a> · Medium · Phase 2/3 · ~3-4 wk</span></li>
+      <li><a href="#lesson-outline">F02 Lesson outline popover + anchor-on-heading deep links</a> <span class="meta">→ <a href="https://linear.app/brite-nites/issue/BC-7008">BC-7008</a> · Medium · Phase 2 · ~2 days</span></li>
+      <li><a href="#breadcrumbs">F03 Breadcrumb enhancement (extend ModuleNav)</a> <span class="meta">→ <a href="https://linear.app/brite-nites/issue/BC-7005">BC-7005</a> · Medium · Phase 2 · ~3h</span></li>
+      <li><a href="#resume-card">F04 Resume Lesson card → upgrade existing button</a> <span class="meta">→ <a href="https://linear.app/brite-nites/issue/BC-7006">BC-7006</a> · Medium · Phase 2 · ~1 day</span></li>
+      <li><a href="#callouts">F05 Six-variant callouts (passive visual hierarchy)</a> <span class="meta">→ <a href="https://linear.app/brite-nites/issue/BC-7001">BC-7001</a> · Medium · Phase 2 · ~3h</span></li>
+      <li><a href="#reading-time">F06 Auto reading-time chip</a> <span class="meta">→ <a href="https://linear.app/brite-nites/issue/BC-7002">BC-7002</a> · Medium · Phase 2 · ~2h</span></li>
+      <li><a href="#edit-on-github">F07 "Edit this page on GitHub" footer link</a> <span class="meta">→ <a href="https://linear.app/brite-nites/issue/BC-7003">BC-7003</a> · <b>High · Phase 1</b> · ~2h</span></li>
+      <li><a href="#theme-and-sidebar">F08 Theme toggle + persistent sidebar state</a> <span class="meta">→ <a href="https://linear.app/brite-nites/issue/BC-7004">BC-7004</a> · Medium · Phase 2 · ~3h</span></li>
+      <li><a href="#quiz-feedback">F09 Per-question quiz feedback with "Try Again" hints</a> <span class="meta">→ <a href="https://linear.app/brite-nites/issue/BC-7007">BC-7007</a> · <b>High · Phase 1</b> · ~1 day</span></li>
+      <li><a href="#offline-mode">F10 Offline mode (read + complete + sync on reconnect)</a> <span class="meta">→ <a href="https://linear.app/brite-nites/issue/BC-7009">BC-7009</a> · Medium · Phase 3 (PR A) / Phase 5 (PR B+C) · <i>re-sequenced 2026-05-10</i></span></li>
+      <li><a href="#manager-view">F11 Manager view — team progress dashboard</a> <span class="meta">→ <b><a href="https://linear.app/brite-nites/issue/BC-6596">BC-6596</a></b> (Jaime 2026-05-04) · High priority · Phase 3 · <i>BC-7052 closed as duplicate</i></span></li>
+    </ol>
+    <p style="font-size:12.5px;color:var(--fg-muted);margin-top:12px">
+      <b>Backlog</b>: <a href="https://linear.app/brite-nites/issue/BC-7000">BC-7000 Newsfeed</a> (with per-division targeting via Department primitive). <b>Dependency wired in Linear</b>: BC-7010 (F01) blocked by BC-7008 (F02) for heading-ID infrastructure.
+    </p>
+  </div>
+
+  <!-- ============ UTILITARIAN PHASING ============ -->
+  <article class="feature" id="phasing-2026-05-10" style="border-color: var(--orange); border-style: dashed;">
+    <div class="num" style="color: var(--orange)">Utilitarian re-sequence · 2026-05-10</div>
+    <h2>3-phase ship plan — season-prep critical path first</h2>
+    <p>
+      Filter applied: <i>"If this feature didn't ship by season start, would a seasonal worker actually FAIL at training, or just experience degraded UX?"</i> Linear priorities updated to reflect this. Peak season starts Oct 2026 — ~5 months runway.
+    </p>
+
+    <h3 style="color:var(--red)">Phase 1 — Critical path (~3-4 weeks)</h3>
+    <p>Only features whose absence causes actual training failure. <b>Linear: Urgent / High.</b></p>
+    <table class="plan">
+      <thead><tr><th>Feature</th><th>Linear</th><th>Effort</th><th>Why critical</th></tr></thead>
+      <tbody>
+        <tr><td><b>F10 PR A</b> Offline read</td><td><a href="https://linear.app/brite-nites/issue/BC-7009">BC-7009</a> 🔥</td><td>~7-10 days</td><td>Only feature whose absence is a hard failure — worker on a roof with no LTE cannot reference procedure.</td></tr>
+        <tr><td><b>F09</b> Quiz feedback hints</td><td><a href="https://linear.app/brite-nites/issue/BC-7007">BC-7007</a></td><td>~1 day</td><td>Workers learn more per attempt instead of burning through 3 wrong tries. Material training-effectiveness improvement.</td></tr>
+        <tr><td><b>F07</b> Edit on GitHub</td><td><a href="https://linear.app/brite-nites/issue/BC-7003">BC-7003</a></td><td>~2h</td><td>Closes contributor loop for content-accuracy work in parallel. Tiny investment, real lift.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="color:var(--accent)">Phase 2 — Search + polish (~3-4 weeks, after Phase 1)</h3>
+    <p>Material UX upgrades that degrade gracefully. <b>Linear: Medium.</b></p>
+    <table class="plan">
+      <thead><tr><th>Feature</th><th>Linear</th><th>Effort</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><b>F01 Steps 1+2</b> Cmd+K + FlexSearch</td><td><a href="https://linear.app/brite-nites/issue/BC-7010">BC-7010</a></td><td>~2 weeks</td><td>Defer Step 3 (Ask AI RAG) to Phase 3.</td></tr>
+        <tr><td><b>F02</b> Outline + anchor IDs</td><td><a href="https://linear.app/brite-nites/issue/BC-7008">BC-7008</a></td><td>~2 days</td><td>Ships before F01 Step 2 to unlock section-precise citations.</td></tr>
+        <tr><td><b>Polish bundle</b> F03+F04+F05+F06+F08</td><td>BC-7005, 7006, 7001, 7002, 7004</td><td>~13h</td><td>5 small PRs as a single polish-week sprint.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="color:var(--purple)">Phase 3 — Post-season iteration (~4-5 weeks)</h3>
+    <p>Ship in response to real usage data, not assumption. <b>Linear: Medium.</b></p>
+    <table class="plan">
+      <thead><tr><th>Feature</th><th>Effort</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><b>F10 PR B+C</b> Offline write + sync + cross-device</td><td>~3 weeks</td><td>Ship informed by PR A usage data.</td></tr>
+        <tr><td><b>F01 Step 3+4</b> Ask AI RAG + polish</td><td>~2-3 weeks</td><td>Uses FlexSearch + heading IDs from Phase 2 as RAG context.</td></tr>
+        <tr><td><b>F11</b> Manager view — team progress dashboard</td><td>~1 week</td><td>AM/TM-scoped page. Ships once F10 PR A + F09 generate meaningful progress data. Supersedes deferred V2 admin dashboard for the manager audience.</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Timeline</h4>
+    <pre><code>   May 10    Jun       Jul       Aug       Sep        Oct ─── PEAK SEASON
+   [ Phase 1 ] [ Phase 2 ]  ─── buffer / content gap-fill ──── season starts
+    critical    polish        + pre-season worker testing       Oct 1</code></pre>
+  </article>
+
+  <!-- ============ LINEAR PROTOCOL ============ -->
+  <article class="feature" id="linear-protocol" style="border-color: var(--accent); border-style: dashed;">
+    <div class="num" style="color: var(--accent)">Shared protocol · applies to every approved feature</div>
+    <h2>Linear integration protocol</h2>
+    <p>Every approved feature gets pulled into Linear under a consistent structure so it slots into the existing Brite workflow commands (<code>/workflows:create-issues</code>, <code>/workflows:session-start</code>, <code>/workflows:review</code>, <code>/workflows:ship</code>) without ad-hoc shaping.</p>
+
+    <h3>Standard fields per issue</h3>
+    <ul>
+      <li><b>Project</b>: <code>Brite LMS</code> · <b>Team</b>: <code>Brite Company (BC)</code></li>
+      <li><b>Labels</b>: <code>type:task</code> · <code>executor:hybrid</code> · size (<code>S</code> or <code>L</code>) · <code>requires-security-review</code> for F01 + F10</li>
+      <li><b>Priority</b>: per utilitarian phasing — Urgent for F10, High for F07 + F09, Medium for the rest</li>
+      <li><b>Status</b>: <code>Backlog</code> until sprint planning pulls into a cycle</li>
+      <li><b>Estimate</b>: Linear points (1 ≈ ½-1 day, 2 ≈ 1-2 days, 13 ≈ 3-4 weeks)</li>
+      <li><b>Description</b>: full spec with Decision, Implementation plan, AC, Touch points, Non-goals, Cross-references</li>
+    </ul>
+
+    <h3>Workflow command alignment</h3>
+    <table class="plan">
+      <thead><tr><th>Phase</th><th>Workflow command</th><th>What happens</th></tr></thead>
+      <tbody>
+        <tr><td>Sequence</td><td><code>/workflows:sprint-planning</code></td><td>Assigns Phase 1 issues to a cycle first</td></tr>
+        <tr><td>Pick up</td><td><code>/workflows:session-start</code></td><td>Pulls next unblocked issue, fetches AC + parent context</td></tr>
+        <tr><td>Plan</td><td><code>/workflows:writing-plans</code></td><td>Breaks into 2-5 minute tasks</td></tr>
+        <tr><td>Build</td><td><code>/workflows:executing-plans</code></td><td>TDD per task, two-stage review</td></tr>
+        <tr><td>Review</td><td><code>/workflows:review</code></td><td>Parallel review agents — fix P1s before PR</td></tr>
+        <tr><td>Ship</td><td><code>/workflows:ship</code></td><td>PR + Linear update + compound learnings + handbook-drift check</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Cross-cutting requirements</h3>
+    <ul>
+      <li><b>Mobile parity</b>: every feature works on phones (gloves-on field reality)</li>
+      <li><b>Accessibility</b>: keyboard navigable, screen-reader labeled, WCAG AA contrast, respects <code>prefers-reduced-motion</code></li>
+      <li><b>Schema discipline</b>: any new table uses <code>prisma migrate dev --name &lt;change&gt;</code> per BC-6368 lessons — never <code>db push</code> for schema history</li>
+      <li><b>Existing patterns</b>: reuse shadcn primitives before introducing new dependencies</li>
+      <li><b>Compound learnings</b>: post-ship, surprising decisions get a 1-line entry in <code>docs/patterns/&lt;area&gt;.md</code></li>
+    </ul>
+  </article>
+
+  <!-- ============ CURATION PASS ============ -->
+  <article class="feature" id="curation-2026-05-08" style="border-color: var(--orange); border-style: dashed;">
+    <div class="num" style="color: var(--orange)">Curation pass · 2026-05-08</div>
+    <h2>Minimalist filter — what we explicitly skipped or backlogged</h2>
+    <p>Stress-tested the 50-feature catalog through a minimalist lens. Brite is a workplace LMS for ~90 paid seasonal field workers, not a consumer learning app / creator platform / multi-tenant SaaS / academic LMS / doc site. Every feature is forever-maintenance — kitchen-sink scope is the failure mode.</p>
+
+    <h3>Cards reviewed and approved for backlog (low-priority Linear issues)</h3>
+    <p style="color:var(--fg-muted);font-size:13.5px">Future-but-not-priority — added to Linear as backlog, not scoped into active shortlist.</p>
+    <table class="plan">
+      <thead><tr><th>Card</th><th>Approved</th><th>User reasoning</th><th>Linear</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>Newsfeed / announcements home module</b><br><span style="color:var(--fg-dim);font-size:11.5px">iSpring Learn · per-division targeting</span></td>
+          <td>2026-05-10</td>
+          <td><i>Initial:</i> "I like this but it should not be a priority, you should add it into the linear project as a further down the road issue."<br><br><i>Scope update:</i> "Since we will have separate branches of the company such as sales and ops, these announcements should be programmable per division/branch." → spec includes <code>targetDepartments: string[]</code> reusing existing Department primitive (BC-6598).</td>
+          <td><a href="https://linear.app/brite-nites/issue/BC-7000"><b>BC-7000</b></a> · Backlog · Low · S (2 pts)</td>
+        </tr>
+        <tr>
+          <td><b>Smart auto-enrollment rules</b> <i>(Half A of "Auto-enrollment rules / intelligent agents")</i><br><span style="color:var(--fg-dim);font-size:11.5px">Moodle Workplace · Brightspace · Cornerstone — extends <code>assignDefaultModules</code></span></td>
+          <td>2026-05-10</td>
+          <td>Conflict-check confirmed: foundation already ships (<code>ensurePrismaUser</code> → <code>assignDefaultModules</code> in <code>src/lib/auth.ts</code>). Card extends to: rules-driven (not hardcoded), reacts to mid-season attribute changes, multi-attribute conditions. Pairs naturally with V2 bulk provisioning. <b>No Supabase overlap</b> — would be Next.js server actions in Prisma, not Edge Functions or DB triggers.</td>
+          <td><a href="https://linear.app/brite-nites/issue/BC-7055"><b>BC-7055</b></a> · M02 Backlog · Low · M (5 pts)</td>
+        </tr>
+        <tr>
+          <td><b>ILT training calendar (Brite Base integration)</b><br><span style="color:var(--fg-dim);font-size:11.5px">iSpring Learn — refactored as cross-project integration, NOT standalone LMS build</span></td>
+          <td>2026-05-10</td>
+          <td><b>Architectural reframe</b>: user identified that workers already check Brite Base for their schedule — building a parallel LMS calendar = dual source of truth. Same boundary as F10 framing: <i>"LMS = procedure reference, Brite Base = job operational data."</i> Training sessions are operational events; they belong in BB. Linear issue captures the integration intent (Option B: push events to BB, or Option C: read attendance from BB) — pick when BB API is concrete. Do NOT build LMS-side calendar.</td>
+          <td><a href="https://linear.app/brite-nites/issue/BC-7056"><b>BC-7056</b></a> · M02 Backlog · Low · S-M (3 pts)</td>
+        </tr>
+        <tr>
+          <td><b>Pin / Favorite — sidebar shortcut</b><br><span style="color:var(--fg-dim);font-size:11.5px">Notion · Outline · explicitly NOT merged with F10 offline</span></td>
+          <td>2026-05-10</td>
+          <td>Star icon on any module/track → adds to "Favorites" section at top of sidebar. User: <i>"Pinning material could be a useful function especially if the goal is that this content will be accessible out in the field"</i> + <i>"I wouldn't merge it with offline, I want the feature but its not crucial."</i> Two separate affordances per user direction: F10 offline-save = field readability; Pin/Favorite = navigation shortcut. Real utility for Repair Techs using same 6 tool docs daily but not critical-path.</td>
+          <td><a href="https://linear.app/brite-nites/issue/BC-7062"><b>BC-7062</b></a> · M02 Backlog · Low · S (2 pts)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Cards reviewed individually and explicitly discarded</h3>
+    <p style="color:var(--fg-muted);font-size:13.5px">Running log of cards opened, reviewed, and actively rejected during catalog walkthrough.</p>
+    <table class="plan">
+      <thead><tr><th>Card</th><th>Discarded</th><th>User's reasoning</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>Relevance score / one-click lesson reactions</b><br><span style="color:var(--fg-dim);font-size:11.5px">360Learning</span></td>
+          <td>2026-05-10</td>
+          <td>"I dont really care to incorporate this." Already in curation pass Bucket C as a duplicate feedback channel — user-confirmed.</td>
+        </tr>
+        <tr>
+          <td><b>Keyboard shortcuts (<code>/</code>, J/K, <code>?</code>)</b><br><span style="color:var(--fg-dim);font-size:11.5px">GitBook · Linear · Vercel</span></td>
+          <td>2026-05-10</td>
+          <td>User-confirmed skip — audience is mobile-first; touchscreens don't have keyboards. Handful of desktop users (admins, trainers) navigate fine with breadcrumb + sidebar. Already in curation pass Bucket C as low-ROI for the audience.</td>
+        </tr>
+        <tr>
+          <td><b>"Was this helpful? Yes/No + comment" footer</b><br><span style="color:var(--fg-dim);font-size:11.5px">Mintlify · GitBook</span></td>
+          <td>2026-05-10</td>
+          <td>User-confirmed skip — adds Prisma model + API + admin review surface for a feedback channel Slack/manager-DM already handles. Low-density signal, real maintenance overhead.</td>
+        </tr>
+        <tr>
+          <td><b>First-time learner tour overlay</b><br><span style="color:var(--fg-dim);font-size:11.5px">Thinkific · most SaaS onboarding</span></td>
+          <td>2026-05-10</td>
+          <td>User-confirmed skip — tour copy rots when UI changes. F01-F10 will reshape the dashboard meaningfully; a tour written today is stale by November. Real maintenance overhead.</td>
+        </tr>
+        <tr>
+          <td><b>Milestone celebration popups (confetti)</b><br><span style="color:var(--fg-dim);font-size:11.5px">Thinkific · Duolingo · Brilliant (Rive)</span></td>
+          <td>2026-05-10</td>
+          <td>User-confirmed skip — risks reading infantilizing for adult paid workers. Opens the gamification door (confetti → streaks → leaderboards) which user has consistently drawn hard lines against throughout this review.</td>
+        </tr>
+        <tr>
+          <td><b>Author feedback inbox + internal comments</b><br><span style="color:var(--fg-dim);font-size:11.5px">360Learning · audience: content authors, NOT managers</span></td>
+          <td>2026-05-10</td>
+          <td>User initially thought this might serve F11 Manager view — clarified that the card's "inbox" is for content AUTHORS receiving aggregated learner reactions, not for managers. Two failure modes for current scope: <b>(1)</b> depends on reactions feature already discarded (no data source), <b>(2)</b> handbook-drift contributor loop already served by F07 Edit on GitHub. Manager-notifications gap separately captured in deferred Intelligent Agents Half B (re-evaluate after F11). User: <i>"I guess its not necessary, im fully about the idea of less being more."</i></td>
+        </tr>
+        <tr>
+          <td><b>"Become a JT" public landing pages</b><br><span style="color:var(--fg-dim);font-size:11.5px">LinkedIn Learning · Frontend Masters · Teachable — recruiting surface</span></td>
+          <td>2026-05-10</td>
+          <td>Architectural conflict: LMS is auth-walled by design (per stakeholders.md). Public role-preview pages belong in <code>brite-recruiting</code> project, not in the LMS — same pattern as ILT calendar belongs in Brite Base (BC-7056). If brite-recruiting ever needs role-path content, file a cross-project ticket: LMS exposes track JSON, brite-recruiting renders the public marketing page. User: <i>"True yeah we wont worry about this one."</i></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Bucket B — M02 candidates (real value, deferred for now)</h3>
+    <ul>
+      <li>Manager view — team progress dashboard (Cornerstone)</li>
+      <li>Branded PDF certificate + recertification workflow (Kajabi / Moodle Workplace)</li>
+      <li>"We Missed You" returning-learner flow (Duolingo)</li>
+      <li>Spaced repetition review queue / FSRS (Anki / Memrise)</li>
+      <li>Auto-enrollment rules / intelligent agents (Moodle Workplace / Brightspace)</li>
+      <li>Photo-upload assessment + native camera capture (Canvas / Schoology)</li>
+      <li>Training calendar with ILT sessions (iSpring)</li>
+      <li>Add-to-LinkedIn-profile cert (LinkedIn Learning)</li>
+    </ul>
+
+    <h3>Bucket C — Skip (over-engineered, audience-mismatched, or duplicates existing)</h3>
+    <table class="plan">
+      <thead><tr><th>Card</th><th>Skip reason</th></tr></thead>
+      <tbody>
+        <tr><td>"Was this helpful? Yes/No" footer</td><td>Adds Prisma model + API for low-density signal. Slack already serves.</td></tr>
+        <tr><td>First-time learner tour overlay</td><td>Tour copy rots when UI changes. Brite UI is iterating.</td></tr>
+        <tr><td>Milestone celebration popups (confetti)</td><td>Infantilizing for adult workplace.</td></tr>
+        <tr><td>Streak freeze + daily quests · weekly leaderboard · streak calendar · season badges</td><td>Toxic-engagement risk for paid workers. Brite isn't Duolingo.</td></tr>
+        <tr><td>Push notifications + soft-deadline reminders</td><td>Web-push limitations + iOS native required. High infra cost.</td></tr>
+        <tr><td>Pinpoint video search · Interactive transcript · In-video questions · 90% video gate</td><td>No video content yet. Defer all video-dependent features.</td></tr>
+        <tr><td>Inline notes + highlights with markdown export</td><td>Explicitly skipped per user direction ("we don't need them to take notes").</td></tr>
+        <tr><td>Pluralsight Skill IQ + Role IQ · Mastery levels</td><td>Over-modeled for 196 modules. Departments + roles + frontmatter category serve.</td></tr>
+        <tr><td><b>Skill tags on modules + skill profile rollup</b> (Cornerstone Skills Graph)<br><span style="color:var(--fg-dim);font-size:11.5px">User reviewed 2026-05-10 → defer-with-observation</span></td><td>Strategically correct long-term model but premature for current scope. Without richer assessment (spaced repetition, photo upload — both M02), skill tags just relabel existing completion data. Phase 7 duty audit (BC-2107) can use SQL against module completion records. <b>Re-evaluate after F11 Manager view ships</b> — if filter-by-skill becomes the missing capability, file then with concrete examples.</td></tr>
+        <tr><td><b>Intelligent agents — activity monitoring + push notifications</b> <i>(Half B of "Auto-enrollment rules / intelligent agents")</i><br><span style="color:var(--fg-dim);font-size:11.5px">User reviewed 2026-05-10 → defer-with-observation</span></td><td>Half A (smart auto-enrollment rules) approved as BC-7055 M02. Half B (push notifications when worker stalls) deferred — F11 Manager view largely covers the same problem (pull vs. push). <b>Re-evaluate after F11 ships</b>: if AMs report low dashboard click-through or miss stalled-worker signals, file then with concrete evidence. Avoids over-engineering notification infrastructure before knowing pull-based dashboard is insufficient.</td></tr>
+        <tr><td>Mentored mode · Peer review · Role-play video · ePortfolio</td><td>All in V2 sign-off territory. Big systems for a small audience.</td></tr>
+        <tr><td>Practice mode (separate from graded)</td><td>Workers may not voluntarily practice. Defer until quiz failure data suggests it.</td></tr>
+        <tr><td>Author feedback inbox · Per-lesson discussion · Crew nudge</td><td>Community features — Brite isn't a community.</td></tr>
+        <tr><td>"Become a JT" public landing pages · Previewable lessons</td><td>Recruiting surfaces. LMS is auth-walled by design.</td></tr>
+        <tr><td>Channels · Pin/Favorite · Syllabus auto-pop · Mobile bottom tab bar</td><td>Existing sidebar IA + breadcrumb (F03) covers organization.</td></tr>
+        <tr><td>Print/PDF export · 5-min microlearning · Phase Complete pages · Slash editor · Kahoot mode</td><td>Various over-scope / wrong-audience / cosmetic.</td></tr>
+        <tr><td>AI mentor for stuck learners</td><td>Folded into F01 Ask AI mode.</td></tr>
+        <tr><td>Sticky Prev/Next bar</td><td>Already implemented in <code>ModuleNav</code> per audit.</td></tr>
+      </tbody>
+    </table>
+  </article>
+
+  <!-- ============ AUDIT ============ -->
+  <article class="feature" id="audit-2026-05-08" style="border-color: var(--accent-2); border-style: dashed;">
+    <div class="num" style="color: var(--accent-2)">Ground-truth audit · 2026-05-08</div>
+    <h2>Audit summary — features re-checked against current code</h2>
+    <table class="plan">
+      <thead><tr><th>Feature</th><th>Verdict</th><th>What changed</th></tr></thead>
+      <tbody>
+        <tr><td><a href="#cmdk-brite-ai"><b>F01</b></a></td><td style="color: var(--orange)">⚠ Amend</td><td>FlexSearch over Pagefind locked (ISR-compatible). Step 2 effort 24-32h → 32-48h. 3 missing deps added: <code>flexsearch</code>, <code>@anthropic-ai/sdk</code>, shadcn Command primitive.</td></tr>
+        <tr><td><a href="#lesson-outline"><b>F02</b></a></td><td style="color: var(--orange)">⚠ Amend</td><td>shadcn Popover primitive NOT in <code>src/components/ui/</code>. <code>rehype-slug</code> not installed. Step 1 effort 2h → 3-4h. Total ~12h → ~15-17h.</td></tr>
+        <tr><td><a href="#breadcrumbs"><b>F03</b></a></td><td style="color: var(--red)">❗ Major rescope</td><td><b>Breadcrumb already exists</b> in <code>ModuleNav</code>. Reframed as enhancement, not new build. Effort 6h → 3h.</td></tr>
+        <tr><td><a href="#resume-card"><b>F04</b></a></td><td style="color: var(--orange)">⚠ Amend</td><td><code>nextModule.title</code> + <code>phaseName</code> ALREADY in TrackOverview. Layout: home is <code>max-w-2xl</code> with 2-col grid — card replaces the grid as full-width hero.</td></tr>
+        <tr><td><a href="#callouts"><b>F05</b></a></td><td style="color: var(--green)">✓ Accurate</td><td>All claims verified.</td></tr>
+      </tbody>
+    </table>
+  </article>
+
+  <!-- ============ FEATURES ============ -->
+
+  <article class="feature" id="cmdk-brite-ai">
+    <div class="num">Feature 01 · Approved 2026-05-07 · <a href="https://linear.app/brite-nites/issue/BC-7010">BC-7010</a></div>
+    <h2>Cmd+K command palette → upgrade Brite AI engine</h2>
+    <div class="platforms">GitBook · Notion · Mintlify · Linear · Slab</div>
+    <div class="badges">
+      <span class="badge approved">✓ Approved</span><span class="badge">Phase 2/3</span><span class="badge l">Effort: L (~3-4 wk)</span><span class="badge">Search</span><span class="badge">Existing surface</span>
+    </div>
+    <h3>Decision</h3>
+    <p>Keep the <b>Brite AI</b> branding and entry-button. Replace the engine underneath. Expand the panel from a single-purpose substring search (current SQL <code>ILIKE</code>) into a two-mode command palette: <b>Search</b> (default, FlexSearch fuzzy match) + <b>Ask AI</b> (RAG over same corpus, Anthropic API). One feature, two entry points (Cmd+K + button), one data source.</p>
+    <div class="callout green"><span class="label">★ User reasoning</span><p style="margin:0">"I like that path, keep the branding but change the bones." Single entry point avoids decision fatigue for field workers — Search is the default (cheap, fast); Tab key escalates the same query to AI mode if results are weak.</p></div>
+    <h3>Architecture decision (locked)</h3>
+    <p><b>FlexSearch (in-process JS index)</b> over Pagefind (Pagefind is build-time-only, incompatible with ISR revalidate). For ~196 modules, FlexSearch fits comfortably in memory and rebuilds on the same hook as ISR.</p>
+    <h3>Implementation plan</h3>
+    <table class="plan">
+      <thead><tr><th>Step</th><th>What ships</th><th>Effort</th></tr></thead>
+      <tbody>
+        <tr><td class="step">1</td><td><b>Phase 2</b> · Cmd+K shortcut + centered modal + mobile sheet. Existing button still works.</td><td class="effort">~4h</td></tr>
+        <tr><td class="step">2</td><td><b>Phase 2</b> · Rip out SQL <code>ILIKE</code>. Replace with FlexSearch index built at ISR revalidate over bodies + headings + heading IDs + frontmatter. <b>Search results deep-link to matching heading section</b> via F02's stable IDs.</td><td class="effort">~32-48h</td></tr>
+        <tr><td class="step">3</td><td><b>Phase 3</b> · "Ask AI" tab with RAG via Anthropic. Top-5 search hits feed prompt. Streamed response. <b>Cited modules with section-precise deep links</b>. <code>AiQueryLog</code> table for cost tracking (proper Prisma migration).</td><td class="effort">~40-80h</td></tr>
+        <tr><td class="step">4</td><td><b>Phase 3</b> · Polish — recent searches, "did you mean", Web Speech API on mobile.</td><td class="effort">~16-24h</td></tr>
+      </tbody>
+    </table>
+    <h3>Cross-feature dependency</h3>
+    <p><b>Depends on F02 (BC-7008) heading-ID infrastructure</b> for citation precision. Linear <code>blockedBy</code> relation wired.</p>
+    <h3>Touch points</h3>
+    <div class="touches">
+      <code>src/components/home/help-search.tsx</code><code>src/lib/search.ts</code><code>src/lib/message-actions.ts</code><code>src/components/layout/header.tsx</code><code>src/app/api/revalidate/route.ts</code><code>+ new: src/lib/search-index.ts</code><code>+ new: src/lib/ai/ask.ts</code><code>+ new: src/app/api/ai/ask/route.ts</code><code>+ npm i flexsearch @anthropic-ai/sdk</code><code>+ npx shadcn@latest add command</code>
+    </div>
+  </article>
+
+  <article class="feature" id="lesson-outline">
+    <div class="num">Feature 02 · Approved 2026-05-07 · <a href="https://linear.app/brite-nites/issue/BC-7008">BC-7008</a></div>
+    <h2>Lesson outline popover + anchor-on-heading deep links</h2>
+    <div class="platforms">Notion · Apple Notes · iA Writer · GitBook</div>
+    <div class="badges">
+      <span class="badge approved">✓ Approved</span><span class="badge">Phase 2</span><span class="badge s">Effort: S (~15-17h)</span><span class="badge">Lesson UX</span>
+    </div>
+    <h3>Decision</h3>
+    <p>Outline icon (<code>≡</code>) in the lesson header. Clicking opens a popover that lists the current module's H2/H3 headings — click any heading and the page scrolls to it, popover auto-closes. Zero persistent visual weight when not in use. App aesthetic, not doc-site aesthetic.</p>
+    <p><b>Scope amendment 2026-05-10</b>: Bundle anchor-on-heading hover icon as Step 6. Stable heading IDs from Step 1 are foundational infrastructure shared by F02 outline scroll, hover-anchor sharing, and F01 search/RAG citation precision.</p>
+    <div class="callout green"><span class="label">★ User reasoning</span><p style="margin:0">"Is that not too busy for an app interface?" — correct instinct. Always-visible right-rail TOC reads as Docusaurus / Mintlify, not as Notion / Linear / Apple. Outline button is summon-and-dismiss UI, no clutter on the default reading view.</p></div>
+    <h3>Implementation plan</h3>
+    <table class="plan">
+      <thead><tr><th>Step</th><th>What ships</th><th>Effort</th></tr></thead>
+      <tbody>
+        <tr><td class="step">1</td><td>Heading extraction — install <code>rehype-slug</code> + custom rehype side-channel plugin to capture headings during render. Stable slug ids on every H2/H3.</td><td class="effort">~3-4h</td></tr>
+        <tr><td class="step">2</td><td>Outline button in <code>LessonHeaderV2</code>. Shows when <code>headingCount &gt;= 5</code>. Lucide ListTree icon.</td><td class="effort">~2h</td></tr>
+        <tr><td class="step">3</td><td><code>OutlinePanel</code> — shadcn Popover (desktop) + Sheet (mobile). H3 indented 1 level. Click-outside / Esc dismisses.</td><td class="effort">~3h</td></tr>
+        <tr><td class="step">4</td><td>Click-to-scroll behavior. Smooth scroll to <code>#anchor</code> offset by sticky header. Motion-safe.</td><td class="effort">~2h</td></tr>
+        <tr><td class="step">5</td><td>First-run pulse + tooltip. localStorage flag with try/catch (Safari Private Browsing).</td><td class="effort">~3h</td></tr>
+        <tr><td class="step">6</td><td><b>Added 2026-05-10</b> · Anchor-on-heading hover icon. <code>rehype-autolink-headings</code> injects <code>#</code> icon. Click writes deep link to clipboard with toast.</td><td class="effort">~1h</td></tr>
+      </tbody>
+    </table>
+    <h3>Touch points</h3>
+    <div class="touches">
+      <code>src/components/modules/lesson-header-v2.tsx</code><code>src/lib/content/renderer.ts</code><code>+ new: src/components/modules/outline-button.tsx</code><code>+ new: src/components/modules/outline-panel.tsx</code><code>+ new: src/lib/content/headings.ts</code><code>+ npm i rehype-slug rehype-autolink-headings</code><code>+ npx shadcn@latest add popover</code>
+    </div>
+  </article>
+
+  <article class="feature" id="breadcrumbs">
+    <div class="num">Feature 03 · Approved 2026-05-07 · <a href="https://linear.app/brite-nites/issue/BC-7005">BC-7005</a></div>
+    <h2>Clickable breadcrumb trail (enhance existing ModuleNav)</h2>
+    <div class="platforms">Notion · Docusaurus · Apple Finder</div>
+    <div class="badges">
+      <span class="badge approved">✓ Approved</span><span class="badge">Phase 2 polish</span><span class="badge s">Effort: S (~3h)</span><span class="badge">Nav</span><span class="badge">Existing surface</span>
+    </div>
+    <h3>Decision</h3>
+    <p><b>Audit rescope 2026-05-08</b>: <code>ModuleNav</code> at <code>src/components/modules/module-nav.tsx</code> already renders <code>My Track › PhaseName › Course Title › Lesson 3 of 7</code> at top of every module page. Plus Prev/Next at bottom. This feature is an <b>enhancement</b>, not a new build. Add Department + named track + clickable phase. Format becomes: <code>Department › Track Name › Phase › Course › Lesson N of M</code>.</p>
+    <h3>Implementation plan</h3>
+    <table class="plan">
+      <thead><tr><th>Step</th><th>What ships</th><th>Effort</th></tr></thead>
+      <tbody>
+        <tr><td class="step">1</td><td>Extend <code>CourseNav</code> with <code>trackName</code> + <code>departmentSlug</code> + <code>phaseHref</code>. <code>trackName</code> from existing <code>track.name</code>; <code>departmentSlug</code> via parallel <code>getModule()</code> fetch.</td><td class="effort">~1.5h</td></tr>
+        <tr><td class="step">2</td><td>Update <code>ModuleNav</code> segments. 5 segments, phase becomes Link, mobile ellipsis below 480px, existing Prev/Next preserved.</td><td class="effort">~1.5h</td></tr>
+      </tbody>
+    </table>
+  </article>
+
+  <article class="feature" id="resume-card">
+    <div class="num">Feature 04 · Approved 2026-05-07 · <a href="https://linear.app/brite-nites/issue/BC-7006">BC-7006</a></div>
+    <h2>Resume Lesson card → upgrade existing Continue Lesson button</h2>
+    <div class="platforms">Mighty Networks · LinkedIn Learning · YouTube · Spotify</div>
+    <div class="badges">
+      <span class="badge approved">✓ Approved</span><span class="badge">Phase 2 polish</span><span class="badge s">Effort: S (~1 day)</span><span class="badge">Nav</span><span class="badge">Existing surface</span>
+    </div>
+    <h3>Decision</h3>
+    <p>Same pattern as F01 (Brite AI engine swap): the function partially exists, the upgrade is the value. Dashboard already renders <code>→ Continue Lesson</code> button when <code>overview.nextModule</code> resolves — but it's an anonymous CTA. Replace with rich card showing <b>which</b> lesson, <b>where</b> it sits, <b>how far</b> through.</p>
+    <div class="callout green"><span class="label">★ User reasoning</span><p style="margin:0">"Doesnt the current LMS already have a similar function" — correct catch. Button exists at <code>src/app/(app)/page.tsx</code> but doesn't tell worker WHAT they're resuming. Field workers in 10-min stolen moments need to verify before tapping.</p></div>
+    <h3>Implementation plan</h3>
+    <table class="plan">
+      <thead><tr><th>Step</th><th>What ships</th><th>Effort</th></tr></thead>
+      <tbody>
+        <tr><td class="step">1</td><td>Extend <code>nextModule</code> projection. <code>title</code> + <code>phaseName</code> already exist — add <code>lessonPosition</code> + <code>estimatedMinutes</code>.</td><td class="effort">~1h</td></tr>
+        <tr><td class="step">2</td><td>New <code>&lt;ContinueLessonCard&gt;</code>. Reuses shadcn Card / Button / Progress.</td><td class="effort">~3h</td></tr>
+        <tr><td class="step">3</td><td>Wire into dashboard. <b>Replaces entire <code>grid sm:grid-cols-2</code> CTA block</b> with full-width hero. Enter Classroom demoted.</td><td class="effort">~2h</td></tr>
+        <tr><td class="step">4</td><td>v1 progress approximation: <code>(currentLessonIndex / totalLessons)</code>. Honest label "Lesson 3 of 7 in Phase 2."</td><td class="effort">~2h</td></tr>
+      </tbody>
+    </table>
+  </article>
+
+  <article class="feature" id="callouts">
+    <div class="num">Feature 05 · Approved 2026-05-08 · <a href="https://linear.app/brite-nites/issue/BC-7001">BC-7001</a></div>
+    <h2>Six-variant callouts (passive visual hierarchy)</h2>
+    <div class="platforms">GitBook · Notion · Mintlify · Docusaurus admonitions</div>
+    <div class="badges">
+      <span class="badge approved">✓ Approved</span><span class="badge">Phase 2 polish</span><span class="badge s">Effort: S (~3h)</span><span class="badge">Lesson UX</span>
+    </div>
+    <h3>Decision</h3>
+    <p>Extend <code>HINT_STYLES</code> in <code>src/components/content/hint.tsx</code> from 4 → 6 variants. Add <code>tip</code> (Lightbulb, cyan) + <code>note</code> (StickyNote, slate). Update regex in <code>gitbook-transform.ts</code>. <b>Hard constraint: passive visual hierarchy only — no click-to-expand, no hover-reveal, no accordions.</b></p>
+    <div class="callout green"><span class="label">★ User reasoning</span><p style="margin:0">"I like the idea of having the callouts and tips and any similar helpful highlights that dont require another click." Field workers shouldn't have to discover hidden content.</p></div>
+    <h3>Explicit non-decision: user-side notes/highlights</h3>
+    <p>The Tier 3 "Inline notes + highlights" card from LearnWorlds / Teachable / Frontend Masters is <b>explicitly skipped</b>. User: <i>"We dont need them to take notes."</i></p>
+  </article>
+
+  <article class="feature" id="reading-time">
+    <div class="num">Feature 06 · Approved 2026-05-08 · <a href="https://linear.app/brite-nites/issue/BC-7002">BC-7002</a></div>
+    <h2>Auto reading-time chip (replace manual duration)</h2>
+    <div class="platforms">Vercel Docs · Medium · Substack</div>
+    <div class="badges">
+      <span class="badge approved">✓ Approved</span><span class="badge">Phase 2 polish</span><span class="badge s">Effort: S (~2h)</span><span class="badge">Lesson UX</span><span class="badge">Existing surface</span>
+    </div>
+    <h3>Decision</h3>
+    <p>Keep existing reading-time chip in <code>LessonHeaderV2</code>. Replace data source: today reads <code>frontmatter.duration</code> (often "Unknown"); switch to word-count-derived at ~225 wpm. Manual <code>duration</code> stays as explicit override.</p>
+  </article>
+
+  <article class="feature" id="edit-on-github">
+    <div class="num">Feature 07 · Approved 2026-05-08 · <a href="https://linear.app/brite-nites/issue/BC-7003">BC-7003</a></div>
+    <h2>"Edit this page on GitHub" footer link</h2>
+    <div class="platforms">Docusaurus · ReadTheDocs · MDN</div>
+    <div class="badges">
+      <span class="badge approved">✓ Approved</span><span class="badge" style="color:var(--orange)">Phase 1 critical</span><span class="badge s">Effort: S (~2h)</span><span class="badge">Content / authoring</span>
+    </div>
+    <h3>Decision</h3>
+    <p>Small footer link on every module page that deep-links to source markdown file in handbook GitHub repo. Visible only to <code>TRAINER</code> + <code>ADMIN</code> roles. Closes contributor loop for content-accuracy work.</p>
+    <p><b>Phase 1 critical path</b>: 2-hour add that materially supports the content-accuracy effort running in parallel during season-prep window.</p>
+  </article>
+
+  <article class="feature" id="theme-and-sidebar">
+    <div class="num">Feature 08 · Approved 2026-05-08 · <a href="https://linear.app/brite-nites/issue/BC-7004">BC-7004</a></div>
+    <h2>Theme toggle + persistent sidebar state</h2>
+    <div class="platforms">Notion · Linear · Vercel</div>
+    <div class="badges">
+      <span class="badge approved">✓ Approved</span><span class="badge">Phase 2 polish</span><span class="badge s">Effort: S (~3h)</span><span class="badge">Nav / shell</span>
+    </div>
+    <h3>Decision</h3>
+    <p>Two related app-shell polish items: <b>theme toggle</b> (light/dark/system via <code>next-themes</code>) + <b>persist sidebar state</b> via <code>localStorage</code>. Dark CSS exists but no toggle; sidebar resets on every nav are known friction.</p>
+  </article>
+
+  <article class="feature" id="quiz-feedback">
+    <div class="num">Feature 09 · Approved 2026-05-08 · <a href="https://linear.app/brite-nites/issue/BC-7007">BC-7007</a></div>
+    <h2>Per-question quiz feedback with "Try Again" hints</h2>
+    <div class="platforms">Moodle (Interactive with multiple tries)</div>
+    <div class="badges">
+      <span class="badge approved">✓ Approved</span><span class="badge" style="color:var(--orange)">Phase 1 critical</span><span class="badge s">Effort: S (~1 day)</span><span class="badge">Assessment</span>
+    </div>
+    <h3>Decision</h3>
+    <p>Extend YAML quiz schema with optional per-question <code>hint</code> + per-option <code>feedback</code> + per-quiz <code>mode: classic | interactive</code>. Interactive mode shows hint after wrong pick and lets learner retry within same attempt. Classic mode unchanged. Backwards-compatible.</p>
+    <p><b>Phase 1 critical path</b>: workers learn more per attempt instead of burning 3 attempts on the same wrong answer.</p>
+  </article>
+
+  <article class="feature" id="manager-view">
+    <div class="num">Feature 11 · Approved 2026-05-10 · <a href="https://linear.app/brite-nites/issue/BC-6596">BC-6596</a> <i>(BC-7052 closed as duplicate)</i></div>
+    <h2>Manager view — team progress dashboard</h2>
+    <div class="platforms">Cornerstone Galaxy · TalentLMS</div>
+    <div class="badges">
+      <span class="badge approved">✓ Approved</span><span class="badge" style="color:var(--purple)">Phase 3 post-season</span><span class="badge m">Effort: M (~1 wk)</span><span class="badge">Manager</span><span class="badge">Supersedes V2 admin dashboard</span>
+    </div>
+    <h3>Decision</h3>
+    <p>TRAINER-scoped page at <code>/manager</code> listing direct reports with track completion %, last activity, overdue modules, drillable into per-learner timeline. AMs/TMs already own crew development — self-serve view (vs. asking ops) is the difference between training that ships vs. training that sits.</p>
+    <p><b>Narrower than the deferred V2 admin dashboard</b> — manager-scoped (~5-15 people per manager) rather than org-wide. Effectively supersedes the V2 admin dashboard for the AM/TM audience; Holden/Collin's org-wide admin need can stay deferred or be served via direct Supabase queries.</p>
+    <div class="callout green"><span class="label">★ User reasoning</span><p style="margin:0">"I like the sound of this one, I know we scoped a manager view within this project would this help us accomplish that feature?" Yes — delivers the manager-scoped slice of V2 admin dashboard at fraction of effort.</p></div>
+    <h3>What already exists in code</h3>
+    <ul>
+      <li><code>User.supervisorId</code> relation (Prisma schema)</li>
+      <li><code>getHomePageData(userId, supervisorId)</code> in <code>src/lib/home.ts</code></li>
+      <li>"Your Supervisor: Sam Trainer..." panel on home dashboard</li>
+      <li>TRAINER role in <code>AppRole</code> enum</li>
+    </ul>
+    <p>Missing: the inverse query ("give me everyone whose supervisorId = me") + UI.</p>
+    <h3>Implementation plan</h3>
+    <table class="plan">
+      <thead><tr><th>Step</th><th>What ships</th><th>Effort</th></tr></thead>
+      <tbody>
+        <tr><td class="step">1</td><td>Auth + route scaffolding — <code>(app)/manager/page.tsx</code>, role gate (TRAINER + ADMIN only), redirect non-trainers.</td><td class="effort">~3h</td></tr>
+        <tr><td class="step">2</td><td>Team query layer — <code>getTeamProgress(supervisorId)</code> returning <code>{ user, opsRole, completedModules, lastActivity, overdueCount, currentPhase }</code> per report.</td><td class="effort">~4h</td></tr>
+        <tr><td class="step">3</td><td>Team list UI — Card per report, sortable by activity / completion / overdue.</td><td class="effort">~6h</td></tr>
+        <tr><td class="step">4</td><td>Per-learner drilldown — <code>/manager/[learnerId]/page.tsx</code> with security boundary (only supervisor or ADMIN).</td><td class="effort">~6h</td></tr>
+        <tr><td class="step">5</td><td>Empty states + edge cases — no reports yet, inactive supervisor, role transitions.</td><td class="effort">~3h</td></tr>
+        <tr><td class="step">6</td><td>Mobile parity — list collapses cleanly &lt;480px, touch targets WCAG 2.5.8.</td><td class="effort">~2h</td></tr>
+      </tbody>
+    </table>
+    <h3>Phase 3 placement is deliberate</h3>
+    <p>More valuable AFTER F10 PR A (offline) and F09 (quiz feedback) ship — that's when meaningful progress data starts flowing. Building it before real usage data exists means staring at empty dashboards.</p>
+    <h3>Touch points</h3>
+    <div class="touches">
+      <code>+ new: src/app/(app)/manager/page.tsx</code><code>+ new: src/app/(app)/manager/[learnerId]/page.tsx</code><code>+ new: src/lib/team-progress.ts</code><code>src/lib/auth.ts</code> (role-gate helper)<code>sidebar nav</code> (Team link for TRAINER + ADMIN)
+    </div>
+  </article>
+
+  <article class="feature" id="offline-mode">
+    <div class="num">Feature 10 · Approved 2026-05-10 · <a href="https://linear.app/brite-nites/issue/BC-7009">BC-7009</a></div>
+    <h2>Offline mode — read + complete + sync on reconnect</h2>
+    <div class="platforms">Absorb LMS Go.Learn · Docebo Go.Learn · iSpring Mobile</div>
+    <div class="badges">
+      <span class="badge approved">✓ Approved</span><span class="badge" style="color:var(--red)">🔥 Phase 1 Urgent (PR A)</span><span class="badge l">Effort: L (~3-4 wk)</span><span class="badge">Mobile / field</span>
+    </div>
+    <h3>Decision</h3>
+    <p>Field workers in remote areas lose LTE. The LMS becomes the in-field <b>procedure reference</b> — has to work without network. Full offline: <b>read content offline</b> + <b>complete activities offline</b> + <b>sync writes when network returns</b>.</p>
+    <div class="callout green"><span class="label">★ User reasoning</span><p style="margin:0">"Read only and then any changes would update as the device gets service back." Reframes LMS from "training portal" to "field-reliable procedure reference + training tool."</p></div>
+    <h3>PR split — utilitarian sequencing</h3>
+    <ul>
+      <li><b>PR A — Phase 1 (Urgent, ~7-10 days)</b>: Steps 1-3 = Service Worker + IndexedDB + Save-for-offline UI. Read offline ships first, real value standalone.</li>
+      <li><b>PR B — Phase 3 (~6-8 days)</b>: Steps 4-5 = mutation queue + sync orchestration.</li>
+      <li><b>PR C — Phase 3 (~2-3 days)</b>: Step 6 = cross-device hardening.</li>
+    </ul>
+    <h3>Conflict resolution</h3>
+    <p><b>Leverages existing patterns</b>: <code>CompletionStatus</code> only progresses (never regresses) per <code>completion.ts</code>; quiz attempts use existing P2002 unique-constraint catch. <b>No new data integrity rules invented.</b></p>
+  </article>
+
+  <footer class="foot">
+    <p>
+      This document grew across the catalog walkthrough sessions. Each feature card captures the integration plan, code touch-points, Brite-specific tweaks, and the Linear issue carrying the work.
+    </p>
+    <p>
+      <b>Rebuild note 2026-05-10</b>: shortlist.html was untracked and lost when a parallel window cleaned the worktree. Restored from session context and committed to git this time. <b>Lesson:</b> commit non-trivial work-in-progress early so git protects it.
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

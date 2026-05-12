@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>QP Training — Module Outline</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+    background: #f5f5f7;
+    color: #1a1a2e;
+    line-height: 1.5;
+    padding: 32px;
+  }
+  header {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    padding-bottom: 24px;
+    border-bottom: 3px solid #e07832;
+  }
+  h1 { font-size: 30px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #6b7280; font-size: 14px; }
+  .back-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #e07832;
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .summary-bar {
+    background: white;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .summary-stat { font-size: 13px; min-width: 180px; }
+  .summary-stat .label { color: #6b7280; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+  .summary-stat .value { font-weight: 700; color: #1a1a2e; font-size: 18px; }
+
+  .phase-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .phase-header {
+    padding: 18px 24px;
+    background: linear-gradient(90deg, #fef0e5 0%, #fff 70%);
+    border-left: 6px solid #e07832;
+  }
+  .phase-header.shared {
+    background: linear-gradient(90deg, #eef2ff 0%, #fff 70%);
+    border-left-color: #6366f1;
+  }
+  .phase-name { font-size: 20px; font-weight: 700; }
+  .phase-name .shared-pill {
+    display: inline-block;
+    background: #e0e7ff;
+    color: #3730a3;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-left: 10px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .phase-meta { font-size: 13px; color: #6b7280; margin-top: 4px; }
+  .phase-body { padding: 20px 24px; }
+
+  .category {
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #ececec;
+  }
+  .category:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .category-title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #e07832;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .category-count { font-size: 11px; color: #6b7280; font-weight: 500; }
+  .module-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 6px 16px;
+  }
+  .module {
+    display: flex;
+    align-items: baseline;
+    font-size: 13px;
+    padding: 4px 0;
+  }
+  .module-num {
+    display: inline-block;
+    min-width: 30px;
+    color: #9ca3af;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .module-title { color: #1a1a2e; }
+  .module-duration {
+    color: #6b7280;
+    font-size: 11px;
+    margin-left: 6px;
+  }
+
+  .station {
+    padding: 6px 0;
+    font-size: 13px;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .station-num { color: #e07832; font-weight: 700; min-width: 28px; }
+  .station-title { flex: 1; }
+
+  .note-block {
+    background: #fffbeb;
+    border-left: 3px solid #fbbf24;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #78350f;
+    margin-top: 10px;
+  }
+
+  .gate-block {
+    background: #fef2f2;
+    border-left: 3px solid #dc2626;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #7f1d1d;
+    margin-top: 10px;
+  }
+  .gate-block.warn { background: #fffbeb; border-left-color: #fbbf24; color: #78350f; }
+  .gate-block.pass { background: #ecfdf5; border-left-color: #10b981; color: #065f46; }
+  .gate-block.info { background: #eef2ff; border-left-color: #6366f1; color: #3730a3; }
+
+  .activity-list { font-size: 13px; }
+  .activity-list li { margin: 4px 0 4px 20px; }
+
+  .pending-block {
+    background: #eef2ff;
+    border-left: 3px solid #6366f1;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #3730a3;
+    margin-top: 10px;
+  }
+
+  .foundation-block {
+    background: #f0f9ff;
+    border-left: 3px solid #0284c7;
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #0c4a6e;
+    margin-bottom: 14px;
+  }
+  .foundation-block strong { color: #075985; }
+  .foundation-block a { color: #0284c7; font-weight: 600; }
+
+  .new-tag {
+    display: inline-block;
+    background: #ede9fe;
+    color: #5b21b6;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  .print-btn {
+    position: fixed; top: 20px; right: 20px;
+    padding: 10px 18px; background: #e07832; color: white;
+    border: none; border-radius: 6px; cursor: pointer;
+    font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  @media print {
+    .print-btn { display: none; }
+    body { background: white; padding: 16px; }
+    .phase-section { page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Print / PDF</button>
+
+<header>
+  <h1>Quality Pro Technician — Module Outline</h1>
+  <div class="sub">~4 weeks · QP-specific path with JT Base Classroom as the only shared element · Inspector model · TM-trained, AM-supervised</div>
+  <a class="back-link" href="brite-training-verticals-review.html">← Back to Position Verticals Review</a>
+</header>
+
+<div class="container">
+
+  <div class="summary-bar">
+    <div class="summary-stat"><div class="label">Phase 1</div><div class="value">~2 weeks</div><div>Remote pre-training · QP-specific knowledge</div></div>
+    <div class="summary-stat"><div class="label">Phase 2</div><div class="value">3 days <span style="color:#6366f1;">shared</span></div><div>JT Base Classroom · attended with JT cohort</div></div>
+    <div class="summary-stat"><div class="label">Phase 3</div><div class="value">~1.5 days</div><div>QP Specialization · TM-led · Process + Customer Comms</div></div>
+    <div class="summary-stat"><div class="label">Phase 4</div><div class="value">~half day</div><div>Safety Certs · Ladder + Vehicle</div></div>
+    <div class="summary-stat"><div class="label">Phase 5</div><div class="value">~1 day</div><div>Field Training · AM walk-through + 3–5 reps</div></div>
+    <div class="summary-stat"><div class="label">Phase 6</div><div class="value">~2–3 days</div><div>Supervised Solo · TM reviews every report</div></div>
+    <div class="summary-stat"><div class="label">Phase 7</div><div class="value">Cleared</div><div>TM formal sign-off · spot-check rhythm</div></div>
+    <div class="summary-stat"><div class="label">Strike Addendum</div><div class="value">6 modules</div><div>Late December · ~half day · inspection refocused on takedowns</div></div>
+  </div>
+
+  <div class="pending-block">
+    <strong>Status:</strong> v2 restructured per <a href="https://linear.app/brite-nites/issue/BC-6290">BC-6290</a> walk-through 2026-05-10. QP timeline now matches JT (~4 weeks) but with a different approach — inspector model end-to-end. Only shared element with JT track is the 3-day JT Base Classroom (Phase 2). Customer Communication is a separate shared module referenced from Phase 3. Source: <code>handbook/operations/onboarding/qp-technician.md</code> + structural decisions captured in session.
+  </div>
+
+  <!-- PHASE 1 — QP PRE-TRAINING -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 1 — QP Pre-Training (Remote)</div>
+      <div class="phase-meta">~2 weeks · Self-paced digital · TM sends materials, AM tracks completion · Builds the QP-specific knowledge base before on-site days</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>QP-specific framing:</strong> Pre-training builds the inspector mindset — who Brite is, what the QP role does, how to think about quality, and high-level product/app/policy reference. Install-technique depth is deferred to Phase 2 (shared JT classroom) where it can be taught and quizzed in person.
+      </div>
+
+      <div class="category">
+        <div class="category-title">Company Orientation &amp; HR <span class="category-count">2 modules · consolidated</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title">Brite Introduction — Who, What, Where, Departments</span><span class="module-duration">25m</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title">Onboarding — paperwork, Deputy, account setup</span><span class="module-duration">45m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Standards &amp; Policies <span class="category-count">4 modules · consolidated</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">3</span><span class="module-title">Conduct &amp; Culture — code of conduct, communication, teamwork</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title">Presentation Standards — appearance, vehicle, hygiene</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title">Pay &amp; Employment Policies — pay, time off, employment basics</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">6</span><span class="module-title">Field &amp; Jobsite Protocols — onsite protocol, onboarding flow, field policies</span><span class="module-duration">25m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">QP Role Orientation <span class="category-count">1 module · position-specific</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">7</span><span class="module-title"><strong>QP Role Orientation</strong> — role overview, daily process (11 AM start, TM/AM coordination, scheduling), role-specific protocols, success criteria, "face of Brite Nites"</span><span class="module-duration">30m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Inspector Mindset <span class="new-tag">new for QP</span> <span class="category-count">2 modules · core orientation</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">8</span><span class="module-title">What QPs do (and don't do) — inspect work, not install it; trust-based role; reports feed crew quality data</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">9</span><span class="module-title">Customer-facing dynamics — the QP is often the last Brite person a customer sees; review-generation framing</span><span class="module-duration">15m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">App &amp; Tool Reference (Overview) <span class="category-count">3 modules · operational by Day 1 of classroom</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">10</span><span class="module-title">BriteNow Field App — overview, QP task type, photo workflow (read before hands-on practice)</span><span class="module-duration">25m</span></div>
+          <div class="module"><span class="module-num">11</span><span class="module-title">Crew App — overview, beginning the day, on jobsites</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">12</span><span class="module-title">Deputy + Slack — clock-in, team communication</span><span class="module-duration">15m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Product Reference (Overview) <span class="category-count">2 modules · recognize, not execute</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">13</span><span class="module-title">Product Introduction — categories, what we install</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">14</span><span class="module-title">LED vs Incandescent — basic differentiation</span><span class="module-duration">15m</span></div>
+        </div>
+        <div class="note-block">
+          <strong>Depth shift:</strong> Detailed product/install technique is taught in person during Phase 2 (JT Base Classroom). Pre-training keeps it light — enough to follow Day 1 of classroom without getting lost.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Inspection Theory (Overview) <span class="new-tag">new for QP</span> <span class="category-count">2 modules · primer for Phase 3 deep dive</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">15</span><span class="module-title">What good vs bad looks like — high-level survey of common quality issues (broken tiles, damaged gutters, sloppy wiring, etc.)</span><span class="module-duration">25m</span></div>
+          <div class="module"><span class="module-num">16</span><span class="module-title">5-point quality scale — framing of crew ranking system, what the scale measures</span><span class="module-duration">15m</span></div>
+        </div>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 1 Gate:</strong> All 16 modules complete · paperwork signed · Deputy/Slack/BriteNow accounts operational · AM confirms completion and reports to TM · TM schedules first on-site day to align with JT cohort classroom dates.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 2 — JT BASE CLASSROOM (SHARED) -->
+  <section class="phase-section">
+    <div class="phase-header shared">
+      <div class="phase-name">Phase 2 — JT Base Classroom <span class="shared-pill">Shared</span></div>
+      <div class="phase-meta">3 days · On-site · AM-led · Attended with JT cohort · Also shared with ST, AM, RT · See <a href="brite-training-jt-modules.html">JT Phase 2 module list</a></div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>Shared classroom block:</strong> This is the single piece common to multiple role tracks. JTs, STs (external hires), AMs, RTs, and QPs all attend the same 3-day classroom together. Each role frames the content through their own lens — JTs learn execution, QPs learn evaluation, STs learn leadership.
+        <br><br>
+        <strong>Full module list:</strong> <a href="brite-training-jt-modules.html#phase-2">View JT Base Classroom Modules →</a>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 1 — Job Flow + Apps <span class="category-count">15 modules · group classroom + hands-on</span></div>
+        <ul class="activity-list">
+          <li><strong>Game Plan walkthrough</strong> — full install job flow start to finish, the order operations happen on a real site</li>
+          <li><strong>Apps walkthrough</strong> — Crew App + BriteNow hands-on with real devices</li>
+          <li><strong>QP lens:</strong> understand the workflow well enough to know what's supposed to happen and what's missing when you inspect afterward</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 2 — Install Technique + Wiring + Product <span class="category-count">~34 modules · classroom + per-task quizzes</span></div>
+        <ul class="activity-list">
+          <li><strong>Install technique detail</strong> — every Basic Skills module (24) taught in person with learning-confirmation quizzes</li>
+          <li><strong>Wiring practices</strong> — 5 modules covering routing, electrical, GFI, overload risk</li>
+          <li><strong>Product detail</strong> — 5 modules on lights, strands, connectors</li>
+          <li><strong>QP lens:</strong> this is the "what good looks like" day — QPs need this depth to evaluate work, even though they won't execute it</li>
+        </ul>
+        <div class="note-block">
+          <strong>Per-task learning-confirmation quizzes:</strong> Day 2 includes quizzes embedded after each technique block. QPs take the same quizzes as JTs — confirms the QP can recognize correct technique by name and by sight.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 3 — Full Safety Classroom <span class="category-count">~27 modules · classroom + safety test</span></div>
+        <ul class="activity-list">
+          <li><strong>Ladder safety</strong> — 7 modules (A-Frame, Extension, Little Giant, fall prevention)</li>
+          <li><strong>Roof &amp; fall protection</strong> — 2 modules</li>
+          <li><strong>Vehicle safety</strong> — 4 modules</li>
+          <li><strong>Lift safety</strong> — 11 modules (overview only for QPs; MEWP cert skipped — QPs don't operate boom lifts)</li>
+          <li><strong>Incident response</strong> — 3 modules</li>
+          <li><strong>QP lens:</strong> identical safety expectation as installers — QPs are on jobsites and use ladders</li>
+        </ul>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 2 Gate (shared with JT):</strong> Day 2 per-task quizzes passed · Day 3 safety test passed at 100% · attendance + participation confirmed by AM running the classroom. QP returns to TM the following morning for Phase 3.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 3 — QP SPECIALIZATION CLASSROOM -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 3 — QP Specialization Classroom (TM-Led)</div>
+      <div class="phase-meta">~1.5 days · Office / warehouse · TM delivers · Two modules · Builds inspection judgment + customer-facing skill on top of JT Base Classroom</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>From execution to evaluation:</strong> Phase 2 taught what good installation looks like by teaching how to do it. Phase 3 teaches how to evaluate it — what to look for, how to document it, and how to communicate findings to customers and crews. Every module below is taught through the lens of "what does this look like when done right, and what does it look like when done wrong?"
+      </div>
+
+      <div class="category">
+        <div class="category-title">Module 3A — QP Process <span class="new-tag">new</span> <span class="category-count">Day 1 · ~6 hours · TM-led</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title">QP daily workflow walkthrough — 11 AM start, TM/AM coordination, scheduling, customer contact, vehicle stocking, warehouse support, QP visit execution</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title">How We Schedule — routing software, mid-day schedule changes, refreshing the app</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">3</span><span class="module-title">BriteNow Field App (hands-on) — QP task type, QTY tracking, photo workflow on real devices</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title">Crew App: Beginning the Day (hands-on) — clock-in, daily status, job list review</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title">Crew App: On Jobsites (hands-on) — service report completion, photo workflow, status updates</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">6</span><span class="module-title"><strong>Issues You May Come Up Against</strong> — broken tiles, damaged gutters, ruined flowerbeds, tire marks, wiring across driveways. <em>Core "what to look for" training.</em></span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">7</span><span class="module-title">Wiring Examples — good vs bad wiring, sloppy wiring spotting (builds on Phase 2 Day 2)</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">8</span><span class="module-title">GFI Outlets — common inspection point; tripped GFIs are the #1 maintenance call</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">9</span><span class="module-title">Ranking the Crew on the App — 5-point scale practice with real job examples</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">10</span><span class="module-title">Maintenances — bulbs, strands, timers, splicing, GFI resets, stake lights, plugging in (TM demonstrates each)</span><span class="module-duration">30m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Module 3B — Customer Communication <span class="new-tag">shared module</span> <span class="category-count">Day 2 morning · ~3 hours · TM-led</span></div>
+        <div class="foundation-block">
+          <strong>Shared / reusable module:</strong> Cross-role customer communication module — referenced by any customer-facing position (JT, ST, AM, TM, RT, QP). Verbage is kept general; QP-specific add-ons layer on top.
+        </div>
+
+        <div class="category-title" style="margin-top:14px; font-size:13px;">Shared Module Scope — All Customer-Interaction Circumstances</div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title">First impressions &amp; arrival — branded vehicle, introductions, professionalism, hygiene/appearance</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title">Door-knock + walkthrough conversation — first interaction, property walk, preferences</span></div>
+          <div class="module"><span class="module-num">3</span><span class="module-title">Status conversations during work — what was/will be done, mid-job updates, timing</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title"><strong>Before-you-leave verification</strong> — timers, lights, app, branches, trash, plants, wires. <em>Becomes QP inspection checklist.</em></span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title">Getting the 5-star review — when to ask, how to ask, $50 bonus framing, scripts</span></div>
+          <div class="module"><span class="module-num">6</span><span class="module-title">Complaints &amp; de-escalation — listen, acknowledge, what to promise vs. escalate</span></div>
+          <div class="module"><span class="module-num">7</span><span class="module-title">Damage conversations — gutters, landscaping, tile; document and commit</span></div>
+          <div class="module"><span class="module-num">8</span><span class="module-title">Difficult situations — delays, redos, missing parts, no-shows, unhappy customers</span></div>
+          <div class="module"><span class="module-num">9</span><span class="module-title">Access &amp; property issues — locked gates, dogs, denied access, kids, noise/hours</span></div>
+          <div class="module"><span class="module-num">10</span><span class="module-title">Returning to a site (repair/follow-up) — greeting repeat customers, resetting expectations</span></div>
+          <div class="module"><span class="module-num">11</span><span class="module-title">Channels — in-person primary, phone for callbacks/escalations, text for confirmations/reviews</span></div>
+          <div class="module"><span class="module-num">12</span><span class="module-title">Escalation paths (role-aware) — when to call supervisor, TM direct, repair ticket, when NOT to escalate</span></div>
+        </div>
+        <div class="note-block">
+          <strong>Role-play required:</strong> Door-knock walkthrough, 5-star review ask, complaint de-escalation, damage conversation — all role-played with TM acting as customer. QP completes at least one full pass before Phase 5.
+        </div>
+        <div class="gate-block info">
+          <strong>QP Escalation Rule (Collin's standard):</strong><br>
+          • <strong>Easy questions</strong> — QP calls AM, TM, or operations lead directly. Same access pattern as crews.<br>
+          • <strong>Harder issues</strong> — file a repair ticket. RT picks it up.<br>
+          • <strong>Exceptions</strong> — QP can handle it themselves <em>if</em> capable, <em>or if</em> the job is far enough away that dispatching an RT isn't practical. Use judgment, document the call in the report.
+        </div>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 3 Gate:</strong> <a href="#">Inspection Knowledge Check</a> — QP articulates full daily workflow without prompting · identifies common quality issues from photos/examples · completes a service report in BriteNow with correct photos/data · ranks crew quality on 5-point scale with reasoning · role-played 5-star ask + walkthrough + de-escalation. TM confirms readiness for safety + field.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 4 — SAFETY CERTS -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 4 — Safety Certifications (~half day)</div>
+      <div class="phase-meta">Warehouse / parking lot · TM or AM observes · Lighter equipment profile than installers, same zero-tolerance standard · No field work without cert</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="gate-block">
+        <strong>COMPLIANCE GATE — No field work without passing safety certification.</strong> QPs use Little Giant ladders and company vehicles. The full safety classroom is covered in Phase 2 Day 3; this phase is the practical cert station.
+      </div>
+
+      <div class="category">
+        <div class="category-title">Ladder Certification <span class="category-count">1 practical station · observed pass/fail</span></div>
+        <div class="station"><span class="station-num">1</span><div class="station-title"><strong>Little Giant / A-Frame Ladder</strong> — setup, inspection, proper use on level and uneven ground. <em>AM observation pass/fail.</em></div></div>
+        <div class="note-block">
+          <strong>Form:</strong> <code>qp-assessments/phase-4-ladder-certification.md</code> (renamed from existing Phase 2 form). Vehicle safety reviewed alongside ladder cert — defensive driving, incident reporting confirmed verbally.
+        </div>
+        <div class="note-block">
+          <strong>No MEWP for QPs:</strong> QPs do not operate boom lifts in the field. The Phase 2 Day 3 lift-safety modules are reference-only for QPs.
+        </div>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 4 Gate:</strong> Ladder cert passed — AM observation + sign-off · vehicle safety reviewed verbally · TM/AM confirms QP cleared for field work.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 5 — FIELD TRAINING -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 5 — Field Training (AM-Led, ~1 day)</div>
+      <div class="phase-meta">Real jobsites · AM-led walk-through then 3–5 QP reps · No modules — all live guided practice</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>Teaching pattern — walk-through, then 3–5 reps:</strong> AM walks through one full QP visit step-by-step — driving, narrating, doing the walkthrough conversation, completing the report. Then the QP runs 3–5 visits with AM observing and correcting in real-time. By rep 5 the QP is solo with AM in passenger seat. Same method used for any physical/practical skill in the QP track.
+      </div>
+
+      <div class="category">
+        <div class="category-title">Field Day Structure <span class="category-count">~1 full day · 1 AM demo + 3–5 QP reps</span></div>
+        <ul class="activity-list">
+          <li><strong>Visit 1 — AM demo:</strong> AM drives, AM inspects, AM narrates. QP observes start to finish.</li>
+          <li><strong>Visits 2–3 — QP executes, AM corrects:</strong> QP drives, QP inspects, QP runs customer conversation. AM corrects in real-time before submission.</li>
+          <li><strong>Visits 4–5 — QP solo with AM in passenger seat:</strong> AM intervenes only if something is going wrong.</li>
+          <li><strong>Territory orientation</strong> — folded into the drive between visits; AM shows routing patterns.</li>
+          <li><strong>Maintenance practice</strong> — any items found are handled by QP with AM observing (timer reset, bulb replacement, GFI reset).</li>
+          <li><strong>Customer-contact reps</strong> — at least one full door-knock + walkthrough + review ask completed by QP with AM present.</li>
+        </ul>
+        <div class="note-block">
+          <strong>Why 3–5 reps:</strong> Field experience confirms QPs internalize the workflow by the 3rd–5th visit. Fewer reps and the muscle memory isn't there; more reps without correction risks bad habits.
+        </div>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 5 Gate:</strong> <a href="#">Field Readiness Evaluation</a> — 3–5 visits completed (1 AM demo + 2–4 QP reps minimum) · all service reports reviewed and approved · at least one customer interaction completed successfully · AM confirms independent operation, reports readiness to TM.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 6 — SUPERVISED SOLO -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 6 — Supervised Solo (~2–3 days)</div>
+      <div class="phase-meta">Field — solo · TM reviews every report end-of-day · Feedback loop tight: correction immediately, not after habit forms</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">Solo Operation <span class="category-count">Independent — full daily workflow</span></div>
+        <ul class="activity-list">
+          <li><strong>Solo QP visits</strong> — full daily workflow: coordinate with TM/AM, schedule visits, contact customers, execute inspections, complete reports</li>
+          <li><strong>TM report review (every report)</strong> — completeness, photo quality, ranking accuracy, issue identification</li>
+          <li><strong>End-of-day feedback</strong> — TM provides feedback on report quality, missed items, client interaction</li>
+          <li><strong>Customer-interaction quality</strong> — TM samples 1–2 customers (text or call) to verify QP's tone matched the standard</li>
+        </ul>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 6 Gate:</strong> <a href="#">Solo Performance Review</a> — 2+ full solo days with no recurring quality issues · TM confirms report quality meets standard · inspection accuracy (no recurring missed items) · customer interactions professional and generating review requests · TM confirms readiness for clearance.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 7 — CLEARED -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 7 — Cleared (End of Week 4)</div>
+      <div class="phase-meta">Formal TM sign-off · Spot-check rhythm continues · QP is full team member through end of season</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">Clearance Criteria — TM's Standard</div>
+        <ul class="activity-list">
+          <li><strong>Pre-training + classroom complete</strong> — Phase 1 modules, Phase 2 safety test, Phase 3 inspection knowledge check, Phase 4 ladder cert all confirmed</li>
+          <li><strong>Inspection judgment</strong> — identifies installer mistakes consistently; ranks crews with reasoning that holds up</li>
+          <li><strong>Report quality</strong> — complete, accurate, actionable; TM relies on QP reports without follow-up</li>
+          <li><strong>Customer-facing skill</strong> — 5-star reviews being generated; complaints stay professional and de-escalate</li>
+          <li><strong>Independence</strong> — runs full daily workflow without direction beyond the schedule</li>
+          <li><strong>Safety</strong> — uses Little Giant correctly every time; defensive driving practiced; no shortcuts</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Progression Path</div>
+        <ul class="activity-list">
+          <li><strong>Most common next role:</strong> Repair Technician — similar solo/diagnostic workstyle, expands troubleshooting depth</li>
+          <li><strong>Returning season:</strong> Veteran QPs may absorb additional territory or train new QPs as TM extension</li>
+        </ul>
+      </div>
+
+      <div class="gate-block pass">
+        <strong>CLEARED — Quality Pro Technician:</strong> all Phase 1–6 gates passed · safety certs on file · TM formal sign-off. After clearance, TM continues reviewing QP reports — shifts from every-report review to spot-checking. QP failures are documented and flagged to follow the initial installer, generating quality reports per crew/ST that the TM shares with AMs for corrections.
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIKE ADDENDUM -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Strike Season Addendum (~Late December)</div>
+      <div class="phase-meta">Pre-strike half-day classroom · TM delivers · QPs transition from inspecting installations to inspecting takedowns · See <code>qp-in-season-protocol.md</code></div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">Strike Inspection Modules <span class="category-count">6 modules · ~half day · classroom only</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title">Strike Takedown Overview</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title">Roofline Takedown</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">3</span><span class="module-title">Tree Takedown</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title">Alternative Lighting Takedown</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title">Using the App (Takedown)</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">6</span><span class="module-title">Rolling &amp; Boxing Materials</span><span class="module-duration">10m</span></div>
+        </div>
+        <div class="note-block">
+          <strong>Inspection focus during strike:</strong> Materials properly rolled and boxed · no materials left on property · no damage to gutters/roofline/landscaping during removal · inventory list accurate · all takedown photos captured in app. The QP ensures the property is returned to pre-installation condition.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN QUESTIONS -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Open Questions for Tuesday Walk-Through</div>
+      <div class="phase-meta">v2 raised these — answer during Jaime + Holden review, then bake into v3</div>
+    </div>
+    <div class="phase-body">
+      <ul class="activity-list">
+        <li><strong>Returning QP path:</strong> Do returning QPs (prior season cleared) attend the JT Base Classroom again, or skip directly to Phase 3? Current draft assumes test-out / skip with refresher modules only.</li>
+        <li><strong>QP cohort timing with JT:</strong> JT Base Classroom is Sep 20–22 per master HTML. QP onboarding has to back-time into this — Phase 1 starts ~Sep 6 to give 2 weeks of pre-training. Update master HTML calendar for QP?</li>
+        <li><strong>Inspector Mindset modules:</strong> Two new pre-training modules surface that don't exist in handbook. Author as new content, or reframe existing material?</li>
+        <li><strong>Customer Communication module home:</strong> Where in handbook? Candidates: <code>training/operations/customer-communication/</code>, <code>operations/customer-communication/</code>, top-level module. Likely needs its own Linear ticket.</li>
+        <li><strong>QP escalation rule placement:</strong> In Phase 3 callout (current). Also live in shared Customer Comms module's "Escalation paths" section with role variants? Or QP-specific only?</li>
+        <li><strong>Phase 3 Module 3A size:</strong> 10-item TM-led day. Sub-split into "Process &amp; Tools" + "Inspection Judgment" or keep as one block?</li>
+        <li><strong>Assessment forms:</strong> Phase 3 "Inspection Knowledge Check," Phase 4 "Ladder Cert," Phase 5 "Field Readiness," Phase 6 "Solo Performance Review" — confirm existing handbook forms remap cleanly to new phase numbering.</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

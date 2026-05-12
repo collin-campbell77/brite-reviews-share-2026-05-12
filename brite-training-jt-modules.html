@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JT Training — Module Outline</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+    background: #f5f5f7;
+    color: #1a1a2e;
+    line-height: 1.5;
+    padding: 32px;
+  }
+  header {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    padding-bottom: 24px;
+    border-bottom: 3px solid #e07832;
+  }
+  h1 { font-size: 30px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #6b7280; font-size: 14px; }
+  .back-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #e07832;
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .summary-bar {
+    background: white;
+    border-radius: 10px;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .summary-stat { font-size: 13px; }
+  .summary-stat .label { color: #6b7280; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+  .summary-stat .value { font-weight: 700; color: #1a1a2e; font-size: 18px; }
+
+  .phase-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .phase-header {
+    padding: 18px 24px;
+    background: linear-gradient(90deg, #fef0e5 0%, #fff 70%);
+    border-left: 6px solid #e07832;
+  }
+  .phase-name { font-size: 20px; font-weight: 700; }
+  .phase-meta { font-size: 13px; color: #6b7280; margin-top: 4px; }
+  .phase-body { padding: 20px 24px; }
+
+  .category {
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #ececec;
+  }
+  .category:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .category-title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #e07832;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .category-count { font-size: 11px; color: #6b7280; font-weight: 500; }
+  .module-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 6px 16px;
+  }
+  .module {
+    display: flex;
+    align-items: baseline;
+    font-size: 13px;
+    padding: 4px 0;
+  }
+  .module-num {
+    display: inline-block;
+    min-width: 30px;
+    color: #9ca3af;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .module-title { color: #1a1a2e; }
+  .module-duration {
+    color: #6b7280;
+    font-size: 11px;
+    margin-left: 6px;
+  }
+
+  .station {
+    padding: 6px 0;
+    font-size: 13px;
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .station-num {
+    color: #e07832;
+    font-weight: 700;
+    min-width: 28px;
+  }
+  .station-title { flex: 1; }
+
+  .note-block {
+    background: #fffbeb;
+    border-left: 3px solid #fbbf24;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #78350f;
+    margin-top: 10px;
+  }
+
+  .gate-block {
+    background: #fef2f2;
+    border-left: 3px solid #dc2626;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #7f1d1d;
+    margin-top: 10px;
+  }
+  .gate-block.warn { background: #fffbeb; border-left-color: #fbbf24; color: #78350f; }
+  .gate-block.pass { background: #ecfdf5; border-left-color: #10b981; color: #065f46; }
+
+  .activity-list { font-size: 13px; }
+  .activity-list li { margin: 4px 0 4px 20px; }
+
+  .print-btn {
+    position: fixed; top: 20px; right: 20px;
+    padding: 10px 18px; background: #e07832; color: white;
+    border: none; border-radius: 6px; cursor: pointer;
+    font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  @media print {
+    .print-btn { display: none; }
+    body { background: white; padding: 16px; }
+    .phase-section { page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Print / PDF</button>
+
+<header>
+  <h1>Junior Field Technician — Module Outline</h1>
+  <div class="sub">Full module + assessment inventory across all 5 phases · 101 modules + 15 assessment stations · 34 safety-critical · <em style="color:#9ca3af;">at-home overviews → classroom detail with learning-confirmation quizzes → physical assessment</em></div>
+  <a class="back-link" href="brite-training-verticals-review.html">← Back to Position Verticals Review</a>
+</header>
+
+<div class="container">
+
+  <div class="summary-bar">
+    <div class="summary-stat"><div class="label">Phase 1</div><div class="value">25 modules</div><div>Remote · big-picture overviews</div></div>
+    <div class="summary-stat"><div class="label">Phase 2</div><div class="value">76 modules</div><div>Classroom · 3 days · technique + safety</div></div>
+    <div class="summary-stat"><div class="label">Phase 3</div><div class="value">15 stations</div><div>Physical + MEWP</div></div>
+    <div class="summary-stat"><div class="label">Phase 4</div><div class="value">Field-based</div><div>ST-observed jobs</div></div>
+    <div class="summary-stat"><div class="label">Phase 5</div><div class="value">Litmus week</div><div>2-man crew evaluation</div></div>
+    <div class="summary-stat"><div class="label">Strike Season</div><div class="value">7 modules</div><div>Optional · if eligible</div></div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 1 — Pre-Training (At Home)</div>
+      <div class="phase-meta">~10 days · Remote · Self-paced · Delivered via digital content; TM sends, AM tracks</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">Company Orientation & HR <span class="category-count">2 modules (consolidated from 7)</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title"><strong>Brite Introduction</strong> — who we are, what we do, where we operate, department layout, what to expect as an employee <em>(rolls up old 1–5)</em></span><span class="module-duration">~30m</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title"><strong>Onboarding</strong> — <em>canonical location for all pay-setup mechanics:</em> direct deposit, HR paperwork, digital onboarding via Rippling <em>(rolls up old 6–7)</em></span><span class="module-duration">~30m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Standards & Policies <span class="category-count">4 modules (consolidated from 13)</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">3</span><span class="module-title"><strong>Conduct & Culture</strong> — Code of Conduct, communication &amp; teamwork norms, discipline framework (parking tickets, insubordination, grounds for termination) <em>(rolls up old 8, 9, 16)</em></span><span class="module-duration">~35m</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title"><strong>Presentation Standards</strong> — uniform / what to wear, personal hygiene, clean vehicle expectations <em>(rolls up old 10, 11, 12)</em></span><span class="module-duration">~30m</span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title"><strong>Pay & Employment Policies</strong> — compensation policy, PTO, overtime, general employee handbook policies <em>(policy only — setup mechanics live in module 2)</em> <em>(rolls up old 13, 14)</em></span><span class="module-duration">~20m</span></div>
+          <div class="module"><span class="module-num">6</span><span class="module-title"><strong>Field & Jobsite Protocols</strong> — field policies overview, Tech Expectations (uniform, strike/warning system, fines), onsite behavior (arrival, phone/homeowner), required toolkit <em>(rolls up old 17, 18, 19, 20)</em></span><span class="module-duration">~50m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Role Orientation <span class="category-count">1 module (consolidated from 4)</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">7</span><span class="module-title"><strong>JT Role Orientation</strong> — single position-specific module covering: <em>(1)</em> Your Team and Role (FT team context + JT role definition), <em>(2)</em> Your Day (full daily process: warehouse → cleanup, with embedded Rise videos &amp; T/F check), <em>(3)</em> Install-Specific Etiquette (tree damage, flower beds; broader jobsite behavior referenced from Module 6), <em>(4)</em> What Success Looks Like (execution, detail, safety, promotion readiness), <em>(5)</em> Travel Crew pointer (Travel Protocol is a standalone trigger-assigned module — not in default JT curriculum), <em>(6)</em> Related Resources footer <em>(rolls up old 21, 23, 24; old #22 — Lighting Tech Introduction — was a Rise course TOC, its child lessons land here, in Product Knowledge, and in the Travel Protocol module)</em></span><span class="module-duration">~30m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Product Knowledge Overview <span class="category-count">1 module (was 5 — detail moved to Phase 2)</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">8</span><span class="module-title"><strong>Brite Nites Product Line at a Glance</strong> — visual tour of categories: bulbs (C9, multi, icicles) · strand types (LED mini, C9, incandescent) · greenery (wreaths, garland, bows) · accents (spheres, cluster, willow). Recognition only — detailed product knowledge taught in classroom (Phase 2) with learning-confirmation quiz <em>(rolls up old 25–29 at overview level; full detail moved to Phase 2 — Product Detail)</em></span><span class="module-duration">~20m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Safety Theory <span class="category-count">8 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">9</span><span class="module-title">Stay Safe Out There <em>(workplace safety policy, injury reporting, fire safety — moved from old Standards #15)</em></span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">10</span><span class="module-title">Introduction to Safety</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">11</span><span class="module-title">Recognizing Hazards</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">12</span><span class="module-title">PPE</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">13</span><span class="module-title">How to Use a Ladder (Overview)</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">14</span><span class="module-title">Power Tool Safety</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">15</span><span class="module-title">Preventing Back Injuries</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">16</span><span class="module-title">Staying Safe in Harsh Weather</span><span class="module-duration">10m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Basic Skills Overview <span class="category-count">2 modules (was 24 — detail moved to Phase 2)</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">17</span><span class="module-title"><strong>Install Task Map</strong> — high-level menu of installs you'll perform: roofline, trees (palm/pine/deciduous/bushes), greenery (wreaths, garland, bows), hanging lights (spheres/cluster/willow), alternative (stake/spiral/railings/rubber bands), timers, running power. Recognition only — full technique taught in classroom (Phase 2 — Install Technique Detail) with per-task learning-confirmation quiz, then verified in Phase 3 physical assessment <em>(rolls up old 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60 at overview level; detail moved to Phase 2)</em></span><span class="module-duration">~25m</span></div>
+          <div class="module"><span class="module-num">18</span><span class="module-title"><strong>Tools You'll Touch</strong> — visual tour of physical equipment: light strands (categories from module 8), ladders (12' A-frame, 32' extension, orchard, Little Giants), clip guns, glue applicators, anchors, ratchet straps. Recognition only — proper use taught in classroom (Phase 2) and physical assessment (Phase 3) <em>(new module — physical-tools recognition tour; distinct from the Tools & Software apps category below, which covers Crew App, Deputy, etc.)</em></span><span class="module-duration">~15m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Wiring & Electrical Overview <span class="category-count">1 module (was 5 — detail moved to Phase 2)</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">19</span><span class="module-title"><strong>Wiring & Electrical Awareness</strong> — why electrical decisions matter: amperage limits, overload risk, GFI outlets, basic wiring practices. Awareness level only — actual wiring practices and amperage math taught in classroom (Phase 2 — Wiring Practices) with learning-confirmation quiz <em>(rolls up old 61–65 at overview level; detail moved to Phase 2)</em></span><span class="module-duration">~15m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Tools & Software <span class="category-count">4 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">20</span><span class="module-title">Crew App Overview</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">21</span><span class="module-title">Deputy Overview</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">22</span><span class="module-title">Deputy for Hourly Employees</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">23</span><span class="module-title">Software for Success</span><span class="module-duration">10m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Truck & Vehicle <span class="category-count">2 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">24</span><span class="module-title">Truck Care & Maintenance</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">25</span><span class="module-title">How to Use Ratchet Straps</span><span class="module-duration">10m</span></div>
+        </div>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 1 Gate:</strong> All Phase 1 modules + digital knowledge quiz at 100% before first on-site day. AM confirms completion to TM.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 2 -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 2 — Classroom Training (On-Site)</div>
+      <div class="phase-meta">~3 days · Warehouse · AM-led (group) · Job flow + technique + safety · Per-task learning-confirmation quizzes</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">Day 1 — The Game Plan (Job Flow) <span class="category-count">11 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title">Job Lifecycle Overview</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title">Scheduling</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">3</span><span class="module-title">Installation Overview</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title">Install: Roofline</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title">Install: Trees</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">6</span><span class="module-title">Install: Greenery</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">7</span><span class="module-title">Install: Hanging Lights</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">8</span><span class="module-title">Install: Alternative Lighting</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">9</span><span class="module-title">Install: Power</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">10</span><span class="module-title">Job Closeout</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">11</span><span class="module-title">Common Mistakes Review (discussion)</span><span class="module-duration">30m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 1 — Apps Walkthrough (Hands-On) <span class="category-count">4 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">12</span><span class="module-title">Crew App: Beginning the Day</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">13</span><span class="module-title">Crew App: On Jobsites</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">14</span><span class="module-title">Crew App: Tips</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">15</span><span class="module-title">BriteNow Field App</span><span class="module-duration">20m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 2 — Install Technique Detail <span class="category-count">24 modules · moved from Phase 1 Basic Skills</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">16</span><span class="module-title">Install Technique Introduction <em>(detail block opener — distinct from Day 1 Module 3 "Installation Overview" which covers job-flow sequencing)</em></span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">17</span><span class="module-title">Roofline: Attachment Materials</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">18</span><span class="module-title">Roofline: Running Power</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">19</span><span class="module-title">Roofline: Common Mistakes</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">20</span><span class="module-title">Trees: Palm, Deciduous & Evergreen Wrapping</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">21</span><span class="module-title">Trees: Pine Trees</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">22</span><span class="module-title">Trees: Bushes</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">23</span><span class="module-title">Trees: Common Mistakes</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">24</span><span class="module-title">Greenery: Wreaths</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">25</span><span class="module-title">Greenery: Garland</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">26</span><span class="module-title">Greenery: Bows</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">27</span><span class="module-title">Greenery: Anchors & Power</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">28</span><span class="module-title">Greenery: Common Mistakes</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">29</span><span class="module-title">Hanging Lights: Spheres</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">30</span><span class="module-title">Hanging Lights: Cluster Lights</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">31</span><span class="module-title">Hanging Lights: Willow Lights</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">32</span><span class="module-title">Hanging Lights: Running Power</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">33</span><span class="module-title">Hanging Lights: Common Mistakes</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">34</span><span class="module-title">Alternative: Stake Lighting</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">35</span><span class="module-title">Alternative: Spiral Wrapped Trees</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">36</span><span class="module-title">Alternative: Railings, Columns & Gates</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">37</span><span class="module-title">Alternative: Rubber Bands</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">38</span><span class="module-title">Timers</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">39</span><span class="module-title">Running Power (General)</span><span class="module-duration">15m</span></div>
+        </div>
+        <div class="note-block">
+          Each install task has a <strong>learning-confirmation quiz</strong> at the end of its teaching block — verifies the JT can articulate the correct process before moving on. Physical execution verified in Phase 3.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 2 — Wiring Practices <span class="category-count">5 modules · moved from Phase 1 Wiring & Electrical</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">40</span><span class="module-title">Wiring Practices Overview</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">41</span><span class="module-title">Amperage</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">42</span><span class="module-title">Overload</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">43</span><span class="module-title">GFI Outlets</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">44</span><span class="module-title">Wiring Examples</span><span class="module-duration">15m</span></div>
+        </div>
+        <div class="note-block">
+          Wiring practices block ends with a <strong>learning-confirmation quiz</strong> covering amperage limits, overload risk, and GFI handling.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 2 — Product Detail <span class="category-count">5 modules · moved from Phase 1 Product Knowledge</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">45</span><span class="module-title">Product Introduction</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">46</span><span class="module-title">LED vs Incandescent</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">47</span><span class="module-title">Products (Field Tech)</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">48</span><span class="module-title">Brite Nites Bulbs: C9, Multi, Icicles</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">49</span><span class="module-title">Intro to LED Mini Strands</span><span class="module-duration">10m</span></div>
+        </div>
+        <div class="note-block">
+          Product detail block ends with a <strong>learning-confirmation quiz</strong> on bulb/strand recognition and use cases.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 3 — Ladder Safety <span class="category-count">7 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">50</span><span class="module-title">Ladder Safety Overview</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">51</span><span class="module-title">How to Properly Use a Ladder</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">52</span><span class="module-title">A-Frame Ladder (12')</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">53</span><span class="module-title">Extension Ladder (32')</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">54</span><span class="module-title">Orchard Ladder</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">55</span><span class="module-title">Little Giants / Quality Pros</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">56</span><span class="module-title">Truck & Ladder Protocol</span><span class="module-duration">15m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 3 — Roof & Fall Protection <span class="category-count">2 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">57</span><span class="module-title">Harness Safety</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">58</span><span class="module-title">Protecting Client Property</span><span class="module-duration">15m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 3 — Vehicle Safety <span class="category-count">4 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">59</span><span class="module-title">Auto Risk Management Overview</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">60</span><span class="module-title">Defensive Driving</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">61</span><span class="module-title">Adapting to Road Conditions</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">62</span><span class="module-title">Reporting, Maintenance & Accidents</span><span class="module-duration">10m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 3 — Lift Safety <span class="category-count">11 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">63</span><span class="module-title">Lift Safety Overview</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">64</span><span class="module-title">Types of Lifts</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">65</span><span class="module-title">Pre-Use Inspection</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">66</span><span class="module-title">Safe Operating Procedures</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">67</span><span class="module-title">Stabilization & Positioning</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">68</span><span class="module-title">Working at Heights Safely</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">69</span><span class="module-title">Fall Protection Requirements</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">70</span><span class="module-title">Personal Protective Equipment (Lifts)</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">71</span><span class="module-title">Hazard Awareness</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">72</span><span class="module-title">Emergency Procedures</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">73</span><span class="module-title">Operator Responsibilities</span><span class="module-duration">10m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 3 — Incident Response <span class="category-count">3 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">74</span><span class="module-title">How to Report an Accident</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">75</span><span class="module-title">Incident Reporting</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">76</span><span class="module-title">Workplace Incidents & Accidents Policy</span><span class="module-duration">10m</span></div>
+        </div>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 2 Gate:</strong> Attend all 3 classroom days · pass <strong>per-task learning-confirmation quizzes</strong> (Install Technique, Wiring Practices, Product Detail) · pass written digital safety test at 100% · articulate job flow. AM confirms readiness for physical assessment.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 3 -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 3 — Physical Assessment & MEWP Certification</div>
+      <div class="phase-meta">~3 days · On-site · Individual testing · AM (skills) + TM/certified trainer (MEWP)</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">Heights Assessment (First — Gut Check) <span class="category-count">3 stations</span></div>
+        <div class="station"><span class="station-num">1</span><span class="station-title">30' Extension Ladder — Set up, climb, work at height, descend safely</span></div>
+        <div class="station"><span class="station-num">2</span><span class="station-title">Roof Access — Ladder-to-roof transition, working on a roof, safe descent</span></div>
+        <div class="station"><span class="station-num">3</span><span class="station-title">A-Frame Ladder (12') — Setup, inspection, safe use</span></div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Roofline & Power <span class="category-count">3 stations</span></div>
+        <div class="station"><span class="station-num">4</span><span class="station-title">Install a Section of Roofline Lighting — Clip placement, bulb installation, power connection</span></div>
+        <div class="station"><span class="station-num">5</span><span class="station-title">Proper Plug Installation — Clean, weatherproof, to standard</span></div>
+        <div class="station"><span class="station-num">6</span><span class="station-title">Glue Wire — Proper application and technique</span></div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Tree Wrapping (All Types Required) <span class="category-count">5 stations</span></div>
+        <div class="station"><span class="station-num">7</span><span class="station-title">Palm Tree Wrapping — Trunk wrap technique, spacing, power routing</span></div>
+        <div class="station"><span class="station-num">8</span><span class="station-title">Pine Tree Wrapping — Branch-by-branch technique, maximizing coverage</span></div>
+        <div class="station"><span class="station-num">9</span><span class="station-title">Deciduous/Evergreen Wrapping — Trunk and branch technique, doubling back</span></div>
+        <div class="station"><span class="station-num">10</span><span class="station-title">Bush Wrapping — Coverage technique, anchoring, clean finish</span></div>
+        <div class="station"><span class="station-num">11</span><span class="station-title">Rolling Balls — Proper rolling technique, consistent shape</span></div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Additional Skills <span class="category-count">2 stations</span></div>
+        <div class="station"><span class="station-num">12</span><span class="station-title">Trenching Wire — Proper depth, routing, protection</span></div>
+        <div class="station"><span class="station-num">13</span><span class="station-title">Wiring a System — Connect components, verify power flow</span></div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">MEWP Certification <span class="category-count">2 stations</span></div>
+        <div class="station"><span class="station-num">14</span><span class="station-title">MEWP Written Knowledge Test</span></div>
+        <div class="station"><span class="station-num">15</span><span class="station-title">MEWP Practical Operation Test — Pre-use inspection, safe operation, emergency procedures</span></div>
+      </div>
+
+      <div class="gate-block">
+        <strong>Phase 3 Gate (Compliance Critical):</strong> Every station signed off with corrections applied. All tree types individually passed. MEWP written + practical passed. AM confirms field readiness.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 4 -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 4 — Field Shadowing</div>
+      <div class="phase-meta">2 days · Real job sites · 1:1 ST-paired · JT executes, ST corrects in real-time</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">What's Being Evaluated</div>
+        <ul class="activity-list">
+          <li><strong>Self-motivation</strong> — moves to next task without being told</li>
+          <li><strong>Attention to detail</strong> — clean connections, work to standard, notices own mistakes</li>
+          <li><strong>Safety discipline</strong> — Phase 2-3 protocols applied on live sites</li>
+          <li><strong>Speed & efficiency</strong> — no unnecessary hesitation or confusion</li>
+          <li><strong>Client property respect</strong> — stays in work areas, protects landscaping, clean exit</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Activities</div>
+        <ul class="activity-list">
+          <li>Execute full line items (roofline, trees, ground displays, power) under ST observation</li>
+          <li>Apply the job flow from Phase 2 on real properties</li>
+          <li>Handle real-world variables (roof pitch, tree shape, outlet placement)</li>
+          <li>Use Crew App and BriteNow in live job context</li>
+          <li>Participate in job closeout procedures</li>
+        </ul>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 4 Gate:</strong> Minimum 3 full job sites without safety issues + ST written readiness assessment + AM confirms advancement.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 5 -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 5 — Cleared: 2-Man Crew Litmus</div>
+      <div class="phase-meta">1 week · Real jobs · 2-man crew (JT + one other) · AM monitors, formal sign-off at end</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">What's Being Evaluated</div>
+        <ul class="activity-list">
+          <li><strong>Independence</strong> — starts tasks at all levels without being told how</li>
+          <li><strong>Process knowledge</strong> — can walk through each install type start to finish</li>
+          <li><strong>Physical execution</strong> — works independently while partner handles own assignments</li>
+          <li><strong>Consistency</strong> — no drop-off across a full work week</li>
+        </ul>
+      </div>
+
+      <div class="gate-block pass">
+        <strong>Phase 5 Gate — Formal Sign-Off:</strong> Full week on a 2-man crew · crew partner confirms JT carried weight · no safety incidents · AM formally signs off → <strong>JT cleared as full crew member</strong> through end of install season (~Dec 12).
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIKE SEASON -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Strike Season (If Eligible)</div>
+      <div class="phase-meta">January · Additional training for JTs who continue past Dec 12 · Introduced as needed</div>
+    </div>
+    <div class="phase-body">
+      <div class="category">
+        <div class="category-title">Strike Modules <span class="category-count">7 modules</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title">Strike Overview</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title">Strike: Using the App</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">3</span><span class="module-title">Strike: Roofline</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title">Strike: Trees</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title">Strike: Alternative Lighting</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">6</span><span class="module-title">Strike: Rolling & Boxing Materials</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">7</span><span class="module-title">Strike: Inventory List</span><span class="module-duration">10m</span></div>
+        </div>
+      </div>
+      <div class="note-block">
+        Strike modules are optional and only triggered for JTs who are eligible and opt in for strike season work.
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

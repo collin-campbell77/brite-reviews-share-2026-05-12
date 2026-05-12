@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Brite Training — Position Verticals Review</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+    background: #f5f5f7;
+    color: #1a1a2e;
+    line-height: 1.5;
+    padding: 32px;
+  }
+  header {
+    max-width: 1400px;
+    margin: 0 auto 32px;
+    padding-bottom: 24px;
+    border-bottom: 3px solid #e07832;
+  }
+  h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+  .sub { color: #6b7280; font-size: 15px; }
+  .review-meta { margin-top: 12px; font-size: 13px; color: #4a4a68; }
+
+  .container { max-width: 1400px; margin: 0 auto; }
+
+  /* Section headings between major blocks */
+  h2.section { font-size: 24px; font-weight: 700; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e07832; color: #1a1a2e; }
+
+  /* Overview matrix */
+  .overview {
+    background: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .overview h2 { font-size: 22px; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #ececec; }
+  th { background: #fef0e5; color: #78350f; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  tr:last-child td { border-bottom: none; }
+  .pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+  .pill-seasonal { background: #fef0e5; color: #b14a16; }
+  .pill-yearround { background: #ecfdf5; color: #065f46; }
+  .pill-contractor { background: #fef3c7; color: #92400e; }
+  .pill-complete { background: #ecfdf5; color: #065f46; }
+  .pill-progress { background: #eef2ff; color: #3730a3; }
+
+  /* R&R cards */
+  .rr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 16px;
+  }
+  .rr-card {
+    background: white;
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-left: 5px solid #e07832;
+  }
+  .rr-card.mgmt { border-left-color: #6366f1; }
+  .rr-card.contractor { border-left-color: #fbbf24; }
+  .rr-title { font-size: 16px; font-weight: 700; display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+  .rr-code { display: inline-block; background: #fef0e5; color: #b14a16; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+  .rr-meta { font-size: 12px; color: #6b7280; margin-bottom: 8px; }
+  .rr-meta strong { color: #1a1a2e; }
+  .rr-body { font-size: 13px; color: #1a1a2e; }
+  .rr-body p { margin-bottom: 6px; }
+
+  /* Position section */
+  .position {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: hidden;
+  }
+  .position-header {
+    padding: 20px 28px;
+    background: linear-gradient(90deg, #fef0e5 0%, #fff 70%);
+    border-left: 6px solid #e07832;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .position-header.mgmt { background: linear-gradient(90deg, #eef2ff 0%, #fff 70%); border-left-color: #6366f1; }
+  .position-header.contractor { background: linear-gradient(90deg, #fef3c7 0%, #fff 70%); border-left-color: #fbbf24; }
+  .position-title { font-size: 22px; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+  .position-code { display: inline-block; background: #1a1a2e; color: white; font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 6px; }
+  .position-tagline { font-size: 14px; color: #6b7280; margin-top: 4px; max-width: 700px; }
+  .position-link { display: inline-block; margin-top: 8px; color: #e07832; font-size: 13px; text-decoration: none; font-weight: 600; }
+  .position-link:hover { text-decoration: underline; }
+  .position-stats { display: flex; gap: 24px; flex-wrap: wrap; font-size: 13px; }
+  .stat { min-width: 100px; }
+  .stat-label { color: #6b7280; text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px; }
+  .stat-value { font-weight: 700; color: #1a1a2e; font-size: 16px; }
+  .position-body { padding: 20px 28px; }
+  .section-label {
+    font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+    color: #e07832; margin: 20px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #fef0e5;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  /* Training vertical course list */
+  .vertical-phase {
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed #ececec;
+  }
+  .vertical-phase:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .phase-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+  }
+  .phase-name .shared-tag {
+    display: inline-block; background: #e0e7ff; color: #3730a3;
+    font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 4px;
+    margin-left: 8px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.4px;
+  }
+  .phase-name .new-tag {
+    display: inline-block; background: #ede9fe; color: #5b21b6;
+    font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 4px;
+    margin-left: 8px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.4px;
+  }
+  .phase-meta { font-size: 12px; color: #6b7280; margin-bottom: 8px; }
+  .cat-block { margin-top: 6px; font-size: 12.5px; }
+  .cat-block strong { color: #b14a16; }
+  .cat-block .modules { color: #1a1a2e; }
+  .cat-count { color: #9ca3af; font-size: 11px; font-weight: 500; }
+
+  /* Calendar */
+  .calendar { font-size: 13px; }
+  .cal-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 140px;
+    gap: 12px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #f5f5f7;
+    align-items: center;
+  }
+  .cal-row:last-child { border-bottom: none; }
+  .cal-date { font-weight: 600; color: #1a1a2e; font-size: 13px; }
+  .cal-event { color: #1a1a2e; font-size: 13px; }
+  .cal-phase { font-size: 11px; color: #6b7280; text-align: right; text-transform: uppercase; letter-spacing: 0.3px; }
+  .cal-row.phase-peak { background: #ecfdf5; }
+  .cal-row.phase-strike { background: #eff6ff; }
+  .cal-row.phase-break { background: #f5f5f7; }
+
+  .note {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: #fffbeb;
+    border-left: 3px solid #fbbf24;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #78350f;
+  }
+
+  .print-btn {
+    position: fixed; top: 20px; right: 20px;
+    padding: 10px 18px; background: #e07832; color: white;
+    border: none; border-radius: 6px; cursor: pointer;
+    font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  @media print {
+    .print-btn { display: none; }
+    body { background: white; padding: 16px; }
+    .position { page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+    .rr-card { page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Print / PDF</button>
+
+<header>
+  <h1>Brite Training — Position Verticals Review</h1>
+  <div class="sub">Roles &amp; responsibilities · Full training verticals · Seasonal calendars</div>
+  <div class="review-meta">Review session · 2026-04-26 · Collin + Mike · Drift-corrected 2026-05-06 · Restructured 2026-05-10 (BC-6290) · Source: <code>handbook/operations/onboarding/</code></div>
+</header>
+
+<div class="container">
+
+<!-- ===================================================== -->
+<!-- AT-A-GLANCE COMPARISON -->
+<!-- ===================================================== -->
+<section class="overview">
+  <h2>At-a-Glance Comparison</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Type</th>
+        <th>Duration</th>
+        <th>Modules</th>
+        <th>Phases</th>
+        <th>Volume / Season</th>
+        <th>Shares JT Classroom?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Territory Manager (TM)</strong></td>
+        <td><span class="pill pill-yearround">Year-Round</span></td>
+        <td>3–4 wk (promo) / 5–6 wk (ext)</td>
+        <td>~55 + 1 cert</td>
+        <td>6</td>
+        <td>1 per territory</td>
+        <td>No (mgmt-only)</td>
+      </tr>
+      <tr>
+        <td><strong>Area Manager (AM)</strong></td>
+        <td><span class="pill pill-seasonal">Seasonal</span></td>
+        <td>3 wk (promo) / 4–5 wk (ext)</td>
+        <td>~62 + 5 stations</td>
+        <td>7</td>
+        <td>1 per territory</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td><strong>Senior Field Tech (ST)</strong></td>
+        <td><span class="pill pill-seasonal">Seasonal</span></td>
+        <td>~4 wk (promo) / 6–7 wk (ext)</td>
+        <td>~72 + 5 certs</td>
+        <td>4</td>
+        <td>15–20</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td><strong>Junior Field Tech (JT)</strong></td>
+        <td><span class="pill pill-seasonal">Seasonal</span></td>
+        <td>~4 weeks</td>
+        <td>101 + 15 stations</td>
+        <td>5</td>
+        <td>~50 (highest volume)</td>
+        <td>Hosts</td>
+      </tr>
+      <tr>
+        <td><strong>Repair Technician (RT)</strong></td>
+        <td><span class="pill pill-yearround">Year-Round</span></td>
+        <td>~5 wk (1st hire) / ~2.5 wk (exp)</td>
+        <td>78 + 10 stations</td>
+        <td>7</td>
+        <td>1 per Tier 1 territory</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td><strong>Quality Pro Tech (QP)</strong></td>
+        <td><span class="pill pill-seasonal">Seasonal</span></td>
+        <td>~4 weeks</td>
+        <td>~60 + 1 cert</td>
+        <td>7</td>
+        <td>1–2 per territory</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td><strong>Warehouse Associate (WA)</strong></td>
+        <td><span class="pill pill-seasonal">Seasonal</span></td>
+        <td>~2 weeks</td>
+        <td>64 + 3 stations</td>
+        <td>5</td>
+        <td>1 per territory (2+ at HQ)</td>
+        <td>No (warehouse track)</td>
+      </tr>
+      <tr>
+        <td><strong>Light Roller (LR)</strong></td>
+        <td><span class="pill pill-contractor">Contractor</span></td>
+        <td>~1 day (3 days to speed)</td>
+        <td>7 modules</td>
+        <td>4 sections</td>
+        <td>Variable (as needed)</td>
+        <td>No (contractor)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===================================================== -->
+<!-- ROLES & RESPONSIBILITIES RUNDOWN -->
+<!-- ===================================================== -->
+<h2 class="section">Roles &amp; Responsibilities</h2>
+<div class="rr-grid">
+
+  <div class="rr-card mgmt">
+    <div class="rr-title"><span class="rr-code">TM</span>Territory Manager</div>
+    <div class="rr-meta"><strong>Reports to:</strong> Operations Manager · <strong>Type:</strong> Year-round · <strong>Volume:</strong> 1 per territory</div>
+    <div class="rr-body">
+      <p>Year-round territory backend owner. Pairs with AM (frontend partner) — "the TM owns the backend."</p>
+      <p><strong>Owns:</strong> purchasing approvals, daily/weekly/monthly reporting, recruiting + hiring, discipline + terminations, cross-entity coordination (Brite Labs, Noel Decor, Brite Supply), territory P&amp;L, fleet oversight.</p>
+      <p><strong>Doesn't do:</strong> day-to-day crew management, warehouse hands-on, install execution. TM reviews reports, not job sites — flags issues to AM who investigates on-site.</p>
+    </div>
+  </div>
+
+  <div class="rr-card mgmt">
+    <div class="rr-title"><span class="rr-code">AM</span>Area Manager</div>
+    <div class="rr-meta"><strong>Reports to:</strong> TM · <strong>Type:</strong> Seasonal · <strong>Volume:</strong> 1 per territory</div>
+    <div class="rr-body">
+      <p>Area operations owner — "owner-operator of the warehouse who oversees all daily execution." Being redefined from head installer to area operations manager.</p>
+      <p><strong>Owns:</strong> warehouse coordination, crew dispatch, field quality oversight, on-site client escalation, training new hires (WAs, JTs), inter-state shipment intake + airport cargo dispatch, fleet condition.</p>
+      <p><strong>Daily cadence:</strong> 6–11 AM warehouse/office · 11–1 lunch · 1–5 field oversight · 5–6 closeout.</p>
+    </div>
+  </div>
+
+  <div class="rr-card">
+    <div class="rr-title"><span class="rr-code">ST</span>Senior Field Tech / Crew Leader</div>
+    <div class="rr-meta"><strong>Reports to:</strong> AM · <strong>Type:</strong> Seasonal · <strong>Volume:</strong> 15–20 per season</div>
+    <div class="rr-body">
+      <p>Crew leader and primary customer-facing field operator. Most STs are promoted JTs — internal promotion is the primary path.</p>
+      <p><strong>Owns:</strong> on-site crew leadership (typically 2-man crews with a JT), wiring routing judgment ("most discrete + most efficient"), customer communication on the job, real-time JT correction in the field, ethical management compliance.</p>
+      <p><strong>Distinct from JT:</strong> wiring routing is ST-level competency; STs have a scenario-based management assessment gate that JTs don't.</p>
+    </div>
+  </div>
+
+  <div class="rr-card">
+    <div class="rr-title"><span class="rr-code">JT</span>Junior Field Technician</div>
+    <div class="rr-meta"><strong>Reports to:</strong> ST · <strong>Type:</strong> Seasonal · <strong>Volume:</strong> ~50 per season (highest)</div>
+    <div class="rr-body">
+      <p>Entry-level installer — the highest-volume seasonal hire. The JT track is also the foundation other field roles attend (JT Base Classroom shared with ST, AM, RT, QP).</p>
+      <p><strong>Owns:</strong> install execution under ST direction — roofline, tree wrapping, greenery, hanging lights, specialty work. Learns by doing.</p>
+      <p><strong>Distinct:</strong> JTs get classroom knowledge of wiring ("not sloppy") but routing judgment is deferred to ST. JTs progress to ST after 1+ seasons + leadership signal.</p>
+    </div>
+  </div>
+
+  <div class="rr-card">
+    <div class="rr-title"><span class="rr-code">RT</span>Repair Technician</div>
+    <div class="rr-meta"><strong>Reports to:</strong> AM (daily 9am review) · <strong>Type:</strong> Year-round (Tier 1 only) · <strong>Volume:</strong> 1 per Tier 1 territory</div>
+    <div class="rr-body">
+      <p>"The swiss army knife." Solo repair specialist + QC + overflow installer. Trainable from scratch — first-hire is the primary path.</p>
+      <p><strong>Owns:</strong> isolated repairs (callbacks, GFI trips, strand failures, wind damage), additional installs (greenery add-ons), quality checks in smaller territories, year-round service period coverage (Dec 12 – Jan 2 when other roles are on break).</p>
+      <p><strong>Distinct:</strong> only role with no seasonal break besides actual holidays. Needs <em>breadth</em> of installation knowledge, not depth — proficiency builds through volume and variety.</p>
+    </div>
+  </div>
+
+  <div class="rr-card">
+    <div class="rr-title"><span class="rr-code">QP</span>Quality Pro Technician</div>
+    <div class="rr-meta"><strong>Reports to:</strong> TM (primary), AM (day-to-day) · <strong>Type:</strong> Seasonal · <strong>Volume:</strong> 1–2 per territory</div>
+    <div class="rr-body">
+      <p>Solo quality inspector — "face of Brite Nites." Inspector model: incentivized to catch installer mistakes, generates quality reports per crew/ST, builds client relationships that drive 5-star reviews.</p>
+      <p><strong>Owns:</strong> daily QP visits, 5-point crew quality scale, customer interactions (review-ask scripts), minor maintenance handling (bulbs, timers, GFI resets), repair-ticket dispatch decisions.</p>
+      <p><strong>Escalation rule (Collin's standard):</strong> easy questions → call AM/TM direct · harder issues → repair ticket · exceptions when QP can handle it or job is far enough away that RT dispatch isn't practical.</p>
+    </div>
+  </div>
+
+  <div class="rr-card">
+    <div class="rr-title"><span class="rr-code">WA</span>Warehouse Associate</div>
+    <div class="rr-meta"><strong>Reports to:</strong> AM (Tony in Utah HQ) · <strong>Type:</strong> Seasonal · <strong>Volume:</strong> 1 per territory (2+ at HQ)</div>
+    <div class="rr-body">
+      <p>Warehouse operations — hands-on from Day 1. Tony Gomez is the SME and primary trainer.</p>
+      <p><strong>Owns:</strong> morning crew support (7–8 AM rush), next-day job prep (pull → section → check), shipping outbound (LTL + Southwest Cargo), product returns + cleanup, light rolling, inventory organization.</p>
+      <p><strong>Distinct:</strong> WA does NOT do JT classroom — warehouse track is its own thing. WA scope explicitly excludes counting/audit (that's the AM via WA reports). LRs are managed by WA during pre-season + strike.</p>
+    </div>
+  </div>
+
+  <div class="rr-card contractor">
+    <div class="rr-title"><span class="rr-code">LR</span>Light Roller <span style="font-size:11px; color:#92400e; font-weight:600;">contractor</span></div>
+    <div class="rr-meta"><strong>Reports to:</strong> WA (training), AM (operations) · <strong>Type:</strong> Contractor (W-9) · <strong>Volume:</strong> Variable, as needed</div>
+    <div class="rr-body">
+      <p>Single-task contractor — light rolling production. Hired as needed for pre-season prep and strike season.</p>
+      <p><strong>Owns:</strong> untangle → roll → tie → test cycle. Piece rate via Bill.com, tied to quality (bundles must pass WA Observation Checklist or they're rework).</p>
+      <p><strong>Distinct:</strong> LR doesn't participate in counting or audit (WA scope). No remote pre-training, no formal phases, no certifications. Quality assessed through WA direct observation only.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- TRAINING VERTICALS — TM FIRST -->
+<!-- ===================================================== -->
+<h2 class="section">Training Verticals</h2>
+
+<!-- TM -->
+<section class="position">
+  <div class="position-header mgmt">
+    <div>
+      <div class="position-title"><span class="position-code">TM</span>Territory Manager</div>
+      <div class="position-tagline">Year-round territory backend owner · Purchasing, reporting, recruiting, discipline · No JT Base Classroom (mgmt-only)</div>
+      <a class="position-link" href="brite-training-tm-modules.html">View All Modules →</a>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="stat-label">Internal Promo</div><div class="stat-value">3–4 wk</div></div>
+      <div class="stat"><div class="stat-label">External Hire</div><div class="stat-value">5–6 wk</div></div>
+      <div class="stat"><div class="stat-label">Modules</div><div class="stat-value">~55 + 1 cert</div></div>
+      <div class="stat"><div class="stat-label">Phases</div><div class="stat-value">6</div></div>
+      <div class="stat"><div class="stat-label">Hire Date</div><div class="stat-value">Mid-July</div></div>
+    </div>
+  </div>
+  <div class="position-body">
+
+    <div class="section-label">Training Vertical — Full Course List</div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 1 — TM Pre-Training (Remote)</div>
+      <div class="phase-meta">~1–2 weeks · Self-paced · Ops Manager tracks · Heaviest pre-training of any role</div>
+      <div class="cat-block"><strong>Company Orientation &amp; HR</strong> <span class="cat-count">(7 modules · external only)</span><br><span class="modules">Welcome · Introduction · What We Do · Where Located · Departments · Onboarding Paperwork · Online Paperwork &amp; Onboarding</span></div>
+      <div class="cat-block"><strong>Standards &amp; Policies</strong> <span class="cat-count">(9 modules · external only)</span><br><span class="modules">Code of Conduct · Communication &amp; Teamwork · What to Wear · General Policies · Let's Get You Paid · Stay Safe Out There · Let's Just Be Good People · Business Expense Policy · Workplace Incidents &amp; Accidents</span></div>
+      <div class="cat-block"><strong>Business Strategy &amp; Operations</strong> <span class="cat-count">(13 modules · unique to TM, required for both paths)</span><br><span class="modules">Company Strategy · Brite Entities Overview · Brite Nites · Brite Labs · Brite Supply · Brite Base · Execution Overview · One-Year Plan · Quarterly Rocks · Scorecard · Operating Principles · Ways of Working · Project Management</span></div>
+      <div class="cat-block"><strong>TM Role Deep-Dive</strong> <span class="cat-count">(6 modules)</span><br><span class="modules">TM Role Overview · TM Daily Operations · TM Admin Responsibilities · TM Hiring &amp; Onboarding · TM Seasonal Playbook · AM Role Overview (evaluating AM performance)</span></div>
+      <div class="cat-block"><strong>Tool Suite</strong> <span class="cat-count">(11 modules · broadest tool access of any role)</span><br><span class="modules">Brite Now · Crew App · Beginning the Day · Deputy · Emburse · Download Emburse Spend · GPS Trackit · Monday · Slack · Gmail · Google Calendar</span></div>
+      <div class="cat-block"><strong>Operations Overview</strong> <span class="cat-count">(9 modules · reference, not hands-on)</span><br><span class="modules">Ops Dept Overview · Safety Overview · Installation Overview · Warehouse Overview · Job Lifecycle Overview · Products Overview · Product Introduction · Strike Overview · The Season Overview</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 2 — Territory Onboarding (Week 1 On-Site)</div>
+      <div class="phase-meta">~5 days · Ops Manager primary · The Brite operating system</div>
+      <div class="cat-block"><strong>Management System &amp; Reporting</strong> <span class="cat-count">(3 modules + Daily Flash + Weekly Scorecard + Monthly Review framework)</span><br><span class="modules">Territory ops overview · Reporting cadence walkthrough · Purchase approval workflow · Daily Flash (6-line EOD report) · Weekly Scorecard (~20 KPIs across 7 categories: Production, Financial, People, Customer, Efficiency, Safety, AM Performance/Cross-Entity) · Monthly Territory Review (P&amp;L, people pipeline, customer health, ops trends, safety record, sales/growth, cross-entity, action items)</span></div>
+      <div class="cat-block"><strong>Recruiting &amp; Hiring</strong> <span class="cat-count">(2 modules)</span><br><span class="modules">TM Hiring &amp; Onboarding · Recruiting workflow (TM leads, AM final interview)</span></div>
+      <div class="cat-block"><strong>Discipline &amp; People Mgmt</strong> <span class="cat-count">(1 module)</span><br><span class="modules">Disciplinary framework (TM handles all formal actions + terminations)</span></div>
+      <div class="cat-block"><strong>Cross-Entity Coordination</strong> <span class="cat-count">(1 module)</span><br><span class="modules">Sister company protocols (Brite Labs, Noel Decor, Brite Supply)</span></div>
+      <div class="cat-block"><strong>Territory Infrastructure + Systems Setup</strong> <span class="cat-count">(1 module + 8 system accounts)</span><br><span class="modules">Territory walkthrough · BriteNow territory view · Emburse approver · Monday · GPS Trackit fleet · Deputy · Slack channels · Gmail/Calendar · Territory purchasing account</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 3 — Abbreviated Safety Certification</div>
+      <div class="phase-meta">~half day · A-frame only (no extension/orchard/MEWP) · Lighter cert — TM is workstation-based</div>
+      <div class="cat-block"><strong>Ladder Safety (A-Frame Only)</strong> <span class="cat-count">(4 modules + 1 practical)</span><br><span class="modules">Ladder Safety Overview · How to Properly Use a Ladder · A-Frame Ladder (12') · A-frame practical (observation pass/fail)</span></div>
+      <div class="cat-block"><strong>Vehicle &amp; Driving Safety</strong> <span class="cat-count">(4 modules)</span><br><span class="modules">Auto Risk Management · What Is Defensive Driving · Vehicle Check &amp; Maintenance · Company Policy</span></div>
+      <div class="cat-block"><strong>Incident Reporting &amp; Safety Oversight</strong> <span class="cat-count">(2 modules)</span><br><span class="modules">How to Report an Accident · Incident Reporting (TM owns full chain as territory responsible party)</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 4 — Territory Shadowing (Weeks 2–3)</div>
+      <div class="phase-meta">Peer TM ride-along + assigned territory orientation · Management shadowing</div>
+      <div class="cat-block"><strong>Peer TM Shadowing</strong> <span class="cat-count">(3–5 days)</span><br><span class="modules">Day 1 morning operations · Day 2 area visits · Day 3 recruiting/people · Day 4 cross-entity coordination · Day 5 full TM day</span></div>
+      <div class="cat-block"><strong>Assigned Territory Orientation</strong> <span class="cat-count">(3–5 days)</span><br><span class="modules">Visit each warehouse · Meet AMs · Meet warehouse staff · Review infrastructure (fleet, vendors, logistics)</span></div>
+      <div class="cat-block"><strong>Team Building</strong><br><span class="modules">Meals with crews · Bring treats to warehouse · Learn names + backgrounds (positive presence, not inspection)</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 5 — Supervised Solo (Weeks 3–5)</div>
+      <div class="phase-meta">Independent territory mgmt + pre-season ramp-up · First major operational test</div>
+      <div class="cat-block"><strong>TM Daily Cadence</strong> <span class="cat-count">(5 blocks · 7 AM – 5 PM)</span><br><span class="modules">7–9 morning ops + approvals · 9–11 recruiting · 11–1 coordination + procurement · 1–3 AM check-ins · 3–5 reporting + planning</span></div>
+      <div class="cat-block"><strong>Pre-Season Ramp-Up</strong> <span class="cat-count">(5 streams)</span><br><span class="modules">Warehouse evaluation per area · Hiring plan execution (AMs first, then field) · AM onboarding coordination · Procurement (materials, equipment, supplies) · Fleet readiness</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 6 — Cleared</div>
+      <div class="phase-meta">Early September · Ops Manager formal sign-off · 9 evidence-based clearance criteria</div>
+      <div class="cat-block"><strong>Clearance Criteria</strong><br><span class="modules">Territory operations · Purchase oversight · Job reporting · People management · AM development · Cross-entity coordination · Reporting quality · Safety leadership · Pre-season readiness</span></div>
+    </div>
+
+    <div class="section-label">Seasonal Calendar</div>
+    <div class="calendar">
+      <div class="cal-row"><div class="cal-date">Mid-July</div><div class="cal-event">Pre-Training begins (remote, self-paced)</div><div class="cal-phase">Phase 1</div></div>
+      <div class="cal-row"><div class="cal-date">Early August</div><div class="cal-event">Territory Onboarding + Safety Cert (Week 1 on-site)</div><div class="cal-phase">Phase 2 + 3</div></div>
+      <div class="cal-row"><div class="cal-date">August</div><div class="cal-event">Peer TM shadowing + assigned territory orientation</div><div class="cal-phase">Phase 4</div></div>
+      <div class="cal-row"><div class="cal-date">Mid-Aug → Early Sept</div><div class="cal-event">Supervised solo · Pre-season ramp-up (recruiting, warehouse eval, AM onboarding, procurement, fleet)</div><div class="cal-phase">Phase 5</div></div>
+      <div class="cal-row"><div class="cal-date">Early September</div><div class="cal-event">Cleared — Ops Manager sign-off · Territory ready for peak</div><div class="cal-phase">Phase 6</div></div>
+      <div class="cal-row phase-peak"><div class="cal-date">Sept – Dec 12</div><div class="cal-event">Peak Season — full territory management, approvals, AM coaching, cross-entity, area visits</div><div class="cal-phase">Active</div></div>
+      <div class="cal-row phase-break"><div class="cal-date">Dec 12 – Jan 2</div><div class="cal-event">Break — wind-down, strike planning, seasonal bonuses, AM perf notes</div><div class="cal-phase">Break</div></div>
+      <div class="cal-row phase-strike"><div class="cal-date">Jan – Feb</div><div class="cal-event">Strike Season — territory-wide oversight, inventory reconciliation, season close-out, AM evaluations</div><div class="cal-phase">Strike</div></div>
+      <div class="cal-row"><div class="cal-date">Mar – May</div><div class="cal-event">Off-Season — strategic planning, infrastructure improvements, sister-co relationships, next-cycle prep</div><div class="cal-phase">Off</div></div>
+    </div>
+    <div class="note">Year-round role. Returning TMs ramp in ~1 week (pre-training review + safety recert quiz + territory re-orientation). No supervised solo needed.</div>
+  </div>
+</section>
+
+<!-- AM -->
+<section class="position">
+  <div class="position-header mgmt">
+    <div>
+      <div class="position-title"><span class="position-code">AM</span>Area Manager</div>
+      <div class="position-tagline">Area operations owner · Warehouse + field + crews · Shares JT Base Classroom with JT/ST/QP/RT</div>
+      <a class="position-link" href="brite-training-am-modules.html">View All Modules →</a>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="stat-label">Internal Promo</div><div class="stat-value">3 wk</div></div>
+      <div class="stat"><div class="stat-label">External Hire</div><div class="stat-value">4–5 wk</div></div>
+      <div class="stat"><div class="stat-label">Modules</div><div class="stat-value">~62 + 5 stations</div></div>
+      <div class="stat"><div class="stat-label">Phases</div><div class="stat-value">7</div></div>
+      <div class="stat"><div class="stat-label">Hire Date</div><div class="stat-value">Mid-August</div></div>
+    </div>
+  </div>
+  <div class="position-body">
+
+    <div class="section-label">Training Vertical — Full Course List</div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 1 — AM Pre-Training (Remote)</div>
+      <div class="phase-meta">~1–2 weeks · Self-paced · TM tracks completion</div>
+      <div class="cat-block"><strong>Company Orientation &amp; HR</strong> <span class="cat-count">(7 modules · external only)</span><br><span class="modules">Welcome · Introduction · What We Do · Where Located · Departments · Employee Onboarding Paperwork · Online Paperwork</span></div>
+      <div class="cat-block"><strong>Standards &amp; Policies</strong> <span class="cat-count">(9 modules · external only)</span><br><span class="modules">Code of Conduct · Communication &amp; Teamwork · What to Wear · General Policies · Let's Get You Paid · Stay Safe Out There · Let's Just Be Good People · Business Expense Policy · Workplace Incidents &amp; Accidents</span></div>
+      <div class="cat-block"><strong>Role Introduction</strong> <span class="cat-count">(5 modules · both paths)</span><br><span class="modules">AM Role Overview · TM Overview · TM Responsibilities · TM Daily Operations · AM Daily Workflow (hour-by-hour)</span></div>
+      <div class="cat-block"><strong>Tool Suite</strong> <span class="cat-count">(11 modules · broader than field roles)</span><br><span class="modules">Brite Now · Crew App · Beginning the Day · Deputy · Emburse · Download Emburse Spend · GPS Trackit · Monday · Slack · Gmail · Google Calendar</span></div>
+      <div class="cat-block"><strong>Warehouse Operations Overview</strong> <span class="cat-count">(7 modules · prep for Phase 2 hands-on)</span><br><span class="modules">Warehouse Overview · Inventory Management · Prepping Jobs for Install · Hubs &amp; Storage · Seasonal Cycling · Inter-state Shipment Coordination (AM) · Airport Cargo Southwest Air (AM)</span></div>
+      <div class="cat-block"><strong>Product Knowledge</strong> <span class="cat-count">(3 modules · overview, hands-on in Phase 2)</span><br><span class="modules">Products Overview · Product Introduction · LED vs Incandescent</span></div>
+      <div class="cat-block"><strong>Installation Overview</strong> <span class="cat-count">(6 modules · reference, not execution depth)</span><br><span class="modules">How to Install Christmas Lights · Running Power · Roofline Materials · Tree Wrapping · Wiring Practices Overview · Strike &amp; Takedown Overview</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 2 — Warehouse Deep-Dive (Day 1 on-site)</div>
+      <div class="phase-meta">Full day · Tony (Utah) or TM (satellite) · AM does each task alongside trainer · 11 modules + tier context</div>
+      <div class="cat-block"><strong>WA Daily Cadence Walkthrough</strong> <span class="cat-count">(3 hours hands-on)</span><br><span class="modules">WA Learning Track Review · WA daily cadence (morning crew support → next-day prep → shipping → cleanup) · Warehouse Layout Standards</span></div>
+      <div class="cat-block"><strong>Warehouse Sizing Context</strong> <span class="cat-count">(3 tiers)</span><br><span class="modules">Large (Utah dual warehouse, forklift) · Standard (Arizona) · Minimal (small/new markets)</span></div>
+      <div class="cat-block"><strong>Product Identification</strong> <span class="cat-count">(2 modules)</span><br><span class="modules">Physical product walkthrough · New vs used identification</span></div>
+      <div class="cat-block"><strong>Cross-Territory Logistics (Hands-On)</strong> <span class="cat-count">(2 reps · live if shipment timing allows)</span><br><span class="modules">Inbound shipment intake (shipping-containers.md) · SWA airport pickup (shipping-outbound-material.md §B)</span></div>
+      <div class="cat-block"><strong>Systems Live Setup</strong> <span class="cat-count">(4 modules)</span><br><span class="modules">BriteNow setup · Crew App setup · Deputy/Monday/Emburse/GPS Trackit accounts · Gmail/Calendar/Slack workspace</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 3 — JT Base Classroom <span class="shared-tag">Shared</span></div>
+      <div class="phase-meta">3 days · Attended with JT/ST/QP/RT cohort · AM lens: knows what crews learn so AM can later teach + evaluate + fill gaps</div>
+      <div class="cat-block"><strong>Day 1 — Job Flow + Apps</strong> <span class="cat-count">(15 modules)</span><br><span class="modules">Full install game plan · Apps walkthrough (Crew App + BriteNow hands-on)</span></div>
+      <div class="cat-block"><strong>Day 2 — Install Technique + Wiring + Product</strong> <span class="cat-count">(~34 modules + per-task quizzes)</span><br><span class="modules">Basic Skills detail (24) · Wiring Practices (5) · Product Detail (5) · AM takes same quizzes as JTs</span></div>
+      <div class="cat-block"><strong>Day 3 — Full Safety Classroom</strong> <span class="cat-count">(~27 modules + safety test)</span><br><span class="modules">Ladder Safety (7) · Roof &amp; Fall Protection (2) · Vehicle Safety (4) · Lift Safety (11, AM does full MEWP) · Incident Response (3)</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 4 — Management Safety Practicals &amp; Certifications</div>
+      <div class="phase-meta">~1 day · Warehouse + yard · TM observes · No field work before sign-off</div>
+      <div class="cat-block"><strong>Practical Stations</strong> <span class="cat-count">(5 stations · observation pass/fail)</span><br><span class="modules">Ladder practicals (A-Frame, Extension, Orchard) · Harness fitting + fall arrest · MEWP cert · Lifting technique · Vehicle/fleet safety review</span></div>
+      <div class="cat-block"><strong>Management Safety Scenarios</strong> <span class="cat-count">(scored /9, min 6 to pass)</span><br><span class="modules">Crew refusing harness · WA lifting incorrectly · JT hungover · Lift operator judgment · Crew vehicle damage · Minor injury wants to work · Witness incident · ST says safety "not needed" · Customer complains about roof climbing</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 5 — Field Immersion Week</div>
+      <div class="phase-meta">5 days · Inverted schedule (field AM / office PM) · Shadow ST crews · AM hired before STs so AM meets every crew leader 1:1 before becoming "the boss"</div>
+      <div class="cat-block"><strong>Daily Progression</strong><br><span class="modules">Day 1 ST Crew A residential · Day 2 ST Crew B commercial · Day 3 ST Crew C mixed (AM contributing) · Day 4 ST Crew D (AM teaches apps, ST shares field) · Day 5 float (where help is needed)</span></div>
+      <div class="cat-block"><strong>What AM Does on Each Crew</strong><br><span class="modules">Works with crew (hands-on) · Asks questions · Teaches what they know · May step away for management calls</span></div>
+      <div class="cat-block"><strong>Afternoon Office/Warehouse Block (10 AM+)</strong><br><span class="modules">Review crew reports · Check warehouse status · Process mgmt tasks · Debrief with TM · Prepare tomorrow</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 6 — Supervised Solo (Weeks 2–3)</div>
+      <div class="phase-meta">Independent area operations · TM coaching · "This is the guy or this isn't" reveals through ability, not test</div>
+      <div class="cat-block"><strong>AM Daily Cadence</strong> <span class="cat-count">(target state)</span><br><span class="modules">6–11 AM warehouse + office mgmt · 11–1 lunch (movable) · 1–5 PM field oversight (3–5 jobsites) · 5–6 PM closeout</span></div>
+      <div class="cat-block"><strong>Key Management Competencies</strong> <span class="cat-count">(6)</span><br><span class="modules">People management · Warehouse oversight · Field quality control · Client escalation handling · Reporting &amp; communication · Training ability (ultimate test)</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 7 — Cleared</div>
+      <div class="phase-meta">End of Week 3 (internal) / Week 4–5 (external) · TM formal sign-off · 8 clearance standards</div>
+      <div class="cat-block"><strong>Clearance Criteria</strong><br><span class="modules">Area operations · People management · Warehouse competency (incl. inter-state inbound + airport dispatch) · Field competency (100% understand, 70–80% execute) · Client handling · Reporting · Safety leadership · Strike readiness</span></div>
+    </div>
+
+    <div class="section-label">Seasonal Calendar</div>
+    <div class="calendar">
+      <div class="cal-row"><div class="cal-date">Mid-August</div><div class="cal-event">Hire · Pre-Training begins (remote, self-paced)</div><div class="cal-phase">Phase 1</div></div>
+      <div class="cal-row"><div class="cal-date">Late August</div><div class="cal-event">Day 1 Warehouse Deep-Dive</div><div class="cal-phase">Phase 2</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 20–22</div><div class="cal-event">JT Base Classroom (shared with JT/ST/QP/RT cohort)</div><div class="cal-phase">Phase 3</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 23</div><div class="cal-event">Management Safety Practicals + MEWP cert</div><div class="cal-phase">Phase 4</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 24–28</div><div class="cal-event">Field Immersion Week (5 days, inverted schedule)</div><div class="cal-phase">Phase 5</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 29 – Oct 11</div><div class="cal-event">Supervised Solo (1–2 weeks)</div><div class="cal-phase">Phase 6</div></div>
+      <div class="cal-row"><div class="cal-date">~Oct 11</div><div class="cal-event">Cleared — TM sign-off</div><div class="cal-phase">Phase 7</div></div>
+      <div class="cal-row phase-peak"><div class="cal-date">Oct 12 – ~Dec 12</div><div class="cal-event">Peak Season — full area operations · Daily cadence: warehouse + office + field</div><div class="cal-phase">Peak</div></div>
+      <div class="cal-row phase-break"><div class="cal-date">~Dec 12 – Jan 2</div><div class="cal-event">Break + strike planning</div><div class="cal-phase">Break</div></div>
+      <div class="cal-row phase-strike"><div class="cal-date">Jan – Mar</div><div class="cal-event">Strike Season — warehouse inbound, material recovery, inventory reconciliation, season close-out</div><div class="cal-phase">Strike</div></div>
+    </div>
+    <div class="note">AM is hired first in the seasonal cycle. Mid-August onboarding gives 4–6 weeks of training + ramp before training others. <strong>Open question for Tuesday:</strong> AM-JT classroom timing alignment — does AM attend the shared Sep 20–22 classroom with the cohort, or take it earlier? See Phase 3 Open Questions in the AM modules HTML.</div>
+  </div>
+</section>
+
+<!-- ST -->
+<section class="position">
+  <div class="position-header">
+    <div>
+      <div class="position-title"><span class="position-code">ST</span>Senior Field Tech / Crew Leader</div>
+      <div class="position-tagline">Crew lead · Customer-facing · Wiring routing judgment · Shares JT Base Classroom with JT/AM/QP/RT</div>
+      <a class="position-link" href="brite-training-st-modules.html">View All Modules →</a>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="stat-label">Internal Promo</div><div class="stat-value">~4 wk</div></div>
+      <div class="stat"><div class="stat-label">External Hire</div><div class="stat-value">6–7 wk</div></div>
+      <div class="stat"><div class="stat-label">Modules</div><div class="stat-value">~72 + 5 certs</div></div>
+      <div class="stat"><div class="stat-label">Phases</div><div class="stat-value">4</div></div>
+      <div class="stat"><div class="stat-label">Hire Date</div><div class="stat-value">Early August</div></div>
+    </div>
+  </div>
+  <div class="position-body">
+
+    <div class="section-label">Training Vertical — Full Course List</div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 1 — Pre-Training (At Home)</div>
+      <div class="phase-meta">~4 wk promo · Early Aug → Early Sep · Self-paced · 38 modules</div>
+      <div class="cat-block"><strong>JT Knowledge Recertification</strong> <span class="cat-count">(1 module · hard gate)</span><br><span class="modules">Freehand quiz · 100% to pass · 3 attempts · fail = redo lower-level training</span></div>
+      <div class="cat-block"><strong>Onboarding &amp; Pay Setup</strong> <span class="cat-count">(4 modules)</span><br><span class="modules">Re-onboarding paperwork · Pay structure refresher · Deputy refresher · Benefits</span></div>
+      <div class="cat-block"><strong>App Suite &amp; Systems Briefing</strong> <span class="cat-count">(7 modules · STs must be system-proficient before content)</span><br><span class="modules">BriteNow ST view · Crew App leadership features · Deputy clock-in oversight · Slack channels · GPS Trackit (vehicle assigned) · Gmail/Calendar · Emburse field expense intro</span></div>
+      <div class="cat-block"><strong>ST Daily Workflow</strong> <span class="cat-count">(1 brief)</span><br><span class="modules">7-step daily cadence (st-daily-workflow.md)</span></div>
+      <div class="cat-block"><strong>Crew Leadership &amp; Operations</strong> <span class="cat-count">(6 modules)</span><br><span class="modules">Crew dispatch · Job flow leadership · Mid-day adjustments · Crew conflict mgmt · Training a JT in real-time · End-of-day debrief</span></div>
+      <div class="cat-block"><strong>Wiring — Routing Judgment</strong> <span class="cat-count">(5 modules · core technical differentiator)</span><br><span class="modules">Routing principles (most discrete + most efficient) · Roofline routing · Tree routing · Multi-zone wiring · Routing examples (scenarios)</span></div>
+      <div class="cat-block"><strong>Management Protocol &amp; Customer Communication</strong> <span class="cat-count">(2 briefs)</span><br><span class="modules">ST Management Protocol (st-management-protocol.md) · ST Customer Communication (st-customer-communication.md, 5 scenarios)</span></div>
+      <div class="cat-block"><strong>Company Operating System</strong> <span class="cat-count">(4 modules)</span><br><span class="modules">Operating Principles · Ways of Working · Brite Entities Overview · The Season</span></div>
+      <div class="cat-block"><strong>Strike Season Preparation</strong> <span class="cat-count">(8 modules · core ST responsibility)</span><br><span class="modules">Strike Overview · Roofline Takedown · Tree Takedown · Alternative Lighting Takedown · Rolling &amp; Boxing · Inventory List · Using the App (Strike) · Crew strike leadership</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 2 — On-Site Training &amp; Certification (3 days)</div>
+      <div class="phase-meta">~Early Sep · 34 classroom modules + 5 cert stations · AM-led · Includes JT Base Classroom shared content</div>
+      <div class="cat-block"><strong>Day 1 — Leadership, Communication &amp; Wiring</strong> <span class="cat-count">(9 modules)</span><br><span class="modules">Crew leadership in practice · Wiring routing review · Customer communication role-plays · Management scenarios · ST decision authority · Escalation paths · Crew conflict role-plays · JT-on-the-job training technique · Daily cadence walkthrough</span></div>
+      <div class="cat-block"><strong>Day 2 — Safety Classroom + Wiring Routing Assessment</strong> <span class="cat-count">(25 modules · JT Base Classroom Day 3 + ST add-ons)</span><br><span class="modules">Full safety classroom (ladder, roof, harness, lift, vehicle, electrical, incident) · Wiring Routing Assessment (scenario-based · ST-only)</span></div>
+      <div class="cat-block"><strong>Day 3 — Physical Certifications</strong> <span class="cat-count">(5 stations · compliance critical)</span><br><span class="modules">Ladder practicals (A-Frame, Extension, Orchard) · Harness fitting · MEWP recert · Roofline section · Wiring practical (multi-zone)</span></div>
+      <div class="cat-block"><strong>Management Assessment Gate</strong> <span class="cat-count">(scenario-based conversation with TM/AM)</span><br><span class="modules">Confirms ethical management compliance · Hard gate · Scenarios cover: crew member issues · safety enforcement · client escalation · operational decisions</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 3 — Mentored Crew Leading</div>
+      <div class="phase-meta">5–7 days · Mid-September · AM observes · 8 competencies tracked daily</div>
+      <div class="cat-block"><strong>Activities</strong><br><span class="modules">Lead 2-man crew (with JT) on real residential jobs · AM rides along or observes from distance · Real-time correction · Customer interactions handled solo · End-of-day debriefs · Reporting via Crew App</span></div>
+      <div class="cat-block"><strong>Competencies Evaluated</strong> <span class="cat-count">(8)</span><br><span class="modules">Wiring routing in real conditions · JT correction technique · Customer communication · Schedule mgmt · Quality consistency · Safety modeling · Escalation judgment · Reporting accuracy</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 4 — Cleared: Independent Crew Leader</div>
+      <div class="phase-meta">~Late September · First week leading independently · Formal sign-off ~Early October · 5 clearance criteria</div>
+      <div class="cat-block"><strong>Clearance Criteria</strong><br><span class="modules">Wiring routing consistent · JT training in real-time · Customer professionalism · Quality reports clean · Safety modeling</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Strike Season Recertification</div>
+      <div class="phase-meta">~Late December · Mid-season break · Hard gate quiz before Jan 2</div>
+      <div class="cat-block"><strong>Strike Recert Quiz</strong> <span class="cat-count">(1 quiz · 100% pass · 3 attempts)</span><br><span class="modules">Strike takedown technique · Material handling · Inventory list accuracy · Crew leadership for strike (often smaller crews)</span></div>
+    </div>
+
+    <div class="section-label">Seasonal Calendar</div>
+    <div class="calendar">
+      <div class="cal-row"><div class="cal-date">Early August</div><div class="cal-event">Internal promos hired — remote modules begin</div><div class="cal-phase">Phase 1</div></div>
+      <div class="cal-row"><div class="cal-date">Early Aug – Early Sep</div><div class="cal-event">Self-paced ST modules (38 modules)</div><div class="cal-phase">Phase 1</div></div>
+      <div class="cal-row"><div class="cal-date">~Early Sep (3 days)</div><div class="cal-event">On-site classroom + certifications (incl. JT Base Classroom Day 3)</div><div class="cal-phase">Phase 2</div></div>
+      <div class="cal-row"><div class="cal-date">Mid-September</div><div class="cal-event">Mentored crew leading (5–7 days)</div><div class="cal-phase">Phase 3</div></div>
+      <div class="cal-row"><div class="cal-date">Late September</div><div class="cal-event">Independent crew leading begins</div><div class="cal-phase">Phase 4</div></div>
+      <div class="cal-row"><div class="cal-date">~Early October</div><div class="cal-event">Formal sign-off — cleared</div><div class="cal-phase">Cleared</div></div>
+      <div class="cal-row phase-peak"><div class="cal-date">Oct 12 – ~Dec 12</div><div class="cal-event">Peak install season — full crew leadership</div><div class="cal-phase">Peak</div></div>
+      <div class="cal-row phase-break"><div class="cal-date">~Dec 12 – Jan 2</div><div class="cal-event">Break + strike recertification (1 quiz · hard gate)</div><div class="cal-phase">Break</div></div>
+      <div class="cal-row phase-strike"><div class="cal-date">Jan 2 – Jan 31+</div><div class="cal-event">Strike leadership</div><div class="cal-phase">Strike</div></div>
+      <div class="cal-row"><div class="cal-date">February 1+</div><div class="cal-event">Early post-season</div><div class="cal-phase">Post</div></div>
+    </div>
+    <div class="note">Mid-season ST gap filled by promoting cleared JTs (1+ season, technical + leadership signals). External hires impractical mid-season — JT track must be completed first. Cleared STs use trigger-based retraining on specific skills.</div>
+  </div>
+</section>
+
+<!-- JT -->
+<section class="position">
+  <div class="position-header">
+    <div>
+      <div class="position-title"><span class="position-code">JT</span>Junior Field Technician</div>
+      <div class="position-tagline">Entry-level installer · Highest-volume seasonal hire · Hosts the shared JT Base Classroom for ST/AM/QP/RT cohort</div>
+      <a class="position-link" href="brite-training-jt-modules.html">View All Modules →</a>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="stat-label">Total</div><div class="stat-value">~4 weeks</div></div>
+      <div class="stat"><div class="stat-label">Modules</div><div class="stat-value">101 + 15 stations</div></div>
+      <div class="stat"><div class="stat-label">Phases</div><div class="stat-value">5</div></div>
+      <div class="stat"><div class="stat-label">Volume</div><div class="stat-value">~50 / season</div></div>
+      <div class="stat"><div class="stat-label">Hire Date</div><div class="stat-value">Sep 10</div></div>
+    </div>
+  </div>
+  <div class="position-body">
+
+    <div class="section-label">Training Vertical — Full Course List</div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 1 — Pre-Training (Remote)</div>
+      <div class="phase-meta">~10 days · Self-paced · 25 modules (consolidated from 71)</div>
+      <div class="cat-block"><strong>Company Orientation &amp; HR</strong> <span class="cat-count">(2 modules · consolidated from 7)</span><br><span class="modules">Brite Introduction · Onboarding</span></div>
+      <div class="cat-block"><strong>Standards &amp; Policies</strong> <span class="cat-count">(4 modules · consolidated from 13)</span><br><span class="modules">Conduct &amp; Culture · Presentation Standards · Pay &amp; Employment Policies · Field &amp; Jobsite Protocols</span></div>
+      <div class="cat-block"><strong>Role Orientation</strong> <span class="cat-count">(1 module · consolidated from 4)</span><br><span class="modules">JT Role Orientation (position-specific module: team/role context · daily process · role-specific protocols/etiquette · success criteria · trigger-assigned references)</span></div>
+      <div class="cat-block"><strong>Product Knowledge Overview</strong> <span class="cat-count">(1 module · detail moved to Phase 2)</span><br><span class="modules">Product Knowledge Overview (high-level survey, detail in classroom)</span></div>
+      <div class="cat-block"><strong>Safety Theory</strong> <span class="cat-count">(8 modules)</span><br><span class="modules">Intro to Safety · Recognizing Hazards · PPE · How to Use a Ladder (Overview) · Power Tool Safety · Back Injuries · Harsh Weather · Protecting Client Property</span></div>
+      <div class="cat-block"><strong>Basic Skills Overview</strong> <span class="cat-count">(2 modules · was 24 — detail moved to Phase 2)</span><br><span class="modules">Install Task Map · Tools You'll Touch</span></div>
+      <div class="cat-block"><strong>Wiring &amp; Electrical Overview</strong> <span class="cat-count">(1 module · was 5 — detail moved to Phase 2)</span><br><span class="modules">Wiring &amp; Electrical Awareness</span></div>
+      <div class="cat-block"><strong>Tools &amp; Software</strong> <span class="cat-count">(4 modules)</span><br><span class="modules">Crew App Overview · Beginning the Day · Deputy · BriteNow (read-only)</span></div>
+      <div class="cat-block"><strong>Truck &amp; Vehicle</strong> <span class="cat-count">(2 modules)</span><br><span class="modules">Truck Care &amp; Maintenance · Ratchet Straps</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 2 — Classroom Training (On-Site) <span class="shared-tag">Shared</span></div>
+      <div class="phase-meta">3 days · AM-led · Attended with ST/AM/QP/RT cohort · Same content all roles consume</div>
+      <div class="cat-block"><strong>Day 1 — The Game Plan (Job Flow)</strong> <span class="cat-count">(11 modules)</span><br><span class="modules">Full install job flow from arrival to cleanup · Pre-impression · Onsite protocol · Apps walkthrough setup · Crew dynamics · Schedule reading · Material flow · Customer arrival · Cleanup expectations · End-of-day · Job lifecycle context</span></div>
+      <div class="cat-block"><strong>Day 1 — Apps Walkthrough (Hands-On)</strong> <span class="cat-count">(4 modules)</span><br><span class="modules">Crew App Beginning the Day (hands-on) · Crew App On Jobsites (hands-on) · BriteNow lookup (hands-on) · Deputy clock-in/out (hands-on)</span></div>
+      <div class="cat-block"><strong>Day 2 — Install Technique Detail</strong> <span class="cat-count">(24 modules · moved from Phase 1 Basic Skills)</span><br><span class="modules">Install Christmas Lights · Running Power · Roofline materials &amp; attachment · Roofline running power · Roofline common mistakes · Tree wrapping (palm, deciduous, evergreen) · Pine trees · Bushes · Tree common mistakes · Greenery wreaths · Garland · Bows · Anchors &amp; power · Greenery common mistakes · Hanging lights (spheres, cluster, willow) · Hanging running power · Hanging common mistakes · Alternative (stake, spiral, rails, rubber bands) · Timers · Install etiquette</span></div>
+      <div class="cat-block"><strong>Day 2 — Wiring Practices</strong> <span class="cat-count">(5 modules · moved from Phase 1)</span><br><span class="modules">Wiring Practices · Amperage · Overload · GFI Outlets · Wiring Examples</span></div>
+      <div class="cat-block"><strong>Day 2 — Product Detail</strong> <span class="cat-count">(5 modules · moved from Phase 1)</span><br><span class="modules">Product Introduction · LED vs Incandescent · Products (Field Tech) · Brite Nites Bulbs (C9, Multi, Icicles) · LED Mini Strands</span></div>
+      <div class="cat-block"><strong>Day 3 — Ladder Safety</strong> <span class="cat-count">(7 modules)</span><br><span class="modules">Ladder Safety Overview · How to Properly Use a Ladder · A-Frame (12') · Extension (32') · Orchard · Little Giants · Truck &amp; Ladder Protocol</span></div>
+      <div class="cat-block"><strong>Day 3 — Roof &amp; Fall Protection</strong> <span class="cat-count">(2 modules)</span><br><span class="modules">Harness Safety · Protecting Client Property</span></div>
+      <div class="cat-block"><strong>Day 3 — Vehicle Safety</strong> <span class="cat-count">(4 modules)</span><br><span class="modules">Auto Risk Management · Defensive Driving · Vehicle Check &amp; Maintenance · Truck Organization</span></div>
+      <div class="cat-block"><strong>Day 3 — Lift Safety</strong> <span class="cat-count">(11 modules)</span><br><span class="modules">Lift Safety Overview · Types of Lifts · Pre-Use Inspection · Safe Operating Procedures · Stabilization &amp; Positioning · Hazard Awareness · Working at Heights · Operator Responsibilities · Fall Protection Requirements · Emergency Procedures · PPE (Lifts)</span></div>
+      <div class="cat-block"><strong>Day 3 — Incident Response</strong> <span class="cat-count">(3 modules)</span><br><span class="modules">How to Report an Accident · Incident Reporting · Workplace Incidents &amp; Accidents Policy</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 3 — Physical Assessment &amp; MEWP Certification</div>
+      <div class="phase-meta">3 days · 15 hands-on stations · Heights first (gut check)</div>
+      <div class="cat-block"><strong>Heights Assessment (First — Gut Check)</strong> <span class="cat-count">(3 stations)</span><br><span class="modules">Extension ladder climb · Roof access · Working at height</span></div>
+      <div class="cat-block"><strong>Roofline &amp; Power</strong> <span class="cat-count">(3 stations)</span><br><span class="modules">Roofline section install · Running power · Clip placement</span></div>
+      <div class="cat-block"><strong>Tree Wrapping (All Types Required)</strong> <span class="cat-count">(5 stations)</span><br><span class="modules">Palm · Deciduous · Evergreen · Pine · Bush</span></div>
+      <div class="cat-block"><strong>Additional Skills</strong> <span class="cat-count">(2 stations)</span><br><span class="modules">Greenery installation · Hanging lights demo</span></div>
+      <div class="cat-block"><strong>MEWP Certification</strong> <span class="cat-count">(2 stations)</span><br><span class="modules">MEWP Written Knowledge Test · MEWP Practical Operation Test</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 4 — Field Shadowing</div>
+      <div class="phase-meta">2 working days · ST paired · JT executes, ST corrects in real-time</div>
+      <div class="cat-block"><strong>What's Being Evaluated</strong><br><span class="modules">Install technique under field conditions · Speed building · Customer presence · Equipment care · Following ST direction · Asking questions appropriately</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 5 — 2-Man Crew Litmus</div>
+      <div class="phase-meta">1 week · Active install · No hiding in a bigger crew · AM formal sign-off</div>
+      <div class="cat-block"><strong>Litmus Criteria</strong><br><span class="modules">JT executes their share of install · Consistent quality · Safety adherence under pressure · Customer presence · Endurance across a full peak week · ST confirms readiness · AM signs off</span></div>
+    </div>
+
+    <div class="section-label">Seasonal Calendar</div>
+    <div class="calendar">
+      <div class="cal-row"><div class="cal-date">Sep 10</div><div class="cal-event">Hire deadline — pre-training sent by TM</div><div class="cal-phase">Phase 1</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 10 – Sep 19</div><div class="cal-event">Remote self-paced (~10 days)</div><div class="cal-phase">Phase 1</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 20–22</div><div class="cal-event">Classroom (shared cohort with ST/AM/QP/RT): Day 1 game flow + apps · Day 2 install/wiring/product · Day 3 safety</div><div class="cal-phase">Phase 2</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 23–25</div><div class="cal-event">Skills stations + MEWP cert (15 stations)</div><div class="cal-phase">Phase 3</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 28–29</div><div class="cal-event">Field shadowing (ST paired — 2 working days)</div><div class="cal-phase">Phase 4</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 30 – Oct 6</div><div class="cal-event">2-man crew litmus week</div><div class="cal-phase">Phase 5</div></div>
+      <div class="cal-row phase-peak"><div class="cal-date">Oct 12 – ~Dec 12</div><div class="cal-event">Active install season</div><div class="cal-phase">Peak</div></div>
+      <div class="cal-row phase-break"><div class="cal-date">~Dec 12 – Jan 2</div><div class="cal-event">Season break</div><div class="cal-phase">Break</div></div>
+      <div class="cal-row phase-strike"><div class="cal-date">Jan 2 – Jan 31</div><div class="cal-event">Strike season (if eligible)</div><div class="cal-phase">Strike</div></div>
+    </div>
+    <div class="note">Mid-season hires use compressed Day-1 onboarding; cleared JTs get trigger-based retraining (no scheduled refresher).</div>
+  </div>
+</section>
+
+<!-- RT -->
+<section class="position">
+  <div class="position-header">
+    <div>
+      <div class="position-title"><span class="position-code">RT</span>Repair Technician</div>
+      <div class="position-tagline">"Swiss army knife" · Solo repairs + QC + overflow · Year-round (Tier 1 only) · Shares JT Base Classroom with JT/ST/AM/QP</div>
+      <a class="position-link" href="brite-training-rt-modules.html">View All Modules →</a>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="stat-label">First-Hire</div><div class="stat-value">~5 wk</div></div>
+      <div class="stat"><div class="stat-label">Experienced</div><div class="stat-value">~2.5 wk</div></div>
+      <div class="stat"><div class="stat-label">Modules</div><div class="stat-value">78 + 10 stations</div></div>
+      <div class="stat"><div class="stat-label">Phases</div><div class="stat-value">7</div></div>
+      <div class="stat"><div class="stat-label">Hire Date</div><div class="stat-value">Early September</div></div>
+    </div>
+  </div>
+  <div class="position-body">
+
+    <div class="section-label">Training Vertical — Full Course List</div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 1 — RT Pre-Training (Remote)</div>
+      <div class="phase-meta">~5 days · Self-paced · 78 modules · "Diagnostic baseline" — recognize anything that could be broken</div>
+      <div class="cat-block"><strong>Company Orientation &amp; HR</strong> <span class="cat-count">(7 modules)</span><br><span class="modules">Welcome · Introduction · What We Do · Where Located · Departments · Onboarding Paperwork · Online Paperwork</span></div>
+      <div class="cat-block"><strong>Standards &amp; Policies</strong> <span class="cat-count">(13 modules)</span><br><span class="modules">Code of Conduct · Communication &amp; Teamwork · What to Wear · Appearance (Hygiene + Vehicle) · General Policies · Let's Get You Paid · Stay Safe Out There · Let's Just Be Good People · Field Policies Overview · Onboarding Protocol · Onsite Protocol · Toolkit</span></div>
+      <div class="cat-block"><strong>Role Introduction</strong> <span class="cat-count">(3 modules)</span><br><span class="modules">Lighting Tech Introduction · Daily Process &amp; Procedures · Install Etiquette</span></div>
+      <div class="cat-block"><strong>Product Knowledge</strong> <span class="cat-count">(5 modules)</span><br><span class="modules">Product Introduction · LED vs Incandescent · Products (Field Tech) · Brite Nites Bulbs (C9, Multi, Icicles) · LED Mini Strands</span></div>
+      <div class="cat-block"><strong>Safety Theory</strong> <span class="cat-count">(7 modules)</span><br><span class="modules">Intro to Safety · Recognizing Hazards · PPE · Ladder Overview · Power Tool Safety · Back Injuries · Harsh Weather</span></div>
+      <div class="cat-block"><strong>Installation Knowledge</strong> <span class="cat-count">(24 modules · full install set)</span><br><span class="modules">Install Overview · Roofline (attachment · running power · common mistakes) · Trees (palm/deciduous/evergreen · pine · bushes · common mistakes) · Greenery (wreaths · garland · bows · anchors &amp; power · common mistakes) · Hanging Lights (spheres · cluster · willow · running power · common mistakes) · Alternative (stake · spiral · rails &amp; gates · rubber bands · timers) · Running Power (general)</span></div>
+      <div class="cat-block"><strong>Wiring &amp; Electrical</strong> <span class="cat-count">(5 modules)</span><br><span class="modules">Wiring Practices · Amperage · Overload · GFI Outlets · Wiring Examples</span></div>
+      <div class="cat-block"><strong>Strike Knowledge</strong> <span class="cat-count">(7 modules)</span><br><span class="modules">Strike Overview · Roofline Takedown · Tree Takedown · Alt Lighting Takedown · Rolling &amp; Boxing · Inventory List · Using the App (Strike)</span></div>
+      <div class="cat-block"><strong>Tools &amp; Software + Truck</strong> <span class="cat-count">(7 modules)</span><br><span class="modules">Crew App · Deputy · Deputy for Hourly · Software for Success · BriteNow · Truck Care &amp; Maintenance · Ratchet Straps</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 2 — JT Base Classroom <span class="shared-tag">Shared</span></div>
+      <div class="phase-meta">3 days · Attended with JT/ST/AM/QP cohort · For RT, the classroom is the repair-lens primer</div>
+      <div class="cat-block"><strong>Day 1 — Job Flow + Apps</strong> <span class="cat-count">(15 modules)</span><br><span class="modules">Game Plan walkthrough · Apps walkthrough · RT lens: know what's <em>supposed</em> to be in place when you arrive for a repair</span></div>
+      <div class="cat-block"><strong>Day 2 — Install Technique + Wiring + Product</strong> <span class="cat-count">(~34 modules + per-task quizzes)</span><br><span class="modules">Install technique (24) · Wiring (5) · Product (5) · RT lens: diagnostic baseline — know technique by name + sight</span></div>
+      <div class="cat-block"><strong>Day 3 — Full Safety Classroom</strong> <span class="cat-count">(~27 modules)</span><br><span class="modules">Ladder · Roof &amp; Fall · Vehicle · Lift (full MEWP) · Incident Response</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 3 — RT Specialization Classroom (AM-Led)</div>
+      <div class="phase-meta">~1.5 days · 4 RT-unique briefs + repair lens on install</div>
+      <div class="cat-block"><strong>3A — Install Review (Repair Lens)</strong> <span class="new-tag">repair-specific</span> <span class="cat-count">(~2 hours)</span><br><span class="modules">Install overview (repair perspective) · Roofline failures · Tree + greenery failures · Hanging + specialty failures · Electrical troubleshooting (systematic approach)</span></div>
+      <div class="cat-block"><strong>3B — Customer Communication</strong> <span class="shared-tag">Shared module</span> <span class="cat-count">(~1 hour · TM-led)</span><br><span class="modules">Shared module scope: first impressions · door-knock + walkthrough · status conversations · before-you-leave verification · 5-star review · complaints/de-escalation · damage conversations · difficult situations · access/property · returning to site · channels · role-aware escalation · RT-specific overlay: arrival for repair · damage assessment language · timeline setting · sign-off · escalation phrases (rt-customer-communication.md)</span></div>
+      <div class="cat-block"><strong>3C — QC + Daily Flow + Vehicle Loading</strong> <span class="new-tag">repair-specific</span> <span class="cat-count">(~3 hours · 3 handbook briefs)</span><br><span class="modules">QC Overview · QC Process · QC Checklist &amp; Common Defects (rt-qc-checklist.md) · RT Daily Flow (rt-daily-flow.md) · Vehicle Loading &amp; Parts Management (rt-vehicle-loading.md)</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 4 — Safety Practicals + MEWP Certification</div>
+      <div class="phase-meta">~1 day · TM observes MEWP, AM observes others · 7 stations</div>
+      <div class="cat-block"><strong>Practical Stations</strong> <span class="cat-count">(5 stations)</span><br><span class="modules">A-Frame Ladder · Extension Ladder · Orchard Ladder · Little Giant / Quality Pros · Harness fitting + fall arrest</span></div>
+      <div class="cat-block"><strong>MEWP Certification</strong> <span class="cat-count">(written + practical)</span><br><span class="modules">MEWP Written Knowledge Test · MEWP Practical Operation</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 5 — Physical Assessment + Supervised Field Work</div>
+      <div class="phase-meta">~1 week · Warehouse stations Day 1, real job sites Days 2–5 · Progressive autonomy</div>
+      <div class="cat-block"><strong>Day 1 — Physical Assessment Stations</strong> <span class="cat-count">(10 stations)</span><br><span class="modules">30' Extension Ladder · Roof Access · A-Frame · Roofline Section · Tree Wrapping (1 type) · Greenery · Wiring a System · Plug Installation · Diagnostic Exercise · Parts Identification (10 parts)</span></div>
+      <div class="cat-block"><strong>Days 2–3 — Observe &amp; Assist</strong><br><span class="modules">AM handles daily flow · RT observes diagnosing + repairs · RT assists with physical work · RT practices customer introductions with AM present · End-of-day debriefs</span></div>
+      <div class="cat-block"><strong>Days 4–5 — Lead with Oversight</strong><br><span class="modules">RT runs full daily flow (9am review → route → load → execute) · AM rides along, intervenes only if safety/quality at risk · RT handles customer comm independently · AM reviews every service report</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 6 — Solo Operations (Monitored)</div>
+      <div class="phase-meta">~2 weeks · Daily 9am AM review is both check-in and coaching · Proves sustained performance</div>
+      <div class="cat-block"><strong>RT Daily Flow</strong> <span class="cat-count">(5 steps · permanent operating rhythm)</span><br><span class="modules">9:00 AM review with AM · Route planning · Vehicle load · Execute repairs · Submit reports</span></div>
+      <div class="cat-block"><strong>What's Being Evaluated</strong> <span class="cat-count">(5)</span><br><span class="modules">Consistency · Efficiency · Documentation · Escalation · Client satisfaction</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 7 — Cleared</div>
+      <div class="phase-meta">Mid-October · Full operational status · 9am AM review continues permanently · Year-round role</div>
+      <div class="cat-block"><strong>Escalation Protocol</strong><br><span class="modules">2+ person job → call AM for crew assist · Structural damage → stop + document + call AM · Electrical beyond basic (panel/main) → never attempt · Unhappy client → de-escalate, call AM · Over appointment window → call AM</span></div>
+    </div>
+
+    <div class="section-label">Seasonal Calendar</div>
+    <div class="calendar">
+      <div class="cal-row"><div class="cal-date">Early September</div><div class="cal-event">Hire · Pre-Training begins (~5 days remote, 78 modules)</div><div class="cal-phase">Phase 1</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 20–22</div><div class="cal-event">JT Base Classroom (shared with JT/ST/AM/QP cohort)</div><div class="cal-phase">Phase 2</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 23–24</div><div class="cal-event">RT Specialization Classroom (AM-led)</div><div class="cal-phase">Phase 3</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 25</div><div class="cal-event">Safety Practicals + MEWP cert</div><div class="cal-phase">Phase 4</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 28 – Oct 2</div><div class="cal-event">Physical Assessment + Supervised Field Work</div><div class="cal-phase">Phase 5</div></div>
+      <div class="cal-row"><div class="cal-date">Oct 5 – Oct 16</div><div class="cal-event">Solo Operations Monitored (~2 weeks)</div><div class="cal-phase">Phase 6</div></div>
+      <div class="cal-row"><div class="cal-date">~Mid-October</div><div class="cal-event">Cleared — full operational status</div><div class="cal-phase">Phase 7</div></div>
+      <div class="cal-row phase-peak"><div class="cal-date">Oct – Dec 12</div><div class="cal-event">Peak — repairs (2–3 days/wk) · additional installs · QC checks</div><div class="cal-phase">Peak</div></div>
+      <div class="cal-row"><div class="cal-date">Dec 12 – Jan 2</div><div class="cal-event">Service Period — full-time repairs + emergency response (other roles on break)</div><div class="cal-phase">Service</div></div>
+      <div class="cal-row phase-strike"><div class="cal-date">Jan – Mar</div><div class="cal-event">Strike Season — solo takedown appointments + warehouse auditing</div><div class="cal-phase">Strike</div></div>
+      <div class="cal-row"><div class="cal-date">Apr – Aug</div><div class="cal-event">Off-Season — inactive unless retained for year-round maintenance contracts</div><div class="cal-phase">Off</div></div>
+    </div>
+    <div class="note">Only role with no seasonal break besides actual holidays. First-hire is primary path — RT does not require prior Brite experience. Needs breadth of installation knowledge, not depth; proficiency builds through repair volume + variety.</div>
+  </div>
+</section>
+
+<!-- QP -->
+<section class="position">
+  <div class="position-header">
+    <div>
+      <div class="position-title"><span class="position-code">QP</span>Quality Pro Technician</div>
+      <div class="position-tagline">Inspector model · Solo customer-facing · TM-trained, AM-supervised · Shares JT Base Classroom with JT/ST/AM/RT</div>
+      <a class="position-link" href="brite-training-qp-modules.html">View All Modules →</a>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="stat-label">Total</div><div class="stat-value">~4 weeks</div></div>
+      <div class="stat"><div class="stat-label">Modules</div><div class="stat-value">~60 + 1 cert</div></div>
+      <div class="stat"><div class="stat-label">Phases</div><div class="stat-value">7</div></div>
+      <div class="stat"><div class="stat-label">Volume</div><div class="stat-value">1–2 / territory</div></div>
+      <div class="stat"><div class="stat-label">Hire Date</div><div class="stat-value">~Sep 6</div></div>
+    </div>
+  </div>
+  <div class="position-body">
+
+    <div class="section-label">Training Vertical — Full Course List</div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 1 — QP Pre-Training (Remote)</div>
+      <div class="phase-meta">~2 weeks · Self-paced · 16 modules · Inspector mindset foundation</div>
+      <div class="cat-block"><strong>Company Orientation &amp; HR</strong> <span class="cat-count">(2 modules · consolidated)</span><br><span class="modules">Brite Introduction · Onboarding</span></div>
+      <div class="cat-block"><strong>Standards &amp; Policies</strong> <span class="cat-count">(4 modules · consolidated)</span><br><span class="modules">Conduct &amp; Culture · Presentation Standards · Pay &amp; Employment Policies · Field &amp; Jobsite Protocols</span></div>
+      <div class="cat-block"><strong>QP Role Orientation</strong> <span class="cat-count">(1 module · position-specific)</span><br><span class="modules">QP Role Orientation (face of Brite, role overview, daily process, success criteria)</span></div>
+      <div class="cat-block"><strong>Inspector Mindset</strong> <span class="new-tag">new for QP</span> <span class="cat-count">(2 modules)</span><br><span class="modules">What QPs do (and don't do) — inspect, not install · Customer-facing dynamics (last Brite person customer sees)</span></div>
+      <div class="cat-block"><strong>App &amp; Tool Reference (Overview)</strong> <span class="cat-count">(3 modules · operational by classroom Day 1)</span><br><span class="modules">BriteNow Field App · Crew App overview · Deputy + Slack</span></div>
+      <div class="cat-block"><strong>Product Reference (Overview)</strong> <span class="cat-count">(2 modules · recognize, not execute)</span><br><span class="modules">Product Introduction · LED vs Incandescent</span></div>
+      <div class="cat-block"><strong>Inspection Theory (Overview)</strong> <span class="new-tag">new for QP</span> <span class="cat-count">(2 modules · primer for Phase 3 deep dive)</span><br><span class="modules">What good vs bad looks like (high-level) · 5-point quality scale (framing)</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 2 — JT Base Classroom <span class="shared-tag">Shared</span></div>
+      <div class="phase-meta">3 days · Attended with JT/ST/AM/RT cohort · For QP, the inspector-lens primer</div>
+      <div class="cat-block"><strong>Day 1 — Job Flow + Apps</strong> <span class="cat-count">(15 modules)</span><br><span class="modules">Game Plan + Apps walkthrough · QP lens: know workflow to spot what's missing or wrong</span></div>
+      <div class="cat-block"><strong>Day 2 — Install Technique + Wiring + Product</strong> <span class="cat-count">(~34 modules)</span><br><span class="modules">QP takes same per-task quizzes as JTs · "What good looks like" day</span></div>
+      <div class="cat-block"><strong>Day 3 — Full Safety Classroom</strong> <span class="cat-count">(~27 modules · MEWP overview but no MEWP cert)</span><br><span class="modules">Ladder · Roof &amp; Fall · Vehicle · Lift safety (overview only — QPs don't operate boom lifts) · Incident Response</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 3 — QP Specialization Classroom (TM-Led)</div>
+      <div class="phase-meta">~1.5 days · Office/warehouse · 2 modules (Process + Customer Comms shared)</div>
+      <div class="cat-block"><strong>Module 3A — QP Process</strong> <span class="new-tag">new</span> <span class="cat-count">(Day 1 · ~6 hours · TM-led · 10 modules)</span><br><span class="modules">QP daily workflow walkthrough · How We Schedule · BriteNow Field App (hands-on) · Crew App: Beginning the Day (hands-on) · Crew App: On Jobsites (hands-on) · Issues You May Come Up Against · Wiring Examples · GFI Outlets · Ranking the Crew on the App · Maintenances (TM demonstrates)</span></div>
+      <div class="cat-block"><strong>Module 3B — Customer Communication</strong> <span class="shared-tag">Shared module</span> <span class="cat-count">(Day 2 morning · ~3 hours · TM-led · 12 scope items)</span><br><span class="modules">First impressions · Door-knock + walkthrough · Status conversations · Before-you-leave verification (QP inspection checklist) · 5-star review · Complaints/de-escalation · Damage conversations · Difficult situations · Access/property · Returning to site · Channels · Role-aware escalation paths · QP Escalation Rule: easy → AM/TM direct · harder → repair ticket · exceptions for QP-handleable or far-away</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 4 — Safety Certifications</div>
+      <div class="phase-meta">~half day · Warehouse / parking lot · No MEWP for QPs</div>
+      <div class="cat-block"><strong>Ladder Certification</strong> <span class="cat-count">(1 practical station)</span><br><span class="modules">Little Giant / A-Frame Ladder (setup, inspection, proper use)</span></div>
+      <div class="cat-block"><strong>Vehicle Safety Review</strong> <span class="cat-count">(verbal)</span><br><span class="modules">Defensive driving confirmed · Incident reporting confirmed</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 5 — Field Training (AM-Led)</div>
+      <div class="phase-meta">~1 day · Real jobsites · 1 AM demo + 3–5 QP reps · Walk-through then 3–5 reps method</div>
+      <div class="cat-block"><strong>Field Day Structure</strong><br><span class="modules">Visit 1: AM demo (AM drives + inspects + narrates) · Visits 2–3: QP executes, AM corrects · Visits 4–5: QP solo with AM in passenger seat · Maintenance practice as items arise · Customer-contact reps (door-knock + walkthrough + review ask)</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 6 — Supervised Solo</div>
+      <div class="phase-meta">~2–3 days · Solo with TM reviewing every report end-of-day</div>
+      <div class="cat-block"><strong>Solo Operation</strong><br><span class="modules">Full daily workflow solo · TM reviews every report (completeness, photo quality, ranking accuracy, issue ID) · End-of-day feedback · TM samples 1–2 customers (text/call) to verify tone</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 7 — Cleared</div>
+      <div class="phase-meta">End of Week 4 · TM formal sign-off · Spot-check rhythm continues · 6 clearance standards</div>
+      <div class="cat-block"><strong>Clearance Standards</strong><br><span class="modules">Pre-train + classroom complete · Inspection judgment · Report quality · Customer-facing skill (5-star reviews generated) · Independence · Safety (Little Giant)</span></div>
+    </div>
+
+    <div class="section-label">Seasonal Calendar</div>
+    <div class="calendar">
+      <div class="cal-row"><div class="cal-date">Sep 6 – Sep 19</div><div class="cal-event">Remote pre-training (16 modules)</div><div class="cal-phase">Phase 1</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 20–22</div><div class="cal-event">JT Base Classroom (shared cohort with JT/ST/AM/RT)</div><div class="cal-phase">Phase 2</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 23–24</div><div class="cal-event">QP Specialization Classroom (TM-led)</div><div class="cal-phase">Phase 3</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 24 PM</div><div class="cal-event">Safety + ladder cert</div><div class="cal-phase">Phase 4</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 25</div><div class="cal-event">Field day with AM (1 demo + 3–5 QP reps)</div><div class="cal-phase">Phase 5</div></div>
+      <div class="cal-row"><div class="cal-date">Sep 28 – Oct 2</div><div class="cal-event">Supervised solo · Daily TM report review</div><div class="cal-phase">Phase 6</div></div>
+      <div class="cal-row"><div class="cal-date">~Oct 2</div><div class="cal-event">Cleared — TM sign-off</div><div class="cal-phase">Phase 7</div></div>
+      <div class="cal-row phase-peak"><div class="cal-date">Oct 12+</div><div class="cal-event">Active inspection season · Split-day strike workflow · Day-ahead scheduling</div><div class="cal-phase">Active</div></div>
+      <div class="cal-row phase-strike"><div class="cal-date">Late December</div><div class="cal-event">Strike prep (~half day · 6 strike inspection modules)</div><div class="cal-phase">Strike Prep</div></div>
+    </div>
+    <div class="note">In-season mid-season QP hires use compressed onboarding (~1 week — remote modules → abbreviated classroom + safety + field shadow). Cleared QPs use trigger-based retraining.</div>
+  </div>
+</section>
+
+<!-- WA -->
+<section class="position">
+  <div class="position-header">
+    <div>
+      <div class="position-title"><span class="position-code">WA</span>Warehouse Associate</div>
+      <div class="position-tagline">Hands-on from Day 1 · Tony Gomez SME-trained · No JT Base Classroom (warehouse track) · Product, inventory, shipping, light rolling</div>
+      <a class="position-link" href="brite-training-wa-modules.html">View All Modules →</a>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="stat-label">Total</div><div class="stat-value">~2 weeks</div></div>
+      <div class="stat"><div class="stat-label">Modules</div><div class="stat-value">64 + 3 stations</div></div>
+      <div class="stat"><div class="stat-label">Phases</div><div class="stat-value">5</div></div>
+      <div class="stat"><div class="stat-label">Volume</div><div class="stat-value">1 / territory (2+ HQ)</div></div>
+      <div class="stat"><div class="stat-label">Season</div><div class="stat-value">Sep → Apr</div></div>
+    </div>
+  </div>
+  <div class="position-body">
+
+    <div class="section-label">Training Vertical — Full Course List</div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 1 — Orientation + Product Foundation (Day 1)</div>
+      <div class="phase-meta">Full day · Warehouse table/classroom · Tony (Utah) or TM/AM (satellite) · 25 modules · No shelf/truck/heavy work until Phase 2 sign-off</div>
+      <div class="cat-block"><strong>Welcome to Brite Nites</strong> <span class="cat-count">(6 modules)</span><br><span class="modules">Introduction to Brite Nites · What Does Brite Nites Do · Departments · Code of Conduct · What to Wear · Communication &amp; Teamwork</span></div>
+      <div class="cat-block"><strong>Onboarding &amp; Paperwork</strong> <span class="cat-count">(3 modules)</span><br><span class="modules">Employee Onboarding Paperwork · Online Paperwork &amp; Onboarding · Deputy for Hourly Employees</span></div>
+      <div class="cat-block"><strong>Role Introduction</strong> <span class="cat-count">(3 modules · chain of command must land Day 1)</span><br><span class="modules">WA Role Overview · Chain of command (WA → AM → Tony, verbal confirmation gate) · Daily Workflow Overview</span></div>
+      <div class="cat-block"><strong>Product Knowledge</strong> <span class="cat-count">(3 modules)</span><br><span class="modules">Product Knowledge — warehouse walkthrough · Understanding Lights (new vs used, mini types) · Strand connectors &amp; bulb connections</span></div>
+      <div class="cat-block"><strong>Core Process Walkthrough</strong> <span class="cat-count">(4 modules)</span><br><span class="modules">Inventory Pulling &amp; Job Prep · Quick Reference: Daily Priorities · Next-day prep process · Packing list &amp; order verification (two-copy system)</span></div>
+      <div class="cat-block"><strong>Tool Setup</strong> <span class="cat-count">(3 modules · accounts operational before Day 3)</span><br><span class="modules">Brite Now — inventory lookup · Deputy clock in/out · Slack team communication</span></div>
+      <div class="cat-block"><strong>Policies</strong> <span class="cat-count">(3 modules)</span><br><span class="modules">Let's Just Be Good People · Let's Get You Paid · Stay Safe Out There</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 2 — Safety Certification (Day 2 half-day)</div>
+      <div class="phase-meta">Classroom + practical · Tony / AM delivers · Pass/fail observation gates · Forklift cert conditional on territory equipment · 17 modules</div>
+      <div class="cat-block"><strong>Ladder Safety (A-Frame Only)</strong> <span class="cat-count">(4 modules · pass/fail practical)</span><br><span class="modules">Ladder Safety Overview · How to Properly Use a Ladder · A-Frame Ladder (12') · A-Frame ladder practical (observation pass/fail)</span></div>
+      <div class="cat-block"><strong>Shelf Access Discipline</strong> <span class="cat-count">(1 module)</span><br><span class="modules">Shelf access safety briefing (A-Frame only, never lean ladder on shelving)</span></div>
+      <div class="cat-block"><strong>Lifting &amp; Back Injury Prevention</strong> <span class="cat-count">(2 modules · pass/fail practical)</span><br><span class="modules">Preventing Back Injuries · Lifting practical</span></div>
+      <div class="cat-block"><strong>Zip Plug Installation</strong> <span class="cat-count">(1 module · pass/fail practical)</span><br><span class="modules">Zip plug installation hands-on demo</span></div>
+      <div class="cat-block"><strong>Vehicle &amp; Trailer Safety</strong> <span class="cat-count">(5 modules)</span><br><span class="modules">Auto Risk Management · Defensive Driving · Vehicle Check &amp; Maintenance · Truck Organization · Vehicle &amp; trailer safety briefing</span></div>
+      <div class="cat-block"><strong>Incident Reporting</strong> <span class="cat-count">(2 modules)</span><br><span class="modules">Incident Reporting · Workplace Incidents &amp; Accidents Policy</span></div>
+      <div class="cat-block"><strong>Forklift Certification</strong> <span class="cat-count">(2 modules · conditional · only at hubs with forklift)</span><br><span class="modules">Forklift written knowledge test · Forklift practical operation</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 3 — Shadowing (Days 3–5)</div>
+      <div class="phase-meta">3 days · Tony or experienced WA/AM · Watch → take over → handle most of cadence · 16 modules + 2 conditional</div>
+      <div class="cat-block"><strong>Reference Modules — Pulled Up During Shadowing</strong> <span class="cat-count">(10 modules · context-dependent)</span><br><span class="modules">Shipping &amp; Outbound Material · Product Returns &amp; Warehouse Cleanup · Errands &amp; Extra Tasks · Holiday Structures · Shipping Containers (Early Season) · Warehouse Overview · Prepping Jobs for Install · Inventory Management · Hubs &amp; Storage Locations · Seasonal Cycling</span></div>
+      <div class="cat-block"><strong>New Skills Taught During Shadowing</strong> <span class="cat-count">(4 modules · hands-on)</span><br><span class="modules">Southwest Air Cargo process (ride-along first SW Air run) · Light rolling technique (female-end start, factory fold, male-end tuck) · Shrink wrapping pallets · Brite Now live inventory lookup</span></div>
+      <div class="cat-block"><strong>Conditional Modules</strong> <span class="cat-count">(2 modules · territory-dependent)</span><br><span class="modules">Cage management protocols (Utah, DC locked closet) · LTL receiving procedures</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 4 — Supervised Solo (Week 2)</div>
+      <div class="phase-meta">5 days · Independent operation · End-of-day walkthrough is ongoing quality check · 2 modules + 1 Utah-only</div>
+      <div class="cat-block"><strong>Remaining Modules</strong> <span class="cat-count">(2 modules · introduced as situations arise)</span><br><span class="modules">Vehicle setup (ladder rack, decals, GPS device, toll transponder) · Scrap &amp; damaged product handling</span></div>
+      <div class="cat-block"><strong>Conditional: Container Unload (Utah-only)</strong> <span class="cat-count">(1 module · early season only)</span><br><span class="modules">Shipping Containers — China container arrival</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Phase 5 — Cleared (End of Week 2)</div>
+      <div class="phase-meta">Formal sign-off · 3 practical demonstration stations · Tony / TM / AM · Highest-consequence tasks</div>
+      <div class="cat-block"><strong>Practical Demonstration Stations</strong> <span class="cat-count">(3 stations · pass/fail)</span><br><span class="modules">Shelf retrieval (proper A-frame setup, safe climb) · Light rolling (female-end start, factory fold, male-end tuck) · Order pull (correct SKUs, quantities, two-copy system)</span></div>
+      <div class="cat-block"><strong>Clearance Criteria — Tony's Standard</strong><br><span class="modules">Work ethic · Punctuality · Stamina · Independence · Workspace cleanliness · Accuracy · Safety</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Strike Season Addendum (Jan – ~Apr)</div>
+      <div class="phase-meta">Returning WA refresher + late-season hire compressed onboarding · Warehouse pivots outbound → inbound</div>
+      <div class="cat-block"><strong>Strike-Specific Adjustments</strong><br><span class="modules">Returning WAs ~3 days to full speed (paperwork + technique refresher) · Late-season new hires use compressed onboarding (Phases 1+2 collapsed to Day 1) · Inbound flow (material recovery, sorting, scrap separation) · Full inventory count in late strike · Tony remote-confirms clearance via FaceTime warehouse walk for late hires</span></div>
+    </div>
+
+    <div class="section-label">Seasonal Calendar</div>
+    <div class="calendar">
+      <div class="cal-row"><div class="cal-date">Mid-August (Utah)</div><div class="cal-event">Container arrivals begin — Utah WAs hired earlier than other territories</div><div class="cal-phase">Pre-Season</div></div>
+      <div class="cal-row"><div class="cal-date">Early–Mid September</div><div class="cal-event">Satellite territory WAs hired</div><div class="cal-phase">Phase 1</div></div>
+      <div class="cal-row"><div class="cal-date">Day 1</div><div class="cal-event">Orientation + Product Foundation (25 modules)</div><div class="cal-phase">Phase 1</div></div>
+      <div class="cal-row"><div class="cal-date">Day 2 (half-day)</div><div class="cal-event">Safety Certification + practicals + optional forklift cert</div><div class="cal-phase">Phase 2</div></div>
+      <div class="cal-row"><div class="cal-date">Days 3–5</div><div class="cal-event">Shadowing (16 modules + conditionals)</div><div class="cal-phase">Phase 3</div></div>
+      <div class="cal-row"><div class="cal-date">Week 2</div><div class="cal-event">Supervised Solo (5 days independent)</div><div class="cal-phase">Phase 4</div></div>
+      <div class="cal-row"><div class="cal-date">End of Week 2</div><div class="cal-event">Cleared — 3 practical demo stations</div><div class="cal-phase">Phase 5</div></div>
+      <div class="cal-row phase-peak"><div class="cal-date">Oct 12 – Dec 12</div><div class="cal-event">Peak Season — outbound shipping, crew support, next-day prep, light rolling</div><div class="cal-phase">Peak</div></div>
+      <div class="cal-row phase-break"><div class="cal-date">~Dec 12 – Jan 2</div><div class="cal-event">Break (skeleton crew · RT covers service period)</div><div class="cal-phase">Break</div></div>
+      <div class="cal-row phase-strike"><div class="cal-date">Jan – ~Apr</div><div class="cal-event">Strike — inbound flow, material recovery, inventory count, scrap separation</div><div class="cal-phase">Strike</div></div>
+    </div>
+    <div class="note">Tony Gomez is the WA SME — his daily-cadence judgment ultimately calibrates clearance. WA does not participate in counting or audit processes (AM scope). LRs are managed by WA during pre-season + strike.</div>
+  </div>
+</section>
+
+<!-- LR -->
+<section class="position">
+  <div class="position-header contractor">
+    <div>
+      <div class="position-title"><span class="position-code">LR</span>Light Roller <span style="font-size:12px; color:#92400e; font-weight:600;">contractor</span></div>
+      <div class="position-tagline">W-9 contractor · Piece-rate via Bill.com · WA-trained · No formal phases (condensed structure) · As-needed hire</div>
+      <a class="position-link" href="brite-training-lr-modules.html">View All Modules →</a>
+    </div>
+    <div class="position-stats">
+      <div class="stat"><div class="stat-label">Training</div><div class="stat-value">~1 day</div></div>
+      <div class="stat"><div class="stat-label">Full Speed</div><div class="stat-value">3 days</div></div>
+      <div class="stat"><div class="stat-label">Modules</div><div class="stat-value">7</div></div>
+      <div class="stat"><div class="stat-label">Sections</div><div class="stat-value">4</div></div>
+      <div class="stat"><div class="stat-label">Volume</div><div class="stat-value">Variable</div></div>
+    </div>
+  </div>
+  <div class="position-body">
+
+    <div class="section-label">Training Vertical — Full Course List</div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Section 1 — Arrival &amp; Orientation</div>
+      <div class="phase-meta">~30 min · Warehouse · WA leads tour + safety, AM/TM leads paperwork + pay</div>
+      <div class="cat-block"><strong>Contractor Paperwork</strong> <span class="cat-count">(complete before any work)</span><br><span class="modules">W-9 · Contractor agreement (Bill.com signed) · Contact info + emergency contact</span></div>
+      <div class="cat-block"><strong>Safety Briefing</strong> <span class="cat-count">(2 modules · A-frame + back injury only)</span><br><span class="modules">A-Frame Ladder Safety (for reaching high shelves) · Preventing Back Injuries (proper lifting)</span></div>
+      <div class="cat-block"><strong>Warehouse Tour</strong><br><span class="modules">Bag storage area (outside) · Rolling stations · Bundle storage · Break area / restrooms</span></div>
+      <div class="cat-block"><strong>Pay Overview</strong> <span class="cat-count">(piece rate · tied to quality, not raw count)</span><br><span class="modules">Piece rate structure · Quality-tied pay (bundles must pass WA Observation Checklist) · Failing bundles = rework, not billable</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Section 2 — Hands-On Training</div>
+      <div class="phase-meta">~3–4 hours · Warehouse rolling stations · WA demonstrates each step, roller practices with real-time correction · 5 technique modules</div>
+      <div class="cat-block"><strong>The Rolling Cycle</strong> <span class="cat-count">(5 technique modules)</span><br><span class="modules">Context: Our Work · Step 1: Untangle · Step 2: Rolling (folding technique) · Step 3: Tying the Knot · Step 4: Testing the Lights</span></div>
+      <div class="cat-block"><strong>Color Sorting</strong> <span class="cat-count">(during testing)</span><br><span class="modules">Sort bundles by color appearance · Aged lights may shine differently · WA demonstrates aged vs fresh</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Section 3 — Quality Check &amp; Cleared</div>
+      <div class="phase-meta">~30 min · WA observes 3–5 full cycles independently · No formal quiz · WA reports readiness to AM</div>
+      <div class="cat-block"><strong>Quality Criteria</strong> <span class="cat-count">(5 standards)</span><br><span class="modules">Bundle tightness · Knot security · Testing (every bundle plugged in) · Sorting (broken discarded, aged grouped) · Pace (20/hr by EOD)</span></div>
+      <div class="cat-block"><strong>Scope Boundary</strong><br><span class="modules">LRs do NOT participate in counting or audit (WA scope) · LRs roll, tie, test, stack only</span></div>
+    </div>
+
+    <div class="vertical-phase">
+      <div class="phase-name">Section 4 — Returning Roller Path</div>
+      <div class="phase-meta">~30 min total · Abbreviated path for prior-season contractors · WA observes drift, corrects, clears</div>
+      <div class="cat-block"><strong>Returning Path</strong><br><span class="modules">Paperwork check (10m) · Technique refresher (20m, 3–5 cycles observed) · Cleared if technique solid · Half-day refresher if drift significant</span></div>
+    </div>
+
+    <div class="section-label">Speed Expectations</div>
+    <div class="vertical-phase">
+      <div class="cat-block"><strong>Milestones</strong><br><span class="modules">End of Day 1: ~20 strands/hr (normal starting pace) · After 3 days: 35/hr (minimum for continued engagement) · Experienced rollers: 60–70/hr (takes weeks of practice)</span></div>
+    </div>
+
+    <div class="section-label">Seasonal Calendar</div>
+    <div class="calendar">
+      <div class="cal-row"><div class="cal-date">Aug – Sept (Pre-Season)</div><div class="cal-event">LRs hired for warehouse prep before peak (rolling returned lights from prior season)</div><div class="cal-phase">Pre-Season</div></div>
+      <div class="cal-row"><div class="cal-date">Day 1</div><div class="cal-event">Training (4 sections, ~4–6 hrs hands-on)</div><div class="cal-phase">Training</div></div>
+      <div class="cal-row"><div class="cal-date">Day 1 EOD</div><div class="cal-event">Cleared if quality criteria met · billable output begins</div><div class="cal-phase">Cleared</div></div>
+      <div class="cal-row"><div class="cal-date">Day 3</div><div class="cal-event">Target 35/hr pace · TM retention decision if not progressing</div><div class="cal-phase">Full Speed</div></div>
+      <div class="cal-row phase-strike"><div class="cal-date">Jan – Mar (Strike)</div><div class="cal-event">Variable hiring · Strike-recovered lights need to be rolled for next season</div><div class="cal-phase">Strike</div></div>
+    </div>
+    <div class="note">LR is intentionally simple — single-task contractor, no remote pre-training, no JT Base Classroom, no certifications. Quality is assessed through WA direct observation. Light Rollers primarily stay in the warehouse and don't participate in counting/audit.</div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- FRAMEWORK NOTES FOOTER -->
+<!-- ===================================================== -->
+<section class="overview" style="margin-top:32px;">
+  <h2>Framework Notes</h2>
+  <ul style="font-size:13.5px; padding-left:20px; color:#1a1a2e;">
+    <li><strong>JT Base Classroom (Sep 20–22)</strong> is the single shared training block — JT, ST, AM, QP, RT all attend the same 3-day on-site classroom. WA, TM, and LR do not.</li>
+    <li><strong>Customer Communication</strong> is a shared module referenced by JT/ST/AM/TM/QP/RT — kept general; role-specific overlays layer on top (QP inspection checklist, RT repair-visit framing, etc.).</li>
+    <li><strong>Inspector model:</strong> QP only — TM-led classroom, solo in field. Escalation rule: easy → AM/TM direct · harder → repair ticket · exceptions for QP-handleable or far-away.</li>
+    <li><strong>Physical training pattern:</strong> 1 demo + 3–5 reps with correction → field-ready by rep 5. Used in QP/AM field training, RT supervised field, LR independent cycles.</li>
+    <li><strong>Year-round roles:</strong> TM · RT (only role with no seasonal break besides actual holidays) · <strong>Seasonal roles:</strong> JT, ST, WA, QP, AM · <strong>Contractor:</strong> LR</li>
+    <li><strong>"AM is being redefined"</strong> — from head installer to area operations owner. Owner-operator of the warehouse, oversees daily execution. Manages inter-state shipments + airport cargo dispatch.</li>
+    <li><strong>"TM owns the backend"</strong> — TM and AM are peer-level partners (frontend/backend). TM reviews reports not job sites; flags to AM who investigates.</li>
+    <li><strong>Phase 7 (Duty × Training Audit)</strong> kicks off after all 8 verticals are confirmed — seasonal duty mapping vs. training cross-reference.</li>
+    <li><strong>Modular Training Vision (post-Tuesday):</strong> The end state is a module library + role overlay — single inventory of every module with role-consumption chips, instead of track-centric outlines that re-list shared content.</li>
+  </ul>
+</section>
+
+</div>
+</body>
+</html>

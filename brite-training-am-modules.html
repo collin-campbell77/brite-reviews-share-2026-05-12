@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AM Training — Module Outline</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #f5f5f7; color: #1a1a2e; line-height: 1.5; padding: 32px; }
+  header { max-width: 1200px; margin: 0 auto 32px; padding-bottom: 24px; border-bottom: 3px solid #e07832; }
+  h1 { font-size: 30px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #6b7280; font-size: 14px; }
+  .back-link { display: inline-block; margin-top: 10px; color: #e07832; font-size: 13px; text-decoration: none; font-weight: 600; }
+  .back-link:hover { text-decoration: underline; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .summary-bar { background: white; border-radius: 10px; padding: 16px 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; gap: 32px; flex-wrap: wrap; }
+  .summary-stat { font-size: 13px; min-width: 180px; }
+  .summary-stat .label { color: #6b7280; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+  .summary-stat .value { font-weight: 700; color: #1a1a2e; font-size: 18px; }
+  .phase-section { background: white; border-radius: 12px; margin-bottom: 24px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .phase-header { padding: 18px 24px; background: linear-gradient(90deg, #fef0e5 0%, #fff 70%); border-left: 6px solid #e07832; }
+  .phase-header.shared { background: linear-gradient(90deg, #eef2ff 0%, #fff 70%); border-left-color: #6366f1; }
+  .phase-name { font-size: 20px; font-weight: 700; }
+  .phase-name .shared-pill { display: inline-block; background: #e0e7ff; color: #3730a3; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; margin-left: 10px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px; }
+  .phase-meta { font-size: 13px; color: #6b7280; margin-top: 4px; }
+  .phase-body { padding: 20px 24px; }
+  .category { margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid #ececec; }
+  .category:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .category-title { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #e07832; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: baseline; }
+  .category-count { font-size: 11px; color: #6b7280; font-weight: 500; }
+  .module-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 6px 16px; }
+  .module { display: flex; align-items: baseline; font-size: 13px; padding: 4px 0; }
+  .module-num { display: inline-block; min-width: 30px; color: #9ca3af; font-size: 11px; font-weight: 600; }
+  .module-title { color: #1a1a2e; }
+  .module-duration { color: #6b7280; font-size: 11px; margin-left: 6px; }
+  .station { padding: 6px 0; font-size: 13px; display: flex; gap: 10px; align-items: baseline; }
+  .station-num { color: #e07832; font-weight: 700; min-width: 28px; }
+  .station-title { flex: 1; }
+  .note-block { background: #fffbeb; border-left: 3px solid #fbbf24; padding: 10px 14px; border-radius: 4px; font-size: 12px; color: #78350f; margin-top: 10px; }
+  .gate-block { background: #fef2f2; border-left: 3px solid #dc2626; padding: 10px 14px; border-radius: 4px; font-size: 12px; color: #7f1d1d; margin-top: 10px; }
+  .gate-block.warn { background: #fffbeb; border-left-color: #fbbf24; color: #78350f; }
+  .gate-block.pass { background: #ecfdf5; border-left-color: #10b981; color: #065f46; }
+  .gate-block.info { background: #eef2ff; border-left-color: #6366f1; color: #3730a3; }
+  .activity-list { font-size: 13px; }
+  .activity-list li { margin: 4px 0 4px 20px; }
+  .pending-block { background: #eef2ff; border-left: 3px solid #6366f1; padding: 10px 14px; border-radius: 4px; font-size: 12px; color: #3730a3; margin-top: 10px; }
+  .foundation-block { background: #f0f9ff; border-left: 3px solid #0284c7; padding: 12px 16px; border-radius: 4px; font-size: 13px; color: #0c4a6e; margin-bottom: 14px; }
+  .foundation-block strong { color: #075985; }
+  .foundation-block a { color: #0284c7; font-weight: 600; }
+  .new-tag { display: inline-block; background: #ede9fe; color: #5b21b6; font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .path-tabs { display: flex; gap: 12px; margin: 16px 0 4px; font-size: 13px; }
+  .path-pill { padding: 6px 14px; border-radius: 999px; background: #fef0e5; color: #b14a16; font-weight: 600; font-size: 12px; }
+  .path-pill.alt { background: #ede9fe; color: #5b21b6; }
+  .schedule-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  .schedule-table th, .schedule-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #ececec; }
+  .schedule-table th { background: #fef0e5; color: #78350f; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .schedule-table tr:last-child td { border-bottom: none; }
+  .print-btn { position: fixed; top: 20px; right: 20px; padding: 10px 18px; background: #e07832; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  @media print { .print-btn { display: none; } body { background: white; padding: 16px; } .phase-section { page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; } }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Print / PDF</button>
+
+<header>
+  <h1>Area Manager — Module Outline</h1>
+  <div class="sub">~3 wk internal promo / ~4–5 wk external · Area operations owner · Shares JT Base Classroom with JT/ST/QP/RT · TM-trained, Tony-warehouse-trained</div>
+  <a class="back-link" href="brite-training-verticals-review.html">← Back to Position Verticals Review</a>
+</header>
+
+<div class="container">
+
+  <div class="summary-bar">
+    <div class="summary-stat"><div class="label">Phase 1</div><div class="value">~1–2 weeks</div><div>Remote pre-training · Full for external, abbreviated for ST→AM</div></div>
+    <div class="summary-stat"><div class="label">Phase 2</div><div class="value">Day 1</div><div>Warehouse Deep-Dive · Tony or TM-led · WA cadence hands-on</div></div>
+    <div class="summary-stat"><div class="label">Phase 3</div><div class="value">3 days <span style="color:#6366f1;">shared</span></div><div>JT Base Classroom · same content as JT/ST/QP/RT</div></div>
+    <div class="summary-stat"><div class="label">Phase 4</div><div class="value">1 day</div><div>Mgmt Safety Practicals · Ladder + Harness + MEWP + Scenarios</div></div>
+    <div class="summary-stat"><div class="label">Phase 5</div><div class="value">5 days</div><div>Field Immersion Week · Inverted schedule (field AM / office PM)</div></div>
+    <div class="summary-stat"><div class="label">Phase 6</div><div class="value">1–2 weeks</div><div>Supervised Solo · Full AM cadence · TM coaching</div></div>
+    <div class="summary-stat"><div class="label">Phase 7</div><div class="value">Cleared</div><div>Owner-operator of area · TM formal sign-off</div></div>
+    <div class="summary-stat"><div class="label">Strike Pivot</div><div class="value">Jan–Mar</div><div>Logistics-heavy · Material recovery · Inventory reconciliation</div></div>
+  </div>
+
+  <div class="pending-block">
+    <strong>Status:</strong> v1 restructured per <a href="https://linear.app/brite-nites/issue/BC-6290">BC-6290</a> — AM track restructured around JT Base Classroom as shared Phase 3. Two entry paths (internal promo vs external). "AM is being redefined" from head installer who manages to area operations owner. Source: <code>handbook/operations/onboarding/area-manager.md</code> + structural decisions captured in BC-6290 session.
+  </div>
+
+  <!-- PHASE 1 — AM PRE-TRAINING -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 1 — AM Pre-Training (Remote)</div>
+      <div class="phase-meta">~1–2 weeks · Self-paced digital · TM sends materials, tracks completion · Builds the full management knowledge foundation before Day 1</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>"The AM is being redefined":</strong> from head installer who also does some management to area operations manager — the owner-operator of the warehouse who oversees all daily execution in a territory. Pre-training builds the management perspective on tools, warehouse ops, and installation oversight that an AM needs to lead, not just execute.
+      </div>
+
+      <div class="path-tabs">
+        <span class="path-pill">External Hire Path</span>
+        <span class="path-pill alt">Internal Promotion (ST→AM)</span>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Path Comparison <span class="category-count">two entry paths, same competency standard</span></div>
+        <table class="schedule-table">
+          <thead><tr><th></th><th>Internal Promotion (ST→AM)</th><th>External Hire</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Field prerequisite</strong></td><td>Proven — completed ST role in prior season(s)</td><td>Must demonstrate field competency during Phase 5</td></tr>
+            <tr><td><strong>Pre-training scope</strong></td><td>Skip Company Orientation + Standards & Policies. Start at Role Intro.</td><td>Full track below</td></tr>
+            <tr><td><strong>Timeline</strong></td><td>~3 weeks total</td><td>~4–5 weeks total</td></tr>
+            <tr><td><strong>Phase 4 safety</strong></td><td>Abbreviated recertification (spot-check + management safety + fleet)</td><td>Full Phase 4 certification</td></tr>
+            <tr><td><strong>Field competency expected</strong></td><td>Can complete 70–80%, understands 100%</td><td>Must reach 70–80% through Phase 5 immersion</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Company Orientation &amp; HR <span class="category-count">7 modules · external hires only</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title">Welcome to Brite Nites</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title">Introduction to Brite Nites</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">3</span><span class="module-title">What Does Brite Nites Do Exactly?</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title">Where Are We Located?</span><span class="module-duration">5m</span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title">Departments</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">6</span><span class="module-title">Employee Onboarding Paperwork</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">7</span><span class="module-title">Online Paperwork &amp; Onboarding</span><span class="module-duration">20m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Standards &amp; Policies <span class="category-count">9 modules · external hires only</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">8</span><span class="module-title">Code of Conduct</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">9</span><span class="module-title">Communication &amp; Teamwork</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">10</span><span class="module-title">What to Wear</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">11</span><span class="module-title">General Policies &amp; Procedures</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">12</span><span class="module-title">Let's Get You Paid</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">13</span><span class="module-title">Stay Safe Out There</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">14</span><span class="module-title">Let's Just Be Good People</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">15</span><span class="module-title">Business Expense Policy</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">16</span><span class="module-title">Workplace Incidents &amp; Accidents Policy</span><span class="module-duration">10m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Role Introduction <span class="category-count">5 modules · required for both paths</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">17</span><span class="module-title">Area Manager Role Overview</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">18</span><span class="module-title">Territory Manager Overview — the role AM is training toward</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">19</span><span class="module-title">TM Responsibilities</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">20</span><span class="module-title">TM Daily Operations</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">21</span><span class="module-title"><strong>AM Daily Workflow</strong> — hour-by-hour daily cadence (see <code>am-daily-workflow.md</code>)</span><span class="module-duration">20m</span></div>
+        </div>
+        <div class="note-block">
+          <strong>Why TM content first:</strong> The AM is learning to do at the area level what the TM does across the territory. Understanding TM responsibilities provides the leadership model the AM is training toward.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Tool Suite <span class="category-count">11 modules · AM tool access broader than field roles</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">22</span><span class="module-title">Brite Now — inventory + read-only scheduling</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">23</span><span class="module-title">Crew App Overview</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">24</span><span class="module-title">Beginning the Day (Crew App)</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">25</span><span class="module-title">Deputy — workforce management</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">26</span><span class="module-title">Emburse — expense management</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">27</span><span class="module-title">Download Emburse Spend</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">28</span><span class="module-title">GPS Trackit — fleet oversight</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">29</span><span class="module-title">Monday — project management</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">30</span><span class="module-title">Slack — team communication</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">31</span><span class="module-title">Gmail Setup &amp; Overview</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">32</span><span class="module-title">Google Calendar</span><span class="module-duration">10m</span></div>
+        </div>
+        <div class="note-block">
+          <strong>Broader access than field roles:</strong> AMs use BriteNow, Monday, Emburse, GPS Trackit, and Gmail/Calendar. Field roles only use Crew App + Deputy. BriteNow access is evolving — currently read-only, target state (BriteBase) gives full scheduling/job mgmt/reporting.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Warehouse Operations Overview <span class="category-count">7 modules · prep for Phase 2 hands-on</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">33</span><span class="module-title">Warehouse Overview</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">34</span><span class="module-title">Inventory Management</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">35</span><span class="module-title">Prepping Jobs for Install</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">36</span><span class="module-title">Hubs &amp; Storage Locations</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">37</span><span class="module-title">Seasonal Cycling</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">38</span><span class="module-title"><strong>Shipping Containers (Inbound Inter-state)</strong> — existing WA module (<code>shipping-containers.md</code>). AM lens: managing receipt, container scheduling, unload coordination, Utah → satellite LTL flow.</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">39</span><span class="module-title"><strong>Shipping &amp; Outbound Material (LTL + Southwest Cargo)</strong> — existing WA module (<code>shipping-outbound-material.md</code>). AM lens: when to ship LTL vs SWA, airport routing, destination airport accuracy (#1 costly WA mistake), dispatch-a-WA-vs-go-yourself decision.</span><span class="module-duration">20m</span></div>
+        </div>
+        <div class="note-block">
+          <strong>Cross-territory logistics ownership:</strong> Inter-state shipments and airport runs are an AM warehouse responsibility — separate from the WA's daily cadence. The AM coordinates with Tony (Utah HQ) on inbound, with TM on schedule, and decides whether to run airport pickups themselves or dispatch a WA. Hands-on practice in Phase 2.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Product Knowledge <span class="category-count">3 modules · overview only, hands-on in Phase 2</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">40</span><span class="module-title">Products Overview</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">41</span><span class="module-title">Product Introduction</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">42</span><span class="module-title">LED vs Incandescent</span><span class="module-duration">10m</span></div>
+        </div>
+        <div class="note-block">
+          <strong>BC-2766 pending:</strong> A reusable Product Identification &amp; Warehouse Location module is planned but not yet authored. Until then, this gap is filled by Phase 2 hands-on walkthrough.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Installation Overview <span class="category-count">6 modules · reference, not execution depth</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">43</span><span class="module-title">How to Install Christmas Lights</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">44</span><span class="module-title">Running Power</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">45</span><span class="module-title">Roofline Materials</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">46</span><span class="module-title">Tree Wrapping</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">47</span><span class="module-title">Wiring Practices Overview</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">48</span><span class="module-title">Strike &amp; Takedown Overview</span><span class="module-duration">10m</span></div>
+        </div>
+        <div class="note-block">
+          <strong>Depth note:</strong> AM reads these to understand what crews do. Real install-technique depth comes in Phase 3 (JT Base Classroom) where the AM sits in with the JT/ST cohort.
+        </div>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 1 Gate:</strong> All assigned modules complete (full for external, abbreviated for internal promo) · paperwork submitted · AM can articulate what the company does, how territories operate, what tools they'll use, what the warehouse does, AM role hour-by-hour · TM confirms pre-training and schedules Day 1. See <a href="#">Phase 1: Management Knowledge Verification</a> for assessment.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 2 — WAREHOUSE DEEP-DIVE -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 2 — Warehouse Deep-Dive (Day 1 on-site)</div>
+      <div class="phase-meta">Full day · Warehouse (AM's home base) · Tony (Utah) or TM (satellite) · Hands-on with the person who runs the warehouse · AM does each task alongside the trainer</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>Why the AM learns the warehouse first:</strong> The warehouse is the operational core, and the AM must be able to manage it, troubleshoot it, train WAs, and fill in when needed. By end of Day 1, the AM should be able to run the warehouse without help. This is intentional and non-negotiable.
+      </div>
+
+      <div class="category">
+        <div class="category-title">WA Daily Cadence Walkthrough <span class="category-count">3 hours · hands-on, not observation</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title">WA Learning Track Review — full track structure understood</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title"><strong>WA daily cadence walkthrough</strong> — morning crew support → next-day prep → shipping → cleanup. AM does each task with Tony.</span><span class="module-duration">2h</span></div>
+          <div class="module"><span class="module-num">3</span><span class="module-title">Warehouse Layout Standards walkthrough</span><span class="module-duration">20m</span></div>
+        </div>
+        <div class="note-block">
+          <strong>By end of this block AM understands:</strong> Morning crew support (7–8 AM rush) · next-day job prep (schedule → pull → section → Tony checks) · shipping &amp; outbound (packing lists, two-copy, SW Air, LTL) · <strong>inbound from other territories</strong> · inventory organization · cleanup standards · equipment (A-frame ladders, forklift Utah, dollies, pallet jack).
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Warehouse Sizing Context <span class="category-count">3 tiers · context for cross-territory adaptation</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Tier</th><th>Example</th><th>What It Looks Like</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Large</strong></td><td>Utah</td><td>Dual warehouse space, full inventory, multiple crew staging, forklift, cage for high-value items</td></tr>
+            <tr><td><strong>Standard</strong></td><td>Arizona</td><td>Dedicated single warehouse, standard inventory and staging, no forklift</td></tr>
+            <tr><td><strong>Minimal</strong></td><td>Small/new markets</td><td>Storage unit(s), limited inventory, simplified staging — WA role may not exist separately</td></tr>
+          </tbody>
+        </table>
+        <div class="note-block">
+          <strong>BC-2765 pending:</strong> Formal warehouse size categories doc awaiting stakeholder sessions. Current 3-tier model is the working framework.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Product Identification <span class="category-count">2 modules · hands-on warehouse walk</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">4</span><span class="module-title">Physical product walkthrough — every product type by name and location</span><span class="module-duration">45m</span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title">New vs used product identification — condition assessment</span><span class="module-duration">15m</span></div>
+        </div>
+        <div class="note-block">
+          <strong>Key categories AM must recognize:</strong> Roofline + icicle strands · C9 bulbs/sockets · connection types (3-prong, 2-prong, professional) · garland, wreaths, bows · structures (2-person handling) · stakes · zip plugs (safety-critical).
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Cross-Territory Logistics (Hands-On) <span class="category-count">2 reps · live if shipment/pickup timing allows, otherwise simulated</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">6</span><span class="module-title"><strong>Inbound shipment intake</strong> — references <code>shipping-containers.md</code>. If a real container/LTL inbound is in transit during Day 1, AM does live intake with Tony. Otherwise walk through most recent intake's paperwork + reconciliation.</span><span class="module-duration">45m</span></div>
+          <div class="module"><span class="module-num">7</span><span class="module-title"><strong>SWA airport pickup</strong> — references <code>shipping-outbound-material.md</code> §B (Southwest Cargo). If an airport pickup is on the schedule, AM does it (with WA or Tony along for first run). Covers airport routing, cargo desk process, paperwork, transport back, and the dispatch-a-WA-vs-go-yourself decision.</span><span class="module-duration">1h</span></div>
+        </div>
+        <div class="note-block">
+          <strong>Why hands-on matters here:</strong> The shipping content lives in the WA training, but inter-state coordination and airport dispatch are AM-managed. AM needs to have done the airport run at least once so they can train WAs and make the dispatch call confidently. If no live shipment/pickup happens in the first week, schedule a simulated run within Phase 5 (Field Immersion).
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Systems Live Setup <span class="category-count">4 modules · all operational by end of Day 1</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">8</span><span class="module-title">BriteNow — live account setup and navigation</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">9</span><span class="module-title">Crew App — setup and daily workflow</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">10</span><span class="module-title">Deputy, Monday, Emburse, GPS Trackit — accounts verified</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">11</span><span class="module-title">Gmail, Calendar, Slack — workspace + channels</span><span class="module-duration">15m</span></div>
+        </div>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 2 Gate:</strong> WA daily cadence completed hands-on · product identification walkthrough complete · warehouse sizing context reviewed · cross-territory logistics walked through (live or simulated) · all systems operational · Tony (or TM) confirms readiness for shared classroom. AM has not been in the field yet — that starts after Phase 4 safety practicals.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 3 — JT BASE CLASSROOM (SHARED) -->
+  <section class="phase-section">
+    <div class="phase-header shared">
+      <div class="phase-name">Phase 3 — JT Base Classroom <span class="shared-pill">Shared</span></div>
+      <div class="phase-meta">3 days · On-site · Shared with JT/ST/QP/RT cohort · For AM, this is the install-technique foundation — they'll later co-host this classroom for crews</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>Shared classroom block:</strong> The single piece common to multiple role tracks. AMs sit alongside JTs/STs/QPs/RTs through the same 3-day classroom. AM lens: learning what crews learn so the AM can later teach it, evaluate it, and fill gaps in the field. AMs and STs together form the eventual "trainer bench" — AMs co-host this classroom in future seasons.
+        <br><br>
+        <strong>Full module list:</strong> <a href="brite-training-jt-modules.html#phase-2">View JT Base Classroom Modules →</a>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 1 — Job Flow + Apps <span class="category-count">15 modules · group classroom + hands-on</span></div>
+        <ul class="activity-list">
+          <li><strong>Game Plan walkthrough</strong> — full install job flow start to finish, the order operations happen on a real site</li>
+          <li><strong>Apps walkthrough</strong> — Crew App + BriteNow hands-on with real devices</li>
+          <li><strong>AM lens:</strong> understand the workflow well enough to coordinate it from the warehouse / office, identify when something's off, and fill gaps in the field</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 2 — Install Technique + Wiring + Product <span class="category-count">~34 modules · classroom + per-task quizzes</span></div>
+        <ul class="activity-list">
+          <li><strong>Install technique detail</strong> — every Basic Skills module (24) taught in person with learning-confirmation quizzes</li>
+          <li><strong>Wiring practices</strong> — 5 modules: routing, electrical, GFI, overload</li>
+          <li><strong>Product detail</strong> — 5 modules on lights, strands, connectors</li>
+          <li><strong>AM lens:</strong> understands 100% of technique so they can coach crews, validate quality, and execute 70–80% when needed. AMs take the same quizzes as JTs.</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 3 — Full Safety Classroom <span class="category-count">~27 modules · classroom + safety test</span></div>
+        <ul class="activity-list">
+          <li><strong>Ladder safety</strong> — 7 modules (A-Frame, Extension, Orchard, Little Giant, fall prevention)</li>
+          <li><strong>Roof &amp; fall protection</strong> — 2 modules</li>
+          <li><strong>Vehicle safety</strong> — 4 modules</li>
+          <li><strong>Lift safety</strong> — 11 modules including MEWP overview (AM goes through full MEWP — unlike QP, AMs use lifts in the field)</li>
+          <li><strong>Incident response</strong> — 3 modules (AM lens: also as the reporter for crews under their supervision)</li>
+          <li><strong>AM lens:</strong> identical safety expectation as installers — AMs are on jobsites, in lifts, on ladders, and driving. Additional management lens: they are responsible for the safety of others.</li>
+        </ul>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 3 Gate:</strong> Day 2 per-task quizzes passed · Day 3 safety test passed at 100% · attendance + participation confirmed · AM proceeds to Phase 4 practicals the next day.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 4 — MANAGEMENT SAFETY PRACTICALS -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 4 — Management Safety Practicals &amp; Certifications (~1 day)</div>
+      <div class="phase-meta">Warehouse + yard · TM observes · Practical certifications on every safety-relevant task before field immersion · No exceptions</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="gate-block">
+        <strong>COMPLIANCE GATE — No field work before practical sign-off.</strong> No AM enters a job site, climbs a ladder outside the warehouse, operates a lift, or works at height until practicals are passed and signed off by TM. Legal and insurance requirement.
+      </div>
+
+      <div class="category">
+        <div class="category-title">Practical Stations <span class="category-count">5 stations · observation pass/fail</span></div>
+        <div class="station"><span class="station-num">1</span><div class="station-title"><strong>Ladder practicals (all types)</strong> — setup, climb, and work on A-Frame (12'), Extension (32'), and Orchard. Pass/fail each.</div></div>
+        <div class="station"><span class="station-num">2</span><div class="station-title"><strong>Harness fitting + fall arrest</strong> — proper fit, anchor point identification, fall arrest demo. Pass/fail.</div></div>
+        <div class="station"><span class="station-num">3</span><div class="station-title"><strong>MEWP certification practical</strong> — operation, positioning, emergency descent. Pass/fail certification.</div></div>
+        <div class="station"><span class="station-num">4</span><div class="station-title"><strong>Lifting technique</strong> — demonstrate proper lifting form. Pass/fail.</div></div>
+        <div class="station"><span class="station-num">5</span><div class="station-title"><strong>Vehicle &amp; fleet safety review</strong> — vehicle check, defensive driving demonstrated, incident reporting understood as both worker and manager.</div></div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Management Safety Scenarios <span class="new-tag">management layer</span> <span class="category-count">scored /9, minimum 6 to pass</span></div>
+        <ul class="activity-list">
+          <li>Crew member refuses to use harness on a roof job — how do you respond?</li>
+          <li>WA has been lifting incorrectly all week — when and how do you intervene?</li>
+          <li>JT shows up to a job hungover — what do you do?</li>
+          <li>Lift operator (cleared) you supervise is making questionable judgment calls — how do you handle it?</li>
+          <li>Crew vehicle has visible damage — what's the protocol?</li>
+          <li>Crew member reports a minor injury but wants to keep working — what's the call?</li>
+          <li>You witness an incident on a job site — what's your sequence of actions?</li>
+          <li>A crew leader (ST) tells you a particular safety practice "isn't needed for this job" — how do you respond?</li>
+          <li>Customer complains about crew climbing on roof — how do you balance customer concern with safety reality?</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Internal Promotion Path <span class="category-count">abbreviated recertification</span></div>
+        <ul class="activity-list">
+          <li><strong>Practical spot-check</strong> — TM observes one ladder type (randomly selected), harness fitting, and MEWP operation. Pass = recertified on all practical stations.</li>
+          <li><strong>Full Management Safety Assessment</strong> — required regardless of entry path. This is the new competency being assessed.</li>
+          <li><strong>Vehicle &amp; Fleet Safety</strong> — required regardless of entry path. ST experience doesn't include fleet responsibility.</li>
+          <li>If spot-check reveals degraded skills (rusty technique after off-season), TM may require additional station recertification at their discretion.</li>
+        </ul>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 4 Gate:</strong> All practical stations passed · Management Safety Scenarios scored ≥6/9 · TM signs off · AM cleared for Field Immersion. If not passing: immediate remediation and retesting. Safety is non-negotiable for a role responsible for the safety of others. See <a href="#">Phase 2: Safety Certification &amp; Management Safety Assessment</a> for full form.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 5 — FIELD IMMERSION WEEK -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 5 — Field Immersion Week (5 days)</div>
+      <div class="phase-meta">Field (mornings) + Warehouse/Office (afternoons) · ST crews deliver field experience + TM coaches management · Inverted schedule</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>Inverted schedule (intentional during immersion):</strong> Normal peak season has the AM in office/warehouse 6–10 AM then field. During immersion, the AM starts in the field to maximize crew exposure. AMs are hired before STs in the seasonal cycle — once STs are cleared, the AM shadows each ST's crew during their first working week. AM meets every crew leader 1:1 before becoming "the boss" — a rapport opportunity lost if skipped.
+      </div>
+
+      <div class="category">
+        <div class="category-title">Daily Structure <span class="category-count">5 days · 6 AM field / 10 AM office</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Time</th><th>Activity</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><strong>6:00–10:00 AM</strong></td><td>Shadow a different ST crew</td><td>Build field competency + crew relationships. Hands-on, not just observing.</td></tr>
+            <tr><td><strong>10:00 AM+</strong></td><td>Office/warehouse catch-up</td><td>Practice management side — systems, reporting, warehouse checks. May step away from crew early for management calls.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Daily Progression <span class="category-count">5 days · varied crew types</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Day</th><th>Crew</th><th>What's Being Built</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Day 1</strong></td><td>ST Crew A (Residential)</td><td>See a full residential install from setup to cleanup. Learn the crew's rhythm.</td></tr>
+            <tr><td><strong>Day 2</strong></td><td>ST Crew B (Commercial)</td><td>Different job type, different crew dynamics. Compare approaches.</td></tr>
+            <tr><td><strong>Day 3</strong></td><td>ST Crew C (Mixed)</td><td>AM contributing, not just watching. Bidirectional learning starts.</td></tr>
+            <tr><td><strong>Day 4</strong></td><td>ST Crew D (or revisit)</td><td>AM teaches app/systems to crew. STs share field techniques. Two-way.</td></tr>
+            <tr><td><strong>Day 5</strong></td><td>Float — whoever needs support</td><td>AM practices their real role: identify where help is needed and go there.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="category">
+        <div class="category-title">What the AM Does on Each Crew</div>
+        <ul class="activity-list">
+          <li><strong>Works with the crew</strong> — carries material, helps with installs, handles ground support. Not observing from the truck.</li>
+          <li><strong>Asks questions</strong> — how does this crew handle routing? Client interactions? Warehouse needs?</li>
+          <li><strong>Teaches what they know</strong> — app navigation, systems, reporting. AM comes from warehouse/management; ST comes from field. Exchange is bidirectional.</li>
+          <li><strong>May step away</strong> — management calls, warehouse issues, TM check-ins take priority. AM practices splitting attention.</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">What's Being Evaluated <span class="category-count">5 competencies · TM observes</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Competency</th><th>What to Watch For</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Field technique comprehension</strong></td><td>Can AM describe what crew is doing and why? Identify when something's wrong? Target: 100% understanding, 70–80% execution.</td></tr>
+            <tr><td><strong>Management instinct</strong></td><td>Does AM shift into coordination mode, or stay heads-down on install tasks? Should be managing, not competing.</td></tr>
+            <tr><td><strong>Crew rapport</strong></td><td>Are crews comfortable with AM? Respect for field expertise + management credibility?</td></tr>
+            <tr><td><strong>Time management</strong></td><td>Can AM split field/office without dropping either? Afternoon catch-up should be productive, not recovery.</td></tr>
+            <tr><td><strong>Problem identification</strong></td><td>Does AM notice quality issues, safety concerns, process gaps? This is the core AM value-add.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Afternoon Office/Warehouse Block (10 AM+) <span class="category-count">management half of the role</span></div>
+        <ul class="activity-list">
+          <li>Review morning crew reports in BriteNow / Crew App</li>
+          <li>Check warehouse status — next-day prep on track? WA issues?</li>
+          <li>Process management tasks — scheduling, reporting, vendor coordination</li>
+          <li>Debrief with TM — what did you see this morning? What needs attention?</li>
+          <li>Prepare for tomorrow — which crew to shadow, what to focus on</li>
+        </ul>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 5 Gate:</strong> Shadowed 3+ different ST crews · worked hands-on with each · can describe full install process for residential + commercial · demonstrated field/office split · built rapport with crew leaders · identified 1+ quality/safety/process improvement · TM confirms readiness for Supervised Solo. If not progressing: extended immersion up to 2 additional days; if still not, TM assesses fit. See <a href="#">Phase 3: Field Immersion Evaluation</a> for rubric.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 6 — SUPERVISED SOLO -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 6 — Supervised Solo (Weeks 2–3)</div>
+      <div class="phase-meta">Territory — warehouse, field, office · TM check-ins shift from training to coaching · "This is the guy or this isn't the guy" reveals through ability, not test</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>Prove-it phase:</strong> The AM operates independently through the full daily cadence. TM shifts from training to coaching — check-ins become strategic alignment, not task direction. The AM's ability to manage people, coordinate logistics, and train others is what reveals fit — not a hard pass/fail gate.
+      </div>
+
+      <div class="category">
+        <div class="category-title">AM Daily Cadence (Target State) <span class="category-count">hour-by-hour</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Time</th><th>Activity</th><th>What AM Does</th></tr></thead>
+          <tbody>
+            <tr><td><strong>6:00–11:00 AM</strong></td><td>Warehouse + office management</td><td>Drive truck prep with techs, direct WAs. Schedule review/edits. Inspect WA job pulls from prior night. Manage installer arrival — ST day review, support WA load-out, field questions, possible training. Direct WAs on tasks/shipments after crews depart. Slot in computer tasks + TM/CST coordination.</td></tr>
+            <tr><td><strong>11:00 AM – 1:00 PM</strong></td><td>Lunch (movable)</td><td>Eat — adjust window around demands. 12-hour cadence does not run without fuel.</td></tr>
+            <tr><td><strong>1:00 – 5:00 PM</strong></td><td>Field oversight</td><td>Drive between job sites. Crew shadowing, training in context, team building, supplies support, quality checks + repairs, VIP job management. 3–5 jobsite touches typically.</td></tr>
+            <tr><td><strong>5:00 – 6:00 PM</strong></td><td>End-of-day closeout</td><td>Receive crews. Quick crew debriefs. Special management. TM/CST coordination. Set tomorrow's schedule. Potential interviews if hiring active.</td></tr>
+          </tbody>
+        </table>
+        <div class="note-block">
+          <strong>Cadence is not fixed:</strong> Some days heavy warehouse (receiving special items, upper-mgmt coordination, crew issues). Some days heavy field (multiple escalations, QC sweep before big install). AM reads the day and allocates accordingly. See <code>am-daily-workflow.md</code> for full breakdown.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Expanding Responsibilities <span class="category-count">3 stages · TM check-in cadence decreases</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Stage</th><th>New Responsibilities</th><th>Signal They're Ready</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Early (Week 2)</strong></td><td>Morning warehouse coordination, basic crew dispatch, daily reporting</td><td>Warehouse runs smoothly. Crews leave on time with correct materials.</td></tr>
+            <tr><td><strong>Mid (Week 2)</strong></td><td>Full crew oversight, job scheduling, customer escalation handling</td><td>Handles mid-day field issues without calling TM. Good judgment calls.</td></tr>
+            <tr><td><strong>Late (Week 2–3)</strong></td><td>Training new hires (WAs, JTs), strike prep, full reporting</td><td>TM check-ins become updates, not guidance. AM proactively identifies issues.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Key Management Competencies <span class="category-count">6 competencies · the ultimate test = training ability</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Competency</th><th>How It's Demonstrated</th></tr></thead>
+          <tbody>
+            <tr><td><strong>People management</strong></td><td>Morning crew dispatch smooth. AM coaches underperformers constructively. Escalates personnel issues appropriately.</td></tr>
+            <tr><td><strong>Warehouse oversight</strong></td><td>WAs productive, space organized. AM fills gaps when WA is absent or overwhelmed.</td></tr>
+            <tr><td><strong>Field quality control</strong></td><td>AM inspects jobs and catches issues before clients do. Actionable feedback to crews.</td></tr>
+            <tr><td><strong>Client escalation handling</strong></td><td>Resolves on-site issues professionally. Knows handle vs. escalate boundary.</td></tr>
+            <tr><td><strong>Reporting &amp; communication</strong></td><td>TM gets accurate, timely reports. Upper management coordination happens without prompting.</td></tr>
+            <tr><td><strong>Training ability</strong></td><td><em>Ultimate management test.</em> Can AM onboard a new WA or JT following established tracks?</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="category">
+        <div class="category-title">TM Check-In Cadence</div>
+        <table class="schedule-table">
+          <thead><tr><th>Week</th><th>Check-In Style</th><th>What TM Looks For</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Week 2 early</strong></td><td>Daily AM + PM</td><td>Is AM getting crews out on time? Warehouse running?</td></tr>
+            <tr><td><strong>Week 2 mid</strong></td><td>Daily PM only</td><td>Is AM handling mid-day issues independently?</td></tr>
+            <tr><td><strong>Week 2 late</strong></td><td>Every other day</td><td>Is AM identifying issues proactively or just reacting?</td></tr>
+            <tr><td><strong>Week 3</strong></td><td>2–3x per week</td><td>Is AM running the area like it's theirs? TM stepping back comfortably.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 6 Gate:</strong> 1–2 weeks operating area independently · morning warehouse coordination smooth · field oversight producing quality improvements · handled ≥1 client escalation independently · trained or onboarded ≥1 team member · proactive reporting · TM check-ins decreasing · TM confirms readiness. <strong>Not a hard fail gate</strong> — "this is the guy or this isn't" reveals through management ability. See <a href="#">Phase 4: Territory Management Evaluation</a>.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 7 — CLEARED -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 7 — Cleared (End of Week 3 internal / Week 4–5 external)</div>
+      <div class="phase-meta">Formal TM sign-off · AM is owner-operator of their area through the season · Reports to TM for strategic alignment, operates independently day-to-day</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">Clearance Criteria <span class="category-count">8 standards</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Criteria</th><th>Standard</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Area operations</strong></td><td>Runs full daily cadence independently — warehouse, field, office.</td></tr>
+            <tr><td><strong>People management</strong></td><td>Coordinates WAs, dispatches crews, coaches STs, handles personnel issues within scope. Escalates appropriately.</td></tr>
+            <tr><td><strong>Warehouse competency</strong></td><td>Can train a new WA. Fills gaps when WA absent. Warehouse organized, next-day prep accurate. Manages inter-state inbound + airport cargo pickups independently (or dispatches a WA when appropriate).</td></tr>
+            <tr><td><strong>Field competency</strong></td><td>Understands 100% of field work. Completes 70–80%. Identifies quality issues + provides actionable feedback.</td></tr>
+            <tr><td><strong>Client handling</strong></td><td>Resolves on-site issues professionally. Knows handle/escalate boundary.</td></tr>
+            <tr><td><strong>Reporting &amp; comms</strong></td><td>TM + upper management get accurate, timely info. Uses all systems correctly.</td></tr>
+            <tr><td><strong>Safety leadership</strong></td><td>Models safety behavior. Corrects unsafe practices immediately. Knows incident reporting as both worker and manager.</td></tr>
+            <tr><td><strong>Strike readiness</strong></td><td>Understands install → strike transition: scheduling, recovery, reconciliation.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Progression Paths</div>
+        <table class="schedule-table">
+          <thead><tr><th>Path</th><th>What It Looks Like</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Territory Manager</strong></td><td>Multi-area oversight, remote team management, hiring, strategic planning. Primary vertical growth path.</td></tr>
+            <tr><td><strong>Regional Operations</strong></td><td>Multiple territories, cross-territory coordination, seasonal planning. Long-term leadership track.</td></tr>
+            <tr><td><strong>Return as AM</strong></td><td>Most common. Returning AMs ramp in ~3–5 days (recert + area re-familiarization).</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="gate-block pass">
+        <strong>CLEARED — Area Manager:</strong> All Phases 1–6 complete · Safety practicals + Management Safety Scenarios on file · Field Immersion Week complete (3+ crews shadowed) · Supervised Solo complete · Warehouse competency demonstrated · Client escalations handled independently · All systems operational · TM formally signs off on full area operations competency. The AM is now the owner-operator of their area through the season. See <a href="#">Phase 5: AM Clearance Rubric</a>.
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIKE SEASON -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Strike Season Pivot (Jan–Mar)</div>
+      <div class="phase-meta">Field-heavy oversight → logistics-heavy coordination · Urgency drops, inventory accuracy peaks · Warehouse outbound → inbound</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">Peak vs Strike Comparison</div>
+        <table class="schedule-table">
+          <thead><tr><th>Aspect</th><th>Peak (Oct–Dec)</th><th>Strike (Jan–Mar)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Morning focus</strong></td><td>Crew dispatch, warehouse coordination, material pulls</td><td>Strike crew coordination, takedown scheduling</td></tr>
+            <tr><td><strong>Field work</strong></td><td>Job inspection, quality checks, client escalations</td><td>Takedown oversight, material recovery verification</td></tr>
+            <tr><td><strong>Warehouse</strong></td><td>Outbound — product goes to crews</td><td>Inbound — product comes back from completed jobs</td></tr>
+            <tr><td><strong>People management</strong></td><td>STs, WAs, performance issues</td><td>Strike crews (often smaller, sometimes different)</td></tr>
+            <tr><td><strong>Key challenge</strong></td><td>Speed + quality under client pressure</td><td>Inventory accuracy + material condition assessment</td></tr>
+            <tr><td><strong>Reporting</strong></td><td>Daily job completion, crew performance</td><td>Inventory reconciliation, damage reports, close-out</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="category">
+        <div class="category-title">AM Strike Responsibilities</div>
+        <ul class="activity-list">
+          <li><strong>Coordinate takedown scheduling</strong> with TM — which properties, in what order, when</li>
+          <li><strong>Oversee material recovery</strong> — returned material sorted, rolled, stored correctly</li>
+          <li><strong>Inventory reconciliation</strong> — what went out vs. what came back, damage assessment</li>
+          <li><strong>Manage strike crews</strong> — may differ from install crews; some seasonal employees have left</li>
+          <li><strong>Warehouse transition</strong> — outbound staging → inbound receiving and storage</li>
+          <li><strong>End-of-season reporting</strong> — final inventory counts, equipment condition, territory close-out</li>
+        </ul>
+        <div class="note-block">
+          <strong>Why warehouse competency pays off in strike:</strong> AM's Phase 2 warehouse training becomes critical — must direct material recovery, verify product condition, manage transition without relying on a WA who may have left for off-season.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN QUESTIONS -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Open Questions for Tuesday Walk-Through</div>
+      <div class="phase-meta">v1 raised these — answer during Jaime + Holden review, then bake into v2</div>
+    </div>
+    <div class="phase-body">
+      <ul class="activity-list">
+        <li><strong>AM-JT classroom timing alignment:</strong> Current handbook has AM hired mid-August and cleared by early September. JT Base Classroom is Sep 20–22. If AM <em>attends</em> the shared classroom with the JT cohort, AM clearance shifts to early October — but then who trains the JT cohort in late September? Three interpretations to resolve:
+          <br>(a) AM consumes shared <em>content</em> in their own August timeline with TM (curriculum shared, classroom session not).
+          <br>(b) AM training pushed later so they sit alongside JT cohort in September; AM cleared in October.
+          <br>(c) AM attends twice — once as student in August (TM-led), once as co-host with JT cohort in September.</li>
+        <li><strong>QP/repair scope under AM:</strong> Per handbook, Jaime + Rainer haven't decided whether QP and repair fall under AM role. Track currently excludes — confirm scope for Tuesday.</li>
+        <li><strong>Phase 6 cadence — strike-relevant:</strong> Supervised Solo runs Weeks 2–3. AM is then expected to train STs/WAs end of September. Tight. Confirm 2-week solo is sufficient or extend.</li>
+        <li><strong>Management Safety Scenarios:</strong> 9 scenarios drafted from common patterns. Confirm scenario set with Jaime (who owns AM role definition) before Tuesday.</li>
+        <li><strong>Internal promo Phase 1 abbreviated:</strong> Skip Company Orientation + Standards. Confirm — or do internal promos still get a refresher (since some content like Business Expense Policy may have changed)?</li>
+        <li><strong>BC-2765 (warehouse size categories) + BC-2766 (product ID module):</strong> Both still pending. Track has TODO markers; confirm authoring priority for season.</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

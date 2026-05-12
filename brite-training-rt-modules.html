@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RT Training — Module Outline</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #f5f5f7; color: #1a1a2e; line-height: 1.5; padding: 32px; }
+  header { max-width: 1200px; margin: 0 auto 32px; padding-bottom: 24px; border-bottom: 3px solid #e07832; }
+  h1 { font-size: 30px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #6b7280; font-size: 14px; }
+  .back-link { display: inline-block; margin-top: 10px; color: #e07832; font-size: 13px; text-decoration: none; font-weight: 600; }
+  .back-link:hover { text-decoration: underline; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .summary-bar { background: white; border-radius: 10px; padding: 16px 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; gap: 32px; flex-wrap: wrap; }
+  .summary-stat { font-size: 13px; min-width: 180px; }
+  .summary-stat .label { color: #6b7280; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+  .summary-stat .value { font-weight: 700; color: #1a1a2e; font-size: 18px; }
+  .phase-section { background: white; border-radius: 12px; margin-bottom: 24px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .phase-header { padding: 18px 24px; background: linear-gradient(90deg, #fef0e5 0%, #fff 70%); border-left: 6px solid #e07832; }
+  .phase-header.shared { background: linear-gradient(90deg, #eef2ff 0%, #fff 70%); border-left-color: #6366f1; }
+  .phase-name { font-size: 20px; font-weight: 700; }
+  .phase-name .shared-pill { display: inline-block; background: #e0e7ff; color: #3730a3; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; margin-left: 10px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px; }
+  .phase-meta { font-size: 13px; color: #6b7280; margin-top: 4px; }
+  .phase-body { padding: 20px 24px; }
+  .category { margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid #ececec; }
+  .category:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .category-title { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #e07832; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: baseline; }
+  .category-count { font-size: 11px; color: #6b7280; font-weight: 500; }
+  .module-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 6px 16px; }
+  .module { display: flex; align-items: baseline; font-size: 13px; padding: 4px 0; }
+  .module-num { display: inline-block; min-width: 30px; color: #9ca3af; font-size: 11px; font-weight: 600; }
+  .module-title { color: #1a1a2e; }
+  .module-duration { color: #6b7280; font-size: 11px; margin-left: 6px; }
+  .station { padding: 6px 0; font-size: 13px; display: flex; gap: 10px; align-items: baseline; }
+  .station-num { color: #e07832; font-weight: 700; min-width: 28px; }
+  .station-title { flex: 1; }
+  .note-block { background: #fffbeb; border-left: 3px solid #fbbf24; padding: 10px 14px; border-radius: 4px; font-size: 12px; color: #78350f; margin-top: 10px; }
+  .gate-block { background: #fef2f2; border-left: 3px solid #dc2626; padding: 10px 14px; border-radius: 4px; font-size: 12px; color: #7f1d1d; margin-top: 10px; }
+  .gate-block.warn { background: #fffbeb; border-left-color: #fbbf24; color: #78350f; }
+  .gate-block.pass { background: #ecfdf5; border-left-color: #10b981; color: #065f46; }
+  .gate-block.info { background: #eef2ff; border-left-color: #6366f1; color: #3730a3; }
+  .activity-list { font-size: 13px; }
+  .activity-list li { margin: 4px 0 4px 20px; }
+  .pending-block { background: #eef2ff; border-left: 3px solid #6366f1; padding: 10px 14px; border-radius: 4px; font-size: 12px; color: #3730a3; margin-top: 10px; }
+  .foundation-block { background: #f0f9ff; border-left: 3px solid #0284c7; padding: 12px 16px; border-radius: 4px; font-size: 13px; color: #0c4a6e; margin-bottom: 14px; }
+  .foundation-block strong { color: #075985; }
+  .foundation-block a { color: #0284c7; font-weight: 600; }
+  .new-tag { display: inline-block; background: #ede9fe; color: #5b21b6; font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .path-tabs { display: flex; gap: 12px; margin: 16px 0 4px; font-size: 13px; }
+  .path-pill { padding: 6px 14px; border-radius: 999px; background: #fef0e5; color: #b14a16; font-weight: 600; font-size: 12px; }
+  .path-pill.alt { background: #ede9fe; color: #5b21b6; }
+  .schedule-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  .schedule-table th, .schedule-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #ececec; }
+  .schedule-table th { background: #fef0e5; color: #78350f; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .schedule-table tr:last-child td { border-bottom: none; }
+  .print-btn { position: fixed; top: 20px; right: 20px; padding: 10px 18px; background: #e07832; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  @media print { .print-btn { display: none; } body { background: white; padding: 16px; } .phase-section { page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; } }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Print / PDF</button>
+
+<header>
+  <h1>Repair Technician — Module Outline</h1>
+  <div class="sub">~5 weeks first-hire / ~2.5 weeks experienced (former JT/ST) · "The swiss army knife" · AM-trained · Year-round Tier 1 role · Shares JT Base Classroom with JT/ST/QP/AM</div>
+  <a class="back-link" href="brite-training-verticals-review.html">← Back to Position Verticals Review</a>
+</header>
+
+<div class="container">
+
+  <div class="summary-bar">
+    <div class="summary-stat"><div class="label">Phase 1</div><div class="value">~5 days</div><div>RT Pre-Training (Remote) · 78 modules · trainable from scratch</div></div>
+    <div class="summary-stat"><div class="label">Phase 2</div><div class="value">3 days <span style="color:#6366f1;">shared</span></div><div>JT Base Classroom · attended with JT/ST/QP/AM cohort</div></div>
+    <div class="summary-stat"><div class="label">Phase 3</div><div class="value">~1.5 days</div><div>RT Specialization · Repair lens + Customer Comms (shared) + QC + Daily Flow</div></div>
+    <div class="summary-stat"><div class="label">Phase 4</div><div class="value">~1 day</div><div>Safety Practicals + MEWP Cert</div></div>
+    <div class="summary-stat"><div class="label">Phase 5</div><div class="value">~1 week</div><div>Physical Assessment + Supervised Field · AM ride-along</div></div>
+    <div class="summary-stat"><div class="label">Phase 6</div><div class="value">~2 weeks</div><div>Solo Operations Monitored · daily AM 9am review</div></div>
+    <div class="summary-stat"><div class="label">Phase 7</div><div class="value">Cleared</div><div>Full operational status · 9am AM review continues permanently</div></div>
+    <div class="summary-stat"><div class="label">Year-Round</div><div class="value">Peak → Service → Strike → Off</div><div>Only role with no seasonal break (besides actual holidays)</div></div>
+  </div>
+
+  <div class="pending-block">
+    <strong>Status:</strong> v1 restructured per <a href="https://linear.app/brite-nites/issue/BC-6290">BC-6290</a> — RT track rebuilt around shared JT Base Classroom (Phase 2) and shared Customer Communication module (Phase 3 reference). RT-specific layer = repair lens on install review + QC + daily flow + vehicle loading + escalation. <strong>RT is the "swiss army knife"</strong> — breadth of installation knowledge, not depth of installation proficiency; proficiency comes through repair volume and variety. Source: <code>handbook/operations/onboarding/repair-technician.md</code> + 4 RT-specific briefs (<code>rt-customer-communication.md</code>, <code>rt-daily-flow.md</code>, <code>rt-qc-checklist.md</code>, <code>rt-vehicle-loading.md</code>) + BC-6290 structural decisions.
+  </div>
+
+  <!-- PHASE 1 — RT PRE-TRAINING -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 1 — RT Pre-Training (Remote)</div>
+      <div class="phase-meta">~5 days · Self-paced digital · TM sends materials, AM tracks progress · The widest pre-training scope of any role — RT needs to recognize anything that could be broken</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>"The diagnostic baseline":</strong> The RT must understand every installation type, every product, and every safety protocol — because any of them could be the thing that's broken. Pre-training builds the full knowledge foundation so on-site work focuses on application, not first-time exposure.
+      </div>
+
+      <div class="path-tabs">
+        <span class="path-pill">First-Hire Path (Primary)</span>
+        <span class="path-pill alt">Experienced Hire (Former JT/ST)</span>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Path Comparison</div>
+        <table class="schedule-table">
+          <thead><tr><th></th><th>First-Hire (Primary)</th><th>Experienced (Former JT/ST)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Who</strong></td><td>No prior Brite experience — trainable from scratch</td><td>Returning JT or ST with 1+ seasons</td></tr>
+            <tr><td><strong>Starting point</strong></td><td>Phase 1 below (full)</td><td>Phase 2 (skip pre-training — knowledge proven)</td></tr>
+            <tr><td><strong>Timeline</strong></td><td>~5 weeks (early Sept → mid-Oct)</td><td>~2.5 weeks (classroom + supervised + solo)</td></tr>
+            <tr><td><strong>JT prerequisite</strong></td><td>Not required — RT pre-training covers same foundation</td><td>Proven from prior season</td></tr>
+            <tr><td><strong>Profile</strong></td><td>Reliable, efficient, customer-facing — technical skill trained</td><td>Already field-proven, learning RT daily flow</td></tr>
+          </tbody>
+        </table>
+        <div class="note-block">
+          <strong>First-hire is primary path:</strong> Unlike ST, the RT does not require prior Brite experience. Anyone with the right profile can be trained from scratch. The RT needs <em>breadth</em> of installation knowledge, not <em>depth</em> of proficiency — proficiency develops through repair volume.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Trainer Responsibilities</div>
+        <table class="schedule-table">
+          <thead><tr><th>Role</th><th>Responsibility</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Territory Manager (TM)</strong></td><td>Hires RT, conducts MEWP certification, oversees territory-level repair metrics</td></tr>
+            <tr><td><strong>Area Manager (AM)</strong></td><td>Primary RT trainer. Daily 9am repair review, assigns appointments, rides along during supervised phase, makes gate decisions</td></tr>
+            <tr><td><strong>Senior Technician (ST)</strong></td><td>Field mentor during supervised phase — pairs with RT on complex repairs, demonstrates diagnostic techniques</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Pre-Training Categories <span class="category-count">78 modules across 9 categories</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Category</th><th>Modules</th><th>Focus</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Company Orientation &amp; HR</strong></td><td>7</td><td>Welcome, what we do, locations, departments, onboarding paperwork</td></tr>
+            <tr><td><strong>Standards &amp; Policies</strong></td><td>13</td><td>Code of Conduct, Communication, Appearance, Pay, Field Policies, Onsite Protocol, Toolkit</td></tr>
+            <tr><td><strong>Role Introduction</strong></td><td>3</td><td>Lighting Tech Intro, Daily Process, Install Etiquette</td></tr>
+            <tr><td><strong>Product Knowledge</strong></td><td>5</td><td>Products Overview, LED vs Incandescent, Field Tech Products, Bulbs (C9/Multi/Icicles), LED Mini Strands</td></tr>
+            <tr><td><strong>Safety Theory</strong></td><td>7</td><td>Intro to Safety, Hazards, PPE, Ladder Overview, Power Tools, Back Injuries, Harsh Weather</td></tr>
+            <tr><td><strong>Installation Knowledge</strong></td><td>24</td><td>Roofline (4) · Trees (4) · Greenery (5) · Hanging Lights (5) · Alternative &amp; Specialty (6)</td></tr>
+            <tr><td><strong>Wiring &amp; Electrical</strong></td><td>5</td><td>Wiring Practices, Amperage, Overload, GFI Outlets, Wiring Examples</td></tr>
+            <tr><td><strong>Strike Knowledge</strong></td><td>7</td><td>Strike Overview, Roofline/Tree/Alt Takedown, Rolling &amp; Boxing, Inventory List, App (Strike)</td></tr>
+            <tr><td><strong>Tools &amp; Software + Truck</strong></td><td>7</td><td>Crew App, Deputy, BriteNow, Software for Success, Truck Care, Ratchet Straps</td></tr>
+          </tbody>
+        </table>
+        <div class="note-block">
+          <strong>"Read these to know what right looks like."</strong> The RT reads the full install module set to understand how each install is supposed to look when done correctly. That's the diagnostic baseline — if you know what right looks like, you can spot what's wrong.
+        </div>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 1 Gate:</strong> All 78 modules complete · digital knowledge quiz passed at <strong>100%</strong> (unlimited retakes) · AM confirms completion + schedules first on-site day. Remote phase cannot be skipped. If not completing on time: AM follows up within 2 days. If no progress: TM reviews — may extend or terminate before on-site training.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 2 — JT BASE CLASSROOM (SHARED) -->
+  <section class="phase-section">
+    <div class="phase-header shared">
+      <div class="phase-name">Phase 2 — JT Base Classroom <span class="shared-pill">Shared</span></div>
+      <div class="phase-meta">3 days · On-site · Attended with JT/ST/QP/AM cohort · For RT, the classroom is the repair lens primer · See <a href="brite-training-jt-modules.html">JT Phase 2 module list</a></div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>Shared classroom block:</strong> JTs/STs/QPs/AMs/RTs all attend the same 3-day classroom. For the RT, this is the install-technique foundation — every module reframed through "what does this look like when it goes wrong, and how would you fix it?" Phase 3 then layers on the RT-specific repair lens.
+        <br><br>
+        <strong>Full module list:</strong> <a href="brite-training-jt-modules.html#phase-2">View JT Base Classroom Modules →</a>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 1 — Job Flow + Apps <span class="category-count">15 modules · group classroom + hands-on</span></div>
+        <ul class="activity-list">
+          <li><strong>Game Plan walkthrough</strong> — full install job flow start to finish</li>
+          <li><strong>Apps walkthrough</strong> — Crew App + BriteNow hands-on (RT's primary documentation tools)</li>
+          <li><strong>RT lens:</strong> understand workflow well enough to know what's <em>supposed</em> to be in place when you arrive for a repair — and what's missing or wrong</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 2 — Install Technique + Wiring + Product <span class="category-count">~34 modules · classroom + per-task quizzes</span></div>
+        <ul class="activity-list">
+          <li><strong>Install technique detail</strong> — every Basic Skills module (24) taught in person</li>
+          <li><strong>Wiring practices</strong> — 5 modules: routing, electrical, GFI, overload</li>
+          <li><strong>Product detail</strong> — 5 modules: lights, strands, connectors</li>
+          <li><strong>RT lens:</strong> the diagnostic baseline. RTs must know technique by name and by sight to identify what went wrong. Take same quizzes as JTs.</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 3 — Full Safety Classroom <span class="category-count">~27 modules · classroom + safety test</span></div>
+        <ul class="activity-list">
+          <li><strong>Ladder safety</strong> — 7 modules (A-Frame, Extension, Orchard, Little Giant, fall prevention)</li>
+          <li><strong>Roof &amp; fall protection</strong> — harness, PPE, client property protection</li>
+          <li><strong>Vehicle safety</strong> — defensive driving, vehicle checks, road conditions</li>
+          <li><strong>Lift safety</strong> — full MEWP classroom (11 modules) — RT does MEWP cert in Phase 4</li>
+          <li><strong>Incident response</strong> — RT works solo, must own incident reporting</li>
+          <li><strong>RT lens:</strong> identical safety expectation as installers. RT works solo on client property, often at height.</li>
+        </ul>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 2 Gate (shared with JT):</strong> Day 2 per-task quizzes passed · Day 3 safety test passed at 100% · attendance + participation confirmed by AM running the classroom. RT proceeds to Phase 3 specialization next.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 3 — RT SPECIALIZATION -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 3 — RT Specialization Classroom (AM-Led)</div>
+      <div class="phase-meta">~1.5 days · Office / warehouse · AM delivers · 4 RT-unique modules · Builds repair-specific skills on top of JT Base Classroom</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>From install to repair:</strong> Phase 2 taught what good installation looks like. Phase 3 teaches how to spot failures, how to diagnose root cause, how to communicate with a customer who just had something go wrong, and how to run a repair day as a solo operator. Every module is taught through the lens of "what went wrong, why, and how do you fix it without losing the customer?"
+      </div>
+
+      <div class="category">
+        <div class="category-title">3A — Install Review (Repair Lens) <span class="new-tag">repair-specific</span> <span class="category-count">~2 hours · AM walks every install type through a failure-mode lens</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title">Installation overview — the repair perspective. AM reviews all install types, focused on common failure points, not technique.</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title"><strong>Roofline failures</strong> — wind damage, clip failure, bulb burnout, water ingress (most common repair category)</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">3</span><span class="module-title"><strong>Tree + greenery failures</strong> — strand failure, anchor pullout, timer issues (also most common "add-on" install)</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title"><strong>Hanging light + specialty failures</strong> — connection issues, weather damage (less common, height work)</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title"><strong>Electrical troubleshooting</strong> — GFI trips, overload, wiring faults. Hardest diagnostic skill — systematic approach.</span><span class="module-duration">20m</span></div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">3B — Customer Communication <span class="new-tag">shared module</span> <span class="category-count">~1 hour · TM-led · cross-role module</span></div>
+        <div class="foundation-block">
+          <strong>Shared / reusable module:</strong> The same Customer Communication module referenced by JT/ST/AM/TM/QP applies here. RT consumes the full shared content + an RT-specific overlay (the existing handbook brief at <code>rt-customer-communication.md</code>).
+        </div>
+        <div class="category-title" style="margin-top:14px; font-size:13px;">RT-Specific Overlay (handbook brief)</div>
+        <ul class="activity-list">
+          <li><strong>Arrival protocol for a repair visit</strong> — different framing than install; you're showing up because something went wrong</li>
+          <li><strong>Damage assessment language</strong> — how to describe what failed, without blaming the original install (even if it's bad)</li>
+          <li><strong>Timeline setting</strong> — RTs often work in fixed appointment windows; manage expectations on the spot</li>
+          <li><strong>Sign-off + close-out</strong> — get explicit customer confirmation that the fix worked before leaving</li>
+          <li><strong>Escalation phrases</strong> — scripted language for "I need to call my supervisor" moments (see <code>rt-customer-communication.md#escalation-phrases</code>)</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">3C — Quality Control + Daily Flow + Vehicle Loading <span class="new-tag">repair-specific</span> <span class="category-count">~3 hours · 3 handbook briefs</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">6</span><span class="module-title">Quality Control Overview — what QC means at Brite, the standard the RT is checking against</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">7</span><span class="module-title">QC Process — how to run a QC check (RT doubles as QC in smaller territories)</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">8</span><span class="module-title"><strong>QC Checklist &amp; Common Defects</strong> — systematic inspection, what to flag, when to fix on the spot vs. schedule return (<code>rt-qc-checklist.md</code>)</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">9</span><span class="module-title"><strong>RT Daily Flow</strong> — AM walks through exactly how the day works — 9am review → routing → load → execute → report. Core operating rhythm. (<code>rt-daily-flow.md</code>)</span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">10</span><span class="module-title"><strong>Vehicle Loading &amp; Parts Management</strong> — how to stock the truck for a repair day — common parts, quantities, organization (<code>rt-vehicle-loading.md</code>)</span><span class="module-duration">20m</span></div>
+        </div>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 3 Gate:</strong> Crew App + BriteNow proficiency demonstrated · all 4 RT-specific briefs walked through · AM confirms readiness for safety practicals. RT can articulate the full daily flow, has reviewed each failure category, and is ready for the physical + MEWP cert day.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 4 — SAFETY PRACTICALS + MEWP -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 4 — Safety Practicals + MEWP Certification (~1 day)</div>
+      <div class="phase-meta">Warehouse + yard · TM observes MEWP, AM observes others · Compliance gate before solo field work</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="gate-block">
+        <strong>COMPLIANCE GATE — No field work before practical sign-off.</strong> RT works solo on client property, often at height. Full practical certification required.
+      </div>
+
+      <div class="category">
+        <div class="category-title">Practical Stations <span class="category-count">5 stations · observation pass/fail</span></div>
+        <div class="station"><span class="station-num">1</span><div class="station-title"><strong>A-Frame Ladder (12')</strong> — setup, inspection, safe use</div></div>
+        <div class="station"><span class="station-num">2</span><div class="station-title"><strong>Extension Ladder (32')</strong> — setup, climb, work at height, safe descent</div></div>
+        <div class="station"><span class="station-num">3</span><div class="station-title"><strong>Orchard Ladder</strong> — setup + use for tree work</div></div>
+        <div class="station"><span class="station-num">4</span><div class="station-title"><strong>Little Giant / Quality Pros</strong> — multi-position use</div></div>
+        <div class="station"><span class="station-num">5</span><div class="station-title"><strong>Harness fitting + fall arrest</strong> — proper fit, anchor identification, fall arrest demo</div></div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">MEWP Certification <span class="category-count">written + practical · TM-administered</span></div>
+        <div class="station"><span class="station-num">6</span><div class="station-title"><strong>MEWP Written Knowledge Test</strong> — pass required. One retest allowed after additional practice.</div></div>
+        <div class="station"><span class="station-num">7</span><div class="station-title"><strong>MEWP Practical Operation</strong> — pre-use inspection, safe operation, emergency procedures. Pass required.</div></div>
+        <div class="note-block">
+          <strong>Second MEWP failure requires TM review.</strong> The RT works at height alone; MEWP competency is non-negotiable.
+        </div>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 4 Gate:</strong> All ladder stations passed · harness practical passed · MEWP written + practical passed (certification documented) · AM and TM confirm cleared for supervised field work.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 5 — PHYSICAL ASSESSMENT + SUPERVISED -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 5 — Physical Assessment + Supervised Field Work (~1 week)</div>
+      <div class="phase-meta">Warehouse stations Day 1, then real job sites Days 2–5 · AM rides along · Progressive autonomy across the week</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>Apply everything on real repair appointments:</strong> First day proves physical skills at stations. The remaining 4 days are live repair work — RT does the work, AM observes and corrects. Mirrors the walk-through + 3–5 reps method, scaled up to a full week of real customer appointments.
+      </div>
+
+      <div class="category">
+        <div class="category-title">Day 1 — Physical Assessment Stations <span class="category-count">10 stations · condensed JT skills assessment</span></div>
+        <div class="station"><span class="station-num">1</span><div class="station-title"><strong>30' Extension Ladder</strong> — setup, climb, work at height, safe descent. <em>Pass/fail.</em></div></div>
+        <div class="station"><span class="station-num">2</span><div class="station-title"><strong>Roof Access</strong> — ladder-to-roof transition, working on a roof, safe descent. <em>Pass/fail.</em></div></div>
+        <div class="station"><span class="station-num">3</span><div class="station-title"><strong>A-Frame Ladder (12')</strong> — setup, inspection, safe use. <em>Pass/fail.</em></div></div>
+        <div class="station"><span class="station-num">4</span><div class="station-title"><strong>Roofline Section</strong> — clip placement, bulb installation, power connection</div></div>
+        <div class="station"><span class="station-num">5</span><div class="station-title"><strong>Tree Wrapping (1 type)</strong> — demonstrate proper technique on one tree type</div></div>
+        <div class="station"><span class="station-num">6</span><div class="station-title"><strong>Greenery Installation</strong> — wreath or garland mount, anchor, power</div></div>
+        <div class="station"><span class="station-num">7</span><div class="station-title"><strong>Wiring a System</strong> — connect components, verify power flow, troubleshoot a planted fault</div></div>
+        <div class="station"><span class="station-num">8</span><div class="station-title"><strong>Plug Installation</strong> — clean, weatherproof, to standard</div></div>
+        <div class="station"><span class="station-num">9</span><div class="station-title"><strong>Diagnostic Exercise</strong> — AM stages a fault (dead section, GFI trip). RT identifies cause + explains fix. <em>Pass/fail.</em></div></div>
+        <div class="station"><span class="station-num">10</span><div class="station-title"><strong>Parts Identification</strong> — identify 10 common repair parts from the warehouse. <em>Verbal pass/fail.</em></div></div>
+        <div class="gate-block">
+          <strong>Heights assessment (1–3) is a go/no-go decision.</strong> If the RT can't handle heights safely, the role is not a fit — TM/AM meet with the individual. RT needs to be comfortable working solo at height on client property.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Days 2–3 — Observe &amp; Assist <span class="category-count">RT shadows AM on live repairs</span></div>
+        <ul class="activity-list">
+          <li>AM handles the daily flow: 9am review, routing, vehicle loading</li>
+          <li>RT observes AM diagnosing and executing repairs on client properties</li>
+          <li>RT assists with physical work (carrying materials, holding ladders, handing tools)</li>
+          <li>RT practices customer introductions and explanations with AM present</li>
+          <li>End of each day: AM debriefs — what did you see, what would you have done differently?</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Days 4–5 — Lead with Oversight <span class="category-count">RT runs full daily flow, AM rides along</span></div>
+        <ul class="activity-list">
+          <li>RT runs the full daily flow: 9am review with AM → routes own appointments → loads own vehicle → executes repairs</li>
+          <li>AM rides along but does not intervene unless safety or quality is at risk</li>
+          <li>RT handles customer communication independently</li>
+          <li>RT submits service reports via Crew App / BriteNow</li>
+          <li>AM reviews every service report and provides feedback</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">What's Being Evaluated <span class="category-count">6 competencies</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Competency</th><th>What the AM is watching for</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Diagnostic accuracy</strong></td><td>Can the RT identify the root cause, not just the symptom?</td></tr>
+            <tr><td><strong>Repair quality</strong></td><td>Is the fix clean, durable, and to standard?</td></tr>
+            <tr><td><strong>Customer communication</strong></td><td>Professional, clear, sets proper expectations</td></tr>
+            <tr><td><strong>Route efficiency</strong></td><td>Logical appointment ordering, minimal backtracking</td></tr>
+            <tr><td><strong>Self-sufficiency</strong></td><td>Can they handle the full daily flow without prompting?</td></tr>
+            <tr><td><strong>Escalation judgment</strong></td><td>Do they know when to call the AM vs. handle it themselves?</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 5 Gate:</strong> All physical assessment stations passed · ≥10 supervised repairs across varied types · AM confirms diagnostic accuracy + repair quality + customer comm · RT demonstrates full daily flow independently (Day 5) · service reports accurate + same-day · AM confirms readiness for solo. If not passing after 5 days: up to 5 additional days extension. If still not field-ready after 10 total: TM reviews for reassignment or termination.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 6 — SOLO MONITORED -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 6 — Solo Operations (Monitored) (~2 weeks)</div>
+      <div class="phase-meta">Territory · Independent daily operation · Daily AM 9am review is both check-in and coaching · Proves sustained performance</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">RT Daily Flow <span class="category-count">5 steps · permanent operating rhythm</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Step</th><th>What Happens</th></tr></thead>
+          <tbody>
+            <tr><td><strong>9:00 AM</strong></td><td>Review the day's repair appointments with AM. Priorities, unusual situations, client history.</td></tr>
+            <tr><td><strong>Route</strong></td><td>Plan the most efficient route through the day's appointments.</td></tr>
+            <tr><td><strong>Load</strong></td><td>Stock vehicle with parts and materials needed for the day's specific repairs.</td></tr>
+            <tr><td><strong>Execute</strong></td><td>Drive to each appointment, diagnose, repair, document, move to next.</td></tr>
+            <tr><td><strong>Report</strong></td><td>Submit service reports via Crew App / BriteNow. Flag follow-ups.</td></tr>
+          </tbody>
+        </table>
+        <div class="note-block">
+          <strong>The 9am review is not training — it's how the role works.</strong> The AM reviews every service report daily and provides feedback in the next morning's 9am review. This continues permanently, not just during Phase 6.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">What's Being Evaluated <span class="category-count">5 sustained-performance standards</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Competency</th><th>Standard</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Consistency</strong></td><td>Same quality on repair #15 as repair #1 — no shortcuts as comfort grows</td></tr>
+            <tr><td><strong>Efficiency</strong></td><td>Completes a full day's appointments without rushing or falling behind</td></tr>
+            <tr><td><strong>Documentation</strong></td><td>Service reports complete, accurate, submitted same-day</td></tr>
+            <tr><td><strong>Escalation</strong></td><td>Complex issues flagged to AM promptly — not attempted beyond skill level</td></tr>
+            <tr><td><strong>Client satisfaction</strong></td><td>No complaints. Clients should not be able to tell this is a new technician.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="gate-block warn">
+        <strong>Phase 6 Gate:</strong> 2 weeks of solo operations completed · consistent repair quality across full period · reports consistently complete + accurate · appropriate escalation decisions · no client complaints or safety incidents · AM recommends full clearance. If not meeting standard: AM extends monitored period + deepens morning review. If still underperforming after 4 weeks solo: TM reviews.
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 7 — CLEARED -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Phase 7 — Cleared (Mid-October)</div>
+      <div class="phase-meta">Full operational status · The 9am AM review continues as a permanent part of the daily flow · Year-round role</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>"The 9am review continues":</strong> It's not training, it's how the role works. The AM and RT coordinate daily because the repair queue changes every day. RT clearance is full operational status — but the rhythm doesn't change.
+      </div>
+
+      <div class="category">
+        <div class="category-title">Year-Round Role Breakdown <span class="category-count">only role with no seasonal break (besides holidays)</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Season</th><th>Period</th><th>Primary Duties</th><th>Secondary</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Peak Season</strong></td><td>Sep – Dec 12</td><td>Repairs (2–3 days/wk), additional installs (greenery, lighting additions), QC checks</td><td>Crew installs + commercial projects as needed</td></tr>
+            <tr><td><strong>Service Period</strong></td><td>Dec 12 – Jan 2</td><td>Full-time repairs + maintenance — holiday lighting must stay lit</td><td>Emergency response for weather damage</td></tr>
+            <tr><td><strong>Strike Season</strong></td><td>Jan – Mar</td><td>Strike appointments (solo takedowns), warehouse auditing</td><td>Crew strike support as needed</td></tr>
+            <tr><td><strong>Off-Season</strong></td><td>Apr – Aug</td><td>Role inactive unless retained for year-round maintenance contracts</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Quality Checking Duties <span class="category-count">in smaller Tier 1 territories</span></div>
+        <ul class="activity-list">
+          <li>Run QC inspections on completed installations between repair appointments</li>
+          <li>Use the QC process and checklist</li>
+          <li>Flag defects to AM — fix on the spot if minor, schedule return if major</li>
+          <li>QC checks build diagnostic instincts — learn what breaks by seeing what's installed poorly</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Escalation Protocol <span class="category-count">when to call AM</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Situation</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>Repair requires 2+ people (height + ground work simultaneously)</td><td>Call AM — schedule a crew assist</td></tr>
+            <tr><td>Structural damage to client property discovered</td><td>Stop work, document, call AM immediately</td></tr>
+            <tr><td>Electrical issue beyond basic troubleshooting (panel, main line)</td><td>Do not attempt — call AM. Always licensed-electrician scope, not a judgment call.</td></tr>
+            <tr><td>Client unhappy or confrontational</td><td>De-escalate, call AM for support</td></tr>
+            <tr><td>Repair would exceed appointment window</td><td>Call AM — reschedule or extend</td></tr>
+          </tbody>
+        </table>
+        <div class="note-block">
+          <strong>Scripted language:</strong> See <code>rt-customer-communication.md#escalation-phrases</code> for what to say to the customer at each of these moments.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Ongoing Development</div>
+        <ul class="activity-list">
+          <li><strong>Advanced troubleshooting</strong> — complex electrical diagnostics, multi-zone system failures</li>
+          <li><strong>New product + technique updates</strong> — as product line evolves, RT stays current</li>
+          <li><strong>Commercial project support</strong> — RT contributes to commercial installs as skilled extra hand</li>
+          <li><strong>Mentoring</strong> — experienced RTs help train future RTs during supervised phase</li>
+        </ul>
+      </div>
+
+      <div class="gate-block pass">
+        <strong>CLEARED — Repair Technician:</strong> All Phases 1–6 complete · MEWP certified · ≥10 supervised + 2 weeks solo successful · AM confirms full operational status. RT is the territory's swiss army knife — solo repairs, additional installs, QC, year-round.
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN QUESTIONS -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Open Questions for Tuesday Walk-Through</div>
+      <div class="phase-meta">v1 raised these — answer during Jaime + Holden review, then bake into v2</div>
+    </div>
+    <div class="phase-body">
+      <ul class="activity-list">
+        <li><strong>RT cohort timing alignment:</strong> RT is hired early September and works through mid-October to cleared. JT Base Classroom is Sep 20–22 per master HTML. RT's ~5-day pre-training in early September lines up cleanly — but confirm RT joins the same classroom session as JT/ST/QP/AM rather than a separate one.</li>
+        <li><strong>Phase 3 ordering — repair lens before customer comms?</strong> Current draft does install-review-with-repair-lens first, then customer comms, then QC/daily-flow/loading. Confirm sequence or reshuffle.</li>
+        <li><strong>QC scope by territory size:</strong> Current draft says RT doubles as QC in smaller Tier 1 territories. In bigger Tier 1 territories where a dedicated QP is staffed, does the RT skip QC duties entirely, or do they share spot-checks?</li>
+        <li><strong>Pre-training 100% quiz:</strong> 78-module quiz with unlimited retakes — what's the practical retake cap before AM flags concerns to TM?</li>
+        <li><strong>Year-round retention:</strong> Most RTs go inactive April–August. Is there a formal off-season retainer model for high performers, or is it strictly per-season hire/release?</li>
+        <li><strong>Service-period coverage:</strong> Dec 12 – Jan 2 is "full-time repairs and maintenance" — but other roles are on seasonal break. Does the RT work solo during break, or is AM still on coverage rotation?</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

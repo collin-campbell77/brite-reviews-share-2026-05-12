@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LR Training — Module Outline</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #f5f5f7; color: #1a1a2e; line-height: 1.5; padding: 32px; }
+  header { max-width: 1200px; margin: 0 auto 32px; padding-bottom: 24px; border-bottom: 3px solid #e07832; }
+  h1 { font-size: 30px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #6b7280; font-size: 14px; }
+  .back-link { display: inline-block; margin-top: 10px; color: #e07832; font-size: 13px; text-decoration: none; font-weight: 600; }
+  .back-link:hover { text-decoration: underline; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .summary-bar { background: white; border-radius: 10px; padding: 16px 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; gap: 32px; flex-wrap: wrap; }
+  .summary-stat { font-size: 13px; min-width: 180px; }
+  .summary-stat .label { color: #6b7280; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+  .summary-stat .value { font-weight: 700; color: #1a1a2e; font-size: 18px; }
+  .phase-section { background: white; border-radius: 12px; margin-bottom: 24px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .phase-header { padding: 18px 24px; background: linear-gradient(90deg, #fef0e5 0%, #fff 70%); border-left: 6px solid #e07832; }
+  .phase-name { font-size: 20px; font-weight: 700; }
+  .phase-meta { font-size: 13px; color: #6b7280; margin-top: 4px; }
+  .phase-body { padding: 20px 24px; }
+  .category { margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid #ececec; }
+  .category:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .category-title { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #e07832; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: baseline; }
+  .category-count { font-size: 11px; color: #6b7280; font-weight: 500; }
+  .module-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 6px 16px; }
+  .module { display: flex; align-items: baseline; font-size: 13px; padding: 4px 0; }
+  .module-num { display: inline-block; min-width: 30px; color: #9ca3af; font-size: 11px; font-weight: 600; }
+  .module-title { color: #1a1a2e; }
+  .module-duration { color: #6b7280; font-size: 11px; margin-left: 6px; }
+  .note-block { background: #fffbeb; border-left: 3px solid #fbbf24; padding: 10px 14px; border-radius: 4px; font-size: 12px; color: #78350f; margin-top: 10px; }
+  .gate-block { background: #fef2f2; border-left: 3px solid #dc2626; padding: 10px 14px; border-radius: 4px; font-size: 12px; color: #7f1d1d; margin-top: 10px; }
+  .gate-block.warn { background: #fffbeb; border-left-color: #fbbf24; color: #78350f; }
+  .gate-block.pass { background: #ecfdf5; border-left-color: #10b981; color: #065f46; }
+  .activity-list { font-size: 13px; }
+  .activity-list li { margin: 4px 0 4px 20px; }
+  .pending-block { background: #eef2ff; border-left: 3px solid #6366f1; padding: 10px 14px; border-radius: 4px; font-size: 12px; color: #3730a3; margin-top: 10px; }
+  .foundation-block { background: #f0f9ff; border-left: 3px solid #0284c7; padding: 12px 16px; border-radius: 4px; font-size: 13px; color: #0c4a6e; margin-bottom: 14px; }
+  .foundation-block strong { color: #075985; }
+  .contractor-tag { display: inline-block; background: #fef3c7; color: #92400e; font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .schedule-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  .schedule-table th, .schedule-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #ececec; }
+  .schedule-table th { background: #fef0e5; color: #78350f; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .schedule-table tr:last-child td { border-bottom: none; }
+  .print-btn { position: fixed; top: 20px; right: 20px; padding: 10px 18px; background: #e07832; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  @media print { .print-btn { display: none; } body { background: white; padding: 16px; } .phase-section { page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; } }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Print / PDF</button>
+
+<header>
+  <h1>Light Roller — Module Outline <span class="contractor-tag">contractor</span></h1>
+  <div class="sub">~1 day training (4–6 hours hands-on) · 3 days to full speed · 7 modules · WA-trained · No formal phases — quality assessed through direct observation</div>
+  <a class="back-link" href="brite-training-verticals-review.html">← Back to Position Verticals Review</a>
+</header>
+
+<div class="container">
+
+  <div class="summary-bar">
+    <div class="summary-stat"><div class="label">Section 1</div><div class="value">~30 min</div><div>Arrival &amp; Orientation · Paperwork + Safety + Tour + Pay</div></div>
+    <div class="summary-stat"><div class="label">Section 2</div><div class="value">~3–4 hours</div><div>Hands-On Training · 5 technique modules · WA demos + roller practices</div></div>
+    <div class="summary-stat"><div class="label">Section 3</div><div class="value">~30 min</div><div>Quality Check &amp; Cleared · 3–5 full cycles independently · WA observes</div></div>
+    <div class="summary-stat"><div class="label">Section 4</div><div class="value">~30 min</div><div>Returning Roller path · Paperwork check + technique refresher</div></div>
+    <div class="summary-stat"><div class="label">Speed Target</div><div class="value">20/hr Day 1 → 35/hr Day 3</div><div>Strands per hour · Top rollers hit 60–70/hr after weeks</div></div>
+    <div class="summary-stat"><div class="label">Employment</div><div class="value">Contractor (W-9)</div><div>Piece rate via Bill.com · No formal phases or quizzes</div></div>
+  </div>
+
+  <div class="pending-block">
+    <strong>Status:</strong> v1 mirroring existing handbook track at <code>handbook/operations/onboarding/light-roller.md</code>. LR is intentionally the simplest role — contractor structure, no remote pre-training, no JT Base Classroom, no formal phases/gates. Quality is assessed through direct observation by the WA (the primary trainer). Track is already condensed by design — minimal restructure needed for BC-6290.
+  </div>
+
+  <!-- WHY LR IS DIFFERENT -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Why LR Uses a Condensed Structure</div>
+      <div class="phase-meta">Single-task contractor role · Standard 5-phase + JT Base Classroom framework doesn't apply</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>Why LR doesn't fit the standard framework:</strong>
+        <ul style="margin-top:8px; padding-left:20px;">
+          <li><strong>Contractor, not W-2</strong> — W-9, paid piece rate via Bill.com, no benefits or employee onboarding paperwork</li>
+          <li><strong>Single-task role</strong> — rolling lights. No customer-facing work, no install technique, no field operations, no leadership</li>
+          <li><strong>Hands-on only</strong> — no remote pre-training, no classroom, no quizzes, no certifications</li>
+          <li><strong>WA-trained, WA-cleared</strong> — the WA is the primary trainer; AM coordinates; TM owns hiring pipeline</li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Trainer Responsibilities</div>
+        <table class="schedule-table">
+          <thead><tr><th>Role</th><th>Responsibility</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Warehouse Associate (WA)</strong></td><td>Conducts all hands-on training, demonstrates technique, observes quality, clears the roller for independent work.</td></tr>
+            <tr><td><strong>Area Manager (AM)</strong></td><td>Coordinates hiring start dates, checks in on roller productivity, escalates issues to TM.</td></tr>
+            <tr><td><strong>Territory Manager (TM)</strong></td><td>Owns hiring pipeline (Indeed posting, interviews, contractor agreements), sets territory rolling targets, monitors strand counts.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1 — ARRIVAL & ORIENTATION -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Section 1 — Arrival &amp; Orientation (~30 min)</div>
+      <div class="phase-meta">Warehouse · WA leads tour + safety · AM/TM leads paperwork + pay overview · Before touching any lights</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">Contractor Paperwork <span class="category-count">complete before any work</span></div>
+        <ul class="activity-list">
+          <li><strong>W-9</strong> — tax form for contractor status</li>
+          <li><strong>Contractor agreement</strong> — signed via Bill.com</li>
+          <li><strong>Contact information</strong> — phone number + emergency contact</li>
+        </ul>
+        <div class="note-block">
+          <strong>Reference:</strong> <code>training/operations/light-roller-management/hiring-contractors.md</code> — full onboarding from management side.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Safety Briefing <span class="category-count">2 modules · A-frame ladder + back injury only</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">1</span><span class="module-title">A-Frame Ladder Safety — for reaching high shelves only</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title">Preventing Back Injuries — proper lifting technique</span><span class="module-duration">10m</span></div>
+        </div>
+        <div class="note-block">
+          <strong>Focused safety scope:</strong> Light Rollers do not work at height, on roofs, or with electrical systems. Cover A-frame ladder (for shelves) and lifting technique only.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Warehouse Tour</div>
+        <ul class="activity-list">
+          <li><strong>Bag storage area</strong> — where un-rolled light bags are staged (outside)</li>
+          <li><strong>Rolling stations</strong> — workspace layout, power strips for testing</li>
+          <li><strong>Bundle storage</strong> — where completed bundles go for counting and boxing</li>
+          <li><strong>Break area and restrooms</strong></li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Pay Overview <span class="category-count">piece rate · tied to quality, not raw count</span></div>
+        <ul class="activity-list">
+          <li>Piece rate structure — what they earn per strand, how counts are tracked, when they get paid</li>
+          <li>Do not quote specific dollar amounts verbally — rates may change between seasons</li>
+          <li><strong>Pay is tied to deliverable quality, not raw count</strong> — only bundles meeting the WA Observation Checklist criteria (tightness, knot security, testing, sorting) count toward the strand total</li>
+          <li>Failing bundles are rework, not billable output — must be communicated Day 1 so it's never a surprise when a strand count is adjusted later</li>
+        </ul>
+        <div class="note-block">
+          <strong>Reference:</strong> <code>training/operations/light-roller-management/how-they-are-paid.md</code> · <code>lr-in-season-protocol.md</code> (drift section for how quality standard is applied during active work).
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 — HANDS-ON TRAINING -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Section 2 — Hands-On Training (~3–4 hours)</div>
+      <div class="phase-meta">Warehouse rolling stations · WA demonstrates each step, then roller practices with real-time correction · Method: WA does full cycle once, roller attempts each step</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>The core of LR training:</strong> WA works through each step of the rolling process, demonstrates proper technique, and watches the new roller practice until the motion is smooth. Mirrors the same walk-through-then-3–5-reps pattern used in QP/AM field training — but compressed into one warehouse session.
+      </div>
+
+      <div class="category">
+        <div class="category-title">The Rolling Cycle <span class="category-count">5 technique modules · observation-based</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">3</span><span class="module-title"><strong>Context: Our Work</strong> — what these strands become, why quality matters</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title"><strong>Step 1: Untangle</strong> — separate strands without damaging connectors. <em>Observation pass/fail.</em></span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title"><strong>Step 2: Rolling</strong> — folding technique, pinching every other bulb to alternate top/bottom. <em>Bundles must be tight and even.</em></span><span class="module-duration">60m</span></div>
+          <div class="module"><span class="module-num">6</span><span class="module-title"><strong>Step 3: Tying the Knot</strong> — male + female ends tied properly, won't unravel in boxing. <em>Observation.</em></span><span class="module-duration">30m</span></div>
+          <div class="module"><span class="module-num">7</span><span class="module-title"><strong>Step 4: Testing the Lights</strong> — every bundle plugged in + verified before stacking. <em>Broken lights discarded.</em></span><span class="module-duration">20m</span></div>
+        </div>
+        <div class="note-block">
+          <strong>Rolling is where most time is spent:</strong> The folding technique — pinching every other bulb to alternate top and bottom — takes practice. WA should expect to correct hand positioning multiple times. Reference video in the Rolling module showing veteran roller's technique at full speed.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Color Sorting (during testing)</div>
+        <ul class="activity-list">
+          <li>Roller sorts bundles by color appearance during testing</li>
+          <li>Aged lights may shine differently — keeping similar-looking bundles together ensures trees look symmetrical during installation</li>
+          <li>WA demonstrates what "aged" vs. "fresh" looks like</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — QUALITY CHECK & CLEARED -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Section 3 — Quality Check &amp; Cleared (~30 min)</div>
+      <div class="phase-meta">Warehouse · WA observes 3–5 full cycles independently · No formal quiz or certification · WA reports readiness to AM</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">Independent Cycle Observation <span class="category-count">3–5 full cycles · untangle → roll → tie → test</span></div>
+        <p style="font-size:13px; color:#1a1a2e;">After practicing through Section 2, the WA watches the new roller complete <strong>3–5 full cycles independently</strong> without assistance. Same 3–5 reps pattern as QP/AM physical training.</p>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Quality Criteria <span class="category-count">5 standards · what the WA is watching for</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Criteria</th><th>What the WA Looks For</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Bundle tightness</strong></td><td>Bundles are firm — won't come undone during boxing or transport</td></tr>
+            <tr><td><strong>Knot security</strong></td><td>Male and female ends tied properly, won't unravel</td></tr>
+            <tr><td><strong>Testing</strong></td><td>Every bundle plugged in and verified before stacking</td></tr>
+            <tr><td><strong>Sorting</strong></td><td>Broken lights discarded, aged lights grouped separately</td></tr>
+            <tr><td><strong>Pace</strong></td><td>Improving toward 20 strands/hour by end of Day 1 (full-speed target: 35/hr after 3 days)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Clearance Decision <span class="category-count">no exam · WA judgment</span></div>
+        <ul class="activity-list">
+          <li>If WA is confident roller can produce quality bundles without constant correction → cleared</li>
+          <li>If not → WA continues working alongside them on Day 2</li>
+          <li>Use <code>lr-assessments/wa-observation-checklist.md</code> to structure observation + record clearance decision (formalizes criteria, not an exam)</li>
+        </ul>
+      </div>
+
+      <div class="gate-block">
+        <strong>Scope Boundary — Light Rollers do NOT participate in counting or audit processes.</strong> Strand counting, Monday.com updates, and inventory reconciliation are WA responsibilities. Light Rollers roll, tie, test, and stack — that's it. See <code>training/operations/light-roller-management/managing-the-light-counts.md</code>.
+      </div>
+
+      <div class="gate-block pass">
+        <strong>CLEARED — Light Roller:</strong> 3–5 independent full cycles completed without assistance · all 5 quality criteria met · WA Observation Checklist signed · WA reports readiness to AM. Roller is on payroll and producing billable output.
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 — RETURNING ROLLER -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Section 4 — Returning Roller Path (~30 min total)</div>
+      <div class="phase-meta">Contractors from a previous season · Abbreviated path · WA observes drift, corrects, clears within 30 min</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">Returning Path</div>
+        <table class="schedule-table">
+          <thead><tr><th>Step</th><th>Duration</th><th>What Happens</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Paperwork check</strong></td><td>10 min</td><td>Verify W-9 and contractor agreement are current — re-sign if needed</td></tr>
+            <tr><td><strong>Technique refresher</strong></td><td>20 min</td><td>WA observes returning roller do 3–5 full cycles — correct any drift</td></tr>
+            <tr><td><strong>Cleared</strong></td><td>—</td><td>If technique is solid, rolling independently within 30 minutes</td></tr>
+          </tbody>
+        </table>
+        <div class="note-block">
+          <strong>Significant drift:</strong> If a returning roller's technique has degraded (loose bundles, poor knots), WA works alongside them for a half-day refresher before clearing.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEED + ESCALATION -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Speed Expectations + Escalation Paths</div>
+      <div class="phase-meta">Daily strand counts tracked by WA · TM makes retention decisions</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="category">
+        <div class="category-title">Speed Expectations</div>
+        <table class="schedule-table">
+          <thead><tr><th>Milestone</th><th>Target</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>End of Day 1</strong></td><td>~20 strands/hour</td><td>Normal starting pace — technique still building</td></tr>
+            <tr><td><strong>After 3 days</strong></td><td>35 strands/hour</td><td>Minimum target for continued engagement</td></tr>
+            <tr><td><strong>Experienced roller</strong></td><td>60–70 strands/hour</td><td>Demonstrated by top rollers — takes weeks of practice</td></tr>
+          </tbody>
+        </table>
+        <div class="note-block">
+          <strong>Reference:</strong> <code>training/operations/light-roller-management/managing-the-subcontractors.md</code> — coaching + escalation when rollers underperform.
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Escalation Paths</div>
+        <table class="schedule-table">
+          <thead><tr><th>Situation</th><th>Who Handles It</th></tr></thead>
+          <tbody>
+            <tr><td>Damaged or defective lights</td><td>WA — discard and note for inventory</td></tr>
+            <tr><td>Equipment issues (power strips, workspace)</td><td>WA — escalate to AM if not resolvable</td></tr>
+            <tr><td>Roller not meeting speed targets after 3 days</td><td>AM coaches; TM makes retention decision</td></tr>
+            <tr><td>Roller no-shows or schedule issues</td><td>AM contacts roller; TM decides replacement</td></tr>
+            <tr><td>Injury or safety concern</td><td>WA reports to AM immediately · follow incident reporting protocol</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN QUESTIONS -->
+  <section class="phase-section">
+    <div class="phase-header">
+      <div class="phase-name">Open Questions for Tuesday Walk-Through</div>
+      <div class="phase-meta">v1 raised these — answer during Jaime + Holden review</div>
+    </div>
+    <div class="phase-body">
+      <ul class="activity-list">
+        <li><strong>BC-6290 fit:</strong> LR is intentionally simple and contractor-based. Per the modular vision, very little is shared with other roles (just A-frame ladder and back injury safety, both already shared modules). Confirm we keep LR as-is rather than over-modularizing.</li>
+        <li><strong>"3–5 reps" pattern consistency:</strong> LR uses 3–5 independent cycles for clearance — same pattern as QP/AM field training and AM physical practicals. Consistent across all hands-on skills in the framework.</li>
+        <li><strong>Strike-season LR scope:</strong> Strike adjustments live in <code>lr-in-season-protocol.md</code>. Surface a brief strike addendum here, or leave in the in-season doc?</li>
+        <li><strong>Multi-day training fallback:</strong> If a roller can't clear in one day, current language says "WA continues working alongside on Day 2." Cap on retraining attempts before TM cuts ties?</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

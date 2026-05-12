@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Brite LMS · Rescope Exec Summary · 2026-05-10</title>
+<style>
+  :root {
+    --bg: #0b0d10; --bg-2: #11151a; --bg-3: #161b22;
+    --fg: #e6edf3; --fg-muted: #9aa4af; --fg-dim: #6b7480;
+    --line: #20262d; --line-2: #2a313a;
+    --accent: #ffce47; --accent-2: #4cc2ff;
+    --green: #4dd07a; --orange: #ff9c4a; --red: #ff6168; --purple: #b88aff;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #ffffff; --bg-2: #fafbfc; --bg-3: #f4f6f9;
+      --fg: #1a1f24; --fg-muted: #5a6470; --fg-dim: #8a929b;
+      --line: #e3e7ec; --line-2: #d0d6de;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font: 14.5px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif; color: var(--fg); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  code, pre { font-family: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--bg-3); border: 1px solid var(--line); border-radius: 6px; padding: 10px 14px; font-size: 11.5px; line-height: 1.5; overflow-x: auto; margin: 8px 0; }
+  code { background: var(--bg-3); padding: 1px 5px; border-radius: 3px; font-size: 12.5px; }
+  pre code { background: transparent; padding: 0; }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 24px 60px; }
+  header.hero { border-bottom: 1px solid var(--line); padding-bottom: 22px; margin-bottom: 22px; }
+  .eyebrow { font-family: "SF Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-dim); }
+  h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.01em; margin: 6px 0 8px; }
+  .lede { color: var(--fg-muted); max-width: 78ch; font-size: 14.5px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 14px; font-size: 12px; color: var(--fg-dim); }
+  .phase-section { margin: 32px 0 22px; }
+  .phase-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
+  .phase-eyebrow { font-family: "SF Mono", monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; }
+  .phase-1 .phase-eyebrow { background: rgba(255,97,104,0.12); color: var(--red); }
+  .phase-2 .phase-eyebrow { background: rgba(255,206,71,0.12); color: var(--accent); }
+  .phase-3 .phase-eyebrow { background: rgba(184,138,255,0.12); color: var(--purple); }
+  .phase-section h2 { font-size: 18px; font-weight: 600; margin: 0; }
+  .phase-section .blurb { color: var(--fg-muted); font-size: 13.5px; margin: 4px 0 18px; }
+  .feature { background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; padding: 18px 22px; margin: 12px 0; display: grid; grid-template-columns: 1fr 360px; gap: 22px; }
+  @media (max-width: 800px) { .feature { grid-template-columns: 1fr; } }
+  .feature.from-jaime { border-left: 3px solid var(--accent-2); }
+  .feature.from-session { border-left: 3px solid var(--green); }
+  .feature .meta-top { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-family: "SF Mono", monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 6px; }
+  .feature .src-tag { padding: 2px 7px; border-radius: 3px; font-weight: 600; }
+  .feature.from-jaime .src-tag { background: rgba(76,194,255,0.14); color: var(--accent-2); }
+  .feature.from-session .src-tag { background: rgba(77,208,122,0.14); color: var(--green); }
+  .feature h3 { font-size: 16.5px; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.005em; }
+  .feature .what { color: var(--fg); font-size: 13.5px; line-height: 1.55; margin: 0 0 10px; }
+  .feature .why { color: var(--fg-muted); font-size: 12.5px; line-height: 1.5; font-style: italic; margin: 0 0 10px; }
+  .feature .footer { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 11.5px; }
+  .badge { font-family: "SF Mono", monospace; font-size: 10.5px; letter-spacing: 0.06em; padding: 3px 7px; border-radius: 4px; background: var(--bg-3); border: 1px solid var(--line); color: var(--fg-muted); }
+  .badge.urgent { color: var(--red); border-color: rgba(255,97,104,0.3); }
+  .badge.high { color: var(--orange); border-color: rgba(255,156,74,0.3); }
+  .badge.medium { color: var(--accent); border-color: rgba(255,206,71,0.3); }
+  .badge.low { color: var(--purple); border-color: rgba(184,138,255,0.3); }
+  .badge.s { color: var(--green); }
+  .badge.m { color: var(--accent); }
+  .badge.l { color: var(--red); }
+  .feature .mockup { background: var(--bg-3); border: 1px solid var(--line); border-radius: 6px; padding: 8px; align-self: flex-start; display: flex; flex-direction: column; gap: 10px; }
+  .feature .mockup pre { background: transparent; border: 0; padding: 0; margin: 0; font-size: 10.5px; }
+  .feature .mockup .shot { display: flex; flex-direction: column; gap: 4px; }
+  .feature .mockup .shot img { width: 100%; height: auto; max-height: 240px; object-fit: cover; object-position: top left; border-radius: 4px; border: 1px solid var(--line); display: block; background: var(--bg); }
+  .feature .mockup .shot .cap { font-family: "SF Mono", monospace; font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); padding: 0 2px; }
+  .feature .mockup .shot .cap b { color: var(--fg-muted); font-weight: 600; }
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 14px 0 26px; }
+  .stat { background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+  .stat .num { font-family: "SF Mono", monospace; font-size: 18px; font-weight: 600; color: var(--accent); }
+  .stat .lbl { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); margin-top: 2px; }
+  .legend { background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; margin: 14px 0 22px; font-size: 12.5px; }
+  .legend strong { color: var(--fg); }
+  .legend .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+  .legend .from-jaime-swatch { background: var(--accent-2); }
+  .legend .from-session-swatch { background: var(--green); }
+  .backlog-section, .skip-section { margin-top: 38px; padding: 18px 22px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; }
+  .backlog-section h2, .skip-section h2 { font-size: 16px; font-weight: 600; margin: 0 0 6px; }
+  .backlog-section .blurb, .skip-section .blurb { color: var(--fg-muted); font-size: 12.5px; margin: 0 0 14px; }
+  .compact-row { display: grid; grid-template-columns: 220px 1fr 130px; gap: 12px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 12.5px; }
+  .compact-row:last-child { border-bottom: 0; }
+  .compact-row .title { font-weight: 600; color: var(--fg); }
+  .compact-row .desc { color: var(--fg-muted); }
+  .compact-row .meta { font-family: "SF Mono", monospace; font-size: 10.5px; color: var(--fg-dim); text-align: right; }
+  footer.foot { margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--fg-dim); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">Brite LMS · Rescope exec summary · for Holden + Jaime</div>
+    <h1>Unified roadmap — competitive review woven into existing Jaime-review queue</h1>
+    <p class="lede">
+      Combines the 10 active features from the 2026-05-07 competitive review with the 14 issues from Jaime's 2026-05-04 product review into one phased roadmap. Sequenced by utilitarian filter: <b>"would a seasonal worker actually fail at training if this didn't ship by peak season?"</b> Phase 1 = critical path. Phase 2 = search + polish. Phase 3 = post-season iteration.
+    </p>
+    <div class="meta-row">
+      <span>Generated 2026-05-10</span>
+      <span>Peak season starts ~Oct 2026 (~5 months runway)</span>
+      <span><a href="shortlist.html">Full shortlist</a> · <a href="https://linear.app/brite-nites/project/brite-lms-c6a5f04a123d">Linear project</a></span>
+    </div>
+  </header>
+
+  <div class="stat-row">
+    <div class="stat"><div class="num">22</div><div class="lbl">Active issues</div></div>
+    <div class="stat"><div class="num">~17-20 wk</div><div class="lbl">Total effort (5 phases)</div></div>
+    <div class="stat"><div class="num">5</div><div class="lbl">M02 backlog</div></div>
+    <div class="stat"><div class="num">9</div><div class="lbl">Explicit skips</div></div>
+  </div>
+
+  <div style="padding: 14px 18px; background: rgba(255,156,74,0.10); border: 1px solid rgba(255,156,74,0.3); border-radius: 8px; margin: 0 0 22px; font-size: 13.5px;">
+    <b style="color: var(--orange);">⚠ Doc convention</b>: the phase cards immediately below (Phase 1 / Phase 2 / Phase 3) reflect the <b>original 3-phase sequence</b> (features-first). The <b>full project timeline at the bottom</b> reflects the <b>updated 5-phase foundation-first plan</b> (2026-05-10). The 5-phase plan is the canonical sequence going into the rescope meeting. Phase cards above are kept for context on what each feature does; treat the timeline below as the source of truth for ordering and priority.
+  </div>
+
+  <div class="legend">
+    <span><span class="swatch from-jaime-swatch"></span><strong>Existing</strong> — from Jaime's 2026-05-04 product review (BC-6596–6609)</span>
+    &nbsp;&nbsp;&nbsp;
+    <span><span class="swatch from-session-swatch"></span><strong>New</strong> — from 2026-05-07 competitive review (F01–F10)</span>
+  </div>
+
+  <!-- ============ PHASE 1 ============ -->
+  <section class="phase-section phase-1">
+    <div class="phase-header">
+      <span class="phase-eyebrow">Phase 1 · Critical path</span>
+      <h2>Season-prep essentials (~3-4 weeks)</h2>
+    </div>
+    <p class="blurb">Features whose absence would cause actual training failure in peak season. Linear: Urgent / High priority.</p>
+
+    <article class="feature from-session">
+      <div>
+        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7009 · F10 PR A</span></div>
+        <h3>Offline read mode (Service Worker + IndexedDB caching)</h3>
+        <p class="what">Workers in remote AZ/CO neighborhoods lose LTE on job sites. PR A ships read-offline: tap "Save for offline" on Wi-Fi → module + assets cached locally → opens later without signal. Write-and-sync deferred to Phase 3.</p>
+        <p class="why">Only feature whose absence causes hard failure — the LMS becomes the in-field procedure reference, which by definition has to work without network.</p>
+        <div class="footer">
+          <span class="badge urgent">🔥 Urgent</span><span class="badge l">L · ~7-10 days</span>
+          <a href="https://linear.app/brite-nites/issue/BC-7009">→ BC-7009</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-f10a.png" alt="Brite mockup of offline read mode" loading="lazy"><div class="cap"><b>Brite mockup</b> · offline checklist + save-for-offline</div></div>
+        <div class="shot"><img src="screenshots/comp-f10a.png" alt="web.dev offline UX reference" loading="lazy"><div class="cap"><b>Reference</b> · Squoosh PWA offline-ready toast</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-session">
+      <div>
+        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7007 · F09</span></div>
+        <h3>Per-question quiz feedback + interactive mode</h3>
+        <p class="what">Extend YAML quiz schema with per-question <code>hint</code> + per-option <code>feedback</code> + per-quiz <code>mode: classic | interactive</code>. Interactive shows hint after wrong pick and lets learner retry within same attempt. Backwards-compatible.</p>
+        <p class="why">Workers learn more per attempt instead of burning 3 attempts on the same wrong answer. Material training-effectiveness improvement, not just polish.</p>
+        <div class="footer">
+          <span class="badge high">High</span><span class="badge s">M · ~1 day</span>
+          <a href="https://linear.app/brite-nites/issue/BC-7007">→ BC-7007</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-f09.png" alt="Brite mockup of interactive quiz feedback" loading="lazy"><div class="cap"><b>Brite mockup</b> · per-question hint + retry-in-attempt</div></div>
+        <div class="shot"><img src="screenshots/comp-f09.png" alt="Duolingo interactive feedback reference" loading="lazy"><div class="cap"><b>Reference</b> · W3Schools interactive quiz</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-session">
+      <div>
+        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7003 · F07</span></div>
+        <h3>"Edit this page on GitHub" footer link</h3>
+        <p class="what">Footer link on every module page deep-linking to the source markdown file in handbook repo. Visible only to TRAINER + ADMIN roles. Closes the contributor loop for handbook content fixes.</p>
+        <p class="why">Tiny investment (~2h) that materially supports the content-accuracy work running in parallel during season-prep window.</p>
+        <div class="footer">
+          <span class="badge high">High</span><span class="badge s">S · ~2h</span>
+          <a href="https://linear.app/brite-nites/issue/BC-7003">→ BC-7003</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-f07.png" alt="Brite mockup of edit-on-github footer" loading="lazy"><div class="cap"><b>Brite mockup</b> · edit-on-GitHub footer (trainers/admins)</div></div>
+        <div class="shot"><img src="screenshots/comp-f07.png" alt="Docusaurus edit-this-page reference" loading="lazy"><div class="cap"><b>Reference</b> · Docusaurus "Edit this page" footer</div></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ PHASE 2 ============ -->
+  <section class="phase-section phase-2">
+    <div class="phase-header">
+      <span class="phase-eyebrow">Phase 2 · Search + polish</span>
+      <h2>Material UX upgrades (~3-4 weeks, after Phase 1)</h2>
+    </div>
+    <p class="blurb">Linear: Medium priority. Degrades gracefully if delayed — but each lands real value. Polish bundle can ship as five small PRs in a single week.</p>
+
+    <article class="feature from-session">
+      <div>
+        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7010 · F01 Steps 1+2</span></div>
+        <h3>Brite AI engine swap — Cmd+K + FlexSearch</h3>
+        <p class="what">Replace the SQL <code>ILIKE</code> substring search behind the existing Brite AI button with FlexSearch in-process index (bodies + headings + frontmatter). Add Cmd+K keyboard shortcut + centered modal. Ask AI RAG mode deferred to Phase 3.</p>
+        <p class="why">Today's substring search misses ~70% of useful queries. With heading IDs from F02, search results deep-link to the matched section, not just the module top.</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge l">L · ~2 weeks</span>
+          <a href="https://linear.app/brite-nites/issue/BC-7010">→ BC-7010</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-f01.png" alt="Brite mockup of Cmd+K command palette" loading="lazy"><div class="cap"><b>Brite mockup</b> · Cmd+K palette with Search / Ask AI tabs</div></div>
+        <div class="shot"><img src="screenshots/comp-f01.png" alt="Vercel docs Cmd+K reference" loading="lazy"><div class="cap"><b>Reference</b> · Vercel docs command palette</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-session">
+      <div>
+        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7008 · F02</span></div>
+        <h3>Lesson outline popover + anchor-on-heading deep links</h3>
+        <p class="what">Outline icon in lesson header. Click → popover lists H2/H3 headings → click heading → page scrolls. <code>rehype-slug</code> gives stable IDs; <code>rehype-autolink-headings</code> adds hover-to-copy deep link affordance. Ships before F01 Step 2.</p>
+        <p class="why">Foundational infrastructure: F01 search snippets + RAG citations also use these heading IDs for section-precise deep links.</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge s">S · ~2 days</span>
+          <a href="https://linear.app/brite-nites/issue/BC-7008">→ BC-7008</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-f02.png" alt="Brite mockup of outline popover" loading="lazy"><div class="cap"><b>Brite mockup</b> · lesson outline popover</div></div>
+        <div class="shot"><img src="screenshots/comp-f02.png" alt="Stripe API docs outline reference" loading="lazy"><div class="cap"><b>Reference</b> · Next.js docs right-side outline</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-session">
+      <div>
+        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7006 · F04</span></div>
+        <h3>Resume Lesson card (upgrade Continue Lesson button)</h3>
+        <p class="what">Dashboard already has a <code>→ Continue Lesson</code> button but it's an anonymous CTA. Replace with rich card showing module name, phase, lesson position, progress bar. Replaces the entire CTA grid as a full-width hero.</p>
+        <p class="why">Field workers in 10-min stolen moments need to verify what they're resuming before tapping. Existing data already supports it — just a presentation upgrade.</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge s">S · ~1 day</span>
+          <a href="https://linear.app/brite-nites/issue/BC-7006">→ BC-7006</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-f04.png" alt="Brite mockup of Resume Lesson card" loading="lazy"><div class="cap"><b>Brite mockup</b> · Resume Lesson hero card</div></div>
+        <div class="shot"><img src="screenshots/comp-f04.png" alt="Coursera continue learning reference" loading="lazy"><div class="cap"><b>Reference</b> · Exercism track progress (158 / completed / in progress)</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-session">
+      <div>
+        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7005 · F03</span></div>
+        <h3>Breadcrumb enhancement (extend ModuleNav)</h3>
+        <p class="what">Today's <code>ModuleNav</code> shows <code>My Track › Phase › Course › Lesson N of M</code>. Add Department segment, replace generic "My Track" with named track (e.g. "JT Track"), make Phase clickable. Audit-confirmed enhancement, not new build.</p>
+        <p class="why">Deep-linked module pages today are orphans — workers don't know what track they're in. One row of text restores infinite context.</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge s">S · ~3h</span>
+          <a href="https://linear.app/brite-nites/issue/BC-7005">→ BC-7005</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-f03.png" alt="Brite mockup of breadcrumb enhancement" loading="lazy"><div class="cap"><b>Brite mockup</b> · before/after breadcrumb</div></div>
+        <div class="shot"><img src="screenshots/comp-f03.png" alt="Stripe docs breadcrumbs reference" loading="lazy"><div class="cap"><b>Reference</b> · Stripe docs breadcrumb pattern</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-session">
+      <div>
+        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7001 · F05</span></div>
+        <h3>Six-variant callouts (extend hint pipeline)</h3>
+        <p class="what">Extend <code>HINT_STYLES</code> from 4 → 6 variants. Add <code>tip</code> (Lightbulb, cyan) + <code>note</code> (StickyNote, slate). Passive visual hierarchy only — no click-to-expand, no hover-reveal.</p>
+        <p class="why">Field safety content needs visual hierarchy. "Warning: lockout-tagout" must read different from "tip: zip-tie tail direction."</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge s">S · ~3h</span>
+          <a href="https://linear.app/brite-nites/issue/BC-7001">→ BC-7001</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-f05.png" alt="Brite mockup of six callout variants" loading="lazy"><div class="cap"><b>Brite mockup</b> · 6-variant callouts (warning · tip · note...)</div></div>
+        <div class="shot"><img src="screenshots/comp-f05.png" alt="Docusaurus admonitions reference" loading="lazy"><div class="cap"><b>Reference</b> · Docusaurus admonition callouts</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-session">
+      <div>
+        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7002 · F06 · sibling of BC-6605</span></div>
+        <h3>Auto reading-time chip</h3>
+        <p class="what">Replace manual <code>frontmatter.duration</code> (often "Unknown") with word-count-derived at ~225 wpm. Manual stays as override. <b>Sibling: BC-6605 (Jaime)</b> handles the "last updated" half via git-derived timestamps. Together they form the complete chip strip.</p>
+        <p class="why">Authors stop having to maintain manual duration. Chip never lies.</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge s">S · ~2h</span>
+          <a href="https://linear.app/brite-nites/issue/BC-7002">→ BC-7002</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-f06.png" alt="Brite mockup of meta chip strip with reading time" loading="lazy"><div class="cap"><b>Brite mockup</b> · auto-derived reading-time chip</div></div>
+        <div class="shot"><img src="screenshots/comp-f06.png" alt="Medium reading-time reference" loading="lazy"><div class="cap"><b>Reference</b> · dev.to article cards with "X min read" chip</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-jaime">
+      <div>
+        <div class="meta-top"><span class="src-tag">existing · Jaime</span> · <span>BC-6605</span></div>
+        <h3>Handbook freshness chip (git-derived lastModifiedAt)</h3>
+        <p class="what">New <code>HandbookModuleMeta</code> table populated from GitHub webhook commit timestamps. Lesson header shows freshness chip with color tier (green &lt;90d, neutral 90-365d, amber &gt;365d). Tooltip exposes last commit message.</p>
+        <p class="why">Manual <code>last_updated</code> frontmatter rots. Git is canonical. Returning seasonal workers need to know what changed since last year.</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge m">M · ~3-5 days</span>
+          <a href="https://linear.app/brite-nites/issue/BC-6605">→ BC-6605</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-bc6605.png" alt="Brite mockup of freshness chip with tooltip" loading="lazy"><div class="cap"><b>Brite mockup</b> · freshness chip + commit tooltip</div></div>
+        <div class="shot"><img src="screenshots/comp-bc6605.png" alt="Wikipedia last-edited reference" loading="lazy"><div class="cap"><b>Reference</b> · Wikipedia last-edited timestamp</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-session">
+      <div>
+        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7004 · F08</span></div>
+        <h3>Theme toggle + persistent sidebar state</h3>
+        <p class="what">Dark CSS already exists but no toggle UI. Install <code>next-themes</code> for light/dark/system selector. Persist sidebar collapse state via localStorage. Two related shell polish items.</p>
+        <p class="why">Sidebar resets on every nav are real friction. Theme toggle finishes the dark mode work that's been half-done.</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge s">S · ~3h</span>
+          <a href="https://linear.app/brite-nites/issue/BC-7004">→ BC-7004</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-f08.png" alt="Brite mockup of theme toggle and sidebar" loading="lazy"><div class="cap"><b>Brite mockup</b> · theme toggle + persistent sidebar</div></div>
+        <div class="shot"><img src="screenshots/comp-f08.png" alt="Tailwind docs theme toggle reference" loading="lazy"><div class="cap"><b>Reference</b> · shadcn/ui docs theme toggle + sidebar</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-jaime">
+      <div>
+        <div class="meta-top"><span class="src-tag">existing · Jaime</span> · <span>BC-6602 / BC-6603</span></div>
+        <h3>Module time tracking (foundation + display)</h3>
+        <p class="what">BC-6602: track time spent in modules via sessions + heartbeats + idle detection. BC-6603: surface time on trainee chip + admin team-page column. Provides the "last activity" data BC-6596 manager view needs.</p>
+        <p class="why">Both Phase 1 and 2 need real activity signal. Without time tracking, "last activity" is just "last login."</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge m">M each</span>
+          <a href="https://linear.app/brite-nites/issue/BC-6602">→ BC-6602</a> · <a href="https://linear.app/brite-nites/issue/BC-6603">BC-6603</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-bc6602.png" alt="Brite mockup of time tracking display" loading="lazy"><div class="cap"><b>Brite mockup</b> · time-spent chip + activity rollup</div></div>
+        <div class="shot"><img src="screenshots/comp-bc6602.png" alt="GitHub Pulse activity reference" loading="lazy"><div class="cap"><b>Reference</b> · GitHub Insights · Pulse activity</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-jaime">
+      <div>
+        <div class="meta-top"><span class="src-tag">existing · Jaime</span> · <span>BC-6604</span></div>
+        <h3>CI guardrail — broken track-slug references</h3>
+        <p class="what">Build-time check that fails CI if <code>tracks.json</code> references a module slug not present in <code>modules.json</code> (or vice versa). Prevents fallback-to-raw-slug-tail rendering bugs.</p>
+        <p class="why">Already-known bug class. Catches before merge instead of in production. Defensive infrastructure for ongoing content work.</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge s">S</span>
+          <a href="https://linear.app/brite-nites/issue/BC-6604">→ BC-6604</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-bc6604.png" alt="Brite mockup of CI guardrail terminal" loading="lazy"><div class="cap"><b>Brite mockup</b> · CI check terminal output</div></div>
+        <div class="shot"><img src="screenshots/comp-bc6604.png" alt="GitHub failing PR checks reference" loading="lazy"><div class="cap"><b>Reference</b> · GitHub Actions failing PR checks</div></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ PHASE 3 ============ -->
+  <section class="phase-section phase-3">
+    <div class="phase-header">
+      <span class="phase-eyebrow">Phase 3 · Post-season iteration</span>
+      <h2>Build informed by real usage data (~4-5 weeks)</h2>
+    </div>
+    <p class="blurb">Ship in response to observed need from Phase 1+2, not assumption. F10 + F01 + F11 are the big bets. Could parallelize across two engineers.</p>
+
+    <article class="feature from-session">
+      <div>
+        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7009 · F10 PR B+C</span></div>
+        <h3>Offline write + sync + cross-device hardening</h3>
+        <p class="what">Mutation queue in IndexedDB. Server actions intercepted when offline → queue locally → drain on reconnect via Background Sync API + visibilitychange fallback. Conflict resolution leverages existing P2002 catches and "status only progresses" guards.</p>
+        <p class="why">PR A (Phase 1) ships read-only offline. PR B+C complete the offline story informed by actual field-usage data from PR A.</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge l">L · ~3 weeks</span>
+          <a href="https://linear.app/brite-nites/issue/BC-7009">→ BC-7009</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-f10bc.png" alt="Brite mockup of offline write and sync queue" loading="lazy"><div class="cap"><b>Brite mockup</b> · queued offline mutations + sync</div></div>
+        <div class="shot"><img src="screenshots/comp-f10bc.png" alt="Chrome Background Sync reference" loading="lazy"><div class="cap"><b>Reference</b> · MDN Background Synchronization API</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-session">
+      <div>
+        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7010 · F01 Steps 3+4</span></div>
+        <h3>Brite AI Ask mode (RAG via Anthropic)</h3>
+        <p class="what">Add "Ask AI" tab inside the same Cmd+K modal. Top-5 FlexSearch hits feed prompt → Claude synthesizes answer → cited with section-precise deep links (via F02 heading IDs). New <code>AiQueryLog</code> table for cost tracking.</p>
+        <p class="why">Field workers ask conversational questions ("what zip ties for Phoenician palms?"). RAG over the indexed handbook answers them, cites sources. Builds on Phase 2 search infrastructure.</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge l">L · ~2-3 weeks</span>
+          <a href="https://linear.app/brite-nites/issue/BC-7010">→ BC-7010</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-f01ai.png" alt="Brite mockup of Ask AI with citations" loading="lazy"><div class="cap"><b>Brite mockup</b> · Ask AI · cited section-precise answer</div></div>
+        <div class="shot"><img src="screenshots/comp-f01ai.png" alt="claude.ai reference" loading="lazy"><div class="cap"><b>Reference</b> · Wikipedia inline superscript citations</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-jaime">
+      <div>
+        <div class="meta-top"><span class="src-tag">existing · Jaime · supersedes F11 (BC-7052 closed dup)</span> · <span>BC-6596</span></div>
+        <h3>Team page training overlay + per-trainee drill-down</h3>
+        <p class="what">Augment <code>/team</code> with progress overlay for TRAINER + ADMIN: completion %, modules complete, phases complete, last activity. Card clickable → <code>/team/[userId]</code> drill-down reusing trainee home-page components. IDOR-protected with 404-over-403 status codes. <b>This delivers the "Manager view" concept from the competitive review — BC-7052 (F11) was closed as duplicate.</b></p>
+        <p class="why">Jaime's literal ask: "I want my home page to show all the tabs (rank, % progress, courses) for each person on my team." Closes the structural gap that today's LMS is trainee-only at the UI level.</p>
+        <div class="footer">
+          <span class="badge high">High</span><span class="badge m">M · ~1 week</span>
+          <a href="https://linear.app/brite-nites/issue/BC-6596">→ BC-6596</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-bc6596.png" alt="Brite mockup of team page training overlay" loading="lazy"><div class="cap"><b>Brite mockup</b> · trainer team-progress overlay</div></div>
+        <div class="shot"><img src="screenshots/comp-bc6596.png" alt="Asana team progress reference" loading="lazy"><div class="cap"><b>Reference</b> · Asana team progress dashboard</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-jaime">
+      <div>
+        <div class="meta-top"><span class="src-tag">existing · Jaime · partial cover for deferred "intelligent agents"</span> · <span>BC-6600 + BC-6601</span></div>
+        <h3>Email infrastructure + completion notifications</h3>
+        <p class="what">BC-6600: Resend + React Email + event queue + cron sweep + user preferences. BC-6601: completion notification emails (module, quiz, phase, track events) to employee + admin.</p>
+        <p class="why">Email push channel for training milestones. Partial coverage of the "intelligent agents" Half B I deferred (push notifications when workers stall) — BC-6601 covers completion events, future work could extend to stall detection if needed.</p>
+        <div class="footer">
+          <span class="badge high">High</span><span class="badge l">L</span>
+          <a href="https://linear.app/brite-nites/issue/BC-6600">→ BC-6600</a> · <a href="https://linear.app/brite-nites/issue/BC-6601">BC-6601</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-bc6600.png" alt="Brite mockup of completion notification email" loading="lazy"><div class="cap"><b>Brite mockup</b> · completion notification email</div></div>
+        <div class="shot"><img src="screenshots/comp-bc6600.png" alt="Postmark transactional email templates reference" loading="lazy"><div class="cap"><b>Reference</b> · Postmark transactional email gallery</div></div>
+      </div>
+    </article>
+
+    <article class="feature from-jaime">
+      <div>
+        <div class="meta-top"><span class="src-tag">existing · Jaime</span> · <span>BC-6606</span></div>
+        <h3>Admin coverage audit dashboard (org-wide)</h3>
+        <p class="what">Admin-scoped view of training coverage across all departments. Complement to BC-6596 (manager view = direct reports). The org-wide ADMIN view the deferred V2 admin dashboard concept refers to.</p>
+        <p class="why">Holden + Collin need an org-wide signal once BC-6596 establishes the manager-view pattern.</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge m">M</span>
+          <a href="https://linear.app/brite-nites/issue/BC-6606">→ BC-6606</a>
+        </div>
+      </div>
+      <div class="mockup">
+        <div class="shot"><img src="screenshots/brite-bc6606.png" alt="Brite mockup of admin coverage dashboard" loading="lazy"><div class="cap"><b>Brite mockup</b> · org-wide coverage dashboard</div></div>
+        <div class="shot"><img src="screenshots/comp-bc6606.png" alt="Plausible analytics reference" loading="lazy"><div class="cap"><b>Reference</b> · Plausible org-wide analytics dashboard</div></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ BACKLOG ============ -->
+  <section class="backlog-section">
+    <h2>M02 Backlog — captured, not currently scoped</h2>
+    <p class="blurb">Real value, deferred from current scope. Each has full Linear issue with spec. Re-evaluate during M02 planning or when explicit trigger condition emerges.</p>
+    <div class="compact-row"><div class="title">Newsfeed / announcements</div><div class="desc">Per-division targeted company-feed at top of LMS home. Reuses Department primitive. Worker reads "Strike Season starts Jan 6" + linked refresher modules.</div><div class="meta"><a href="https://linear.app/brite-nites/issue/BC-7000">BC-7000</a> · Low · S</div></div>
+    <div class="compact-row"><div class="title">Smart auto-enrollment rules</div><div class="desc">Extend <code>assignDefaultModules</code> to be rules-driven. Pairs with V2 bulk provisioning. Reacts to mid-season role changes.</div><div class="meta"><a href="https://linear.app/brite-nites/issue/BC-7055">BC-7055</a> · Low · M</div></div>
+    <div class="compact-row"><div class="title">ILT training calendar — Brite Base integration</div><div class="desc">Cross-project coordination. LMS owns curriculum requirements, Brite Base owns the schedule. Do NOT build parallel LMS calendar.</div><div class="meta"><a href="https://linear.app/brite-nites/issue/BC-7056">BC-7056</a> · Low · S-M</div></div>
+    <div class="compact-row"><div class="title">Pin / Favorite sidebar shortcut</div><div class="desc">Star icon → adds to sidebar "Favorites" section. User-scoped. Explicitly NOT merged with F10 offline-save per user direction.</div><div class="meta"><a href="https://linear.app/brite-nites/issue/BC-7062">BC-7062</a> · Low · S</div></div>
+  </section>
+
+  <!-- ============ SKIPS ============ -->
+  <section class="skip-section">
+    <h2>Explicit skips — captured with rationale</h2>
+    <p class="blurb">Cards reviewed individually during the catalog walkthrough and rejected. Documented to prevent re-litigating without new evidence.</p>
+    <div class="compact-row"><div class="title">Relevance score / lesson reactions</div><div class="desc">Duplicate feedback channel — Slack + manager DM already handles content feedback.</div><div class="meta">discarded</div></div>
+    <div class="compact-row"><div class="title">Keyboard shortcuts (J/K nav)</div><div class="desc">Mobile-first audience can't use them. Marginal lift for the few desktop power users.</div><div class="meta">discarded</div></div>
+    <div class="compact-row"><div class="title">"Was this helpful?" footer</div><div class="desc">Adds Prisma model + admin review surface for low-density signal Slack already handles.</div><div class="meta">discarded</div></div>
+    <div class="compact-row"><div class="title">First-time learner tour overlay</div><div class="desc">Tour copy rots when UI changes. UI is iterating right now.</div><div class="meta">discarded</div></div>
+    <div class="compact-row"><div class="title">Milestone celebration popups (confetti)</div><div class="desc">Infantilizing for adult workplace. Opens gamification door.</div><div class="meta">discarded</div></div>
+    <div class="compact-row"><div class="title">Author feedback inbox</div><div class="desc">Depends on discarded reactions feature. Wrong audience (authors, not managers).</div><div class="meta">discarded</div></div>
+    <div class="compact-row"><div class="title">"Become a JT" public landing pages</div><div class="desc">Belongs in <code>brite-recruiting</code> project, not LMS. Auth-walled by design.</div><div class="meta">discarded</div></div>
+    <div class="compact-row"><div class="title">Skill tags + skill profile rollup</div><div class="desc">Without richer assessment (SRS, photo upload), skill tags just relabel existing data. <b>Re-evaluate after BC-6596 ships</b> — if filter-by-skill is missing capability.</div><div class="meta">defer w/ trigger</div></div>
+    <div class="compact-row"><div class="title">Intelligent agents — stall notifications</div><div class="desc">BC-6601 covers completion-event push notifications. Stall-detection notifications: <b>re-evaluate after BC-6596 ships</b> if AMs report low dashboard click-through.</div><div class="meta">defer w/ trigger</div></div>
+  </section>
+
+  <!-- ============ PROJECT TIMELINE ============ -->
+  <section class="timeline-section" style="margin-top: 50px;">
+    <h2 style="font-size: 22px; font-weight: 600; margin: 0 0 6px;">Full project timeline — Brite LMS cadence</h2>
+    <p style="color: var(--fg-muted); font-size: 13.5px; margin: 0 0 18px; max-width: 80ch;">
+      <b>Updated 2026-05-10 after foundation-first re-sequence.</b> Vertical view of every active and planned issue from <b>now → 2027</b>. Originally sequenced as "features first" (Phase 1 = F10 offline + F09 quiz hints + F07). Audit revealed structural gaps that need fixing BEFORE more features — only 3 quizzes for 226 modules, no email infrastructure, no error tracking, no real-device mobile validation. Re-sequenced into 5 phases: foundations → testing-ready → pre-season hardening → search + AI → post-season iteration.
+    </p>
+    <div style="padding: 14px 18px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px; margin: 0 0 22px; font-size: 12.5px; color: var(--fg-muted);">
+      <b style="color: var(--fg);">Why the re-sequence:</b> The original Phase 1 (F10 offline + F09 quiz hints + F07) was optimized for "field-ready by Oct 1." But F09 has nothing to apply to (3 quizzes exist for 226 modules) and F10 is meaningless without internal alpha testing of the basics first. Foundation-first surfaces real issues before they compound. Total runway is ~5 months — enough to do this right.
+    </div>
+
+    <style>
+      .timeline { position: relative; padding-left: 36px; margin: 20px 0 12px; border-left: 2px solid var(--line); }
+      .timeline-marker { position: relative; margin: 28px 0 10px -46px; padding-left: 46px; font-family: "SF Mono", monospace; font-size: 11px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600; }
+      .timeline-marker::before { content: ''; position: absolute; left: -8px; top: 50%; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 3px solid var(--fg-dim); transform: translateY(-50%); }
+      .timeline-marker.tm-now::before { background: var(--green); border-color: var(--green); }
+      .timeline-marker.tm-phase-1::before { background: var(--bg); border-color: var(--red); }
+      .timeline-marker.tm-phase-2::before { background: var(--bg); border-color: var(--accent); }
+      .timeline-marker.tm-phase-3::before { background: var(--bg); border-color: var(--purple); }
+      .timeline-marker.tm-buffer::before { background: var(--bg); border-color: var(--accent-2); border-style: dashed; }
+      .timeline-marker.tm-season::before { background: var(--accent-2); border-color: var(--accent-2); width: 20px; height: 20px; }
+      .timeline-marker.tm-backlog::before { background: var(--bg-3); border-color: var(--fg-dim); border-style: dashed; }
+      .timeline-marker.tm-done::before { background: var(--bg-3); border-color: var(--fg-dim); }
+      .timeline-marker .ts-date { color: var(--fg); margin-right: 12px; }
+      .timeline-marker .ts-phase-label { padding: 2px 8px; border-radius: 4px; font-size: 10.5px; margin-left: 6px; }
+      .timeline-marker.tm-phase-1 .ts-phase-label { background: rgba(255,97,104,0.14); color: var(--red); }
+      .timeline-marker.tm-phase-2 .ts-phase-label { background: rgba(255,206,71,0.14); color: var(--accent); }
+      .timeline-marker.tm-phase-3 .ts-phase-label { background: rgba(184,138,255,0.14); color: var(--purple); }
+      .timeline-marker.tm-buffer .ts-phase-label { background: rgba(76,194,255,0.10); color: var(--accent-2); }
+      .timeline-marker.tm-season .ts-phase-label { background: rgba(76,194,255,0.18); color: var(--accent-2); font-weight: 600; }
+
+      .timeline-item { display: grid; grid-template-columns: 110px 1fr 130px; gap: 12px; align-items: baseline; margin: 6px 0; padding: 8px 14px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px; font-size: 12.5px; }
+      .timeline-item .ti-id { font-family: "SF Mono", monospace; color: var(--accent); font-size: 11px; font-weight: 600; }
+      .timeline-item .ti-id.urgent { color: var(--red); }
+      .timeline-item .ti-id.high { color: var(--orange); }
+      .timeline-item .ti-id.done { color: var(--fg-dim); }
+      .timeline-item .ti-title { color: var(--fg); }
+      .timeline-item .ti-title.done { color: var(--fg-dim); text-decoration: line-through; }
+      .timeline-item .ti-meta { font-family: "SF Mono", monospace; font-size: 10.5px; color: var(--fg-dim); text-align: right; }
+      .timeline-item a { color: var(--accent-2); }
+
+      .timeline-note { margin: 6px 0 14px 0; padding: 6px 14px; font-size: 12px; font-style: italic; color: var(--fg-muted); border-left: 2px solid var(--line); }
+
+      @media (max-width: 700px) {
+        .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+        .timeline-item .ti-meta { text-align: left; }
+      }
+    </style>
+
+    <div class="timeline">
+
+      <!-- DONE foundation -->
+      <div class="timeline-marker tm-done"><span class="ts-date">2026 Q1–Q2</span>Foundation shipped<span class="ts-phase-label" style="background: var(--bg-3); color: var(--fg-dim)">done · context</span></div>
+      <div class="timeline-item">
+        <span class="ti-id done">BC-3125 → BC-6598</span>
+        <span class="ti-title done">~20 foundation tasks: scaffolding, auth, Prisma schema, content fetcher, rendering, quiz pipeline, lesson header v2, tools/materials sidebar, team page, department primitive, migration alignment</span>
+        <span class="ti-meta">complete</span>
+      </div>
+
+      <!-- NOW -->
+      <div class="timeline-marker tm-now"><span class="ts-date">Now · 2026-05-10</span>In progress<span class="ts-phase-label" style="background: rgba(77,208,122,0.14); color: var(--green)">active</span></div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7049</span>
+        <span class="ti-title">JT track displayTitle should override course-slug grouping, not just labels</span>
+        <span class="ti-meta">Medium · In Progress</span>
+      </div>
+
+      <!-- PHASE 1 — FOUNDATIONS -->
+      <div class="timeline-marker tm-phase-1"><span class="ts-date">Weeks 1–5 · mid-May → late June</span>Phase 1<span class="ts-phase-label">foundations · ~4-5 wk</span></div>
+      <p class="timeline-note"><b>Fix structural gaps before adding more features.</b> Content authoring runs in parallel with engineering work.</p>
+      <div class="timeline-item">
+        <span class="ti-id high">BC-5655</span>
+        <span class="ti-title"><b>Quiz coverage</b> — Convert 23 handbook Q&amp;As → MC quizzes. <b>Today only 3 quizzes exist for 226 modules.</b> Curriculum-author work, runs parallel to engineering.</span>
+        <span class="ti-meta">High · content</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-5971</span>
+        <span class="ti-title">JT track content gap-fill — 15 physical assessment rubrics + 7 strike modules. Curriculum work.</span>
+        <span class="ti-meta">Medium · content</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id high">BC-6600</span>
+        <span class="ti-title"><b>Email infrastructure</b> — Resend + React Email + event queue + cron sweep + user preferences. Foundation for invitations, completion signals, anything human-readable.</span>
+        <span class="ti-meta">High · ~1-2 wk</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id high">BC-3123</span>
+        <span class="ti-title"><b>Admin user-management UI</b> — Invite + role assignment + supervisor + territory. No more manual Prisma Studio for provisioning. <i>Bumped from Todo/Low to Backlog/High.</i></span>
+        <span class="ti-meta">High · M</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id high">BC-7063</span>
+        <span class="ti-title"><b>Error tracking + observability</b> — Sentry (or equivalent). Production failures must be visible.</span>
+        <span class="ti-meta">High · ~½ day</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id high">BC-7064</span>
+        <span class="ti-title"><b>Mobile real-device validation pass</b> — iOS Safari + Android Chrome end-to-end walkthrough. Catalog issues. Fix critical, defer cosmetic.</span>
+        <span class="ti-meta">High · ~2 days</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id high">BC-7003</span>
+        <span class="ti-title">F07 · Edit on GitHub footer link — supports content-authoring loop during Phase 1.</span>
+        <span class="ti-meta">High · ~2h</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-6604</span>
+        <span class="ti-title">CI guardrail for broken track-slug references — defensive infrastructure.</span>
+        <span class="ti-meta">Medium · S</span>
+      </div>
+
+      <!-- PHASE 2 — TESTING-READY -->
+      <div class="timeline-marker tm-phase-2"><span class="ts-date">Weeks 6–8 · late June → mid-July</span>Phase 2<span class="ts-phase-label">testing-ready · ~2-3 wk</span></div>
+      <p class="timeline-note">Internal alpha test with 5-10 real workers. Phase 2 features make that test feel like real product.</p>
+      <div class="timeline-item">
+        <span class="ti-id high">BC-6596</span>
+        <span class="ti-title"><b>Team page training overlay</b> — Trainers see crew progress (not just roster). Delivers "Manager view" concept (was F11 = BC-7052 closed dup). Critical for alpha testing — managers monitor testers.</span>
+        <span class="ti-meta">High · ~1 wk</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id high">BC-6601</span>
+        <span class="ti-title"><b>Completion notification emails</b> — Module/quiz/phase/track events. Uses BC-6600 email infra.</span>
+        <span class="ti-meta">High · M</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7007</span>
+        <span class="ti-title">F09 · Quiz feedback hints — <i>Now meaningful</i> because Phase 1 quiz coverage shipped. <i>Demoted from High to Medium.</i></span>
+        <span class="ti-meta">Medium · ~1d</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-6602</span>
+        <span class="ti-title">Module time tracking foundation — sessions, heartbeats, idle detection.</span>
+        <span class="ti-meta">Medium · M</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-6603</span>
+        <span class="ti-title">Module time tracking display — trainee chip + admin team-page column.</span>
+        <span class="ti-meta">Medium · M</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id" style="color: var(--fg-dim)">—</span>
+        <span class="ti-title"><b>Internal alpha test</b> · 5-10 real workers walk through their tracks · Holden, Mike, etc. monitor via BC-6596 manager view · catalog real-world friction</span>
+        <span class="ti-meta">activity</span>
+      </div>
+
+      <!-- PHASE 3 — PRE-SEASON HARDENING -->
+      <div class="timeline-marker tm-phase-2" style="--marker-color: var(--orange);"><span class="ts-date">Weeks 9–11 · mid-July → early August</span>Phase 3<span class="ts-phase-label" style="background: rgba(255,156,74,0.14); color: var(--orange);">pre-season hardening · ~3 wk</span></div>
+      <p class="timeline-note">Field-ready features + UX polish. F10 PR A is the critical field-reliability piece.</p>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7009</span>
+        <span class="ti-title"><b>F10 PR A · Offline read mode</b> — Service Worker + IndexedDB + Save-for-offline UI. <i>Demoted from Urgent to Medium; now in Phase 3.</i> Ships once basics + testing-ready phases prove the system works.</span>
+        <span class="ti-meta">Medium · ~7-10d</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-6605</span>
+        <span class="ti-title">Freshness chip (git-derived lastModifiedAt) — sibling of F06.</span>
+        <span class="ti-meta">Medium · ~3-5d</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7008</span>
+        <span class="ti-title">F02 · Outline popover + anchor IDs (heading IDs unlock F01 search snippets in Phase 4).</span>
+        <span class="ti-meta">Medium · ~2d</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7005</span>
+        <span class="ti-title">F03 · Breadcrumb enhancement (ModuleNav).</span>
+        <span class="ti-meta">Medium · ~3h</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7006</span>
+        <span class="ti-title">F04 · Resume Lesson card.</span>
+        <span class="ti-meta">Medium · ~1d</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7001</span>
+        <span class="ti-title">F05 · Six-variant callouts.</span>
+        <span class="ti-meta">Medium · ~3h</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7002</span>
+        <span class="ti-title">F06 · Auto reading-time chip.</span>
+        <span class="ti-meta">Medium · ~2h</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7004</span>
+        <span class="ti-title">F08 · Theme toggle + sidebar persistence.</span>
+        <span class="ti-meta">Medium · ~3h</span>
+      </div>
+
+      <!-- PHASE 4 — SEARCH + AI -->
+      <div class="timeline-marker tm-phase-2" style="--marker-color: var(--accent-2);"><span class="ts-date">Weeks 12–15 · August</span>Phase 4<span class="ts-phase-label" style="background: rgba(76,194,255,0.14); color: var(--accent-2);">search + AI · ~3-4 wk</span></div>
+      <p class="timeline-note">Optional if Phase 1–3 ate time. Workers can use existing navigation if search is delayed.</p>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7010</span>
+        <span class="ti-title">F01 Steps 1+2 · Cmd+K + FlexSearch — Replace SQL ILIKE with in-process fuzzy search. Heading-section deep links.</span>
+        <span class="ti-meta">Medium · ~2 wk</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id" style="color: var(--fg-dim)">—</span>
+        <span class="ti-title">Final pre-season testing wave with returning seasonal workers (Aug-Sep). Catalog real-world friction. Iterate.</span>
+        <span class="ti-meta">activity</span>
+      </div>
+
+      <!-- BUFFER -->
+      <div class="timeline-marker tm-buffer"><span class="ts-date">Sep</span>Buffer · pre-season testing wave<span class="ts-phase-label">~4 wk</span></div>
+      <p class="timeline-note">Returning seasonal workers test the full system. Catalog issues. Fix critical before Oct 1.</p>
+
+      <!-- SEASON START -->
+      <div class="timeline-marker tm-season"><span class="ts-date">Oct 1, 2026</span>❄️ Peak Season starts<span class="ts-phase-label">~90 seasonal workers active</span></div>
+      <p class="timeline-note">First peak season with the upgraded LMS. F10 PR A (offline read) is load-bearing in field. Observed usage data starts informing Phase 5 sequencing.</p>
+
+      <!-- PHASE 5 — POST-SEASON ITERATION -->
+      <div class="timeline-marker tm-phase-3"><span class="ts-date">Oct–Dec 2026 · during/after peak</span>Phase 5<span class="ts-phase-label">post-season iteration · ~4-5 wk</span></div>
+      <p class="timeline-note">Real usage data informs the build. Sequence inside Phase 5 depends on observed need.</p>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7009</span>
+        <span class="ti-title">F10 PR B · Offline write + sync — Mutation queue + sync orchestration.</span>
+        <span class="ti-meta">Medium · ~6-8d</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7009</span>
+        <span class="ti-title">F10 PR C · Cross-device hardening (iOS Safari + storage quota + edge cases).</span>
+        <span class="ti-meta">Medium · ~2-3d</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7010</span>
+        <span class="ti-title">F01 Step 3 · Ask AI RAG mode — Anthropic API + cited section-precise deep links.</span>
+        <span class="ti-meta">Medium · ~2-3 wk</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-6606</span>
+        <span class="ti-title">Admin coverage audit dashboard — org-wide complement to BC-6596.</span>
+        <span class="ti-meta">Medium · M</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7010</span>
+        <span class="ti-title">F01 Step 4 · Polish — recent searches, voice input, "did you mean".</span>
+        <span class="ti-meta">Medium · ~3d</span>
+      </div>
+
+      <!-- M02 BACKLOG -->
+      <div class="timeline-marker tm-backlog"><span class="ts-date">2027 · M02 planning</span>Backlog · re-evaluated next planning cycle<span class="ts-phase-label" style="background: var(--bg-3); color: var(--fg-muted)">deferred</span></div>
+      <p class="timeline-note">Captured with full Linear specs. Re-evaluate during M02 planning or when explicit trigger conditions emerge (e.g., "manager view low click-through" → revisit notifications).</p>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7000</span>
+        <span class="ti-title">Newsfeed / announcements home module (per-division targeting via Department primitive)</span>
+        <span class="ti-meta">Low · S</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7055</span>
+        <span class="ti-title">Smart auto-enrollment rules (extend assignDefaultModules; pairs with V2 bulk provisioning)</span>
+        <span class="ti-meta">Low · M</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7056</span>
+        <span class="ti-title">ILT training calendar — Brite Base integration (cross-project; do NOT build parallel LMS calendar)</span>
+        <span class="ti-meta">Low · S-M</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-7062</span>
+        <span class="ti-title">Pin / Favorite sidebar shortcut (lightweight bookmark; separate from F10 offline-save)</span>
+        <span class="ti-meta">Low · S</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-6608</span>
+        <span class="ti-title">Social embed pipeline + YouTube / Vimeo / Loom renderers (unlocks video-dependent features)</span>
+        <span class="ti-meta">Medium</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-6609</span>
+        <span class="ti-title">Social embed renderers — TikTok / Instagram / LinkedIn</span>
+        <span class="ti-meta">Medium</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-6607</span>
+        <span class="ti-title">Research — quiz↔content semantic drift detection</span>
+        <span class="ti-meta">Low · spike</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-5654</span>
+        <span class="ti-title">Views counter — per-lesson view tracking</span>
+        <span class="ti-meta">Medium</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-5415</span>
+        <span class="ti-title">Migrate LMS UI to full shadcn/ui design system (large refactor — coordinate with Phase 2 polish)</span>
+        <span class="ti-meta">Medium · L</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-3124</span>
+        <span class="ti-title">Task 12 — Trainee Dashboard (legacy task, may be superseded by F04 resume card + F11/BC-6596)</span>
+        <span class="ti-meta">Low</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-3123</span>
+        <span class="ti-title">Task 13 — User Management (Admin) — superseded by BC-6606 admin coverage dashboard</span>
+        <span class="ti-meta">Low</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id">BC-4965</span>
+        <span class="ti-title">UI/UX Design Pass — Brand Identity + Visual Polish</span>
+        <span class="ti-meta">Low</span>
+      </div>
+
+    </div>
+
+    <p style="margin-top: 28px; padding: 14px 18px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px; font-size: 12.5px; color: var(--fg-muted);">
+      <b style="color: var(--fg);">Cadence assumption</b>: solo-engineer pace with agent-assisted execution. Two engineers compresses Phase 1–3 to roughly half (e.g., F10 + F01 can parallelize since they touch entirely different areas). <b>Hard constraint:</b> Phase 1 critical path must ship before pre-season testing in Aug-Sep, which itself must complete before Oct 1. That's the only deadline-driven element. Everything else is sequencing preference informed by the utilitarian filter.
+    </p>
+  </section>
+
+  <footer class="foot">
+    <p>This summary woven from the 2026-05-07 competitive review (10 active features F01–F10 + 4 backlog + 9 skips) and Jaime's 2026-05-04 product review (14 existing issues BC-6596–6609). Generated for the LMS rescope conversation with Holden + Jaime.</p>
+    <p><b>One unified phased roadmap:</b> Phase 1 critical (~3-4 wk) → Phase 2 search + polish (~3-4 wk) → Phase 3 post-season iteration (~4-5 wk). Total ~10-12 weeks of engineering. F11 Manager view (was BC-7052) closed as duplicate of BC-6596 — same feature, BC-6596 is the canonical issue.</p>
+    <p><b>Image strategy</b>: each feature shows two screenshots — a <b>Brite mockup</b> (Brite LMS design tokens, real handbook content like C9 strand spacing / GFCI / JT track) rendered to PNG via puppeteer from <code>mockups.html</code>, and a <b>competitor reference</b> from a public docs/marketing URL captured the same way. The Brite mockup is the primary visual (shows the feature in our context); the competitor is the in-the-wild reference. Capture scripts: <code>capture-mockups.mjs</code> + <code>capture-competitors.mjs</code> in this directory; PNGs in <code>screenshots/</code>.</p>
+  </footer>
+
+</div>
+</body>
+</html>
