@@ -46,10 +46,12 @@
   @media (max-width: 800px) { .feature { grid-template-columns: 1fr; } }
   .feature.from-jaime { border-left: 3px solid var(--accent-2); }
   .feature.from-session { border-left: 3px solid var(--green); }
+  .feature.from-jaime-0513 { border-left: 3px solid var(--accent); }
   .feature .meta-top { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-family: "SF Mono", monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 6px; }
   .feature .src-tag { padding: 2px 7px; border-radius: 3px; font-weight: 600; }
   .feature.from-jaime .src-tag { background: rgba(76,194,255,0.14); color: var(--accent-2); }
   .feature.from-session .src-tag { background: rgba(77,208,122,0.14); color: var(--green); }
+  .feature.from-jaime-0513 .src-tag { background: rgba(255,206,71,0.14); color: var(--accent); }
   .feature h3 { font-size: 16.5px; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.005em; }
   .feature .what { color: var(--fg); font-size: 13.5px; line-height: 1.55; margin: 0 0 10px; }
   .feature .why { color: var(--fg-muted); font-size: 12.5px; line-height: 1.5; font-style: italic; margin: 0 0 10px; }
@@ -77,6 +79,12 @@
   .legend .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
   .legend .from-jaime-swatch { background: var(--accent-2); }
   .legend .from-session-swatch { background: var(--green); }
+  .legend .from-jaime-0513-swatch { background: var(--accent); }
+  .spec-card { background: var(--bg-3); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; align-self: flex-start; font-family: "SF Mono", monospace; font-size: 11px; line-height: 1.6; color: var(--fg-muted); }
+  .spec-card b { color: var(--fg); font-weight: 600; }
+  .spec-card .spec-row { padding: 3px 0; border-bottom: 1px dashed var(--line); }
+  .spec-card .spec-row:last-child { border-bottom: 0; }
+  .spec-card .spec-label { display: inline-block; min-width: 78px; color: var(--fg-dim); letter-spacing: 0.04em; text-transform: uppercase; font-size: 9.5px; }
   .backlog-section, .skip-section { margin-top: 38px; padding: 18px 22px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; }
   .backlog-section h2, .skip-section h2 { font-size: 16px; font-weight: 600; margin: 0 0 6px; }
   .backlog-section .blurb, .skip-section .blurb { color: var(--fg-muted); font-size: 12.5px; margin: 0 0 14px; }
@@ -97,16 +105,19 @@
     <p class="lede">
       Combines the 10 active features from the 2026-05-07 competitive review with the 14 issues from Jaime's 2026-05-04 product review into one phased roadmap. Sequenced by utilitarian filter: <b>"would a seasonal worker actually fail at training if this didn't ship by peak season?"</b> Phase 1 = critical path. Phase 2 = search + polish. Phase 3 = post-season iteration.
     </p>
+    <p class="lede" style="margin-top: 10px;">
+      <b style="color: var(--accent);">Updated 2026-05-13</b> with Jaime's review feedback: user creation form, invite-to-track flow, invitation expiration (industry norms researched), onboarding/offboarding lifecycle, and an authoring runbook. See the addendum section below for the question-by-question mapping.
+    </p>
     <div class="meta-row">
-      <span>Generated 2026-05-10</span>
+      <span>Generated 2026-05-10 · updated 2026-05-13</span>
       <span>Peak season starts ~Oct 2026 (~5 months runway)</span>
       <span><a href="shortlist.html">Full shortlist</a> · <a href="https://linear.app/brite-nites/project/brite-lms-c6a5f04a123d">Linear project</a></span>
     </div>
   </header>
 
   <div class="stat-row">
-    <div class="stat"><div class="num">22</div><div class="lbl">Active issues</div></div>
-    <div class="stat"><div class="num">~17-20 wk</div><div class="lbl">Total effort (5 phases)</div></div>
+    <div class="stat"><div class="num">24</div><div class="lbl">Active issues</div></div>
+    <div class="stat"><div class="num">~18-21 wk</div><div class="lbl">Total effort (5 phases)</div></div>
     <div class="stat"><div class="num">5</div><div class="lbl">M02 backlog</div></div>
     <div class="stat"><div class="num">9</div><div class="lbl">Explicit skips</div></div>
   </div>
@@ -115,11 +126,139 @@
     <b style="color: var(--orange);">⚠ Doc convention</b>: the phase cards immediately below (Phase 1 / Phase 2 / Phase 3) reflect the <b>original 3-phase sequence</b> (features-first). The <b>full project timeline at the bottom</b> reflects the <b>updated 5-phase foundation-first plan</b> (2026-05-10). The 5-phase plan is the canonical sequence going into the rescope meeting. Phase cards above are kept for context on what each feature does; treat the timeline below as the source of truth for ordering and priority.
   </div>
 
+  <!-- ============ JAIME 2026-05-13 ADDENDUM ============ -->
+  <section class="addendum-section" style="margin: 0 0 26px; padding: 20px 24px; background: rgba(255,206,71,0.06); border: 1px solid rgba(255,206,71,0.28); border-radius: 10px;">
+    <div style="font-family: 'SF Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px;">Addendum · Jaime's 2026-05-13 review</div>
+    <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 6px;">Five follow-up questions — resolved, expanded, or newly scoped</h2>
+    <p style="color: var(--fg-muted); font-size: 13px; margin: 0 0 16px; max-width: 84ch;">Jaime asked five operational questions about the user lifecycle and authoring path. Each is mapped below to what's already in the plan, what's been expanded in scope, and what's net-new. Holden's separate rescoping continues throughout the week.</p>
+
+    <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="text-align: left; border-bottom: 1px solid var(--line); color: var(--fg-dim); font-family: 'SF Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;">
+          <th style="padding: 8px 8px 8px 0; width: 26%;">Jaime's question</th>
+          <th style="padding: 8px 8px; width: 13%;">Status</th>
+          <th style="padding: 8px 0 8px 8px;">Where it lives in the plan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--line);">
+          <td style="padding: 12px 8px 12px 0; vertical-align: top;"><b>1. Department + role at user creation</b><br/><span style="color: var(--fg-muted); font-size: 12px; font-style: italic;">"When you add a user — what department, what role? Admin? Create the course? Or user?"</span></td>
+          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge medium">EXPANDED</span></td>
+          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);"><b><a href="https://linear.app/brite-nites/issue/BC-3123">BC-3123</a></b> already covers invite + role + supervisor + territory. <b>Adding to scope</b>: department assignment (Installation / Office-CST / Sales / Strike) and the 3-role enum made explicit in the admin form — <code>ADMIN</code>, <code>TRAINER</code>, <code>TRAINEE</code>. See the new feature card below.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--line);">
+          <td style="padding: 12px 8px 12px 0; vertical-align: top;"><b>2. Invite users to a training path</b><br/><span style="color: var(--fg-muted); font-size: 12px; font-style: italic;">"You invite them to a training path on that email."</span></td>
+          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge medium">EXPANDED</span></td>
+          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);"><b><a href="https://linear.app/brite-nites/issue/BC-3123">BC-3123</a> + <a href="https://linear.app/brite-nites/issue/BC-6600">BC-6600</a></b>. Email infrastructure is already Phase 1. <b>Adding to scope</b>: the invite form requires a track selection (JT / ST / AM / QP / WA / RT / TM / CST). The invite email deep-links the worker directly to their assigned track home on first login.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--line);">
+          <td style="padding: 12px 8px 12px 0; vertical-align: top;"><b>3. Invitation expiration</b><br/><span style="color: var(--fg-muted); font-size: 12px; font-style: italic;">"Maybe we should have an expiration? See if other LMS out there have that."</span></td>
+          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge high">NEW</span></td>
+          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);">Gap in the existing plan — added under <b><a href="https://linear.app/brite-nites/issue/BC-3123">BC-3123</a></b>. <b>Industry norms</b>: Docebo 30d · Absorb 14d · TalentLMS 7d · 360Learning 7d · Lessonly 14d · WorkRamp 7-30d (configurable). <b>Proposed for Brite</b>: 14-day single-use token, admin "Resend invite" rotates token (invalidates old), "Pending · expires in Xd" indicator on team page, bulk-resend at cohort level, auto-expire at season end.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--line);">
+          <td style="padding: 12px 8px 12px 0; vertical-align: top;"><b>4. Onboarding / offboarding flows</b><br/><span style="color: var(--fg-muted); font-size: 12px; font-style: italic;">"Other onboarding and offboarding flows to add."</span></td>
+          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge high">NEW</span></td>
+          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);">Onboarding partially covered by BC-3123 (single provision) and <a href="https://linear.app/brite-nites/issue/BC-7055">BC-7055</a> in M02 (auto-enrollment). Offboarding is entirely missing. <b>New issue · BC-7065 (proposed)</b>: user lifecycle flow — soft-deactivate at season end (preserve progress for the ~24 confirmed 2026 returners), bulk season-end deactivation, re-activation flow for returners, mid-season role change preserving completed modules. See the new feature card below.</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px 8px 12px 0; vertical-align: top;"><b>5. How does an admin build a training?</b><br/><span style="color: var(--fg-muted); font-size: 12px; font-style: italic;">"Is that in here? Maybe so and just need documentation."</span></td>
+          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge medium">DOCS</span></td>
+          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);">Jaime's instinct is right — it's a docs gap, not a feature gap. Brite LMS uses <b>Git-as-CMS</b>: trainings live as markdown in the handbook repo. Authoring = write markdown + frontmatter + add to <code>tracks.json</code> + add quiz YAML + commit. The <a href="https://linear.app/brite-nites/issue/BC-7003">BC-7003</a> "Edit on GitHub" footer (TRAINER/ADMIN only) is the in-app entry point. <b>New issue · BC-7066 (proposed)</b>: authoring runbook documenting frontmatter, track config, quiz YAML, and the edit-on-GitHub workflow. Linked from the admin nav.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top: 16px; padding: 12px 16px; background: var(--bg-3); border-radius: 6px; font-size: 12.5px; color: var(--fg-muted);">
+      <b style="color: var(--fg);">Role clarification</b> (since "admin / course creator / user" was Jaime's framing): the LMS has three in-app roles — <code style="color: var(--accent);">ADMIN</code> (full access + user provisioning + org-wide reporting), <code style="color: var(--accent);">TRAINER</code> (sees crew progress + edit-on-GitHub footers), <code style="color: var(--accent);">TRAINEE</code> (sees own progress). "Course creator" in the SaaS-LMS mental model maps to <code>TRAINER</code> + GitHub repo write access on the handbook. Authoring rights live in <b>GitHub, not the LMS</b> — the LMS role only controls in-app visibility. This is intentional: it keeps the handbook as the single source of truth and avoids a parallel in-app WYSIWYG that would rot.
+    </div>
+  </section>
+
   <div class="legend">
     <span><span class="swatch from-jaime-swatch"></span><strong>Existing</strong> — from Jaime's 2026-05-04 product review (BC-6596–6609)</span>
     &nbsp;&nbsp;&nbsp;
     <span><span class="swatch from-session-swatch"></span><strong>New</strong> — from 2026-05-07 competitive review (F01–F10)</span>
+    &nbsp;&nbsp;&nbsp;
+    <span><span class="swatch from-jaime-0513-swatch"></span><strong>Jaime addendum</strong> — from 2026-05-13 review (lifecycle + authoring)</span>
   </div>
+
+  <!-- ============ PHASE 1 FOUNDATIONS · JAIME 2026-05-13 ADDENDUM CARDS ============ -->
+  <section class="phase-section phase-1">
+    <div class="phase-header">
+      <span class="phase-eyebrow" style="background: rgba(255,206,71,0.12); color: var(--accent);">Foundations · Jaime addendum</span>
+      <h2>User lifecycle + authoring (Phase 1)</h2>
+    </div>
+    <p class="blurb">Three cards covering Jaime's 2026-05-13 questions on user creation, invitations, lifecycle, and authoring. All Phase 1 (foundations) in the canonical 5-phase plan.</p>
+
+    <article class="feature from-jaime-0513">
+      <div>
+        <div class="meta-top"><span class="src-tag">Jaime · 2026-05-13</span> · <span>BC-3123 · expanded</span></div>
+        <h3>Admin user provisioning — full scope (dept + role + track + invite TTL)</h3>
+        <p class="what">Existing BC-3123 (admin user-management UI) gets explicit scope for the questions Jaime raised. Form captures <b>name, email, department, role, supervisor, territory, assigned track</b>. Invite email is sent via BC-6600 infrastructure; click-through deep-links to the assigned track. Invitation tokens expire in <b>14 days</b> (single-use); admin can resend (rotates token) or bulk-resend a cohort. "Pending · expires in Xd" indicator on the team page surfaces stale invites before they go dead.</p>
+        <p class="why">Resolves Jaime's questions 1, 2, and 3 in a single form. The 14-day TTL matches Brite's seasonal-hire cadence (Docebo 30d / TalentLMS 7d / Absorb 14d / 360Learning 7d benchmarks) — long enough to bridge a weekend miss, short enough to keep stale invites from cluttering admin view.</p>
+        <div class="footer">
+          <span class="badge high">High</span><span class="badge m">M · ~5-7 days (was M)</span>
+          <a href="https://linear.app/brite-nites/issue/BC-3123">→ BC-3123</a>
+        </div>
+      </div>
+      <div class="spec-card">
+        <div style="font-weight: 600; color: var(--fg); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Admin · Invite User form</div>
+        <div class="spec-row"><span class="spec-label">Name</span> <span style="color: var(--fg-dim);">Sam Rodriguez</span></div>
+        <div class="spec-row"><span class="spec-label">Email</span> <span style="color: var(--fg-dim);">sam@briteni…</span></div>
+        <div class="spec-row"><span class="spec-label">Dept</span> <b>Installation ▾</b></div>
+        <div class="spec-row"><span class="spec-label">Role</span> <b>TRAINEE ▾</b></div>
+        <div class="spec-row"><span class="spec-label">Track</span> <b>JT Track ▾</b></div>
+        <div class="spec-row"><span class="spec-label">Supervisor</span> <span style="color: var(--fg-dim);">Mike Menendez ▾</span></div>
+        <div class="spec-row"><span class="spec-label">Territory</span> <span style="color: var(--fg-dim);">Phoenix ▾</span></div>
+        <div class="spec-row"><span class="spec-label">TTL</span> <span style="color: var(--accent);">14d single-use</span></div>
+        <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--fg-dim); font-size: 10px;">→ Send invite · or → Resend / Bulk-resend</div>
+      </div>
+    </article>
+
+    <article class="feature from-jaime-0513">
+      <div>
+        <div class="meta-top"><span class="src-tag">Jaime · 2026-05-13</span> · <span>BC-7065 · proposed</span></div>
+        <h3>User lifecycle — offboarding + re-activation + mid-season role change</h3>
+        <p class="what">Net-new flow on top of BC-3123. <b>Season-end offboarding</b>: soft-deactivate (not hard delete) preserves all progress data — the ~24 confirmed 2026 returners come back next season with their prior progress intact. <b>Bulk deactivation</b> runs at season close (TM-triggered, per-territory). <b>Re-activation flow</b> reuses the same invite mechanism but skips already-completed modules. <b>Mid-season role change</b> (JT → ST promotion) preserves completed modules and auto-enrolls in the delta of the new track (pairs with BC-7055 when it lands in M02). Auto-expires any pending invitation tokens belonging to deactivated users.</p>
+        <p class="why">Resolves Jaime's question 4. Brite is fundamentally seasonal — 75% completion / 40% return rate per the retention playbook baseline. Without a real offboarding flow, the admin UI either accumulates stale users forever or loses returner progress every January. Soft-deactivate is the only design consistent with the returner economics.</p>
+        <div class="footer">
+          <span class="badge high">High</span><span class="badge m">M · ~5-7 days</span>
+          <span style="color: var(--fg-dim);">→ to be filed under Brite LMS project</span>
+        </div>
+      </div>
+      <div class="spec-card">
+        <div style="font-weight: 600; color: var(--fg); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Lifecycle states</div>
+        <div class="spec-row"><span class="spec-label">Active</span> <span style="color: var(--green);">working the season</span></div>
+        <div class="spec-row"><span class="spec-label">Pending</span> <span style="color: var(--accent);">invited · TTL countdown</span></div>
+        <div class="spec-row"><span class="spec-label">Expired</span> <span style="color: var(--orange);">invite lapsed · resend</span></div>
+        <div class="spec-row"><span class="spec-label">Inactive</span> <span style="color: var(--fg-dim);">offboarded · progress kept</span></div>
+        <div class="spec-row"><span class="spec-label">Reactivated</span> <span style="color: var(--green);">returner · skips done modules</span></div>
+        <div class="spec-row"><span class="spec-label">Archived</span> <span style="color: var(--red);">2+ seasons inactive</span></div>
+        <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--fg-dim); font-size: 10px;">Transitions: TM-triggered or admin · bulk + per-user</div>
+      </div>
+    </article>
+
+    <article class="feature from-jaime-0513">
+      <div>
+        <div class="meta-top"><span class="src-tag">Jaime · 2026-05-13</span> · <span>BC-7066 · proposed · docs</span></div>
+        <h3>Authoring runbook — how an admin builds a training</h3>
+        <p class="what">Documentation, not a feature. Brite LMS is <b>Git-as-CMS</b>: modules live as markdown in the handbook repo, tracks are configured in <code>tracks.json</code>, quizzes are YAML alongside the module. There is intentionally no in-app WYSIWYG authoring UI. The runbook documents the four-step authoring path: (1) write module markdown with frontmatter, (2) add to <code>tracks.json</code> + <code>modules.json</code>, (3) write quiz YAML, (4) commit + PR. BC-6604 CI guard catches broken track-slug refs. BC-7003 edit-on-GitHub footer is the in-app jump point. Runbook linked from the admin nav under "Authoring".</p>
+        <p class="why">Resolves Jaime's question 5. The intuition that this needs docs not features was right — the architecture choice is deliberate (handbook is the single source of truth; an in-app editor would create drift). A 1-2 page runbook closes the discoverability gap for new admins.</p>
+        <div class="footer">
+          <span class="badge medium">Medium</span><span class="badge s">S · ~2-3 days (docs + nav link)</span>
+          <span style="color: var(--fg-dim);">→ to be filed under Brite LMS project</span>
+        </div>
+      </div>
+      <div class="spec-card">
+        <div style="font-weight: 600; color: var(--fg); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Authoring loop · 4 steps</div>
+        <div class="spec-row"><span class="spec-label">1 · Write</span> <span style="color: var(--fg-dim);">module.md + frontmatter</span></div>
+        <div class="spec-row"><span class="spec-label">2 · Register</span> <span style="color: var(--fg-dim);">tracks.json + modules.json</span></div>
+        <div class="spec-row"><span class="spec-label">3 · Quiz</span> <span style="color: var(--fg-dim);">quiz.yaml (optional)</span></div>
+        <div class="spec-row"><span class="spec-label">4 · Commit</span> <span style="color: var(--fg-dim);">PR → CI (BC-6604) → merge</span></div>
+        <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--fg-dim); font-size: 10px;">In-app entry: BC-7003 Edit-on-GitHub footer (TRAINER/ADMIN)</div>
+      </div>
+    </article>
+  </section>
 
   <!-- ============ PHASE 1 ============ -->
   <section class="phase-section phase-1">
@@ -565,8 +704,18 @@
       </div>
       <div class="timeline-item">
         <span class="ti-id high">BC-3123</span>
-        <span class="ti-title"><b>Admin user-management UI</b> — Invite + role assignment + supervisor + territory. No more manual Prisma Studio for provisioning. <i>Bumped from Todo/Low to Backlog/High.</i></span>
-        <span class="ti-meta">High · M</span>
+        <span class="ti-title"><b>Admin user-management UI</b> — Invite form captures name, email, <b>department</b>, <b>role (ADMIN / TRAINER / TRAINEE)</b>, supervisor, territory, <b>assigned track</b>. <b>14-day single-use invite TTL</b> with admin resend (rotates token) + bulk-resend + "Pending · expires in Xd" indicator. No more manual Prisma Studio for provisioning. <i>Bumped from Todo/Low to Backlog/High; scope expanded per Jaime 2026-05-13.</i></span>
+        <span class="ti-meta">High · M · ~5-7d</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id high" style="color: var(--accent);">BC-7065</span>
+        <span class="ti-title"><b>User lifecycle — offboarding + re-activation</b> <i>(proposed · Jaime 2026-05-13)</i> — Soft-deactivate at season end preserves progress for the ~24 confirmed 2026 returners. Bulk season-end deactivation (TM-triggered, per-territory). Re-activation flow skips already-completed modules. Mid-season role change preserves completed modules and auto-enrolls in the delta (pairs with BC-7055 M02).</span>
+        <span class="ti-meta">High · M · ~5-7d</span>
+      </div>
+      <div class="timeline-item">
+        <span class="ti-id" style="color: var(--accent);">BC-7066</span>
+        <span class="ti-title"><b>Authoring runbook</b> <i>(proposed · Jaime 2026-05-13 · docs)</i> — Documents the 4-step Git-as-CMS authoring path: markdown + frontmatter → <code>tracks.json</code>/<code>modules.json</code> → quiz YAML → PR. CI guard (BC-6604) catches broken refs; BC-7003 footer is the in-app entry. Linked from admin nav under "Authoring".</span>
+        <span class="ti-meta">Medium · S · ~2-3d</span>
       </div>
       <div class="timeline-item">
         <span class="ti-id high">BC-7063</span>
@@ -772,11 +921,6 @@
         <span class="ti-meta">Low</span>
       </div>
       <div class="timeline-item">
-        <span class="ti-id">BC-3123</span>
-        <span class="ti-title">Task 13 — User Management (Admin) — superseded by BC-6606 admin coverage dashboard</span>
-        <span class="ti-meta">Low</span>
-      </div>
-      <div class="timeline-item">
         <span class="ti-id">BC-4965</span>
         <span class="ti-title">UI/UX Design Pass — Brand Identity + Visual Polish</span>
         <span class="ti-meta">Low</span>
@@ -790,9 +934,9 @@
   </section>
 
   <footer class="foot">
-    <p>This summary woven from the 2026-05-07 competitive review (10 active features F01–F10 + 4 backlog + 9 skips) and Jaime's 2026-05-04 product review (14 existing issues BC-6596–6609). Generated for the LMS rescope conversation with Holden + Jaime.</p>
-    <p><b>One unified phased roadmap:</b> Phase 1 critical (~3-4 wk) → Phase 2 search + polish (~3-4 wk) → Phase 3 post-season iteration (~4-5 wk). Total ~10-12 weeks of engineering. F11 Manager view (was BC-7052) closed as duplicate of BC-6596 — same feature, BC-6596 is the canonical issue.</p>
-    <p><b>Image strategy</b>: each feature shows two screenshots — a <b>Brite mockup</b> (Brite LMS design tokens, real handbook content like C9 strand spacing / GFCI / JT track) rendered to PNG via puppeteer from <code>mockups.html</code>, and a <b>competitor reference</b> from a public docs/marketing URL captured the same way. The Brite mockup is the primary visual (shows the feature in our context); the competitor is the in-the-wild reference. Capture scripts: <code>capture-mockups.mjs</code> + <code>capture-competitors.mjs</code> in this directory; PNGs in <code>screenshots/</code>.</p>
+    <p>This summary woven from <b>three review sources</b>: the 2026-05-07 competitive review (10 active features F01–F10 + 4 backlog + 9 skips), Jaime's 2026-05-04 product review (14 existing issues BC-6596–6609), and Jaime's 2026-05-13 follow-up on user lifecycle + authoring (BC-3123 scope expansion + BC-7065 lifecycle + BC-7066 authoring runbook · proposed). Generated for the LMS rescope conversation with Holden + Jaime; Holden's separate rescoping continues throughout the week.</p>
+    <p><b>One unified phased roadmap:</b> Phase 1 foundations (~4-5 wk · now includes user lifecycle + authoring) → Phase 2 testing-ready (~2-3 wk) → Phase 3 pre-season hardening (~3 wk) → Phase 4 search + AI (~3-4 wk) → Phase 5 post-season iteration (~4-5 wk). Total ~18-21 weeks. F11 Manager view (was BC-7052) closed as duplicate of BC-6596 — same feature, BC-6596 is the canonical issue.</p>
+    <p><b>Image strategy</b>: each feature shows two screenshots — a <b>Brite mockup</b> (Brite LMS design tokens, real handbook content like C9 strand spacing / GFCI / JT track) rendered to PNG via puppeteer from <code>mockups.html</code>, and a <b>competitor reference</b> from a public docs/marketing URL captured the same way. The Brite mockup is the primary visual (shows the feature in our context); the competitor is the in-the-wild reference. Capture scripts: <code>capture-mockups.mjs</code> + <code>capture-competitors.mjs</code> in this directory; PNGs in <code>screenshots/</code>. The three Jaime 2026-05-13 cards use text-only spec previews (no PNGs yet) since the lifecycle and authoring flows haven't been mocked up — to be added in the next rev.</p>
   </footer>
 
 </div>
