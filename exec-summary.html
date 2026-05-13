@@ -159,12 +159,12 @@
         <tr style="border-bottom: 1px solid var(--line);">
           <td style="padding: 12px 8px 12px 0; vertical-align: top;"><b>4. Onboarding / offboarding flows</b><br/><span style="color: var(--fg-muted); font-size: 12px; font-style: italic;">"Other onboarding and offboarding flows to add."</span></td>
           <td style="padding: 12px 8px; vertical-align: top;"><span class="badge high">NEW</span></td>
-          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);">Onboarding partially covered by BC-3123 (single provision) and <a href="https://linear.app/brite-nites/issue/BC-7055">BC-7055</a> in M02 (auto-enrollment). Offboarding is entirely missing. <b>New issue · BC-7065 (proposed)</b>: user lifecycle flow — soft-deactivate at season end (preserve progress for the ~24 confirmed 2026 returners), bulk season-end deactivation, re-activation flow for returners, mid-season role change preserving completed modules. See the new feature card below.</td>
+          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);">Onboarding partially covered by BC-3123 (single provision) and <a href="https://linear.app/brite-nites/issue/BC-7055">BC-7055</a> in M02 (auto-enrollment). Offboarding is entirely missing. New issue · <b><a href="https://linear.app/brite-nites/issue/BC-9557">BC-9557</a></b>: user lifecycle flow — soft-deactivate at season end (preserve progress for the ~24 confirmed 2026 returners), bulk season-end deactivation, re-activation flow for returners, mid-season role change preserving completed modules. See the new feature card below.</td>
         </tr>
         <tr>
           <td style="padding: 12px 8px 12px 0; vertical-align: top;"><b>5. How does an admin build a training?</b><br/><span style="color: var(--fg-muted); font-size: 12px; font-style: italic;">"Is that in here? Maybe so and just need documentation."</span></td>
           <td style="padding: 12px 8px; vertical-align: top;"><span class="badge medium">DOCS</span></td>
-          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);">Jaime's instinct is right — it's a docs gap, not a feature gap. Brite LMS uses <b>Git-as-CMS</b>: trainings live as markdown in the handbook repo. Authoring = write markdown + frontmatter + add to <code>tracks.json</code> + add quiz YAML + commit. The <a href="https://linear.app/brite-nites/issue/BC-7003">BC-7003</a> "Edit on GitHub" footer (TRAINER/ADMIN only) is the in-app entry point. <b>New issue · BC-7066 (proposed)</b>: authoring runbook documenting frontmatter, track config, quiz YAML, and the edit-on-GitHub workflow. Linked from the admin nav.</td>
+          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);">Jaime's instinct is right — it's a docs gap, not a feature gap. Brite LMS uses <b>Git-as-CMS</b>: trainings live as markdown in the handbook repo. Authoring = write markdown + frontmatter + add to <code>tracks.json</code> + add quiz YAML + commit. The <a href="https://linear.app/brite-nites/issue/BC-7003">BC-7003</a> "Edit on GitHub" footer (TRAINER/ADMIN only) is the in-app entry point. New issue · <b><a href="https://linear.app/brite-nites/issue/BC-9558">BC-9558</a></b>: authoring runbook documenting frontmatter, track config, quiz YAML, and the edit-on-GitHub workflow. Linked from the admin nav.</td>
         </tr>
       </tbody>
     </table>
@@ -217,13 +217,13 @@
 
     <article class="feature from-jaime-0513">
       <div>
-        <div class="meta-top"><span class="src-tag">Jaime · 2026-05-13</span> · <span>BC-7065 · proposed</span></div>
+        <div class="meta-top"><span class="src-tag">Jaime · 2026-05-13</span> · <span>BC-9557 · new</span></div>
         <h3>User lifecycle — offboarding + re-activation + mid-season role change</h3>
         <p class="what">Net-new flow on top of BC-3123. <b>Season-end offboarding</b>: soft-deactivate (not hard delete) preserves all progress data — the ~24 confirmed 2026 returners come back next season with their prior progress intact. <b>Bulk deactivation</b> runs at season close (TM-triggered, per-territory). <b>Re-activation flow</b> reuses the same invite mechanism but skips already-completed modules. <b>Mid-season role change</b> (JT → ST promotion) preserves completed modules and auto-enrolls in the delta of the new track (pairs with BC-7055 when it lands in M02). Auto-expires any pending invitation tokens belonging to deactivated users.</p>
         <p class="why">Resolves Jaime's question 4. Brite is fundamentally seasonal — 75% completion / 40% return rate per the retention playbook baseline. Without a real offboarding flow, the admin UI either accumulates stale users forever or loses returner progress every January. Soft-deactivate is the only design consistent with the returner economics.</p>
         <div class="footer">
           <span class="badge high">High</span><span class="badge m">M · ~5-7 days</span>
-          <span style="color: var(--fg-dim);">→ to be filed under Brite LMS project</span>
+          <a href="https://linear.app/brite-nites/issue/BC-9557">→ BC-9557</a>
         </div>
       </div>
       <div class="spec-card">
@@ -240,13 +240,13 @@
 
     <article class="feature from-jaime-0513">
       <div>
-        <div class="meta-top"><span class="src-tag">Jaime · 2026-05-13</span> · <span>BC-7066 · proposed · docs</span></div>
+        <div class="meta-top"><span class="src-tag">Jaime · 2026-05-13</span> · <span>BC-9558 · new · docs</span></div>
         <h3>Authoring runbook — how an admin builds a training</h3>
         <p class="what">Documentation, not a feature. Brite LMS is <b>Git-as-CMS</b>: modules live as markdown in the handbook repo, tracks are configured in <code>tracks.json</code>, quizzes are YAML alongside the module. There is intentionally no in-app WYSIWYG authoring UI. The runbook documents the four-step authoring path: (1) write module markdown with frontmatter, (2) add to <code>tracks.json</code> + <code>modules.json</code>, (3) write quiz YAML, (4) commit + PR. BC-6604 CI guard catches broken track-slug refs. BC-7003 edit-on-GitHub footer is the in-app jump point. Runbook linked from the admin nav under "Authoring".</p>
         <p class="why">Resolves Jaime's question 5. The intuition that this needs docs not features was right — the architecture choice is deliberate (handbook is the single source of truth; an in-app editor would create drift). A 1-2 page runbook closes the discoverability gap for new admins.</p>
         <div class="footer">
           <span class="badge medium">Medium</span><span class="badge s">S · ~2-3 days (docs + nav link)</span>
-          <span style="color: var(--fg-dim);">→ to be filed under Brite LMS project</span>
+          <a href="https://linear.app/brite-nites/issue/BC-9558">→ BC-9558</a>
         </div>
       </div>
       <div class="spec-card">
@@ -708,13 +708,13 @@
         <span class="ti-meta">High · M · ~5-7d</span>
       </div>
       <div class="timeline-item">
-        <span class="ti-id high" style="color: var(--accent);">BC-7065</span>
-        <span class="ti-title"><b>User lifecycle — offboarding + re-activation</b> <i>(proposed · Jaime 2026-05-13)</i> — Soft-deactivate at season end preserves progress for the ~24 confirmed 2026 returners. Bulk season-end deactivation (TM-triggered, per-territory). Re-activation flow skips already-completed modules. Mid-season role change preserves completed modules and auto-enrolls in the delta (pairs with BC-7055 M02).</span>
+        <span class="ti-id high" style="color: var(--accent);">BC-9557</span>
+        <span class="ti-title"><b>User lifecycle — offboarding + re-activation</b> <i>(Jaime 2026-05-13)</i> — Soft-deactivate at season end preserves progress for the ~24 confirmed 2026 returners. Bulk season-end deactivation (TM-triggered, per-territory). Re-activation flow skips already-completed modules. Mid-season role change preserves completed modules and auto-enrolls in the delta (pairs with BC-7055 M02).</span>
         <span class="ti-meta">High · M · ~5-7d</span>
       </div>
       <div class="timeline-item">
-        <span class="ti-id" style="color: var(--accent);">BC-7066</span>
-        <span class="ti-title"><b>Authoring runbook</b> <i>(proposed · Jaime 2026-05-13 · docs)</i> — Documents the 4-step Git-as-CMS authoring path: markdown + frontmatter → <code>tracks.json</code>/<code>modules.json</code> → quiz YAML → PR. CI guard (BC-6604) catches broken refs; BC-7003 footer is the in-app entry. Linked from admin nav under "Authoring".</span>
+        <span class="ti-id" style="color: var(--accent);">BC-9558</span>
+        <span class="ti-title"><b>Authoring runbook</b> <i>(Jaime 2026-05-13 · docs)</i> — Documents the 4-step Git-as-CMS authoring path: markdown + frontmatter → <code>tracks.json</code>/<code>modules.json</code> → quiz YAML → PR. CI guard (BC-6604) catches broken refs; BC-7003 footer is the in-app entry. Linked from admin nav under "Authoring".</span>
         <span class="ti-meta">Medium · S · ~2-3d</span>
       </div>
       <div class="timeline-item">
@@ -934,7 +934,7 @@
   </section>
 
   <footer class="foot">
-    <p>This summary woven from <b>three review sources</b>: the 2026-05-07 competitive review (10 active features F01–F10 + 4 backlog + 9 skips), Jaime's 2026-05-04 product review (14 existing issues BC-6596–6609), and Jaime's 2026-05-13 follow-up on user lifecycle + authoring (BC-3123 scope expansion + BC-7065 lifecycle + BC-7066 authoring runbook · proposed). Generated for the LMS rescope conversation with Holden + Jaime; Holden's separate rescoping continues throughout the week.</p>
+    <p>This summary woven from <b>three review sources</b>: the 2026-05-07 competitive review (10 active features F01–F10 + 4 backlog + 9 skips), Jaime's 2026-05-04 product review (14 existing issues BC-6596–6609), and Jaime's 2026-05-13 follow-up on user lifecycle + authoring (BC-3123 scope expansion + BC-9557 lifecycle + BC-9558 authoring runbook). Generated for the LMS rescope conversation with Holden + Jaime; Holden's separate rescoping continues throughout the week.</p>
     <p><b>One unified phased roadmap:</b> Phase 1 foundations (~4-5 wk · now includes user lifecycle + authoring) → Phase 2 testing-ready (~2-3 wk) → Phase 3 pre-season hardening (~3 wk) → Phase 4 search + AI (~3-4 wk) → Phase 5 post-season iteration (~4-5 wk). Total ~18-21 weeks. F11 Manager view (was BC-7052) closed as duplicate of BC-6596 — same feature, BC-6596 is the canonical issue.</p>
     <p><b>Image strategy</b>: each feature shows two screenshots — a <b>Brite mockup</b> (Brite LMS design tokens, real handbook content like C9 strand spacing / GFCI / JT track) rendered to PNG via puppeteer from <code>mockups.html</code>, and a <b>competitor reference</b> from a public docs/marketing URL captured the same way. The Brite mockup is the primary visual (shows the feature in our context); the competitor is the in-the-wild reference. Capture scripts: <code>capture-mockups.mjs</code> + <code>capture-competitors.mjs</code> in this directory; PNGs in <code>screenshots/</code>. The three Jaime 2026-05-13 cards use text-only spec previews (no PNGs yet) since the lifecycle and authoring flows haven't been mocked up — to be added in the next rev.</p>
   </footer>
