@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Brite LMS · Rescope Exec Summary · 2026-05-10</title>
+<title>Brite LMS · Rescope Exec Summary · 2026-05-29</title>
 <style>
   :root {
     --bg: #0b0d10; --bg-2: #11151a; --bg-3: #161b22;
@@ -106,31 +106,31 @@
       Combines the 10 active features from the 2026-05-07 competitive review with the 14 issues from Jaime's 2026-05-04 product review into one phased roadmap. Sequenced by utilitarian filter: <b>"would a seasonal worker actually fail at training if this didn't ship by peak season?"</b> Phase 1 = critical path. Phase 2 = search + polish. Phase 3 = post-season iteration.
     </p>
     <p class="lede" style="margin-top: 10px;">
-      <b style="color: var(--accent);">Updated 2026-05-13</b> with Jaime's review feedback: user creation form, invite-to-track flow, invitation expiration (industry norms researched), onboarding/offboarding lifecycle, and an authoring runbook. See the addendum section below for the question-by-question mapping.
+      <b style="color: var(--accent);">Current as of 2026-05-29.</b> The work has since been reorganized onto the milestone-as-goals model (M01–M23) with a near-term <b>M24 "Demo-ready JT vertical" targeting 2026-06-01</b>. Jaime's review feedback — user creation form, invite-to-track flow, invitation expiration (industry norms researched), onboarding/offboarding lifecycle, and an authoring runbook — is mapped question-by-question in the addendum below; statuses reflect what has shipped.
     </p>
     <div class="meta-row">
-      <span>Generated 2026-05-10 · updated 2026-05-13</span>
-      <span>Peak season starts ~Oct 2026 (~5 months runway)</span>
+      <span>Current 2026-05-29</span>
+      <span>M24 JT-vertical demo due 2026-06-01 · peak season ~Oct 2026 (~4 months runway)</span>
       <span><a href="shortlist.html">Full shortlist</a> · <a href="https://linear.app/brite-nites/project/brite-lms-c6a5f04a123d">Linear project</a></span>
     </div>
   </header>
 
   <div class="stat-row">
-    <div class="stat"><div class="num">24</div><div class="lbl">Active issues</div></div>
-    <div class="stat"><div class="num">~18-21 wk</div><div class="lbl">Total effort (5 phases)</div></div>
+    <div class="stat"><div class="num">~110</div><div class="lbl">Issues across M01–M24</div></div>
+    <div class="stat"><div class="num">M24</div><div class="lbl">JT demo · due 2026-06-01</div></div>
     <div class="stat"><div class="num">5</div><div class="lbl">M02 backlog</div></div>
     <div class="stat"><div class="num">9</div><div class="lbl">Explicit skips</div></div>
   </div>
 
   <div style="padding: 14px 18px; background: rgba(255,156,74,0.10); border: 1px solid rgba(255,156,74,0.3); border-radius: 8px; margin: 0 0 22px; font-size: 13.5px;">
-    <b style="color: var(--orange);">⚠ Doc convention</b>: the phase cards immediately below (Phase 1 / Phase 2 / Phase 3) reflect the <b>original 3-phase sequence</b> (features-first). The <b>full project timeline at the bottom</b> reflects the <b>updated 5-phase foundation-first plan</b> (2026-05-10). The 5-phase plan is the canonical sequence going into the rescope meeting. Phase cards above are kept for context on what each feature does; treat the timeline below as the source of truth for ordering and priority.
+    <b style="color: var(--orange);">⚠ Doc convention</b>: the phase cards in this document describe <b>what each feature does</b> — that explanation is still accurate. <b>Sequencing has since moved to the milestone-as-goals model</b> (M01–M23, plus the near-term <b>M24 "Demo-ready JT vertical" due 2026-06-01</b>). Treat the <b>milestone structure in Linear and the timeline at the bottom of this page as the source of truth</b> for ordering and priority; the feature/phase cards are kept for context on scope, not schedule.
   </div>
 
   <!-- ============ JAIME 2026-05-13 ADDENDUM ============ -->
   <section class="addendum-section" style="margin: 0 0 26px; padding: 20px 24px; background: rgba(255,206,71,0.06); border: 1px solid rgba(255,206,71,0.28); border-radius: 10px;">
     <div style="font-family: 'SF Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px;">Addendum · Jaime's 2026-05-13 review</div>
     <h2 style="font-size: 18px; font-weight: 600; margin: 0 0 6px;">Five follow-up questions — resolved, expanded, or newly scoped</h2>
-    <p style="color: var(--fg-muted); font-size: 13px; margin: 0 0 16px; max-width: 84ch;">Jaime asked five operational questions about the user lifecycle and authoring path. Each is mapped below to what's already in the plan, what's been expanded in scope, and what's net-new. Holden's separate rescoping continues throughout the week.</p>
+    <p style="color: var(--fg-muted); font-size: 13px; margin: 0 0 16px; max-width: 84ch;">Jaime asked five operational questions about the user lifecycle and authoring path. Each is mapped below to its current status — what has shipped, what's scheduled post-demo, and what's still docs-only.</p>
 
     <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
       <thead>
@@ -143,28 +143,28 @@
       <tbody>
         <tr style="border-bottom: 1px solid var(--line);">
           <td style="padding: 12px 8px 12px 0; vertical-align: top;"><b>1. Department + role at user creation</b><br/><span style="color: var(--fg-muted); font-size: 12px; font-style: italic;">"When you add a user — what department, what role? Admin? Create the course? Or user?"</span></td>
-          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge medium">EXPANDED</span></td>
-          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);"><b><a href="https://linear.app/brite-nites/issue/BC-3123">BC-3123</a></b> already covers invite + role + supervisor + territory. <b>Adding to scope</b>: department assignment (Installation / Office-CST / Sales / Strike) and the 3-role enum made explicit in the admin form — <code>ADMIN</code>, <code>TRAINER</code>, <code>TRAINEE</code>. See the new feature card below.</td>
+          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge s">SHIPPED</span></td>
+          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);"><b><a href="https://linear.app/brite-nites/issue/BC-3123">BC-3123</a> shipped (Done, M21)</b> — admin invite/list/edit/deactivate, covering invite + role + supervisor + territory, with department assignment (Installation / Office-CST / Sales / Strike) and the explicit 3-role enum in the admin form — <code>ADMIN</code>, <code>TRAINER</code>, <code>TRAINEE</code>. See the feature card below.</td>
         </tr>
         <tr style="border-bottom: 1px solid var(--line);">
           <td style="padding: 12px 8px 12px 0; vertical-align: top;"><b>2. Invite users to a training path</b><br/><span style="color: var(--fg-muted); font-size: 12px; font-style: italic;">"You invite them to a training path on that email."</span></td>
-          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge medium">EXPANDED</span></td>
-          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);"><b><a href="https://linear.app/brite-nites/issue/BC-3123">BC-3123</a> + <a href="https://linear.app/brite-nites/issue/BC-6600">BC-6600</a></b>. Email infrastructure is already Phase 1. <b>Adding to scope</b>: the invite form requires a track selection (JT / ST / AM / QP / WA / RT / TM / CST). The invite email deep-links the worker directly to their assigned track home on first login.</td>
+          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge medium">PARTIAL</span></td>
+          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);"><b><a href="https://linear.app/brite-nites/issue/BC-3123">BC-3123</a> (shipped)</b> includes track selection on the invite form (JT / ST / AM / QP / WA / RT / TM / CST); the invite deep-links the worker to their assigned track home on first login. The full app-level email infrastructure <b><a href="https://linear.app/brite-nites/issue/BC-6600">BC-6600</a> is still unstarted (Todo) and was cut from the M24 demo scope</b> — the demo uses a cut-down admin manual-reminder send instead; BC-6600 returns in its canonical milestone post-demo.</td>
         </tr>
         <tr style="border-bottom: 1px solid var(--line);">
           <td style="padding: 12px 8px 12px 0; vertical-align: top;"><b>3. Invitation expiration</b><br/><span style="color: var(--fg-muted); font-size: 12px; font-style: italic;">"Maybe we should have an expiration? See if other LMS out there have that."</span></td>
-          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge high">NEW</span></td>
-          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);">Gap in the existing plan — added under <b><a href="https://linear.app/brite-nites/issue/BC-3123">BC-3123</a></b>. <b>Industry norms</b>: Docebo 30d · Absorb 14d · TalentLMS 7d · 360Learning 7d · Lessonly 14d · WorkRamp 7-30d (configurable). <b>Proposed for Brite</b>: 14-day single-use token, admin "Resend invite" rotates token (invalidates old), "Pending · expires in Xd" indicator on team page, bulk-resend at cohort level, auto-expire at season end.</td>
+          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge s">SHIPPED</span></td>
+          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);">Folded into <b><a href="https://linear.app/brite-nites/issue/BC-3123">BC-3123</a> (Done)</b>. <b>Industry norms</b>: Docebo 30d · Absorb 14d · TalentLMS 7d · 360Learning 7d · Lessonly 14d · WorkRamp 7-30d (configurable). <b>Brite chose</b>: 14-day single-use token, admin "Resend invite" rotates token (invalidates old), "Pending · expires in Xd" indicator on team page, bulk-resend at cohort level, auto-expire at season end.</td>
         </tr>
         <tr style="border-bottom: 1px solid var(--line);">
           <td style="padding: 12px 8px 12px 0; vertical-align: top;"><b>4. Onboarding / offboarding flows</b><br/><span style="color: var(--fg-muted); font-size: 12px; font-style: italic;">"Other onboarding and offboarding flows to add."</span></td>
-          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge high">NEW</span></td>
-          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);">Onboarding partially covered by BC-3123 (single provision) and <a href="https://linear.app/brite-nites/issue/BC-7055">BC-7055</a> in M02 (auto-enrollment). Offboarding is entirely missing. New issue · <b><a href="https://linear.app/brite-nites/issue/BC-9557">BC-9557</a></b>: user lifecycle flow — soft-deactivate at season end (preserve progress for the ~24 confirmed 2026 returners), bulk season-end deactivation, re-activation flow for returners, mid-season role change preserving completed modules. See the new feature card below.</td>
+          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge high">POST-DEMO</span></td>
+          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);">Onboarding shipped via BC-3123 (single provision); auto-enrollment <a href="https://linear.app/brite-nites/issue/BC-7055">BC-7055</a> is backlog. The full offboarding / reactivation / mid-season role-change flow is <b><a href="https://linear.app/brite-nites/issue/BC-9557">BC-9557</a></b> — still unstarted (Todo), filed under <b>M22 (post-demo)</b> and explicitly cut from the M24 demo scope: user lifecycle flow — soft-deactivate at season end (preserve progress for the ~24 confirmed 2026 returners), bulk season-end deactivation, re-activation flow for returners, mid-season role change preserving completed modules. See the feature card below.</td>
         </tr>
         <tr>
           <td style="padding: 12px 8px 12px 0; vertical-align: top;"><b>5. How does an admin build a training?</b><br/><span style="color: var(--fg-muted); font-size: 12px; font-style: italic;">"Is that in here? Maybe so and just need documentation."</span></td>
-          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge medium">DOCS</span></td>
-          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);">Jaime's instinct is right — it's a docs gap, not a feature gap. Brite LMS uses <b>Git-as-CMS</b>: trainings live as markdown in the handbook repo. Authoring = write markdown + frontmatter + add to <code>tracks.json</code> + add quiz YAML + commit. The <a href="https://linear.app/brite-nites/issue/BC-7003">BC-7003</a> "Edit on GitHub" footer (TRAINER/ADMIN only) is the in-app entry point. New issue · <b><a href="https://linear.app/brite-nites/issue/BC-9558">BC-9558</a></b>: authoring runbook documenting frontmatter, track config, quiz YAML, and the edit-on-GitHub workflow. Linked from the admin nav.</td>
+          <td style="padding: 12px 8px; vertical-align: top;"><span class="badge medium">DOCS · POST-DEMO</span></td>
+          <td style="padding: 12px 0 12px 8px; vertical-align: top; color: var(--fg-muted);">Jaime's instinct is right — it's a docs gap, not a feature gap. Brite LMS uses <b>Git-as-CMS</b>: trainings live as markdown in the handbook repo. Authoring = write markdown + frontmatter + add to <code>tracks.json</code> + add quiz YAML + commit. The <a href="https://linear.app/brite-nites/issue/BC-7003">BC-7003</a> "Edit on GitHub" footer (TRAINER/ADMIN only) is the in-app entry point and has <b>shipped (Done)</b>. The runbook itself · <b><a href="https://linear.app/brite-nites/issue/BC-9558">BC-9558</a></b> (Backlog, M22) — documenting frontmatter, track config, quiz YAML, and the edit-on-GitHub workflow, linked from the admin nav — is still to be written.</td>
         </tr>
       </tbody>
     </table>
@@ -186,18 +186,18 @@
   <section class="phase-section phase-1">
     <div class="phase-header">
       <span class="phase-eyebrow" style="background: rgba(255,206,71,0.12); color: var(--accent);">Foundations · Jaime addendum</span>
-      <h2>User lifecycle + authoring (Phase 1)</h2>
+      <h2>User lifecycle + authoring</h2>
     </div>
-    <p class="blurb">Three cards covering Jaime's 2026-05-13 questions on user creation, invitations, lifecycle, and authoring. All Phase 1 (foundations) in the canonical 5-phase plan.</p>
+    <p class="blurb">Three cards covering Jaime's 2026-05-13 questions on user creation, invitations, lifecycle, and authoring. BC-3123 (provisioning + invite TTL) has since shipped in M21; the lifecycle (BC-9557) and authoring-runbook (BC-9558) cards are scheduled in M22, post-demo.</p>
 
     <article class="feature from-jaime-0513">
       <div>
-        <div class="meta-top"><span class="src-tag">Jaime · 2026-05-13</span> · <span>BC-3123 · expanded</span></div>
+        <div class="meta-top"><span class="src-tag">Jaime · 2026-05-13</span> · <span>BC-3123 · shipped (M21)</span></div>
         <h3>Admin user provisioning — full scope (dept + role + track + invite TTL)</h3>
-        <p class="what">Existing BC-3123 (admin user-management UI) gets explicit scope for the questions Jaime raised. Form captures <b>name, email, department, role, supervisor, territory, assigned track</b>. Invite email is sent via BC-6600 infrastructure; click-through deep-links to the assigned track. Invitation tokens expire in <b>14 days</b> (single-use); admin can resend (rotates token) or bulk-resend a cohort. "Pending · expires in Xd" indicator on the team page surfaces stale invites before they go dead.</p>
+        <p class="what">BC-3123 (admin user-management UI) has shipped with the full scope Jaime raised. Form captures <b>name, email, department, role, supervisor, territory, assigned track</b>; click-through deep-links to the assigned track. Invitation tokens expire in <b>14 days</b> (single-use); admin can resend (rotates token) or bulk-resend a cohort. "Pending · expires in Xd" indicator on the team page surfaces stale invites before they go dead. (Full app-level email infra — BC-6600 — remains unstarted; the M24 demo uses a cut-down manual reminder send.)</p>
         <p class="why">Resolves Jaime's questions 1, 2, and 3 in a single form. The 14-day TTL matches Brite's seasonal-hire cadence (Docebo 30d / TalentLMS 7d / Absorb 14d / 360Learning 7d benchmarks) — long enough to bridge a weekend miss, short enough to keep stale invites from cluttering admin view.</p>
         <div class="footer">
-          <span class="badge high">High</span><span class="badge m">M · ~5-7 days (was M)</span>
+          <span class="badge s">Done</span><span class="badge m">M21 · shipped</span>
           <a href="https://linear.app/brite-nites/issue/BC-3123">→ BC-3123</a>
         </div>
       </div>
@@ -217,12 +217,12 @@
 
     <article class="feature from-jaime-0513">
       <div>
-        <div class="meta-top"><span class="src-tag">Jaime · 2026-05-13</span> · <span>BC-9557 · new</span></div>
+        <div class="meta-top"><span class="src-tag">Jaime · 2026-05-13</span> · <span>BC-9557 · M22 · post-demo</span></div>
         <h3>User lifecycle — offboarding + re-activation + mid-season role change</h3>
-        <p class="what">Net-new flow on top of BC-3123. <b>Season-end offboarding</b>: soft-deactivate (not hard delete) preserves all progress data — the ~24 confirmed 2026 returners come back next season with their prior progress intact. <b>Bulk deactivation</b> runs at season close (TM-triggered, per-territory). <b>Re-activation flow</b> reuses the same invite mechanism but skips already-completed modules. <b>Mid-season role change</b> (JT → ST promotion) preserves completed modules and auto-enrolls in the delta of the new track (pairs with BC-7055 when it lands in M02). Auto-expires any pending invitation tokens belonging to deactivated users.</p>
+        <p class="what">Net-new flow on top of the shipped BC-3123 provisioning. <b>Still unstarted (Todo) — scheduled in M22, after the M24 demo.</b> <b>Season-end offboarding</b>: soft-deactivate (not hard delete) preserves all progress data — the ~24 confirmed 2026 returners come back next season with their prior progress intact. <b>Bulk deactivation</b> runs at season close (TM-triggered, per-territory). <b>Re-activation flow</b> reuses the same invite mechanism but skips already-completed modules. <b>Mid-season role change</b> (JT → ST promotion) preserves completed modules and auto-enrolls in the delta of the new track (pairs with BC-7055 when it lands in M02). Auto-expires any pending invitation tokens belonging to deactivated users.</p>
         <p class="why">Resolves Jaime's question 4. Brite is fundamentally seasonal — 75% completion / 40% return rate per the retention playbook baseline. Without a real offboarding flow, the admin UI either accumulates stale users forever or loses returner progress every January. Soft-deactivate is the only design consistent with the returner economics.</p>
         <div class="footer">
-          <span class="badge high">High</span><span class="badge m">M · ~5-7 days</span>
+          <span class="badge high">High</span><span class="badge m">M22 · Todo · ~5-7 days</span>
           <a href="https://linear.app/brite-nites/issue/BC-9557">→ BC-9557</a>
         </div>
       </div>
@@ -240,12 +240,12 @@
 
     <article class="feature from-jaime-0513">
       <div>
-        <div class="meta-top"><span class="src-tag">Jaime · 2026-05-13</span> · <span>BC-9558 · new · docs</span></div>
+        <div class="meta-top"><span class="src-tag">Jaime · 2026-05-13</span> · <span>BC-9558 · M22 · docs · backlog</span></div>
         <h3>Authoring runbook — how an admin builds a training</h3>
-        <p class="what">Documentation, not a feature. Brite LMS is <b>Git-as-CMS</b>: modules live as markdown in the handbook repo, tracks are configured in <code>tracks.json</code>, quizzes are YAML alongside the module. There is intentionally no in-app WYSIWYG authoring UI. The runbook documents the four-step authoring path: (1) write module markdown with frontmatter, (2) add to <code>tracks.json</code> + <code>modules.json</code>, (3) write quiz YAML, (4) commit + PR. BC-6604 CI guard catches broken track-slug refs. BC-7003 edit-on-GitHub footer is the in-app jump point. Runbook linked from the admin nav under "Authoring".</p>
+        <p class="what">Documentation, not a feature. <b>Still to be written (Backlog, M22).</b> Brite LMS is <b>Git-as-CMS</b>: modules live as markdown in the handbook repo, tracks are configured in <code>tracks.json</code>, quizzes are YAML alongside the module. There is intentionally no in-app WYSIWYG authoring UI. The runbook documents the four-step authoring path: (1) write module markdown with frontmatter, (2) add to <code>tracks.json</code> + <code>modules.json</code>, (3) write quiz YAML, (4) commit + PR. The BC-6604 CI guard (shipped) catches broken track-slug refs; the BC-7003 edit-on-GitHub footer (shipped) is the in-app jump point. Runbook linked from the admin nav under "Authoring".</p>
         <p class="why">Resolves Jaime's question 5. The intuition that this needs docs not features was right — the architecture choice is deliberate (handbook is the single source of truth; an in-app editor would create drift). A 1-2 page runbook closes the discoverability gap for new admins.</p>
         <div class="footer">
-          <span class="badge medium">Medium</span><span class="badge s">S · ~2-3 days (docs + nav link)</span>
+          <span class="badge medium">Medium</span><span class="badge s">M22 · Backlog · S · ~2-3 days</span>
           <a href="https://linear.app/brite-nites/issue/BC-9558">→ BC-9558</a>
         </div>
       </div>
@@ -304,12 +304,12 @@
 
     <article class="feature from-session">
       <div>
-        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7003 · F07</span></div>
+        <div class="meta-top"><span class="src-tag">new · session</span> · <span>BC-7003 · F07 · shipped</span></div>
         <h3>"Edit this page on GitHub" footer link</h3>
         <p class="what">Footer link on every module page deep-linking to the source markdown file in handbook repo. Visible only to TRAINER + ADMIN roles. Closes the contributor loop for handbook content fixes.</p>
         <p class="why">Tiny investment (~2h) that materially supports the content-accuracy work running in parallel during season-prep window.</p>
         <div class="footer">
-          <span class="badge high">High</span><span class="badge s">S · ~2h</span>
+          <span class="badge s">Done</span><span class="badge s">S · ~2h</span>
           <a href="https://linear.app/brite-nites/issue/BC-7003">→ BC-7003</a>
         </div>
       </div>
@@ -483,12 +483,12 @@
 
     <article class="feature from-jaime">
       <div>
-        <div class="meta-top"><span class="src-tag">existing · Jaime</span> · <span>BC-6604</span></div>
+        <div class="meta-top"><span class="src-tag">existing · Jaime</span> · <span>BC-6604 · shipped</span></div>
         <h3>CI guardrail — broken track-slug references</h3>
         <p class="what">Build-time check that fails CI if <code>tracks.json</code> references a module slug not present in <code>modules.json</code> (or vice versa). Prevents fallback-to-raw-slug-tail rendering bugs.</p>
         <p class="why">Already-known bug class. Catches before merge instead of in production. Defensive infrastructure for ongoing content work.</p>
         <div class="footer">
-          <span class="badge medium">Medium</span><span class="badge s">S</span>
+          <span class="badge s">Done</span><span class="badge s">S</span>
           <a href="https://linear.app/brite-nites/issue/BC-6604">→ BC-6604</a>
         </div>
       </div>
@@ -543,12 +543,12 @@
 
     <article class="feature from-jaime">
       <div>
-        <div class="meta-top"><span class="src-tag">existing · Jaime · supersedes F11 (BC-7052 closed dup)</span> · <span>BC-6596</span></div>
+        <div class="meta-top"><span class="src-tag">existing · Jaime · supersedes F11 (BC-7052 closed dup)</span> · <span>BC-6596 · shipped</span></div>
         <h3>Team page training overlay + per-trainee drill-down</h3>
         <p class="what">Augment <code>/team</code> with progress overlay for TRAINER + ADMIN: completion %, modules complete, phases complete, last activity. Card clickable → <code>/team/[userId]</code> drill-down reusing trainee home-page components. IDOR-protected with 404-over-403 status codes. <b>This delivers the "Manager view" concept from the competitive review — BC-7052 (F11) was closed as duplicate.</b></p>
         <p class="why">Jaime's literal ask: "I want my home page to show all the tabs (rank, % progress, courses) for each person on my team." Closes the structural gap that today's LMS is trainee-only at the UI level.</p>
         <div class="footer">
-          <span class="badge high">High</span><span class="badge m">M · ~1 week</span>
+          <span class="badge s">Done</span><span class="badge m">M · ~1 week</span>
           <a href="https://linear.app/brite-nites/issue/BC-6596">→ BC-6596</a>
         </div>
       </div>
@@ -560,9 +560,9 @@
 
     <article class="feature from-jaime">
       <div>
-        <div class="meta-top"><span class="src-tag">existing · Jaime · partial cover for deferred "intelligent agents"</span> · <span>BC-6600 + BC-6601</span></div>
+        <div class="meta-top"><span class="src-tag">existing · Jaime · partial cover for deferred "intelligent agents"</span> · <span>BC-6600 + BC-6601 · not started</span></div>
         <h3>Email infrastructure + completion notifications</h3>
-        <p class="what">BC-6600: Resend + React Email + event queue + cron sweep + user preferences. BC-6601: completion notification emails (module, quiz, phase, track events) to employee + admin.</p>
+        <p class="what">BC-6600: Resend + React Email + event queue + cron sweep + user preferences. BC-6601: completion notification emails (module, quiz, phase, track events) to employee + admin. <b>Both still unstarted (Todo) and cut from the M24 demo scope</b> — the demo uses a cut-down admin manual-reminder send; the full email stack returns in its canonical milestone post-demo.</p>
         <p class="why">Email push channel for training milestones. Partial coverage of the "intelligent agents" Half B I deferred (push notifications when workers stall) — BC-6601 covers completion events, future work could extend to stall detection if needed.</p>
         <div class="footer">
           <span class="badge high">High</span><span class="badge l">L</span>
@@ -622,10 +622,10 @@
   <section class="timeline-section" style="margin-top: 50px;">
     <h2 style="font-size: 22px; font-weight: 600; margin: 0 0 6px;">Full project timeline — Brite LMS cadence</h2>
     <p style="color: var(--fg-muted); font-size: 13.5px; margin: 0 0 18px; max-width: 80ch;">
-      <b>Updated 2026-05-10 after foundation-first re-sequence.</b> Vertical view of every active and planned issue from <b>now → 2027</b>. Originally sequenced as "features first" (Phase 1 = F10 offline + F09 quiz hints + F07). Audit revealed structural gaps that need fixing BEFORE more features — only 3 quizzes for 226 modules, no email infrastructure, no error tracking, no real-device mobile validation. Re-sequenced into 5 phases: foundations → testing-ready → pre-season hardening → search + AI → post-season iteration.
+      <b>Current as of 2026-05-29 — now tracked on the M-series milestones.</b> Vertical view of the work from <b>now → 2027</b>. The near-term focus is <b>M24 "Demo-ready JT vertical" (due 2026-06-01)</b>: a full end-to-end JT slice so dept heads can see the LMS and spec their own content. Several earlier-flagged foundation gaps have since closed — quiz authoring for the JT track has shipped (BC-5655), error tracking is live (BC-7063), and the CI guardrail is in place (BC-6604). The phase grouping below (foundations → testing-ready → pre-season hardening → search + AI → post-season iteration) is retained as a description of feature scope; milestone targets in Linear are the authoritative schedule.
     </p>
     <div style="padding: 14px 18px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px; margin: 0 0 22px; font-size: 12.5px; color: var(--fg-muted);">
-      <b style="color: var(--fg);">Why the re-sequence:</b> The original Phase 1 (F10 offline + F09 quiz hints + F07) was optimized for "field-ready by Oct 1." But F09 has nothing to apply to (3 quizzes exist for 226 modules) and F10 is meaningless without internal alpha testing of the basics first. Foundation-first surfaces real issues before they compound. Total runway is ~5 months — enough to do this right.
+      <b style="color: var(--fg);">Where things stand:</b> The original "features-first" Phase 1 (F10 offline + F09 quiz hints + F07) was re-sequenced foundation-first, and the project has since moved to milestones-as-goals. The big foundation gaps that motivated the re-sequence are largely closed: JT quiz coverage shipped (BC-5655 — quizzes now exist where there were almost none), Sentry error tracking shipped (BC-7063). The current driver is the <b>2026-06-01 M24 demo deadline</b>, with peak season ~Oct 2026 still the longer-horizon target (~4 months runway).
     </div>
 
     <style>
@@ -677,20 +677,20 @@
       </div>
 
       <!-- NOW -->
-      <div class="timeline-marker tm-now"><span class="ts-date">Now · 2026-05-10</span>In progress<span class="ts-phase-label" style="background: rgba(77,208,122,0.14); color: var(--green)">active</span></div>
+      <div class="timeline-marker tm-now"><span class="ts-date">Now · 2026-05-29</span>In progress · M24 demo push<span class="ts-phase-label" style="background: rgba(77,208,122,0.14); color: var(--green)">active</span></div>
       <div class="timeline-item">
-        <span class="ti-id">BC-7049</span>
-        <span class="ti-title">JT track displayTitle should override course-slug grouping, not just labels</span>
-        <span class="ti-meta">Medium · In Progress</span>
+        <span class="ti-id">BC-11776</span>
+        <span class="ti-title">LMS UX refresh — typography, depth, and role-separated nav (active polish ahead of the JT-vertical demo)</span>
+        <span class="ti-meta">In Progress</span>
       </div>
 
       <!-- PHASE 1 — FOUNDATIONS -->
-      <div class="timeline-marker tm-phase-1"><span class="ts-date">Weeks 1–5 · mid-May → late June</span>Phase 1<span class="ts-phase-label">foundations · ~4-5 wk</span></div>
-      <p class="timeline-note"><b>Fix structural gaps before adding more features.</b> Content authoring runs in parallel with engineering work.</p>
+      <div class="timeline-marker tm-phase-1"><span class="ts-date">Through 2026-06-01 · M24 demo</span>Foundations + JT demo<span class="ts-phase-label">most items shipped</span></div>
+      <p class="timeline-note"><b>Near-term driver is the M24 "Demo-ready JT vertical" due 2026-06-01.</b> Most of the foundation items below have shipped (quiz coverage, admin provisioning, Sentry, CI guard, edit-on-GitHub footer). Items marked Todo/M22 are explicitly cut from the demo and return post-demo. Content authoring runs in parallel with engineering work.</p>
       <div class="timeline-item">
-        <span class="ti-id high">BC-5655</span>
-        <span class="ti-title"><b>Quiz coverage</b> — Convert 23 handbook Q&amp;As → MC quizzes. <b>Today only 3 quizzes exist for 226 modules.</b> Curriculum-author work, runs parallel to engineering.</span>
-        <span class="ti-meta">High · content</span>
+        <span class="ti-id done">BC-5655</span>
+        <span class="ti-title done"><b>Quiz coverage</b> — Convert 23 handbook Q&amp;As → MC quizzes. Shipped — the JT track now has real quiz coverage where there were previously almost none. Now in M24 demo scope.</span>
+        <span class="ti-meta">Done · content</span>
       </div>
       <div class="timeline-item">
         <span class="ti-id">BC-5971</span>
@@ -699,28 +699,28 @@
       </div>
       <div class="timeline-item">
         <span class="ti-id high">BC-6600</span>
-        <span class="ti-title"><b>Email infrastructure</b> — Resend + React Email + event queue + cron sweep + user preferences. Foundation for invitations, completion signals, anything human-readable.</span>
-        <span class="ti-meta">High · ~1-2 wk</span>
+        <span class="ti-title"><b>Email infrastructure</b> — Resend + React Email + event queue + cron sweep + user preferences. Still unstarted (Todo); <b>cut from the M24 demo</b> (demo uses a cut-down manual reminder send) and returns in its canonical milestone post-demo.</span>
+        <span class="ti-meta">High · Todo · post-demo</span>
       </div>
       <div class="timeline-item">
-        <span class="ti-id high">BC-3123</span>
-        <span class="ti-title"><b>Admin user-management UI</b> — Invite form captures name, email, <b>department</b>, <b>role (ADMIN / TRAINER / TRAINEE)</b>, supervisor, territory, <b>assigned track</b>. <b>14-day single-use invite TTL</b> with admin resend (rotates token) + bulk-resend + "Pending · expires in Xd" indicator. No more manual Prisma Studio for provisioning. <i>Bumped from Todo/Low to Backlog/High; scope expanded per Jaime 2026-05-13.</i></span>
-        <span class="ti-meta">High · M · ~5-7d</span>
+        <span class="ti-id done">BC-3123</span>
+        <span class="ti-title done"><b>Admin user-management UI</b> — Invite form captures name, email, <b>department</b>, <b>role (ADMIN / TRAINER / TRAINEE)</b>, supervisor, territory, <b>assigned track</b>. <b>14-day single-use invite TTL</b> with admin resend (rotates token) + bulk-resend + "Pending · expires in Xd" indicator. No more manual Prisma Studio for provisioning. Shipped in M21 (scope expanded per Jaime 2026-05-13).</span>
+        <span class="ti-meta">Done · M21</span>
       </div>
       <div class="timeline-item">
         <span class="ti-id high" style="color: var(--accent);">BC-9557</span>
-        <span class="ti-title"><b>User lifecycle — offboarding + re-activation</b> <i>(Jaime 2026-05-13)</i> — Soft-deactivate at season end preserves progress for the ~24 confirmed 2026 returners. Bulk season-end deactivation (TM-triggered, per-territory). Re-activation flow skips already-completed modules. Mid-season role change preserves completed modules and auto-enrolls in the delta (pairs with BC-7055 M02).</span>
-        <span class="ti-meta">High · M · ~5-7d</span>
+        <span class="ti-title"><b>User lifecycle — offboarding + re-activation</b> <i>(Jaime 2026-05-13)</i> — Soft-deactivate at season end preserves progress for the ~24 confirmed 2026 returners. Bulk season-end deactivation (TM-triggered, per-territory). Re-activation flow skips already-completed modules. Mid-season role change preserves completed modules and auto-enrolls in the delta (pairs with BC-7055). <b>Now M22, post-demo (Todo).</b></span>
+        <span class="ti-meta">High · M22 · ~5-7d</span>
       </div>
       <div class="timeline-item">
         <span class="ti-id" style="color: var(--accent);">BC-9558</span>
-        <span class="ti-title"><b>Authoring runbook</b> <i>(Jaime 2026-05-13 · docs)</i> — Documents the 4-step Git-as-CMS authoring path: markdown + frontmatter → <code>tracks.json</code>/<code>modules.json</code> → quiz YAML → PR. CI guard (BC-6604) catches broken refs; BC-7003 footer is the in-app entry. Linked from admin nav under "Authoring".</span>
-        <span class="ti-meta">Medium · S · ~2-3d</span>
+        <span class="ti-title"><b>Authoring runbook</b> <i>(Jaime 2026-05-13 · docs)</i> — Documents the 4-step Git-as-CMS authoring path: markdown + frontmatter → <code>tracks.json</code>/<code>modules.json</code> → quiz YAML → PR. CI guard (BC-6604, shipped) catches broken refs; BC-7003 footer (shipped) is the in-app entry. Linked from admin nav under "Authoring". <b>Now M22, post-demo (Backlog).</b></span>
+        <span class="ti-meta">Medium · M22 · ~2-3d</span>
       </div>
       <div class="timeline-item">
-        <span class="ti-id high">BC-7063</span>
-        <span class="ti-title"><b>Error tracking + observability</b> — Sentry (or equivalent). Production failures must be visible.</span>
-        <span class="ti-meta">High · ~½ day</span>
+        <span class="ti-id done">BC-7063</span>
+        <span class="ti-title done"><b>Error tracking + observability</b> — Sentry. Shipped; production failures now report to Sentry with Slack alerting.</span>
+        <span class="ti-meta">Done</span>
       </div>
       <div class="timeline-item">
         <span class="ti-id high">BC-7064</span>
@@ -728,23 +728,23 @@
         <span class="ti-meta">High · ~2 days</span>
       </div>
       <div class="timeline-item">
-        <span class="ti-id high">BC-7003</span>
-        <span class="ti-title">F07 · Edit on GitHub footer link — supports content-authoring loop during Phase 1.</span>
-        <span class="ti-meta">High · ~2h</span>
+        <span class="ti-id done">BC-7003</span>
+        <span class="ti-title done">F07 · Edit on GitHub footer link — shipped; supports the content-authoring loop and surfaces the authoring path for dept heads in the M24 demo.</span>
+        <span class="ti-meta">Done</span>
       </div>
       <div class="timeline-item">
-        <span class="ti-id">BC-6604</span>
-        <span class="ti-title">CI guardrail for broken track-slug references — defensive infrastructure.</span>
-        <span class="ti-meta">Medium · S</span>
+        <span class="ti-id done">BC-6604</span>
+        <span class="ti-title done">CI guardrail for broken track-slug references — shipped; the repo's first GitHub Actions workflow.</span>
+        <span class="ti-meta">Done</span>
       </div>
 
       <!-- PHASE 2 — TESTING-READY -->
       <div class="timeline-marker tm-phase-2"><span class="ts-date">Weeks 6–8 · late June → mid-July</span>Phase 2<span class="ts-phase-label">testing-ready · ~2-3 wk</span></div>
       <p class="timeline-note">Internal alpha test with 5-10 real workers. Phase 2 features make that test feel like real product.</p>
       <div class="timeline-item">
-        <span class="ti-id high">BC-6596</span>
-        <span class="ti-title"><b>Team page training overlay</b> — Trainers see crew progress (not just roster). Delivers "Manager view" concept (was F11 = BC-7052 closed dup). Critical for alpha testing — managers monitor testers.</span>
-        <span class="ti-meta">High · ~1 wk</span>
+        <span class="ti-id done">BC-6596</span>
+        <span class="ti-title done"><b>Team page training overlay</b> — Trainers see crew progress (not just roster). Delivers "Manager view" concept (was F11 = BC-7052 closed dup). Shipped, IDOR-hardened — and it's demo moment 5 in the M24 JT vertical.</span>
+        <span class="ti-meta">Done</span>
       </div>
       <div class="timeline-item">
         <span class="ti-id high">BC-6601</span>
@@ -916,9 +916,9 @@
         <span class="ti-meta">Medium · L</span>
       </div>
       <div class="timeline-item">
-        <span class="ti-id">BC-3124</span>
-        <span class="ti-title">Task 12 — Trainee Dashboard (legacy task, may be superseded by F04 resume card + F11/BC-6596)</span>
-        <span class="ti-meta">Low</span>
+        <span class="ti-id done">BC-3124</span>
+        <span class="ti-title done">Trainee Dashboard — rescoped to verify the already-shipped home page for the JT demo. Done (M24); closed with verification, effectively zero code changes.</span>
+        <span class="ti-meta">Done · M24</span>
       </div>
       <div class="timeline-item">
         <span class="ti-id">BC-4965</span>
@@ -934,8 +934,8 @@
   </section>
 
   <footer class="foot">
-    <p>This summary woven from <b>three review sources</b>: the 2026-05-07 competitive review (10 active features F01–F10 + 4 backlog + 9 skips), Jaime's 2026-05-04 product review (14 existing issues BC-6596–6609), and Jaime's 2026-05-13 follow-up on user lifecycle + authoring (BC-3123 scope expansion + BC-9557 lifecycle + BC-9558 authoring runbook). Generated for the LMS rescope conversation with Holden + Jaime; Holden's separate rescoping continues throughout the week.</p>
-    <p><b>One unified phased roadmap:</b> Phase 1 foundations (~4-5 wk · now includes user lifecycle + authoring) → Phase 2 testing-ready (~2-3 wk) → Phase 3 pre-season hardening (~3 wk) → Phase 4 search + AI (~3-4 wk) → Phase 5 post-season iteration (~4-5 wk). Total ~18-21 weeks. F11 Manager view (was BC-7052) closed as duplicate of BC-6596 — same feature, BC-6596 is the canonical issue.</p>
+    <p>This summary woven from <b>three review sources</b>: the 2026-05-07 competitive review (10 active features F01–F10 + 4 backlog + 9 skips), Jaime's 2026-05-04 product review (14 existing issues BC-6596–6609), and Jaime's 2026-05-13 follow-up on user lifecycle + authoring (BC-3123 scope expansion + BC-9557 lifecycle + BC-9558 authoring runbook). Current as of 2026-05-29 — statuses reflect what has shipped, and sequencing now follows the milestone structure in Linear.</p>
+    <p><b>How the work is now organized:</b> milestones-as-goals (M01–M23) with a near-term <b>M24 "Demo-ready JT vertical" due 2026-06-01</b> — a full end-to-end JT slice so dept heads can see the LMS and spec their own content. The feature/phase groupings in this doc still describe scope accurately (foundations → testing-ready → pre-season hardening → search + AI → post-season iteration), but the milestones are the authoritative schedule. F11 Manager view (was BC-7052) closed as duplicate of BC-6596 — same feature, BC-6596 is the canonical issue and has shipped.</p>
     <p><b>Image strategy</b>: each feature shows two screenshots — a <b>Brite mockup</b> (Brite LMS design tokens, real handbook content like C9 strand spacing / GFCI / JT track) rendered to PNG via puppeteer from <code>mockups.html</code>, and a <b>competitor reference</b> from a public docs/marketing URL captured the same way. The Brite mockup is the primary visual (shows the feature in our context); the competitor is the in-the-wild reference. Capture scripts: <code>capture-mockups.mjs</code> + <code>capture-competitors.mjs</code> in this directory; PNGs in <code>screenshots/</code>. The three Jaime 2026-05-13 cards use text-only spec previews (no PNGs yet) since the lifecycle and authoring flows haven't been mocked up — to be added in the next rev.</p>
   </footer>
 
