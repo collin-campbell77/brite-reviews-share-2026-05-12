@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brite Nites — Area Tier &amp; Headcount Model</title>
+<style>
+  :root{
+    --bg:#0e1116; --panel:#171c24; --panel2:#1d242e; --line:#2a323d;
+    --ink:#e8edf3; --mut:#9aa7b6; --dim:#6b7888;
+    --t1:#5b9dff; --t1bg:#13202e; --t2:#e0a23b; --t2bg:#2a2113; --t3:#3fb27f; --t3bg:#13241c;
+    --accent:#5b9dff; --bad:#e0594b;
+  }
+  *{box-sizing:border-box}
+  @media print{*{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}@page{margin:10mm}.wrap{padding:0}}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:1120px;margin:0 auto;padding:40px 28px 80px}
+  header h1{font-size:30px;margin:0 0 6px;letter-spacing:-.5px}
+  header .sub{color:var(--mut);font-size:15px}
+  .meta{display:flex;gap:24px;flex-wrap:wrap;margin:16px 0 0;font-size:13px;color:var(--dim)}
+  .meta b{color:var(--mut);font-weight:600}
+  h2.sec{font-size:18px;margin:40px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .principles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:720px){.principles{grid-template-columns:1fr}}
+  .principles div{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:11px 14px;font-size:13.5px;color:var(--mut)}
+  .principles div b{color:var(--ink)}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:860px){.tiers{grid-template-columns:1fr}}
+  .tier{background:var(--panel);border:1px solid var(--line);border-top-width:3px;border-radius:10px;padding:16px 16px 18px}
+  .tier.t1{border-top-color:var(--t1)} .tier.t2{border-top-color:var(--t2)} .tier.t3{border-top-color:var(--t3)}
+  .tier h3{margin:0 0 2px;font-size:17px}
+  .tier .tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px}
+  .t1 .tag{background:var(--t1bg);color:var(--t1)} .t2 .tag{background:var(--t2bg);color:var(--t2)} .t3 .tag{background:var(--t3bg);color:var(--t3)}
+  .tier .band{color:var(--dim);font-size:12px;margin:6px 0 12px}
+  .tier ul{list-style:none;padding:0;margin:0}
+  .tier li{font-size:13px;color:var(--mut);padding:5px 0;border-bottom:1px solid #20262f;display:flex;justify-content:space-between;gap:10px}
+  .tier li:last-child{border-bottom:none}
+  .tier li b{color:var(--ink);font-weight:600;white-space:nowrap}
+  .tier li span{text-align:right}
+  .merge{color:var(--t2);font-style:italic}
+  .none{color:var(--dim)}
+  table{width:100%;border-collapse:collapse;font-size:13px;background:var(--panel);border-radius:10px;overflow:hidden;margin-top:6px}
+  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--panel2);color:var(--mut);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.4px}
+  tr:last-child td{border-bottom:none}
+  td b{color:var(--ink)}
+  .flow{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 18px}
+  .flow li{margin:9px 0;color:var(--mut);font-size:13.5px}
+  .flow li b{color:var(--ink)}
+  .lattice{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:13px;color:var(--mut)}
+  .node{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:6px 11px;color:var(--ink);font-weight:600}
+  .arr{color:var(--accent);font-weight:700}
+  .callout{background:linear-gradient(135deg,#13202e,#15202a);border:1px solid #234032;border-radius:10px;padding:16px 18px;margin:8px 0;color:#cfe5d8;font-size:13.5px}
+  .callout b{color:#fff}
+  .followups{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--t2);border-radius:8px;padding:6px 18px}
+  .followups li{margin:8px 0;color:var(--mut);font-size:13px}
+  .followups li b{color:var(--ink)}
+  footer{margin-top:46px;color:var(--dim);font-size:12px;border-top:1px solid var(--line);padding-top:16px}
+  code{background:var(--panel2);padding:1px 6px;border-radius:4px;font-size:12px;color:#cdd6e0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Area Tier &amp; Headcount Model</h1>
+  <div class="sub">Three area tiers defined by residential production — each fixing the role roster, where positions consolidate, and the headcount math that feeds planning.</div>
+  <div class="meta">
+    <span><b>Drafted:</b> May 29, 2026</span>
+    <span><b>Status:</b> design v1 — collaboratively scoped</span>
+    <span><b>Feeds:</b> seasonal headcount planning (DoFO-owned)</span>
+  </div>
+</header>
+
+<h2 class="sec">Operating principles</h2>
+<div class="principles">
+  <div><b>Tiers = residential revenue.</b> Classification is set by an area's residential production band — not crew count, not commercial. Crews and revenue track together; revenue is the metric.</div>
+  <div><b>1 AM per area.</b> An area is the span one AM can run. Two AMs never share an area — that's two areas.</div>
+  <div><b>Consolidate downward.</b> As volume drops, seats don't vanish — they fold into fewer people (QP→RT, then everything→AM). The model names exactly where.</div>
+  <div><b>Commercial is a surge, not a tier.</b> A sold commercial job initiates a protocol that "balloons" the area's capacity for that scope, then deflates. Tiers stay residential-defined.</div>
+  <div><b>Over-hire JTs.</b> JT attrition is high, so hire ~1.5–2× the per-crew minimum and flex them across crews — "JTs hired" ≠ "JTs effective."</div>
+  <div><b>Area tier ↔ warehouse tier.</b> T1 ≈ large-tier hub · T2 ≈ standard-tier · T3 ≈ minimal-tier — the area model and the existing warehouse buildout docs line up.</div>
+</div>
+
+<h2 class="sec">The three tiers</h2>
+<div class="tiers">
+
+  <div class="tier t1">
+    <h3>Tier 1 <span class="tag">FULL</span></h3>
+    <div class="band">~$1.0–1.25M residential / season · large-tier hub</div>
+    <ul>
+      <li><b>Crews</b><span>4–5</span></li>
+      <li><b>AM</b><span>1 (manages, doesn't do)</span></li>
+      <li><b>ST</b><span>1 / crew (4–5)</span></li>
+      <li><b>JT</b><span>1–2 / crew + buffer</span></li>
+      <li><b>Warehouse</b><span>1 WA (+1 peak)</span></li>
+      <li><b>QP</b><span>1 (dedicated)</span></li>
+      <li><b>Repair</b><span>1 RT (+1 if hot)</span></li>
+      <li><b>Light Rollers</b><span>seasonal pool</span></li>
+    </ul>
+  </div>
+
+  <div class="tier t2">
+    <h3>Tier 2 <span class="tag">CONSOLIDATED</span></h3>
+    <div class="band">mid residential · standard-tier hub · highest variance</div>
+    <ul>
+      <li><b>Crews</b><span>3–4 (low end)</span></li>
+      <li><b>AM</b><span>1 (wears hats)</span></li>
+      <li><b>ST</b><span>1 / crew (3–4)</span></li>
+      <li><b>JT</b><span>1–2 / crew + buffer</span></li>
+      <li><b>Warehouse</b><span class="merge">→ AM + RT (WA if growth)</span></li>
+      <li><b>QP</b><span class="merge">→ folded into RT</span></li>
+      <li><b>Repair</b><span>1 RT+QP (linchpin)</span></li>
+      <li><b>Light Rollers</b><span class="none">obsolete</span></li>
+    </ul>
+  </div>
+
+  <div class="tier t3">
+    <h3>Tier 3 <span class="tag">OUTPOST</span></h3>
+    <div class="band">new / tough market · minimal-tier hub</div>
+    <ul>
+      <li><b>Crews</b><span>2</span></li>
+      <li><b>AM</b><span>1 — veteran only</span></li>
+      <li><b>ST</b><span>1 / crew (2)</span></li>
+      <li><b>JT</b><span>1–2 / crew + buffer</span></li>
+      <li><b>Warehouse</b><span class="merge">→ AM (own storage)</span></li>
+      <li><b>QP</b><span class="merge">→ AM</span></li>
+      <li><b>Repair</b><span class="merge">→ AM</span></li>
+      <li><b>Light Rollers</b><span class="none">ad-hoc</span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="callout" style="margin-top:14px">
+  <b>The consolidation spine.</b> Tier 1 runs four specialist back-office seats (WA · QP · RT · LR feed). Tier 2 collapses <b>QP into the RT</b> (one dual-hatted person) and makes WA conditional. Tier 3 collapses <b>everything into the AM</b>. The RT is the pivot seat — it's the first specialist you add coming up from Tier 3, and the last you keep coming down from Tier 1.
+</div>
+
+<h2 class="sec">Headcount math (peak season)</h2>
+<table>
+  <thead><tr><th>Tier</th><th>Crews</th><th>Field (ST + JT eff.)</th><th>Back-office</th><th>≈ Total employees</th><th>Contractors</th></tr></thead>
+  <tbody>
+    <tr><td><b>Tier 1</b></td><td>4–5</td><td>4–5 ST + 5–9 JT</td><td>1–2 WA · 1 QP · 1–2 RT</td><td><b>~13–20</b></td><td>seasonal LR pool</td></tr>
+    <tr><td><b>Tier 2</b></td><td>3–4</td><td>3–4 ST + 4–8 JT</td><td>1 RT+QP · 0–1 WA</td><td><b>~9–14</b></td><td>—</td></tr>
+    <tr><td><b>Tier 3</b></td><td>2</td><td>2 ST + 2–4 JT</td><td>AM does all</td><td><b>~5–7</b></td><td>ad-hoc</td></tr>
+  </tbody>
+</table>
+<p style="color:var(--dim);font-size:12px;margin-top:8px">JT counts are <i>effective</i> (post-attrition). Hire ~1.5–2× to hold the per-crew floor through the season. Revenue anchor: ~$5k/day/crew × ~50 working days ≈ $250k/crew/season.</p>
+
+<h2 class="sec">Transitions &amp; the split</h2>
+<ul class="flow">
+  <li><b>Up / down a tier</b> — driven by <b>residential revenue</b> crossing the band. The Director of Field Operations (Mike) owns the call and can <b>pre-build</b> a heavier headcount ahead of a season when growth is expected.</li>
+  <li><b>Commercial as catalyst</b> — a <b>one-off</b> commercial job triggers the <b>surge protocol</b> (temporary balloon, no tier change). A <b>major/anchor</b> commercial contract is the usual trigger to <b>pre-build a permanent tier-up</b> — provision standing capacity instead of surging repeatedly.</li>
+  <li><b>The split</b> — one AM tops out at <b>~5 crews</b>; at <b>6</b>, the area splits into <b>two independently-classified areas</b> (each its own tier, its own AM). This is the CA / FL "two AMs" case — it's two areas, never two AMs in one.</li>
+</ul>
+
+<h2 class="sec">Career lattice (surfaced by this design — closes audit gaps)</h2>
+<div class="callout">
+  These feeds fell out of the staffing logic and resolve career-path gaps the completeness audit flagged (WA thin, RT &amp; LR missing):
+  <div class="lattice" style="margin-top:12px">
+    <span class="node">Light Roller</span><span class="arr">→</span><span class="node">Warehouse Associate</span>
+    <span style="color:var(--dim)">(productivity-gated; LR hired early, converted if they perform — built-in vetting)</span>
+  </div>
+  <div class="lattice" style="margin-top:8px">
+    <span class="node">ST</span><span class="arr">→</span><span class="node">AM</span>
+    <span style="color:var(--dim)">and</span>
+    <span class="node">RT</span><span class="arr">→</span><span class="node">AM</span>
+    <span style="color:var(--dim)">(management-appetite gated — a high-earning ST may choose to <i>stay</i> ST)</span>
+  </div>
+  <div class="lattice" style="margin-top:8px">
+    <span class="node">Tier-3 all-hats AM</span><span class="arr">→</span><span class="node">TM</span>
+    <span style="color:var(--dim)">(ran every function solo = best-rounded operator)</span>
+  </div>
+</div>
+
+<h2 class="sec">Follow-ups this model creates</h2>
+<ul class="followups">
+  <li><b>Commercial Surge Protocol</b> (separate doc, tier-agnostic) — define the trigger threshold, who leads, crew sourcing (reassign / BriteLabs support / short-term LR rehire), and MEWP/lift provisioning. Scope on a sold job: trees, C9, BriteLabs support.</li>
+  <li><b>Resolve "Tier-1-only" role</b> — current handbook says <code>RT = Tier 1 only</code>; this design says <b>QP is the truer Tier-1-only seat</b> (RT persists into Tier 2 as RT+QP). Update the RT/QP content to match.</li>
+  <li><b>Write the consolidation into role pages</b> — RT page gets the Tier-2 "RT+QP dual-hat" scope; AM page gets the Tier-3 "all-hats" scope + veteran-only + coverage-fallback note.</li>
+  <li><b>Wire the career feeds in</b> — LR→WA, ST/RT→AM, AM→TM into the respective role-page career sections (closes the audit's career-path gaps).</li>
+  <li><b>Headcount calculator</b> — turn this table into an interactive tool (per area: tier → crews → auto roster + JT over-hire buffer). Mirrors the BRN-409 headcount calculator pattern.</li>
+</ul>
+
+<footer>
+  Design v1, collaboratively scoped 2026-05-29. Tiers are residential-revenue-defined; commercial is a surge protocol; 1 AM/area; split at 6 crews. Next: bake the consolidation + career feeds into the role pages, then the broader training content sweep.
+</footer>
+</div>
+</body>
+</html>
