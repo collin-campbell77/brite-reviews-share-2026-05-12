@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>TM Training — Module Outline</title>
+<title>TM Training — Module Outline (v2)</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; background: #f5f5f7; color: #1a1a2e; line-height: 1.5; padding: 32px; }
@@ -23,18 +23,20 @@
   .phase-body { padding: 20px 24px; }
   .category { margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid #ececec; }
   .category:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .category-title { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #e07832; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: baseline; }
+  .category-title { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #e07832; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
   .category-count { font-size: 11px; color: #6b7280; font-weight: 500; }
   .module-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 6px 16px; }
   .module { display: flex; align-items: baseline; font-size: 13px; padding: 4px 0; }
   .module-num { display: inline-block; min-width: 30px; color: #9ca3af; font-size: 11px; font-weight: 600; }
   .module-title { color: #1a1a2e; }
   .module-duration { color: #6b7280; font-size: 11px; margin-left: 6px; }
+  .consolidates { font-size: 11px; color: #6b7280; font-style: italic; margin: 2px 0 0 30px; }
   .note-block { background: #fffbeb; border-left: 3px solid #fbbf24; padding: 10px 14px; border-radius: 4px; font-size: 12px; color: #78350f; margin-top: 10px; }
   .gate-block { background: #fef2f2; border-left: 3px solid #dc2626; padding: 10px 14px; border-radius: 4px; font-size: 12px; color: #7f1d1d; margin-top: 10px; }
   .gate-block.warn { background: #fffbeb; border-left-color: #fbbf24; color: #78350f; }
   .gate-block.pass { background: #ecfdf5; border-left-color: #10b981; color: #065f46; }
   .gate-block.info { background: #eef2ff; border-left-color: #6366f1; color: #3730a3; }
+  .lc-quiz { background: #f5f3ff; border-left: 3px solid #8b5cf6; padding: 8px 14px; border-radius: 4px; font-size: 12px; color: #5b21b6; margin-top: 8px; }
   .activity-list { font-size: 13px; }
   .activity-list li { margin: 4px 0 4px 20px; }
   .pending-block { background: #eef2ff; border-left: 3px solid #6366f1; padding: 10px 14px; border-radius: 4px; font-size: 12px; color: #3730a3; margin-top: 10px; }
@@ -42,11 +44,13 @@
   .foundation-block strong { color: #075985; }
   .foundation-block a { color: #0284c7; font-weight: 600; }
   .new-tag { display: inline-block; background: #ede9fe; color: #5b21b6; font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .shared-tag { display: inline-block; background: #dbeafe; color: #1e40af; font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .consol-tag { display: inline-block; background: #dcfce7; color: #166534; font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
   .path-tabs { display: flex; gap: 12px; margin: 16px 0 4px; font-size: 13px; }
   .path-pill { padding: 6px 14px; border-radius: 999px; background: #fef0e5; color: #b14a16; font-weight: 600; font-size: 12px; }
   .path-pill.alt { background: #ede9fe; color: #5b21b6; }
   .schedule-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
-  .schedule-table th, .schedule-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #ececec; }
+  .schedule-table th, .schedule-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #ececec; vertical-align: top; }
   .schedule-table th { background: #fef0e5; color: #78350f; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
   .schedule-table tr:last-child td { border-bottom: none; }
   .kpi-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
@@ -55,6 +59,7 @@
   .kpi-green { color: #065f46; font-weight: 600; }
   .kpi-amber { color: #92400e; font-weight: 600; }
   .kpi-red { color: #7f1d1d; font-weight: 600; }
+  .legend { font-size: 11px; color: #6b7280; margin-top: 10px; }
   .print-btn { position: fixed; top: 20px; right: 20px; padding: 10px 18px; background: #e07832; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
   @media print { .print-btn { display: none; } body { background: white; padding: 16px; } .phase-section { page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; } }
 </style>
@@ -63,37 +68,46 @@
 <button class="print-btn" onclick="window.print()">Print / PDF</button>
 
 <header>
-  <h1>Territory Manager — Module Outline</h1>
-  <div class="sub">~3–4 wk internal (AM→TM) / ~5–6 wk external · Territory backend owner · Ops-Manager-trained · No JT Base Classroom (management-only track)</div>
+  <h1>Territory Manager — Module Outline <span style="font-size:16px;color:#8b5cf6;">v2</span></h1>
+  <div class="sub">~3–4 wk internal (AM→TM) / ~5–6 wk external · Territory backend owner + scheduling/review · Trained in-person at Utah HQ · No JT Base Classroom (management-only track)</div>
   <a class="back-link" href="brite-training-verticals-review.html">← Back to Position Verticals Review</a>
 </header>
 
 <div class="container">
 
   <div class="summary-bar">
-    <div class="summary-stat"><div class="label">Phase 1</div><div class="value">~1–2 weeks</div><div>Remote pre-training · ~55 modules · Business strategy is unique to TM</div></div>
-    <div class="summary-stat"><div class="label">Phase 2</div><div class="value">Week 1</div><div>Territory Onboarding · Mgmt systems + reporting + recruiting + discipline</div></div>
-    <div class="summary-stat"><div class="label">Phase 3</div><div class="value">~Half day</div><div>Abbreviated Safety Cert · A-frame only · No JT Base Classroom</div></div>
-    <div class="summary-stat"><div class="label">Phase 4</div><div class="value">1–2 weeks</div><div>Territory Shadowing · Peer TM ride-along + territory orientation</div></div>
-    <div class="summary-stat"><div class="label">Phase 5</div><div class="value">2–3 weeks</div><div>Supervised Solo · Pre-season ramp-up · First major challenge</div></div>
-    <div class="summary-stat"><div class="label">Phase 6</div><div class="value">Cleared</div><div>Territory operations owner · Ops Manager formal sign-off</div></div>
-    <div class="summary-stat"><div class="label">Strike + Off-Season</div><div class="value">Year-round</div><div>Territory wind-down · Strategic planning · Off-season prep</div></div>
+    <div class="summary-stat"><div class="label">Phase 1</div><div class="value">Onboarding &amp; Role Exposure</div><div>In-person Utah HQ · ~13 modules (from 55) · onboarding + TM &amp; AM R&amp;R + strategy</div></div>
+    <div class="summary-stat"><div class="label">Phase 2</div><div class="value">Management Systems</div><div>Day-page + per-block LC quizzes · reporting · purchasing · recruiting · discipline · cross-entity</div></div>
+    <div class="summary-stat"><div class="label">Phase 3</div><div class="value">~Half day</div><div>Abbreviated Safety Cert · A-frame only · ADR 0004 + safety attestation</div></div>
+    <div class="summary-stat"><div class="label">Phase 4</div><div class="value">Territory Shadowing</div><div>Remote-feasible peer exposure · Director-approved evidence gate</div></div>
+    <div class="summary-stat"><div class="label">Phase 5</div><div class="value">Supervised Solo</div><div>Pre-season ramp-up · Director-approved gates · first major challenge</div></div>
+    <div class="summary-stat"><div class="label">Phase 6</div><div class="value">Cleared</div><div>Territory operations owner · Director of Field Ops sign-off</div></div>
+    <div class="summary-stat"><div class="label">In-season + Strike</div><div class="value">Year-round</div><div>Sep–Dec management peak form · strike oversight · off-season planning</div></div>
   </div>
 
   <div class="pending-block">
-    <strong>Status:</strong> v1 restructured per <a href="https://linear.app/brite-nites/issue/BC-6290">BC-6290</a>. TM is the year-round backend owner — pairs with AM (frontend). "The TM owns the backend" — purchasing, reporting, recruiting, discipline, cross-entity. <strong>Does not attend JT Base Classroom</strong> — management-only track. Source: <code>handbook/operations/onboarding/territory-manager.md</code> + structural decisions in BC-6290 session.
+    <strong>v2 — Curriculum Restructure rollout (<a href="https://linear.app/brite-nites/issue/BC-12092">BC-12092</a>), pattern from <a href="https://linear.app/brite-nites/issue/BC-6290">BC-6290</a> / ST (<a href="https://linear.app/brite-nites/issue/BC-12087">BC-12087</a>).</strong> What changed from v1:
+    (1) all training is <strong>in-person at Utah HQ (mid-Aug)</strong> — no "at home";
+    (2) Phase 1 consolidated <strong>~55 → ~13 modules</strong> (lossless cross-refs), structured as Onboarding &amp; Role Exposure;
+    (3) onboarding/company, TM R&amp;R, and AM R&amp;R are <strong>separate modules</strong>; AM exposure is <strong>substantial and required for both paths</strong>;
+    (4) Business Strategy becomes a <strong>shared Management Strategy package (TM + AM)</strong> + a new <strong>TM↔AM Touchpoints map</strong>;
+    (5) quizzes follow <strong>ADR 0004</strong> (open-reference / 100% / unlimited; safety carries a named-dated attestation);
+    (6) <strong>TM owns scheduling + photo-review</strong>; AM informs/overrides + can approve — the old "TM reviews reports, not job sites" framing is retired;
+    (7) Phases 4–6 verification is <strong>Director-of-Field-Operations-approved gates</strong> (remote role), not a co-located ride-along.
+    Source: <code>operations/onboarding/territory-manager.md</code>.
+    <div class="legend"><span class="new-tag">New</span> new module/artifact · <span class="consol-tag">Consolidated</span> lossless collapse with cross-refs · <span class="shared-tag">Shared</span> same canonical module across roles</div>
   </div>
 
-  <!-- PHASE 1 — TM PRE-TRAINING -->
+  <!-- PHASE 1 — ONBOARDING & ROLE EXPOSURE -->
   <section class="phase-section">
     <div class="phase-header">
-      <div class="phase-name">Phase 1 — TM Pre-Training (Remote)</div>
-      <div class="phase-meta">~1–2 weeks · Mid-July start · Self-paced digital · Ops Manager sends materials + tracks · Heaviest pre-training of any role</div>
+      <div class="phase-name">Phase 1 — Onboarding &amp; Role Exposure</div>
+      <div class="phase-meta">In-person · Utah HQ · ~mid-August · Director of Field Operations leads, existing TMs assist · ~13 modules consolidated from 55</div>
     </div>
     <div class="phase-body">
 
       <div class="foundation-block">
-        <strong>"The TM owns the backend":</strong> TM and AM are peer-level partners — AM owns frontend (warehouse, field, crews), TM owns backend (purchasing, reporting, recruiting, discipline, cross-entity coordination). Pre-training builds the strategic context no other role gets: company strategy, multi-entity structure, business goals. The TM makes decisions that directly affect company performance.
+        <strong>Phase 1 = onboarding + role exposure</strong> — the same lead-in pattern the field tracks (JT/ST/RT) use, now delivered in person at HQ. The TM learns who Brite is, the strategic/multi-entity context no other field role gets, <strong>their own</strong> role, and the <strong>AM's</strong> role — they manage and evaluate AMs, so they must have the AM's responsibilities down (knowledge/judgment, not the physical AM training).
       </div>
 
       <div class="path-tabs">
@@ -107,246 +121,172 @@
           <thead><tr><th></th><th>Internal Promotion (AM→TM)</th><th>External Hire</th></tr></thead>
           <tbody>
             <tr><td><strong>Field prerequisite</strong></td><td>Proven — completed AM role, 100% field understanding</td><td>Develops through Phase 4 shadowing</td></tr>
-            <tr><td><strong>Pre-training scope</strong></td><td>Skip Company Orientation + Standards. Start at Business Strategy.</td><td>Full track below</td></tr>
+            <tr><td><strong>Onboarding &amp; company</strong></td><td>Light — already knows it; recert/refresh only</td><td>Full shared onboarding package</td></tr>
+            <tr><td><strong>AM role exposure</strong></td><td><strong>Required</strong> — re-framed as "evaluate &amp; coach the AM," not execute</td><td><strong>Required</strong> — full AM roles &amp; responsibilities</td></tr>
             <tr><td><strong>Timeline</strong></td><td>~3–4 weeks total</td><td>~5–6 weeks total</td></tr>
-            <tr><td><strong>Phase 3 safety</strong></td><td>Quiz recert only — fully certified from AM role</td><td>Abbreviated cert (A-frame + vehicle + incident reporting)</td></tr>
-            <tr><td><strong>Management baseline</strong></td><td>Proven area-level mgmt from AM role</td><td>Must demonstrate through Phase 5</td></tr>
+            <tr><td><strong>Phase 3 safety</strong></td><td>Quiz recert only (open-reference) — fully certified from AM role</td><td>Abbreviated cert (A-frame + vehicle + incident)</td></tr>
           </tbody>
         </table>
         <div class="note-block">
-          <strong>Ideal path = AM→TM:</strong> An AM who has run an area 1–2 seasons knows every operational aspect they'll now oversee at territory level. Gap is scaling to multiple areas + adding the backend operations layer. External hires bring mgmt/sales experience the track leverages.
+          <strong>Ideal path = AM→TM:</strong> an AM who has run an area 1–2 seasons knows every operational aspect they'll now oversee. The gap is scaling to multiple areas + the backend operations layer. External hires bring management/sales experience the track leverages.
         </div>
       </div>
 
       <div class="category">
-        <div class="category-title">Company Orientation &amp; HR <span class="category-count">7 modules · external hires only</span></div>
+        <div class="category-title">A · Onboarding &amp; Company <span class="shared-tag">Shared</span> <span class="category-count">2 modules · same canonical package every role references</span></div>
         <div class="module-list">
-          <div class="module"><span class="module-num">1</span><span class="module-title">Welcome to Brite Nites</span><span class="module-duration">15m</span></div>
-          <div class="module"><span class="module-num">2</span><span class="module-title">Introduction to Brite Nites</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">3</span><span class="module-title">What Does Brite Nites Do Exactly?</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">4</span><span class="module-title">Where Are We Located?</span><span class="module-duration">5m</span></div>
-          <div class="module"><span class="module-num">5</span><span class="module-title">Departments</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">6</span><span class="module-title">Employee Onboarding Paperwork</span><span class="module-duration">30m</span></div>
-          <div class="module"><span class="module-num">7</span><span class="module-title">Online Paperwork &amp; Onboarding</span><span class="module-duration">20m</span></div>
+          <div class="module"><span class="module-num">1</span><span class="module-title">Welcome to Brite Nites — company grounding</span><span class="module-duration">~40m</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title">Pay &amp; HR Onboarding</span><span class="module-duration">~45m</span></div>
         </div>
+        <div class="consolidates">Module 1 consolidates: Welcome · Introduction · What Brite Does · Where Located · Departments (+ Standards &amp; Policies for external hires). Module 2 consolidates: Onboarding Paperwork · Online Paperwork &amp; Onboarding.</div>
+        <div class="note-block"><strong>Shared package — voice unchanged.</strong> These are the same canonical modules every track references; not rewritten for a management audience. Internal promotions get a light refresh only.</div>
       </div>
 
       <div class="category">
-        <div class="category-title">Standards &amp; Policies <span class="category-count">9 modules · external hires only</span></div>
+        <div class="category-title">B · TM Roles &amp; Responsibilities <span class="category-count">2 modules · required both paths</span></div>
         <div class="module-list">
-          <div class="module"><span class="module-num">8</span><span class="module-title">Code of Conduct</span><span class="module-duration">15m</span></div>
-          <div class="module"><span class="module-num">9</span><span class="module-title">Communication &amp; Teamwork</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">10</span><span class="module-title">What to Wear</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">11</span><span class="module-title">General Policies &amp; Procedures</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">12</span><span class="module-title">Let's Get You Paid</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">13</span><span class="module-title">Stay Safe Out There</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">14</span><span class="module-title">Let's Just Be Good People</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">15</span><span class="module-title">Business Expense Policy</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">16</span><span class="module-title">Workplace Incidents &amp; Accidents Policy</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">3</span><span class="module-title">TM Role Orientation</span><span class="new-tag">New</span><span class="module-duration">30m · quiz</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title">TM Operations &amp; Admin Deep-Dive</span><span class="consol-tag">Consolidated</span><span class="module-duration">~60m</span></div>
         </div>
+        <div class="consolidates">Module 3 (new, modeled on ST Role Orientation): what the TM owns, the backend + scheduling/review, daily rhythm, what "fully trained TM" looks like. Module 4 consolidates: TM Daily Operations · TM Admin Responsibilities · TM Hiring &amp; Onboarding · TM Seasonal Playbook · Territory Manager role overview.</div>
       </div>
 
       <div class="category">
-        <div class="category-title">Business Strategy &amp; Operations <span class="new-tag">unique to TM</span> <span class="category-count">13 modules · required for both paths</span></div>
+        <div class="category-title">C · AM Roles &amp; Responsibilities <span class="new-tag">New</span> <span class="category-count">1 module · required both paths · the under-built piece, now built</span></div>
         <div class="module-list">
-          <div class="module"><span class="module-num">17</span><span class="module-title">Company Strategy</span><span class="module-duration">20m</span></div>
-          <div class="module"><span class="module-num">18</span><span class="module-title">Brite Entities Overview</span><span class="module-duration">15m</span></div>
-          <div class="module"><span class="module-num">19</span><span class="module-title">Brite Nites</span><span class="module-duration">15m</span></div>
-          <div class="module"><span class="module-num">20</span><span class="module-title">Brite Labs</span><span class="module-duration">15m</span></div>
-          <div class="module"><span class="module-num">21</span><span class="module-title">Brite Supply</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">22</span><span class="module-title">Brite Base</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">23</span><span class="module-title">Execution Overview</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">24</span><span class="module-title">One-Year Plan</span><span class="module-duration">15m</span></div>
-          <div class="module"><span class="module-num">25</span><span class="module-title">Quarterly Rocks</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">26</span><span class="module-title">Scorecard</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">27</span><span class="module-title">Operating Principles</span><span class="module-duration">15m</span></div>
-          <div class="module"><span class="module-num">28</span><span class="module-title">Ways of Working</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">29</span><span class="module-title">Project Management</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">5</span><span class="module-title">The AM Role — for TMs (evaluate &amp; coach lens)</span><span class="module-duration">~45m</span></div>
         </div>
-        <div class="note-block">
-          <strong>Why TM needs business strategy:</strong> TM makes decisions affecting company performance — hiring, procurement, purchase approvals, territory efficiency. Strategy context drives judgment, not just procedure-following. Cross-entity awareness prevents siloed thinking — TM is the territory's primary POC for Brite Labs, Noel Decor, Brite Supply.
-        </div>
+        <div class="consolidates">Pulls from: Area Managers playbook · AM Daily Workflow · AM Learning Track. Teaches the AM's full R&amp;R — warehouse, crew oversight, the photo-review quality gate, coaching, the 12-hour split day — through the <em>evaluate-and-coach</em> lens. What a well-run area looks like + common AM failure modes. <strong>Not</strong> the physical AM training.</div>
+        <div class="note-block"><strong>Every TM has the AM role down.</strong> The TM manages and evaluates AMs — they may skip the physical AM training, but never the AM's roles &amp; responsibilities.</div>
       </div>
 
       <div class="category">
-        <div class="category-title">TM Role Deep-Dive <span class="category-count">6 modules · required for both paths</span></div>
+        <div class="category-title">D · Management Strategy <span class="shared-tag">Shared TM + AM</span> <span class="consol-tag">Consolidated</span> <span class="category-count">3 modules (from 13) · shared management package</span></div>
         <div class="module-list">
-          <div class="module"><span class="module-num">30</span><span class="module-title">Territory Manager Role Overview</span><span class="module-duration">20m</span></div>
-          <div class="module"><span class="module-num">31</span><span class="module-title">TM Daily Operations</span><span class="module-duration">20m</span></div>
-          <div class="module"><span class="module-num">32</span><span class="module-title">TM Admin Responsibilities</span><span class="module-duration">20m</span></div>
-          <div class="module"><span class="module-num">33</span><span class="module-title">TM Hiring &amp; Onboarding</span><span class="module-duration">20m</span></div>
-          <div class="module"><span class="module-num">34</span><span class="module-title">TM Seasonal Playbook</span><span class="module-duration">20m</span></div>
-          <div class="module"><span class="module-num">35</span><span class="module-title">Area Manager Role Overview — evaluating AM performance from above</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">6</span><span class="module-title">Company Strategy &amp; Direction</span><span class="module-duration">~45m</span></div>
+          <div class="module"><span class="module-num">7</span><span class="module-title">Brite Multi-Entity Structure</span><span class="module-duration">~40m</span></div>
+          <div class="module"><span class="module-num">8</span><span class="module-title">How Brite Operates</span><span class="module-duration">~30m</span></div>
         </div>
+        <div class="consolidates">M6 ← Company Strategy + Execution Overview + One-Year Plan + Quarterly Rocks + Scorecard. M7 ← Entities Overview + Brite Nites + Brite Labs + Brite Supply + Brite Base. M8 ← Operating Principles + Ways of Working + Project Management.</div>
+        <div class="note-block"><strong>Now a shared management package</strong> the AM track references too (at role-appropriate depth) — pre-builds part of the AM rollout. Strategy context drives judgment, not just procedure-following; cross-entity awareness prevents siloed thinking.</div>
       </div>
 
       <div class="category">
-        <div class="category-title">Tool Suite <span class="category-count">11 modules · broadest tool access of any ops role</span></div>
-        <div class="module-list">
-          <div class="module"><span class="module-num">36</span><span class="module-title">Brite Now — territory-level view</span><span class="module-duration">15m</span></div>
-          <div class="module"><span class="module-num">37</span><span class="module-title">Crew App</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">38</span><span class="module-title">Beginning the Day (Crew App)</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">39</span><span class="module-title">Deputy — scheduling visibility across areas</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">40</span><span class="module-title">Emburse — TM is the approver (key tool)</span><span class="module-duration">15m</span></div>
-          <div class="module"><span class="module-num">41</span><span class="module-title">Download Emburse Spend</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">42</span><span class="module-title">GPS Trackit — fleet oversight</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">43</span><span class="module-title">Monday — territory project planning</span><span class="module-duration">15m</span></div>
-          <div class="module"><span class="module-num">44</span><span class="module-title">Slack — territory + sister company channels</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">45</span><span class="module-title">Gmail Setup &amp; Overview</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">46</span><span class="module-title">Google Calendar</span><span class="module-duration">10m</span></div>
-        </div>
-        <div class="note-block">
-          <strong>Emburse is especially important:</strong> TM approves all area purchases — needs to understand expense workflow from both submitter and approver perspectives.
-        </div>
+        <div class="category-title">E · TM ↔ AM Partnership &amp; Touchpoints <span class="new-tag">New</span> <span class="shared-tag">Shared TM + AM</span> <span class="category-count">1 module · the coordination interface, learned from both sides</span></div>
+        <table class="schedule-table">
+          <thead><tr><th>Function</th><th>TM</th><th>AM</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Scheduling</strong></td><td>Owns — schedules jobs</td><td>Informs decisions + necessary overrides</td></tr>
+            <tr><td><strong>Photo / completion review</strong></td><td>Reviews for accuracy + completion</td><td>Can review/approve to keep statuses current</td></tr>
+            <tr><td><strong>Recruiting &amp; hiring</strong></td><td>Leads the pipeline</td><td>Final field-fit interview</td></tr>
+            <tr><td><strong>Discipline</strong></td><td>Formal actions + terminations</td><td>Day-to-day coaching &amp; performance</td></tr>
+            <tr><td><strong>Cross-entity (Labs / Noel / Supply)</strong></td><td>Point of contact</td><td>Fulfills on-site</td></tr>
+            <tr><td><strong>Warehouse &amp; field execution</strong></td><td>Oversees via reporting + flags</td><td>Owns</td></tr>
+            <tr><td><strong>Field quality</strong></td><td>Reviews submissions, flags patterns</td><td>On-site photo-review gate + inspections</td></tr>
+            <tr><td><strong>Purchase approval</strong></td><td>Approves all territory purchases</td><td>Submits/requests</td></tr>
+          </tbody>
+        </table>
+        <div class="note-block"><strong>Procurement is not on this map</strong> — actual materials procurement is managed by the <strong>Supply Chain Manager</strong> in the warehouse. The TM <em>communicates needs</em> to him and approves territory purchases; the AM/warehouse surface those needs. Keep purchase <em>approval</em> (TM) distinct from <em>procurement</em> (Supply Chain).</div>
       </div>
 
       <div class="category">
-        <div class="category-title">Operations Overview <span class="category-count">9 modules · reference, not hands-on</span></div>
+        <div class="category-title">F · Tools <span class="consol-tag">Consolidated</span> <span class="category-count">2 modules (from 11) · broadest tool access of any ops role</span></div>
         <div class="module-list">
-          <div class="module"><span class="module-num">47</span><span class="module-title">Operations Department Overview</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">48</span><span class="module-title">Safety Overview</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">49</span><span class="module-title">Installation Overview</span><span class="module-duration">15m</span></div>
-          <div class="module"><span class="module-num">50</span><span class="module-title">Warehouse Overview</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">51</span><span class="module-title">Job Lifecycle Overview</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">52</span><span class="module-title">Products Overview</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">53</span><span class="module-title">Product Introduction</span><span class="module-duration">15m</span></div>
-          <div class="module"><span class="module-num">54</span><span class="module-title">Strike Overview</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">55</span><span class="module-title">The Season Overview</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">9</span><span class="module-title">TM Tool Suite</span><span class="module-duration">~50m</span></div>
+          <div class="module"><span class="module-num">10</span><span class="module-title">Comms &amp; Productivity</span><span class="module-duration">~20m</span></div>
         </div>
+        <div class="consolidates">M9 ← Brite Now (territory view) + Crew App (+ Beginning the Day) + Deputy + Emburse (+ Download Emburse Spend) + GPS Trackit + Monday. M10 ← Slack + Gmail + Google Calendar.</div>
+        <div class="note-block"><strong>Emburse is key:</strong> the TM approves all area purchases — must understand the expense workflow from both submitter and approver sides.</div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">G · Operations Landscape Overview <span class="consol-tag">Consolidated</span> <span class="category-count">2 modules (from 9) · reference, not hands-on</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">11</span><span class="module-title">Field Operations Landscape</span><span class="module-duration">~40m</span></div>
+          <div class="module"><span class="module-num">12</span><span class="module-title">Season &amp; Strike Overview</span><span class="module-duration">~20m</span></div>
+        </div>
+        <div class="consolidates">M11 ← Operations Dept + Safety + Installation + Warehouse + Job Lifecycle + Products overviews. M12 ← The Season + Strike overviews.</div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">H · Recertification (returning / internal) <span class="category-count">ADR 0004 acknowledgment</span></div>
+        <div class="module-list">
+          <div class="module"><span class="module-num">13</span><span class="module-title">TM Knowledge Recert — open-reference, 100%, unlimited retakes</span><span class="module-duration">~45m</span></div>
+        </div>
+        <div class="note-block"><strong>ADR 0004:</strong> this is an acknowledgment that the TM understands and will follow how we operate — not a memory test. Open-reference, 100% to advance, no attempt cap. Returning TMs review what changed since last season.</div>
       </div>
 
       <div class="gate-block warn">
-        <strong>Phase 1 Gate:</strong> All assigned modules complete (full for external, abbreviated for AM→TM) · paperwork submitted · TM can articulate company strategy, entity relationships, territory operations, tools, daily role · TM understands AM role well enough to evaluate AM performance · Ops Manager confirms and schedules Week 1.
+        <strong>Phase 1 Gate:</strong> all assigned modules complete (full for external, light onboarding for AM→TM) · paperwork submitted · TM can articulate company strategy, entity relationships, and tools · TM can describe <strong>their own</strong> role and the <strong>AM's</strong> role well enough to evaluate AM performance · TM↔AM touchpoints understood · Director of Field Operations confirms and schedules the management-systems block.
       </div>
     </div>
   </section>
 
-  <!-- PHASE 2 — TERRITORY ONBOARDING -->
+  <!-- PHASE 2 — MANAGEMENT SYSTEMS -->
   <section class="phase-section">
     <div class="phase-header">
-      <div class="phase-name">Phase 2 — Territory Onboarding (Week 1 on-site)</div>
-      <div class="phase-meta">~5 days · Utah HQ or assigned territory · Ops Manager primary, existing TMs assist · The TM learns the Brite operating system</div>
+      <div class="phase-name">Phase 2 — Management Systems</div>
+      <div class="phase-meta">In-person · Utah HQ · Day-page format · Director of Field Operations primary, existing TMs assist · per-block learning-confirmation quizzes</div>
     </div>
     <div class="phase-body">
 
       <div class="foundation-block">
-        <strong>Management machinery week:</strong> TM learns how territory operations are managed — reporting cadence, purchase approval flow, recruiting pipeline, disciplinary framework, cross-entity coordination. By end of Week 1, TM understands the management machinery and is ready to see it in action during shadowing.
+        <strong>Day-page + LC quizzes (the ST classroom format):</strong> a schedule of blocks, each with a reference, a hands-on, and a short-answer <strong>learning-confirmation quiz</strong> (articulation check — the trainer reads the answer against model <em>Pass</em> criteria; formative, not the gate). The <strong>Management Systems Assessment</strong> (scenario-based) remains the phase gate.
       </div>
 
       <div class="category">
-        <div class="category-title">Management System &amp; Reporting <span class="category-count">3 modules · the TM's primary value-add</span></div>
-        <div class="module-list">
-          <div class="module"><span class="module-num">1</span><span class="module-title">Territory operations overview with Ops Manager — structure, TM ownership in practice</span><span class="module-duration">1h</span></div>
-          <div class="module"><span class="module-num">2</span><span class="module-title">Reporting cadence walkthrough — metrics, frequency, format</span><span class="module-duration">1h</span></div>
-          <div class="module"><span class="module-num">3</span><span class="module-title">Purchase approval workflow — all territory purchases require TM approval, phone sale model, single account tracking</span><span class="module-duration">45m</span></div>
-        </div>
-      </div>
-
-      <div class="category">
-        <div class="category-title">TM Reporting Framework — Daily Flash (EOD) <span class="category-count">6 lines · 5-min write · single most important daily comm</span></div>
-        <table class="schedule-table">
-          <thead><tr><th>Line</th><th>Content</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Jobs</strong></td><td>Completed vs scheduled across territory (completion %)</td></tr>
-            <tr><td><strong>Revenue</strong></td><td>Produced today / MTD vs target</td></tr>
-            <tr><td><strong>Misses</strong></td><td>Callbacks, cancellations, rescheduled — with reason</td></tr>
-            <tr><td><strong>People</strong></td><td>Attendance, staffing gaps, new hire status</td></tr>
-            <tr><td><strong>Issues</strong></td><td>Anything Ops Manager needs to know before tomorrow</td></tr>
-            <tr><td><strong>Tomorrow</strong></td><td>Crew assignments, job count, flags</td></tr>
-          </tbody>
-        </table>
-        <div class="note-block">
-          <strong>Action-oriented, not data dumps:</strong> What happened · what's the variance · what am I doing about it.
-        </div>
-      </div>
-
-      <div class="category">
-        <div class="category-title">TM Reporting Framework — Weekly Scorecard <span class="category-count">RAG status · ~20 KPIs across 7 categories · Monday AM delivery</span></div>
-        <p style="font-size:12px; color:#6b7280; margin-bottom:6px;">Production · Financial · People · Customer · Operational Efficiency · Safety · AM Performance &amp; Cross-Entity</p>
+        <div class="category-title">Block 1 · Reporting Framework <span class="category-count">references the extracted TM Reporting Framework module</span></div>
+        <div class="consolidates">The Daily Flash / Weekly Scorecard / Monthly Review detail is <strong>extracted into its own reusable "TM Reporting Framework" reference module</strong> the TM keeps using all season; this block teaches it.</div>
+        <p style="font-size:12px;color:#6b7280;margin:8px 0 4px;"><strong>Daily Flash (EOD)</strong> — 6 lines, ~5-min write: Jobs · Revenue · Misses · People · Issues · Tomorrow. <strong>Weekly Scorecard</strong> (Mon AM, RAG) — ~20 KPIs across Production · Financial · People · Customer · Efficiency · Safety · AM Performance &amp; Cross-Entity. <strong>Monthly Review</strong> (5th business day) — P&amp;L · people pipeline · customer health · ops trends · safety · sales/growth · cross-entity · action items.</p>
         <table class="kpi-table">
           <thead><tr><th>Category</th><th>Example KPI</th><th class="kpi-green">Green</th><th class="kpi-amber">Amber</th><th class="kpi-red">Red</th></tr></thead>
           <tbody>
             <tr><td>Production</td><td>Completion rate</td><td class="kpi-green">&gt;95%</td><td class="kpi-amber">90–95%</td><td class="kpi-red">&lt;90%</td></tr>
-            <tr><td>Production</td><td>First-time completion</td><td class="kpi-green">&gt;90%</td><td class="kpi-amber">85–90%</td><td class="kpi-red">&lt;85%</td></tr>
-            <tr><td>Production</td><td>Callback/rework rate</td><td class="kpi-green">&lt;3%</td><td class="kpi-amber">3–5%</td><td class="kpi-red">&gt;5%</td></tr>
             <tr><td>Financial</td><td>Purchasing vs budget</td><td class="kpi-green">Within 5%</td><td class="kpi-amber">5–15% over</td><td class="kpi-red">&gt;15% over</td></tr>
-            <tr><td>Financial</td><td>Labor cost % of revenue</td><td class="kpi-green">&lt;35%</td><td class="kpi-amber">35–42%</td><td class="kpi-red">&gt;42%</td></tr>
             <tr><td>People</td><td>Staffing fill rate</td><td class="kpi-green">&gt;90%</td><td class="kpi-amber">75–90%</td><td class="kpi-red">&lt;75%</td></tr>
-            <tr><td>People</td><td>Weekly attendance</td><td class="kpi-green">&gt;95%</td><td class="kpi-amber">90–95%</td><td class="kpi-red">&lt;90%</td></tr>
-            <tr><td>Customer</td><td>Review rating (rolling 30d)</td><td class="kpi-green">&gt;4.5</td><td class="kpi-amber">4.0–4.5</td><td class="kpi-red">&lt;4.0</td></tr>
-            <tr><td>Customer</td><td>Open complaints</td><td class="kpi-green">&lt;3</td><td class="kpi-amber">3–5</td><td class="kpi-red">&gt;5</td></tr>
-            <tr><td>Efficiency</td><td>Drive time ratio</td><td class="kpi-green">&lt;25%</td><td class="kpi-amber">25–35%</td><td class="kpi-red">&gt;35%</td></tr>
-            <tr><td>Efficiency</td><td>Schedule adherence</td><td class="kpi-green">&gt;90%</td><td class="kpi-amber">80–90%</td><td class="kpi-red">&lt;80%</td></tr>
+            <tr><td>Customer</td><td>Review rating (30d)</td><td class="kpi-green">&gt;4.5</td><td class="kpi-amber">4.0–4.5</td><td class="kpi-red">&lt;4.0</td></tr>
             <tr><td>Safety</td><td>Incidents this week</td><td class="kpi-green">0</td><td class="kpi-amber">1 near-miss</td><td class="kpi-red">Any recordable</td></tr>
-            <tr><td>Safety</td><td>Safety cert currency</td><td class="kpi-green">100%</td><td class="kpi-amber">95–99%</td><td class="kpi-red">&lt;95%</td></tr>
           </tbody>
         </table>
-        <div class="note-block">
-          <strong>TM reviews reports, not job sites.</strong> When something looks off, TM flags to AM. AM investigates on-site, trains, corrects. TM doesn't bypass AM to coach crews directly. Benchmarks are starting points — calibrate to Brite's actual data after first season.
-        </div>
+        <div class="note-block"><strong>TM owns scheduling + reviews photo submissions</strong> for accuracy and completion. When a pattern looks off, the TM flags the AM, who investigates and corrects on-site; the AM also backstops by approving photos to keep statuses current. Benchmarks are starting points — calibrate to Brite's data after the first season.</div>
+        <div class="lc-quiz"><strong>LC quiz:</strong> Name what's on the Daily Flash; for any scorecard KPI, where does the data come from?</div>
       </div>
 
       <div class="category">
-        <div class="category-title">Monthly Territory Review <span class="category-count">7 sections · 5th business day of month</span></div>
+        <div class="category-title">Block 2 · Purchase Approval</div>
+        <p style="font-size:13px;">All territory purchases require TM approval · phone-sale model · single account per territory for tracking.</p>
+        <div class="lc-quiz"><strong>LC quiz:</strong> Walk the approval flow; why does single-account territory purchasing matter?</div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Block 3 · Recruiting &amp; Hiring <span class="category-count">TM is the primary recruiter</span></div>
+        <p style="font-size:13px;">TM sources, screens, and manages the pipeline; AM does the final field-fit interview when possible. Over time the TM develops that judgment too.</p>
+        <div class="lc-quiz"><strong>LC quiz:</strong> Describe the pipeline from sourcing → AM final interview → onboarding handoff.</div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Block 4 · Discipline &amp; People Management <span class="category-count">TM owns all formal action</span></div>
+        <div class="gate-block"><strong>TM handles all formal disciplinary actions and terminations.</strong> The AM handles day-to-day coaching and performance conversations. Written warnings, suspensions, terminations go through the TM — protecting the AM's working relationship with crews while keeping territory-level accountability.</div>
+        <div class="lc-quiz"><strong>LC quiz:</strong> When do you coach (AM), warn, or terminate (TM)? What gets documented?</div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Block 5 · Cross-Entity Coordination <span class="category-count">TM is POC, AM fulfills</span></div>
+        <p style="font-size:13px;">Brite Labs (landscape lighting) · Noel Decor (commercial holiday) · Brite Supply (materials). TM coordinates; AM fulfills on-site. <strong>Materials procurement is managed by the Supply Chain Manager</strong> — the TM communicates needs and approves territory purchases, but does not run procurement.</p>
+        <div class="lc-quiz"><strong>LC quiz:</strong> Who do you contact at Labs / Noel / Supply, and who fulfills on the ground?</div>
+      </div>
+
+      <div class="category">
+        <div class="category-title">Block 6 · Territory Infrastructure + Systems Setup <span class="category-count">1 walkthrough + 8 system accounts</span></div>
         <ul class="activity-list">
-          <li><strong>Territory P&amp;L summary</strong> — revenue, labor, material, GM, controllable expenses, budget variance</li>
-          <li><strong>People pipeline</strong> — turnover (annualized), time-to-productivity, training completion, bench strength</li>
-          <li><strong>Customer health</strong> — retention, complaint cycle time, review score trend, repeat rate</li>
-          <li><strong>Operational trends</strong> — job volume MoM, crew utilization trend, inventory accuracy, fleet utilization</li>
-          <li><strong>Safety record</strong> — OSHA recordable rate, workers comp, corrective actions</li>
-          <li><strong>Sales / growth</strong> — upsell from field crews, new customer acquisition, referrals</li>
-          <li><strong>Cross-entity</strong> — sister company project status, procurement, upcoming joint work</li>
-          <li><strong>Action items</strong> — what TM is doing about any amber/red KPIs, with timeline</li>
+          <li>Territory walkthrough — warehouse(s), fleet, existing staff; for new territories: evaluate + plan setup</li>
+          <li>Systems live: BriteNow (territory view) · Emburse (approver) · Monday · GPS Trackit · Deputy · Slack · Gmail/Calendar · territory purchasing account</li>
         </ul>
-      </div>
-
-      <div class="category">
-        <div class="category-title">Recruiting &amp; Hiring <span class="category-count">2 modules · TM is the primary recruiter</span></div>
-        <div class="module-list">
-          <div class="module"><span class="module-num">4</span><span class="module-title">TM Hiring &amp; Onboarding — applied walkthrough with Ops Manager</span><span class="module-duration">1h</span></div>
-          <div class="module"><span class="module-num">5</span><span class="module-title">Recruiting workflow — TM leads pre-season recruiting; AM does final field-fit interview</span><span class="module-duration">45m</span></div>
-        </div>
-        <div class="note-block">
-          <strong>TM is the primary recruiter.</strong> Sources candidates, conducts initial screening, manages pipeline. AM does final interview when possible (better field-fit judgment). Over time TM also develops this judgment.
-        </div>
-      </div>
-
-      <div class="category">
-        <div class="category-title">Discipline &amp; People Management <span class="category-count">1 module · TM owns all formal action</span></div>
-        <div class="module-list">
-          <div class="module"><span class="module-num">6</span><span class="module-title">Disciplinary framework with Ops Manager — progressive discipline, documentation, escalation, termination criteria</span><span class="module-duration">1h</span></div>
-        </div>
-        <div class="gate-block">
-          <strong>TM handles all formal disciplinary actions and terminations.</strong> AM handles day-to-day coaching + performance conversations. Formal action — written warnings, suspensions, terminations — goes through TM. Separation protects AM's day-to-day relationship with crews while ensuring territory-level accountability.
-        </div>
-      </div>
-
-      <div class="category">
-        <div class="category-title">Cross-Entity Coordination <span class="category-count">1 module · TM is POC, AM helps fulfill</span></div>
-        <div class="module-list">
-          <div class="module"><span class="module-num">7</span><span class="module-title">Sister company coordination protocols — Brite Labs (landscape lighting), Noel Decor (commercial holiday), Brite Supply (materials)</span><span class="module-duration">45m</span></div>
-        </div>
-      </div>
-
-      <div class="category">
-        <div class="category-title">Territory Infrastructure + Systems Live Setup <span class="category-count">1 module + 8 system accounts</span></div>
-        <div class="module-list">
-          <div class="module"><span class="module-num">8</span><span class="module-title">Territory walkthrough — visit warehouse(s), review fleet, meet existing staff, evaluate for new territory setup</span><span class="module-duration">Half day</span></div>
-        </div>
-        <ul class="activity-list">
-          <li><strong>BriteNow</strong> — territory-level view, scheduling oversight</li>
-          <li><strong>Emburse</strong> — purchase approval access (TM is approver)</li>
-          <li><strong>Monday</strong> — project management, territory planning</li>
-          <li><strong>GPS Trackit</strong> — fleet oversight across all areas</li>
-          <li><strong>Deputy</strong> — scheduling visibility across all areas</li>
-          <li><strong>Slack</strong> — territory + sister company channels</li>
-          <li><strong>Gmail / Calendar</strong> — management calendar, reporting cadence</li>
-          <li><strong>Territory purchasing account</strong> — single card/account for all territory purchases</li>
-        </ul>
+        <div class="lc-quiz"><strong>LC quiz:</strong> What's verified before the territory goes live?</div>
       </div>
 
       <div class="gate-block warn">
-        <strong>Phase 2 Gate:</strong> Reporting framework understood · purchase approval workflow set up · recruiting process understood · disciplinary framework understood · cross-entity contacts identified · all systems configured · infrastructure reviewed · Ops Manager confirms · <a href="#">Management Systems Assessment</a> passed (scenario-based: reporting, purchasing, recruiting, discipline, cross-entity).
+        <strong>Phase 2 Gate:</strong> all 6 per-block LC quizzes passed · reporting framework, purchase approval, recruiting, discipline, cross-entity, and systems all understood and set up · <a href="#">Management Systems Assessment</a> passed (scenario-based) · Director of Field Operations confirms.
       </div>
     </div>
   </section>
@@ -355,57 +295,53 @@
   <section class="phase-section">
     <div class="phase-header">
       <div class="phase-name">Phase 3 — Abbreviated Safety Certification (~half day)</div>
-      <div class="phase-meta">Within Week 1, flexible · Warehouse + yard · Ops Manager or existing TM observes · Lighter cert — TM is managing/sales profile, workstation-based</div>
+      <div class="phase-meta">Utah HQ · warehouse + yard · Director of Field Operations or existing TM observes · light cert — TM is a workstation-based managing profile</div>
     </div>
     <div class="phase-body">
 
       <div class="foundation-block">
-        <strong>Why abbreviated:</strong> TM works primarily from a workstation. Visits job sites periodically for quality checks and team building, but not performing installations. Abbreviated cert ensures TM can safely walk a jobsite, recognize proper safety (to evaluate crews), and handle incident reporting as territory responsible party.
+        <strong>Why abbreviated:</strong> the TM works primarily from a workstation and visits sites for quality checks and team building, not installs. The cert ensures they can safely walk a jobsite, recognize proper safety (to evaluate crews), drive between areas, and own incident reporting as the territory's responsible party.
         <br><br>
-        <strong>No JT Base Classroom:</strong> TM track does not include the shared 3-day install/wiring/full-safety classroom that JT/ST/AM/QP/RT all attend. The TM doesn't need install-technique depth.
+        <strong>No JT Base Classroom and no ST safety-enforcement block</strong> — the TM isn't certifying crew safety enforcement. Canonical safety content is <strong>referenced, not re-listed</strong> (single-source).
       </div>
 
       <div class="category">
-        <div class="category-title">Ladder Safety (A-Frame Only) <span class="category-count">4 modules + 1 practical · no extension or orchard</span></div>
+        <div class="category-title">Ladder Safety (A-Frame Only) <span class="category-count">references ladder-safety · 1 practical · no extension/orchard</span></div>
         <div class="module-list">
-          <div class="module"><span class="module-num">1</span><span class="module-title">Ladder Safety Overview</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">2</span><span class="module-title">How to Properly Use a Ladder</span><span class="module-duration">15m</span></div>
-          <div class="module"><span class="module-num">3</span><span class="module-title">A-Frame Ladder (12')</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">4</span><span class="module-title"><strong>A-frame practical</strong> — setup and basic use for warehouse / ground-level access. <em>Observation pass/fail.</em></span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">1</span><span class="module-title">A-frame written/knowledge — open-reference</span><span class="module-duration">~20m</span></div>
+          <div class="module"><span class="module-num">2</span><span class="module-title"><strong>A-frame practical</strong> — setup + ground-level use. <em>Observed + signed, pass/fail.</em></span><span class="module-duration">15m</span></div>
         </div>
       </div>
 
       <div class="category">
-        <div class="category-title">Vehicle &amp; Driving Safety <span class="category-count">4 modules · critical for TMs driving between areas</span></div>
+        <div class="category-title">Vehicle &amp; Driving Safety <span class="category-count">references auto-risk-management · critical for inter-area driving</span></div>
         <div class="module-list">
-          <div class="module"><span class="module-num">5</span><span class="module-title">Auto Risk Management Overview</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">6</span><span class="module-title">What Is Defensive Driving?</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">7</span><span class="module-title">Vehicle Check &amp; Maintenance</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">8</span><span class="module-title">Company Policy</span><span class="module-duration">10m</span></div>
+          <div class="module"><span class="module-num">3</span><span class="module-title">Defensive driving · vehicle checks · company fleet policy — open-reference</span><span class="module-duration">~25m</span></div>
         </div>
       </div>
 
       <div class="category">
-        <div class="category-title">Incident Reporting &amp; Safety Oversight <span class="category-count">2 modules · TM owns the reporting chain</span></div>
+        <div class="category-title">Incident Reporting &amp; Safety Oversight <span class="category-count">references incident-reporting · TM owns the chain</span></div>
         <div class="module-list">
-          <div class="module"><span class="module-num">9</span><span class="module-title">How to Report an Accident</span><span class="module-duration">10m</span></div>
-          <div class="module"><span class="module-num">10</span><span class="module-title">Incident Reporting</span><span class="module-duration">15m</span></div>
+          <div class="module"><span class="module-num">4</span><span class="module-title">Incident reporting as territory owner — open-reference</span><span class="module-duration">~25m</span></div>
         </div>
-        <div class="gate-block">
-          <strong>TM is the territory's responsible party for safety incidents.</strong> When an incident occurs, AM handles the immediate scene; TM owns the reporting chain — documenting, notifying Ops Manager, coordinating with insurance, ensuring corrective actions. Must understand reporting both as participant and as territory-level manager.
-        </div>
+        <div class="gate-block"><strong>TM is the territory's responsible party for safety incidents.</strong> The AM handles the immediate scene; the TM owns the reporting chain — documenting, notifying the Director of Field Operations, coordinating with insurance, ensuring corrective actions.</div>
       </div>
 
       <div class="category">
-        <div class="category-title">Internal Promotion (AM→TM) <span class="category-count">~30 min quiz only · no physical practicals</span></div>
+        <div class="category-title">Internal Promotion (AM→TM) <span class="category-count">recert quiz only · no physical practicals</span></div>
         <ul class="activity-list">
-          <li>Already fully safety-certified from AM role</li>
-          <li>Quiz covers: incident reporting as territory owner · vehicle safety review · safety oversight (what to look for on jobsite visits)</li>
+          <li>Already fully safety-certified from the AM role — certification carries forward</li>
+          <li>Recert quiz (open-reference, 100%, unlimited retakes) covers: incident reporting as territory owner · vehicle safety review · safety oversight on jobsite visits</li>
         </ul>
       </div>
 
+      <div class="gate-block info">
+        <strong>ADR 0004 — quizzes are acknowledgments.</strong> The A-frame <strong>practical</strong> is closed-book, observed, and signed (a real competency station). The written/knowledge pieces are <strong>open-reference · 100% · unlimited retakes</strong>. Compliance rests on one consolidated <strong>named/dated TM Safety Attestation</strong> ("I, [name], on [date], confirm I understand and will follow these safety procedures") covering ladder + vehicle + incident — that <em>is</em> the record.
+      </div>
+
       <div class="gate-block warn">
-        <strong>Phase 3 Gate:</strong> A-frame ladder safely set up and used · vehicle safety understood (defensive driving, checks, fleet policy) · incident reporting chain understood (AM → TM → Ops Manager → insurance) · can identify unsafe practices when observing a jobsite · Ops Manager or existing TM confirms cert complete.
+        <strong>Phase 3 Gate:</strong> A-frame practical signed off · vehicle safety understood · incident-reporting chain understood (AM → TM → Director of Field Operations → insurance) · can identify unsafe practices on a jobsite · consolidated TM Safety Attestation signed + dated · Director of Field Operations or existing TM confirms.
       </div>
     </div>
   </section>
@@ -413,66 +349,51 @@
   <!-- PHASE 4 — TERRITORY SHADOWING -->
   <section class="phase-section">
     <div class="phase-header">
-      <div class="phase-name">Phase 4 — Territory Shadowing (Weeks 2–3)</div>
-      <div class="phase-meta">August · Existing TM territory (if available) + assigned territory · Peer TM shadowing + assigned territory orientation · Management shadowing, not field</div>
+      <div class="phase-name">Phase 4 — Territory Shadowing</div>
+      <div class="phase-meta">Peer-TM exposure (remote-feasible) + assigned-territory orientation · management shadowing, not field · Director-approved evidence gate</div>
     </div>
     <div class="phase-body">
 
       <div class="foundation-block">
-        <strong>Peer shadowing is the most valuable Phase 4 activity:</strong> Reading about the TM role is different from watching someone do it well. The existing TM's instincts — what gets checked first, when to visit an area vs. call, how to handle an iffy purchase request — can't be taught from a document. If no existing TM is available, Ops Manager runs extended Phase 2.
+        <strong>Adapted for a remote role.</strong> The JT/ST "observed in the field" model doesn't map to a workstation-based territory manager. Peer-TM exposure still happens where feasible — including <strong>remotely</strong> (reviewing another TM's reporting cadence, pairing on an approval queue, riding along when co-located) — but the binding requirement is a <strong>Director-of-Field-Operations-approved evidence gate</strong>, not a completed ride-along. The TM reports to the Director, so the Director signs off each stage.
       </div>
 
       <div class="category">
-        <div class="category-title">Peer TM Shadowing <span class="category-count">3–5 days · ride along with existing TM</span></div>
+        <div class="category-title">Peer-TM Exposure <span class="category-count">flexible · remote or co-located</span></div>
         <table class="schedule-table">
-          <thead><tr><th>Day</th><th>Focus</th><th>What New TM Observes</th></tr></thead>
+          <thead><tr><th>Focus</th><th>What the new TM observes</th></tr></thead>
           <tbody>
-            <tr><td><strong>Day 1</strong></td><td>Morning operations</td><td>How existing TM starts day — approval queue, scheduling review, AM check-ins. The workstation rhythm.</td></tr>
-            <tr><td><strong>Day 2</strong></td><td>Area visits</td><td>Travel to an area with existing TM. AM interaction, warehouse visit, jobsite quality eval.</td></tr>
-            <tr><td><strong>Day 3</strong></td><td>Recruiting / People</td><td>Observe candidate review, interviews, onboarding coordination. Disciplinary conversation if happening.</td></tr>
-            <tr><td><strong>Day 4</strong></td><td>Cross-entity</td><td>Sister company interactions — Brite Labs handoff, Noel Decor scheduling, Brite Supply procurement.</td></tr>
-            <tr><td><strong>Day 5</strong></td><td>Full TM day</td><td>Complete daily cycle from morning to close. New TM should describe full rhythm by end of day.</td></tr>
+            <tr><td>Morning operations</td><td>How an experienced TM starts the day — approval queue, scheduling review, AM check-ins. The workstation rhythm.</td></tr>
+            <tr><td>Area / quality</td><td>How a TM reviews photo submissions and reads job quality; when to visit an area vs. call the AM.</td></tr>
+            <tr><td>Recruiting / people</td><td>Candidate review, interviews, onboarding coordination; a disciplinary conversation if one occurs.</td></tr>
+            <tr><td>Cross-entity</td><td>Sister-company interactions — Brite Labs handoff, Noel Decor scheduling, Brite Supply procurement.</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="category">
-        <div class="category-title">Assigned Territory Orientation <span class="category-count">3–5 days · visit every area</span></div>
-        <table class="schedule-table">
-          <thead><tr><th>Activity</th><th>Purpose</th><th>Duration</th></tr></thead>
-          <tbody>
-            <tr><td>Visit each area's warehouse</td><td>Physical infrastructure understanding — size tier, condition, inventory, equipment. Note what needs attention before peak.</td><td>Half day / area</td></tr>
-            <tr><td>Meet AMs (if hired)</td><td>Build working relationship. Discuss area ops, expectations, comms preferences. Establish TM/AM partnership dynamic.</td><td>1–2h / AM</td></tr>
-            <tr><td>Meet warehouse staff</td><td>Know who's there. WAs and any seasonal staff.</td><td>30m / warehouse</td></tr>
-            <tr><td>Review territory infrastructure</td><td>Fleet, vehicle conditions, storage, local vendors, territory-specific logistics.</td><td>Ongoing</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="category">
-        <div class="category-title">Team Building <span class="category-count">starts in Phase 4, continues through season</span></div>
+        <div class="category-title">Assigned Territory Orientation <span class="category-count">visit every area</span></div>
         <ul class="activity-list">
-          <li>Take crews out for a meal during orientation visits</li>
-          <li>Bring treats to the warehouse</li>
-          <li>Learn people's names and backgrounds</li>
-          <li>AM handles day-to-day crew management; TM's periodic presence should feel positive, not inspection-like</li>
-          <li>Budget team building activities as a standard territory expense</li>
+          <li>Visit each area's warehouse — size tier, condition, inventory, equipment; note pre-season attention items</li>
+          <li>Meet AMs (if hired) — build the partnership; align on comms and the touchpoints split</li>
+          <li>Meet warehouse staff; review fleet, storage, local vendors, territory logistics</li>
+          <li><strong>Team building</strong> starts here and continues all season — the TM's presence should feel positive, not an inspection</li>
         </ul>
       </div>
 
       <div class="category">
-        <div class="category-title">What's Being Evaluated <span class="category-count">5 competencies · tracked daily</span></div>
+        <div class="category-title">What's Being Evaluated <span class="category-count">5 competencies</span></div>
         <ul class="activity-list">
-          <li><strong>Backend instinct</strong> — does the TM gravitate toward workstation thinking (approvals, reporting, coordination) vs. wanting to be in the field?</li>
-          <li><strong>People judgment</strong> — does the TM read candidates and existing staff well? Coach-able vs. cut-bait calls.</li>
-          <li><strong>Management perspective</strong> — does the TM see the territory as a system to manage, not a set of jobs to execute?</li>
-          <li><strong>Communication</strong> — clear, action-oriented, appropriate channel choice (Slack vs phone vs email vs video).</li>
-          <li><strong>Cross-entity awareness</strong> — does the TM naturally consider sister-company impact, or does that stay siloed?</li>
+          <li><strong>Backend instinct</strong> — gravitates to workstation thinking (approvals, scheduling, review, coordination)</li>
+          <li><strong>People judgment</strong> — reads candidates and staff well</li>
+          <li><strong>Management perspective</strong> — sees the territory as a system to manage</li>
+          <li><strong>Communication</strong> — clear, action-oriented, right channel</li>
+          <li><strong>Cross-entity awareness</strong> — naturally considers sister-company impact</li>
         </ul>
       </div>
 
       <div class="gate-block warn">
-        <strong>Phase 4 Gate:</strong> Peer TM shadowed 3–5 days (or extended Phase 2 with Ops Manager) · all assigned territory areas visited · AMs + warehouse staff met · daily rhythm describable · purchase approval workflow describable from memory · recruiting pipeline describable · relationships started (team building done) · <a href="#">Shadowing Observation Form</a> completed (5 competencies evaluated).
+        <strong>Phase 4 Gate (Director-approved):</strong> peer-TM exposure completed (remote or in person) · all assigned areas visited, AMs + staff met · daily rhythm, scheduling/photo-review, approval workflow, and recruiting pipeline describable from memory · relationships started · <a href="#">Shadowing Observation Form</a> completed · <strong>Director of Field Operations approves readiness for supervised solo.</strong>
       </div>
     </div>
   </section>
@@ -480,89 +401,53 @@
   <!-- PHASE 5 — SUPERVISED SOLO -->
   <section class="phase-section">
     <div class="phase-header">
-      <div class="phase-name">Phase 5 — Supervised Solo (Weeks 3–5)</div>
-      <div class="phase-meta">Mid-August → early September · Assigned territory (remote workstation + periodic area visits) · Pre-season ramp-up · First major test</div>
+      <div class="phase-name">Phase 5 — Supervised Solo</div>
+      <div class="phase-meta">Assigned territory (remote workstation + periodic area visits) · pre-season ramp-up · Director-approved gates · first major test</div>
     </div>
     <div class="phase-body">
 
       <div class="foundation-block">
-        <strong>Pre-season ramp-up is the first major operational test:</strong> The TM gets the hardest management challenge (building the team from scratch) as their first solo responsibility. The timing is intentional — by the end of Phase 5, the TM should have a fully staffed, prepped territory ready for peak season.
+        <strong>Pre-season ramp-up is the first major test:</strong> the TM gets the hardest challenge — building the team from scratch — as their first solo responsibility. By the end, the territory should be staffed, prepped, and ready. The Director of Field Operations shifts from training to coaching; check-ins decrease as independence grows.
       </div>
 
       <div class="category">
-        <div class="category-title">TM Daily Cadence (Target State) <span class="category-count">workstation-centered</span></div>
+        <div class="category-title">TM Daily Cadence (target state) <span class="category-count">workstation-centered</span></div>
         <table class="schedule-table">
-          <thead><tr><th>Time</th><th>Activity</th><th>What TM Does</th></tr></thead>
+          <thead><tr><th>Time</th><th>Block</th><th>What the TM does</th></tr></thead>
           <tbody>
-            <tr><td><strong>7:00–9:00 AM</strong></td><td>Morning ops block</td><td>Review overnight messages. Process purchase approval queue. Review previous day's job reports. Flag anomalies to AM. Check today's scheduling.</td></tr>
-            <tr><td><strong>9:00–11:00 AM</strong></td><td>Recruiting &amp; people</td><td>Pre-season: sourcing, scheduling interviews, processing hires. In-season: attendance, personnel issues, disciplinary documentation.</td></tr>
-            <tr><td><strong>11:00 AM–1:00 PM</strong></td><td>Coordination &amp; procurement</td><td>Cross-entity coordination (Brite Labs, Noel Decor, Brite Supply). Central warehouse orders, territory-specific purchasing, vendor coordination.</td></tr>
-            <tr><td><strong>1:00–3:00 PM</strong></td><td>AM check-ins + territory oversight</td><td>Scheduled check-ins with each AM. Review area-level metrics. Coach on issues flagged from morning report review.</td></tr>
-            <tr><td><strong>3:00–5:00 PM</strong></td><td>Reporting &amp; planning</td><td>Compile territory reporting. Update Ops Manager on territory health. Plan next day's priorities. Respond to EOD AM updates.</td></tr>
+            <tr><td><strong>7–9 AM</strong></td><td>Morning ops</td><td>Overnight messages · process approval queue · <strong>review job scheduling + photo submissions for accuracy/completion</strong> · flag patterns to the relevant AM</td></tr>
+            <tr><td><strong>9–11 AM</strong></td><td>Recruiting &amp; people</td><td>Pre-season: sourcing, interviews, hires. In-season: attendance, personnel, disciplinary documentation</td></tr>
+            <tr><td><strong>11–1</strong></td><td>Coordination</td><td>Cross-entity coordination · communicate warehouse/territory procurement needs to the Supply Chain Manager · approve territory purchases</td></tr>
+            <tr><td><strong>1–3 PM</strong></td><td>AM check-ins + oversight</td><td>Check-ins with each AM · review area metrics · coach on flagged issues</td></tr>
+            <tr><td><strong>3–5 PM</strong></td><td>Reporting &amp; planning</td><td>Compile reporting · update the Director of Field Operations · plan tomorrow</td></tr>
           </tbody>
         </table>
-        <div class="note-block">
-          <strong>Cadence is not fixed:</strong> Some days heavy recruiting (pre-season pipeline crunch). Some days heavy coordination (sister company handoff). Some days require area visit (warehouse eval, in-person crew issue). TM reads territory needs and allocates accordingly.
-        </div>
+        <div class="note-block"><strong>Cadence is not fixed</strong> — some days are heavy recruiting, coordination, or an area visit. The TM reads the territory's needs and allocates accordingly.</div>
       </div>
 
       <div class="category">
-        <div class="category-title">Pre-Season Ramp-Up Responsibilities <span class="category-count">5 streams · the TM's first major test</span></div>
-        <table class="schedule-table">
-          <thead><tr><th>Responsibility</th><th>What It Looks Like</th><th>When</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Warehouse evaluation</strong></td><td>Assess each area's readiness — inventory, equipment, storage, supplies. Create per-area pre-season checklist.</td><td>Week 3</td></tr>
-            <tr><td><strong>Hiring plan execution</strong></td><td>Execute territory hiring plan — AM candidates first, then field crew. TM leads recruiting, AM does final interview when possible.</td><td>Weeks 3–5</td></tr>
-            <tr><td><strong>AM onboarding coordination</strong></td><td>Once AMs hired, coordinate their onboarding. TM involved in Utah TM/AM training.</td><td>Weeks 4–5</td></tr>
-            <tr><td><strong>Procurement</strong></td><td>Materials, equipment, supplies. Use territory purchasing account. Coordinate central warehouse orders.</td><td>Ongoing</td></tr>
-            <tr><td><strong>Fleet readiness</strong></td><td>Inspect, register, insure, GPS-track all vehicles. Coordinate repairs/replacements.</td><td>Weeks 3–4</td></tr>
-          </tbody>
-        </table>
+        <div class="category-title">Pre-Season Ramp-Up <span class="category-count">5 streams</span></div>
+        <ul class="activity-list">
+          <li><strong>Warehouse evaluation</strong> (Wk 3) — per-area readiness + pre-season checklist</li>
+          <li><strong>Hiring execution</strong> (Wks 3–5) — AM candidates first, then field crew</li>
+          <li><strong>AM onboarding coordination</strong> (Wks 4–5) — TM involved in Utah TM/AM training</li>
+          <li><strong>Communicate procurement needs</strong> (ongoing) — surface warehouse/territory material needs to the Supply Chain Manager (who manages actual procurement); approve territory purchases</li>
+          <li><strong>Fleet readiness</strong> (Wks 3–4) — inspected, registered, insured, GPS-tracked</li>
+        </ul>
       </div>
 
       <div class="category">
-        <div class="category-title">Expanding Responsibilities <span class="category-count">3 stages · Ops Manager check-in cadence decreases</span></div>
-        <table class="schedule-table">
-          <thead><tr><th>Stage</th><th>New Responsibilities</th><th>Signal They're Ready</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Early (Week 3)</strong></td><td>Morning ops block, approvals, job report review</td><td>Approval queue processed daily. Anomalies flagged appropriately — not everything, not nothing.</td></tr>
-            <tr><td><strong>Mid (Week 4)</strong></td><td>Full recruiting pipeline, warehouse evaluations, AM onboarding planning</td><td>Hiring pipeline has candidates moving through stages. Evaluations thorough and actionable.</td></tr>
-            <tr><td><strong>Late (Week 5)</strong></td><td>Full territory mgmt — all areas, all functions, all reporting</td><td>Ops Manager check-ins become updates not guidance. TM proactively identifying issues.</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="category">
-        <div class="category-title">Key Management Competencies <span class="category-count">7 competencies · revealed through ramp-up</span></div>
-        <table class="schedule-table">
-          <thead><tr><th>Competency</th><th>How It's Demonstrated</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Purchase oversight</strong></td><td>Approval queue processed promptly. Catches unusual requests. Budget tracked. Single-account discipline.</td></tr>
-            <tr><td><strong>Job report review</strong></td><td>Reviews daily. Spots patterns (dropping quality, schedule slippage). Specific actionable flags to AM — not "look at this."</td></tr>
-            <tr><td><strong>Recruiting judgment</strong></td><td>Pipeline produces qualified candidates. TM+AM interview coordination smooth. Hiring decisions decisive.</td></tr>
-            <tr><td><strong>Discipline &amp; accountability</strong></td><td>Follows progressive framework. Handles difficult conversations professionally. Terminations (if needed) clean and documented.</td></tr>
-            <tr><td><strong>Cross-entity coordination</strong></td><td>Sister company requests handled promptly. Brite Labs / Noel Decor / Brite Supply contacts know the TM.</td></tr>
-            <tr><td><strong>Reporting quality</strong></td><td>Ops Manager receives accurate, timely reports. Right level of detail — enough for decisions, not noise.</td></tr>
-            <tr><td><strong>AM development</strong></td><td>Coaches AMs effectively. Provides feedback that improves area ops. Doesn't micromanage — respects AM's frontend ownership.</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="category">
-        <div class="category-title">Ops Manager Check-In Cadence</div>
-        <table class="schedule-table">
-          <thead><tr><th>Week</th><th>Check-In Style</th><th>What Ops Manager Looks For</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Week 3 early</strong></td><td>Daily AM + PM</td><td>Approvals processed? Reporting rhythm established?</td></tr>
-            <tr><td><strong>Week 3 late</strong></td><td>Daily PM only</td><td>Flagging right issues to AMs? Ahead of recruiting?</td></tr>
-            <tr><td><strong>Week 4</strong></td><td>Every other day</td><td>Running the territory or just reacting?</td></tr>
-            <tr><td><strong>Week 5</strong></td><td>2x per week</td><td>Ready for peak? Would Ops Manager be comfortable not checking in for a week?</td></tr>
-          </tbody>
-        </table>
+        <div class="category-title">Key Management Competencies <span class="category-count">revealed through ramp-up</span></div>
+        <ul class="activity-list">
+          <li><strong>Scheduling &amp; review</strong> — schedules accurately; reviews photo submissions; AM backstop working</li>
+          <li><strong>Purchase oversight</strong> — queue processed, budget held, single-account discipline</li>
+          <li><strong>Recruiting judgment</strong> · <strong>discipline &amp; accountability</strong> · <strong>cross-entity coordination</strong> · <strong>reporting quality</strong></li>
+          <li><strong>AM development</strong> — coaches AMs effectively (per the AM-exposure module); respects the AM's ownership, no micromanagement</li>
+        </ul>
       </div>
 
       <div class="gate-block warn">
-        <strong>Phase 5 Gate:</strong> 2–3 weeks managing territory independently · approval workflow smooth · job report review producing actionable feedback · recruiting pipeline staffed (or on track) · AM coordination working (no micromanagement) · ≥1 formal disciplinary conversation handled (or scenario-reviewed) · cross-entity established · reporting accurate + timely · check-ins decreasing · <a href="#">Operational Readiness Evaluation</a> shows on-track trajectory.
+        <strong>Phase 5 Gate (Director-approved):</strong> 2–3 weeks running the territory independently · scheduling + photo-review running smoothly · approval workflow smooth · recruiting pipeline staffed (or on track) · AM coordination working · ≥1 formal disciplinary conversation handled (or scenario-reviewed) · cross-entity established · reporting accurate + timely · <a href="#">Operational Readiness Evaluation</a> on-track · Director of Field Operations check-ins decreasing.
       </div>
     </div>
   </section>
@@ -570,28 +455,28 @@
   <!-- PHASE 6 — CLEARED -->
   <section class="phase-section">
     <div class="phase-header">
-      <div class="phase-name">Phase 6 — Cleared (Early September)</div>
-      <div class="phase-meta">Remote check-in with Ops Manager · Formal sign-off · TM is territory operations owner through the season and beyond</div>
+      <div class="phase-name">Phase 6 — Cleared</div>
+      <div class="phase-meta">Check-in with the Director of Field Operations · formal sign-off · TM is the territory operations owner through the season and beyond</div>
     </div>
     <div class="phase-body">
 
       <div class="category">
         <div class="category-title">Clearance Criteria <span class="category-count">9 criteria · evidence-based, not checkbox</span></div>
         <ul class="activity-list">
-          <li><strong>Territory operations</strong> — runs full daily cadence independently across all areas</li>
-          <li><strong>Purchase oversight</strong> — approval queue processed, budget held, single-account discipline</li>
-          <li><strong>Job reporting</strong> — produces actionable AM feedback, not just monitoring</li>
-          <li><strong>People management</strong> — recruiting executing, performance issues handled, AM coaching active</li>
+          <li><strong>Territory operations</strong> — runs the full daily cadence independently across all areas</li>
+          <li><strong>Scheduling &amp; photo-review</strong> — schedules accurately, reviews submissions for accuracy/completion; AM backstop functioning</li>
+          <li><strong>Purchase oversight</strong> — queue processed, budget held, single-account discipline</li>
+          <li><strong>People management</strong> — recruiting executing, performance issues handled</li>
           <li><strong>AM development</strong> — measurable AM growth under TM coaching</li>
-          <li><strong>Cross-entity coordination</strong> — sister company POC functioning, AM fulfillment smooth</li>
-          <li><strong>Reporting quality</strong> — Ops Manager receives accurate, timely territory reports at right detail</li>
-          <li><strong>Safety leadership</strong> — incident reporting chain owned, safety culture modeled</li>
+          <li><strong>Cross-entity coordination</strong> — sister-company POC functioning, AM fulfillment smooth</li>
+          <li><strong>Reporting quality</strong> — accurate, timely, right level of detail</li>
+          <li><strong>Safety leadership</strong> — incident-reporting chain owned, safety culture modeled</li>
           <li><strong>Pre-season readiness</strong> — territory staffed, warehouses prepped, procurement underway</li>
         </ul>
       </div>
 
       <div class="gate-block pass">
-        <strong>CLEARED — Territory Manager:</strong> All Phases 1–5 complete (verified in <a href="#">TM Clearance Rubric</a> Phase Completion table) · Pre-season ramp-up executed — territory staffed, warehouses prepped, procurement underway · Ops Manager formally signs off · all 9 criteria met with evidence. TM is now the territory operations owner — managing the backend while AMs manage the frontend.
+        <strong>CLEARED — Territory Manager:</strong> all Phases 1–5 complete (verified in the <a href="#">TM Clearance Rubric</a>) · pre-season ramp-up executed · <strong>Director of Field Operations formally signs off</strong> · all 9 criteria met with evidence. The TM is now the territory operations owner — running scheduling, review, and the backend while AMs run warehouse, crews, and field quality.
       </div>
     </div>
   </section>
@@ -600,37 +485,29 @@
   <section class="phase-section">
     <div class="phase-header">
       <div class="phase-name">Seasonal Calendar (Year-Round Role)</div>
-      <div class="phase-meta">TM is year-round, not seasonal · Different cadence by season · Strike + off-season planning continues</div>
+      <div class="phase-meta">TM is year-round, not seasonal · cadence shifts by season</div>
     </div>
     <div class="phase-body">
+
+      <div class="foundation-block">
+        <strong>Two senses of "peak."</strong> The TM's <strong>Sep–Dec "peak" is management peak form</strong> — all systems live, the sales→fulfillment pipeline running. The field <em>install</em> season opens ~<strong>Oct 12</strong> and runs heaviest <strong>Nov–Dec</strong>. The TM must be operational before the season goes live.
+      </div>
 
       <div class="category">
         <div class="category-title">Year-Round Calendar</div>
         <table class="schedule-table">
-          <thead><tr><th>Period</th><th>Phase</th><th>TM Focus</th></tr></thead>
+          <thead><tr><th>Period</th><th>Phase</th><th>TM focus</th></tr></thead>
           <tbody>
-            <tr><td><strong>Mid-July</strong></td><td>Phase 1 (Remote)</td><td>Self-paced pre-training</td></tr>
-            <tr><td><strong>Early August</strong></td><td>Phase 2 + 3 (on-site)</td><td>Territory onboarding + abbreviated safety cert</td></tr>
-            <tr><td><strong>August</strong></td><td>Phase 4 (shadowing)</td><td>Peer TM shadowing + assigned territory orientation</td></tr>
-            <tr><td><strong>Mid-Aug → Early Sept</strong></td><td>Phase 5 (supervised solo)</td><td>Pre-season ramp-up: recruiting, warehouse eval, AM onboarding, procurement, fleet</td></tr>
-            <tr><td><strong>Early September</strong></td><td>Phase 6 (cleared)</td><td>Ops Manager sign-off</td></tr>
-            <tr><td><strong>Sept–Dec</strong></td><td>Peak Season</td><td>Full territory mgmt · approvals · job report review · AM coaching · cross-entity · area visits · team building</td></tr>
-            <tr><td><strong>Dec 12–Jan 2</strong></td><td>Break</td><td>Wind-down · transition planning · strike schedules · seasonal bonuses + perf notes</td></tr>
+            <tr><td><strong>~Mid-August</strong></td><td>Phase 1–3 (Utah HQ, in-person)</td><td>Onboarding &amp; role exposure · management systems · abbreviated safety cert</td></tr>
+            <tr><td><strong>Late Aug</strong></td><td>Phase 4 (shadowing)</td><td>Peer-TM exposure (remote/co-located) + assigned-territory orientation</td></tr>
+            <tr><td><strong>Late Aug → Sept</strong></td><td>Phase 5 (supervised solo)</td><td>Pre-season ramp-up: recruiting, warehouse eval, AM onboarding, procurement, fleet</td></tr>
+            <tr><td><strong>~Early Sept</strong></td><td>Phase 6 (cleared)</td><td>Director of Field Operations sign-off — before the season goes live</td></tr>
+            <tr><td><strong>Sept–Dec</strong></td><td>Management peak form</td><td>Full territory mgmt · scheduling + photo-review · approvals · AM coaching · cross-entity · area visits (install peak Nov–Dec)</td></tr>
+            <tr><td><strong>Dec 12 – Jan 2</strong></td><td>Break</td><td>Wind-down · transition planning · strike schedules · seasonal bonuses + perf notes</td></tr>
             <tr><td><strong>Jan–Feb</strong></td><td>Strike Season</td><td>Territory-wide strike oversight · inventory reconciliation · season close-out · AM evaluations</td></tr>
-            <tr><td><strong>Mar–May</strong></td><td>Off-Season</td><td>Strategic planning · territory eval · infrastructure improvements · sister-co relationship building · pre-season prep for next cycle</td></tr>
+            <tr><td><strong>Mar–May</strong></td><td>Off-Season</td><td>Strategic planning · territory eval · infrastructure · sister-co relationships · next-cycle prep</td></tr>
           </tbody>
         </table>
-      </div>
-
-      <div class="category">
-        <div class="category-title">Strike Season Focus (Jan–Feb)</div>
-        <ul class="activity-list">
-          <li><strong>Territory-wide strike oversight</strong> — coordinate strike schedules across all areas</li>
-          <li><strong>Inventory reconciliation</strong> — what went out vs. what came back, damage assessment, season-end counts</li>
-          <li><strong>Season close-out reporting</strong> — final P&amp;L, performance evaluations, lessons learned</li>
-          <li><strong>AM evaluations</strong> — formal performance reviews, returning-AM decisions, off-season development conversations</li>
-          <li><strong>Sister-co close-out</strong> — finalize Brite Labs / Noel Decor / Brite Supply joint-project accounting</li>
-        </ul>
       </div>
     </div>
   </section>
@@ -639,7 +516,7 @@
   <section class="phase-section">
     <div class="phase-header">
       <div class="phase-name">Returning TM Recertification + Progression</div>
-      <div class="phase-meta">Returning TMs ramp in ~1 week · Progression to Regional / Ops Manager</div>
+      <div class="phase-meta">Returning TMs ramp in ~1 week · progression to Regional Operations / Director of Field Operations</div>
     </div>
     <div class="phase-body">
 
@@ -649,42 +526,25 @@
           <thead><tr><th>Activity</th><th>Duration</th><th>Details</th></tr></thead>
           <tbody>
             <tr><td><strong>Pre-training review</strong></td><td>1 day</td><td>Strategy / entities / tools / procedure updates since last season</td></tr>
-            <tr><td><strong>Safety recertification</strong></td><td>30m</td><td>Freehand quiz · 100% pass · 3 attempts · incident reporting chain + jobsite safety identification</td></tr>
-            <tr><td><strong>Territory re-orientation</strong></td><td>2–3 days</td><td>What changed in off-season · new infrastructure · updated vendors · meet new staff</td></tr>
-            <tr><td><strong>Operational restart</strong></td><td>Immediate</td><td>Resume territory mgmt. No supervised solo — already cleared.</td></tr>
+            <tr><td><strong>Safety recertification</strong></td><td>~30m</td><td><strong>Open-reference · 100% · unlimited retakes</strong> + signed/dated safety attestation · incident-reporting chain + jobsite safety identification</td></tr>
+            <tr><td><strong>Territory re-orientation</strong></td><td>2–3 days</td><td>Off-season changes · new infrastructure · updated vendors · meet new staff</td></tr>
+            <tr><td><strong>Operational restart</strong></td><td>Immediate</td><td>Resume territory mgmt — no supervised solo (already cleared)</td></tr>
           </tbody>
         </table>
+        <div class="note-block"><strong>ADR 0004 fix:</strong> the old "Freehand quiz · 100% · 3 attempts" wording is retired — knowledge recert is open-reference with no attempt cap; the safety attestation is the record.</div>
       </div>
 
       <div class="category">
         <div class="category-title">Progression Paths</div>
         <table class="schedule-table">
-          <thead><tr><th>Path</th><th>What It Looks Like</th></tr></thead>
+          <thead><tr><th>Path</th><th>What it looks like</th></tr></thead>
           <tbody>
-            <tr><td><strong>Regional Operations</strong></td><td>Multi-territory oversight · cross-territory coordination · strategic planning. Long-term growth path for systems-level thinkers.</td></tr>
-            <tr><td><strong>Operations Manager</strong></td><td>All territories · company-wide operations strategy · direct reports are TMs. Requires exceptional management ability, cross-entity fluency, strategic vision.</td></tr>
-            <tr><td><strong>Return as TM</strong></td><td>Most common. Returning TMs ramp in ~1 week.</td></tr>
+            <tr><td><strong>Regional Operations</strong></td><td>Multi-territory oversight · cross-territory coordination · strategic planning — for proven systems-level thinkers</td></tr>
+            <tr><td><strong>Director of Field Operations</strong></td><td>All territories · company-wide ops strategy · direct reports are TMs</td></tr>
+            <tr><td><strong>Return as TM</strong></td><td>Most common — returning TMs ramp in ~1 week</td></tr>
           </tbody>
         </table>
       </div>
-    </div>
-  </section>
-
-  <!-- OPEN QUESTIONS -->
-  <section class="phase-section">
-    <div class="phase-header">
-      <div class="phase-name">Open Questions for Tuesday Walk-Through</div>
-      <div class="phase-meta">v1 raised these — answer during Jaime + Holden review, then bake into v2</div>
-    </div>
-    <div class="phase-body">
-      <ul class="activity-list">
-        <li><strong>KPI calibration:</strong> Weekly scorecard targets come from field-services industry standards. Confirm Brite-specific targets with Ops Manager after first season of real data — handbook flags this explicitly. Tuesday review: should we leave the field-services defaults or pre-set Brite-specific stretch targets?</li>
-        <li><strong>Sister company calibration:</strong> Cross-entity coordination weight assumes Brite Labs / Noel Decor / Brite Supply are active in every territory. In territories where one entity is inactive, does that simplify the TM scope, or do we still train for cross-entity instinct?</li>
-        <li><strong>Phase 4 fallback when no existing TM available:</strong> Current draft says Ops Manager runs extended Phase 2. Is that adequate, or should the new TM travel to a more mature TM territory for the peer shadow regardless of geography?</li>
-        <li><strong>Phase 5 disciplinary scenario:</strong> "≥1 formal disciplinary conversation handled (or scenario-reviewed)." In a new territory there may not be a real disciplinary situation in the first 2–3 weeks. Scenario-review may always be the default for new TMs — confirm.</li>
-        <li><strong>Cadence vs. real-world:</strong> Phase 5 daily cadence (7–5 with 5 distinct blocks) reads ideal. Confirm with existing TMs whether this matches reality or aspiration.</li>
-        <li><strong>Pre-season hire date for non-Utah TMs:</strong> Mid-July works for Utah (centralized training). Out-of-state TMs may need earlier hire to allow travel for Phase 2/4 sessions in Utah, or remote Phase 2 alternatives. Decide model.</li>
-      </ul>
     </div>
   </section>
 
